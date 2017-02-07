@@ -18,9 +18,12 @@
 			  <form:input path="password" type="password" id="password" class="form-control"/>     		  
 			 
 			  <button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" type="Submit">Login</button>  			
+              <a href="registrar"  class="avatar-sm-container pull-center">Para registrarse hace click aqui </a> 
 		</form:form>			
 	</div>
+	 
 </div>
+
 <!-- <h3> Login Taller web 1 </h3> -->
 
 <!-- <div> -->
