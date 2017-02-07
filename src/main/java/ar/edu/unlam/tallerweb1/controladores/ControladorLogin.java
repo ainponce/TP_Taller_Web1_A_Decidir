@@ -21,6 +21,7 @@ public class ControladorLogin {
 	@Inject
 	private ServicioLogin servicioLogin;
 
+	// TODO moveria este metodo cerca del post de login
 	@RequestMapping("/login")
 	public ModelAndView irALogin() {
 
@@ -32,6 +33,7 @@ public class ControladorLogin {
 	}
 
 	@RequestMapping("/registrar")
+	// TODO sismael camel case nombre del metodo
 	public ModelAndView iraRegistrar() {
 
 		ModelMap modelo = new ModelMap();
@@ -45,6 +47,7 @@ public class ControladorLogin {
 	public ModelAndView registrarUsuario(
 			@ModelAttribute("usuario") Usuario usuario) {
 		servicioLogin.registrarUsuario(usuario);
+		// TODO ver camel case. yo iria a la pantalla de login
 		return new ModelAndView("registrousuariocorrecto");
 
 	}
@@ -53,14 +56,16 @@ public class ControladorLogin {
 	public ModelAndView validarLogin(
 			@ModelAttribute("usuario") Usuario usuario,
 			HttpServletRequest request) {
-
+		// TODO indent de los parametyros
 		ModelMap error = new ModelMap();
 		String mensaje = "";
+		// TODO por que hay 2 servicios??? yo buscaria por usuario y password directamente.
 		List<Usuario> usuarioValido = servicioLogin.consultarUsuario(usuario);
 
 		if (servicioLogin.validarLogin(usuarioValido, usuario.getEmail(),
 				usuario.getPassword()) && !usuario.getEmail().isEmpty()) {
 			request.getSession().setAttribute("idSesion", usuario.getId());
+			// TODO camel case
 			return new ModelAndView("pantallaprincipal");
 
 		} else {
@@ -69,12 +74,13 @@ public class ControladorLogin {
 				mensaje = " el email no puede estar vacio";
 
 			} else {
-
-				mensaje = " contraseña incorrecta o el mail ingresado no existe ";
+				// TODO encoding
+				mensaje = " contraseï¿½a incorrecta o el mail ingresado no existe ";
 
 			}
 
 		}
+		// TODO haria un redirect a /login
 		error.put("error", mensaje);
 		return new ModelAndView("errorlogin", error);
 	}

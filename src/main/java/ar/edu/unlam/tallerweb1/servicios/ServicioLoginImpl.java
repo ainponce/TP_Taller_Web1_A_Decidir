@@ -27,12 +27,12 @@ public class ServicioLoginImpl implements ServicioLogin {
 	@Override
 	public Boolean validarLogin(List<Usuario> usuariosValidos, String email,
 			String password) {
-		
+	// TODO indentacion de los parametros
 		for (Usuario usuarios : usuariosValidos) {
 			
 			if ( usuarios.getEmail().equals(email)&& usuarios.getPassword().equals(password)) {
 				return true;
-				
+				// TODO lineas en blanco
 			}
 				
 				
