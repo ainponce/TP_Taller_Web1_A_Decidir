@@ -19,14 +19,9 @@
 					<form:input path="password" type="password" id="password" class="form-control"/>     		  
 					
 					<button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" type="Submit">Login</button>  			
-					<a href="registrar"  class="avatar-sm-container pull-center">Para registrarse hace click aqui </a> 
 				</form:form>
 				<c:if test="${not empty error}">
 			        <h4><span>${error}</span></h4>
-			        <br>
-		        </c:if>	
-		        <c:if test="${not empty registroExitoso}">
-			        <h4><span>${registroExitoso}</span></h4>
 			        <br>
 		        </c:if>	
 			</div>

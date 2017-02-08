@@ -17,23 +17,6 @@ public class ControladorLogin {
 
 	@Inject
 	private ServicioLogin servicioLogin;
-
-	@RequestMapping("/registrar")
-	public ModelAndView irARegistrar() {
-
-		ModelMap modelo = new ModelMap();
-		Usuario usuario = new Usuario();
-		modelo.put("usuario", usuario);
-		return new ModelAndView("registroUsuario", modelo);
-	}
-
-	@RequestMapping(path = "/registrar-usuario", method = RequestMethod.POST)
-	public ModelAndView registrarUsuario(@ModelAttribute("usuario") Usuario usuario) {
-		servicioLogin.registrarUsuario(usuario);
-		ModelMap model = new ModelMap();
-		model.put("registroExitoso", "El registro fue exitoso, ingresar email y clave");
-		return new ModelAndView("redirect:/login", model);
-	}
 	
 	@RequestMapping("/login")
 	public ModelAndView irALogin() {
@@ -59,5 +42,10 @@ public class ControladorLogin {
 	@RequestMapping(path = "/home", method = RequestMethod.GET)
 	public ModelAndView irAHome() {
 		return new ModelAndView("home");
+	}
+	
+	@RequestMapping(path = "/", method = RequestMethod.GET)
+	public ModelAndView inicio() {
+		return new ModelAndView("redirect:/login");
 	}
 }

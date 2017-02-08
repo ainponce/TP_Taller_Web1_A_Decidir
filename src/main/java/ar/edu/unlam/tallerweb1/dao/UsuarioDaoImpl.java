@@ -16,12 +16,6 @@ public class UsuarioDaoImpl implements UsuarioDao {
     private SessionFactory sessionFactory;
 
 	@Override
-	public void registrarUsuario(Usuario usuario) {
-		final Session session = sessionFactory.getCurrentSession();
-		session.save(usuario);
-	}
-
-	@Override
 	public Usuario consultarUsuario(Usuario usuario) {
 
 		final Session session = sessionFactory.openSession();

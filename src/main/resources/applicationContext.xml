@@ -19,7 +19,6 @@
 	<import resource="classpath:hibernateContext.xml" />
 
 	<mvc:annotation-driven />
-	<aop:aspectj-autoproxy />
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
 	<context:component-scan base-package="ar.edu.unlam.tallerweb1.controladores" />
