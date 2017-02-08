@@ -1,9 +1,6 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
-import java.util.List;
-
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,7 +18,23 @@ public class ControladorLogin {
 	@Inject
 	private ServicioLogin servicioLogin;
 
-	// TODO moveria este metodo cerca del post de login
+	@RequestMapping("/registrar")
+	public ModelAndView irARegistrar() {
+
+		ModelMap modelo = new ModelMap();
+		Usuario usuario = new Usuario();
+		modelo.put("usuario", usuario);
+		return new ModelAndView("registroUsuario", modelo);
+	}
+
+	@RequestMapping(path = "/registrar-usuario", method = RequestMethod.POST)
+	public ModelAndView registrarUsuario(@ModelAttribute("usuario") Usuario usuario) {
+		servicioLogin.registrarUsuario(usuario);
+		ModelMap model = new ModelMap();
+		model.put("registroExitoso", "El registro fue exitoso, ingresar email y clave");
+		return new ModelAndView("redirect:/login", model);
+	}
+	
 	@RequestMapping("/login")
 	public ModelAndView irALogin() {
 
@@ -29,59 +42,22 @@ public class ControladorLogin {
 		Usuario usuario = new Usuario();
 		modelo.put("usuario", usuario);
 		return new ModelAndView("login", modelo);
-
-	}
-
-	@RequestMapping("/registrar")
-	// TODO sismael camel case nombre del metodo
-	public ModelAndView iraRegistrar() {
-
-		ModelMap modelo = new ModelMap();
-		Usuario usuario = new Usuario();
-		modelo.put("usuario", usuario);
-		return new ModelAndView("registroUsuario", modelo);
-
-	}
-
-	@RequestMapping(path = "/registrar-usuario", method = RequestMethod.POST)
-	public ModelAndView registrarUsuario(
-			@ModelAttribute("usuario") Usuario usuario) {
-		servicioLogin.registrarUsuario(usuario);
-		// TODO ver camel case. yo iria a la pantalla de login
-		return new ModelAndView("registrousuariocorrecto");
-
 	}
 
 	@RequestMapping(path = "/validar-login", method = RequestMethod.POST)
-	public ModelAndView validarLogin(
-			@ModelAttribute("usuario") Usuario usuario,
-			HttpServletRequest request) {
-		// TODO indent de los parametyros
-		ModelMap error = new ModelMap();
-		String mensaje = "";
-		// TODO por que hay 2 servicios??? yo buscaria por usuario y password directamente.
-		List<Usuario> usuarioValido = servicioLogin.consultarUsuario(usuario);
+	public ModelAndView validarLogin(@ModelAttribute("usuario") Usuario usuario) {
+		ModelMap model = new ModelMap();
 
-		if (servicioLogin.validarLogin(usuarioValido, usuario.getEmail(),
-				usuario.getPassword()) && !usuario.getEmail().isEmpty()) {
-			request.getSession().setAttribute("idSesion", usuario.getId());
-			// TODO camel case
-			return new ModelAndView("pantallaprincipal");
-
+		if (servicioLogin.consultarUsuario(usuario) != null) {
+			return new ModelAndView("redirect:/home");
 		} else {
-
-			if (usuario.getEmail().isEmpty()) {
-				mensaje = " el email no puede estar vacio";
-
-			} else {
-				// TODO encoding
-				mensaje = " contrase�a incorrecta o el mail ingresado no existe ";
-
-			}
-
+			model.put("error", "Usuario o clave incorrecta");
 		}
-		// TODO haria un redirect a /login
-		error.put("error", mensaje);
-		return new ModelAndView("errorlogin", error);
+		return new ModelAndView("login", model);
+	}
+	
+	@RequestMapping(path = "/home", method = RequestMethod.GET)
+	public ModelAndView irAHome() {
+		return new ModelAndView("home");
 	}
 }

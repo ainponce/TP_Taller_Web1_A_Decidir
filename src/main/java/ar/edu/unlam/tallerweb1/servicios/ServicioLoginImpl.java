@@ -1,7 +1,5 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -23,38 +21,9 @@ public class ServicioLoginImpl implements ServicioLogin {
 		servicioLoginDao.registrarUsuario(usuario);
 	}
 
-	
 	@Override
-	public Boolean validarLogin(List<Usuario> usuariosValidos, String email,
-			String password) {
-	// TODO indentacion de los parametros
-		for (Usuario usuarios : usuariosValidos) {
-			
-			if ( usuarios.getEmail().equals(email)&& usuarios.getPassword().equals(password)) {
-				return true;
-				// TODO lineas en blanco
-			}
-				
-				
-			
-		}
-		return false;
-				
-	}
-
-
-	@Override
-	public List <Usuario> consultarUsuario (Usuario usuario) {
-		// TODO Auto-generated method stub
-//		
-//		System.out.println("entro a consultar usuario servicios impl");
-//	   
-//		for (Usuario usuarioenservicios :  servicioLoginDao.consultarUsuario(usuario) )
-//		{
-//			System.out.println("entro for de servicios " + usuarioenservicios.getEmail());
-//	
-//		}
-		return  servicioLoginDao.consultarUsuario(usuario);
+	public Usuario consultarUsuario (Usuario usuario) {
+		return servicioLoginDao.consultarUsuario(usuario);
 	}
 
 }
