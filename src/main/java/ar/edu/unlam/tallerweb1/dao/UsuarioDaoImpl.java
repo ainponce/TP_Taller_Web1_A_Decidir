@@ -1,15 +1,14 @@
 package ar.edu.unlam.tallerweb1.dao;
 
-import javax.inject.Inject;
-
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
-import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import javax.inject.Inject;
 
-@Service("usuarioDao")
+@Repository("usuarioDao")
 public class UsuarioDaoImpl implements UsuarioDao {
 
 	@Inject
