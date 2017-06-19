@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="48557a0f-444b-4ef5-9dd1-a299681b1e12" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unlam/tallerweb1/modelo/Usuario.java" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unlam/tallerweb1/modelo/Usuario.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unlam/tallerweb1/servicios/ServicioLogin.java" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unlam/tallerweb1/servicios/ServicioLogin.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ar/edu/unlam/tallerweb1/servicios/ServicioLoginImpl.java" afterPath="$PROJECT_DIR$/src/main/java/ar/edu/unlam/tallerweb1/servicios/ServicioLoginImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/vistas/login.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/vistas/login.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
     </list>
     <ignored path="proyecto-limpio-spring.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,6 +40,46 @@
       <file leaf-file-name="login.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/vistas/login.jsp">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="282">
+              <caret line="28" column="48" lean-forward="true" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="web.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="379">
+              <caret line="27" column="14" lean-forward="true" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ServicioLogin.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlam/tallerweb1/servicios/ServicioLogin.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="48" lean-forward="false" selection-start-line="4" selection-start-column="48" selection-end-line="4" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ServicioLoginImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlam/tallerweb1/servicios/ServicioLoginImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/vistas/home.jsp">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
@@ -48,7 +91,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlam/tallerweb1/dao/UsuarioDao.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
-              <caret line="4" column="43" lean-forward="false" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
+              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -57,14 +100,14 @@
       <file leaf-file-name="UsuarioDaoImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlam/tallerweb1/dao/UsuarioDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="26" column="85" lean-forward="false" selection-start-line="26" selection-start-column="85" selection-end-line="26" selection-end-column="85" />
+            <state relative-caret-position="68">
+              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="12" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Usuario.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Usuario.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlam/tallerweb1/modelo/Usuario.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
@@ -89,11 +132,9 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/registrousuario.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/ar/edu/unlam/tallerweb1/servicios/ServicioLogin.java" />
         <option value="$PROJECT_DIR$/src/main/java/ar/edu/unlam/tallerweb1/dao/LoginDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/test/java/ar/edu/unlam/tallerweb1/dao/LoginDaoTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/ar/edu/unlam/tallerweb1/dao/UsuarioDaoTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ar/edu/unlam/tallerweb1/servicios/ServicioLoginImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/hibernateContext.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/spring-servlet.xml" />
@@ -104,6 +145,10 @@
         <option value="$PROJECT_DIR$/src/main/java/ar/edu/unlam/tallerweb1/dao/UsuarioDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/ar/edu/unlam/tallerweb1/dao/UsuarioDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/ar/edu/unlam/tallerweb1/modelo/Usuario.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ar/edu/unlam/tallerweb1/servicios/ServicioLogin.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ar/edu/unlam/tallerweb1/servicios/ServicioLoginImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/vistas/login.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
       </list>
     </option>
   </component>
@@ -970,12 +1015,12 @@
       <workItem from="1484919559602" duration="2986000" />
       <workItem from="1485174761569" duration="15000" />
       <workItem from="1486488269453" duration="2084000" />
-      <workItem from="1497874219320" duration="5011000" />
+      <workItem from="1497874219320" duration="5530000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12786000" />
+    <option name="totallyTimeSpent" value="13305000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
@@ -1131,22 +1176,6 @@
     <entry file="file://$PROJECT_DIR$/src/test/java/ar/edu/unlam/tallerweb1/modelo/LoginServiceTest.java" />
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/registroUsuario.jsp" />
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlam/tallerweb1/servicios/ServicioLogin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlam/tallerweb1/servicios/ServicioLoginImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/resources/test-applicationContext.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -1203,14 +1232,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/vistas/login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlam/tallerweb1/controladores/ControladorLogin.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
@@ -1219,26 +1240,66 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlam/tallerweb1/modelo/Usuario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="18" column="96" lean-forward="false" selection-start-line="18" selection-start-column="96" selection-end-line="18" selection-end-column="96" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlam/tallerweb1/dao/UsuarioDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="4" column="43" lean-forward="false" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlam/tallerweb1/servicios/ServicioLogin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="48" lean-forward="false" selection-start-line="4" selection-start-column="48" selection-end-line="4" selection-end-column="48" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlam/tallerweb1/dao/UsuarioDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="26" column="85" lean-forward="false" selection-start-line="26" selection-start-column="85" selection-end-line="26" selection-end-column="85" />
+        <state relative-caret-position="68">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="12" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlam/tallerweb1/modelo/Usuario.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ar/edu/unlam/tallerweb1/servicios/ServicioLoginImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="96" lean-forward="false" selection-start-line="18" selection-start-column="96" selection-end-line="18" selection-end-column="96" />
+        <state relative-caret-position="68">
+          <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/vistas/home.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/vistas/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="28" column="48" lean-forward="true" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="27" column="14" lean-forward="true" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
           <folding />
         </state>
       </provider>
