@@ -15,7 +15,7 @@ import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
 @Controller
 public class ControladorLogin {
 
-	// La anotacion @Inject indica a Spring que en este atributo se debe setar (inyeccion de dependencias)
+	// La anotacion @Inject indica a Spring que en este atributo se debe setear (inyeccion de dependencias)
 	// un objeto de una clase que implemente la interface ServicioLogin, dicha clase debe estar anotada como
 	// @Service o @Repository y debe estar en un paquete de los indicados en applicationContext.xml
 	@Inject
@@ -26,7 +26,7 @@ public class ControladorLogin {
 	public ModelAndView irALogin() {
 
 		ModelMap modelo = new ModelMap();
-		// Se agrega al modelo un objeto del tipo Usuario en con key 'usuario' para que el mismo sea asociado
+		// Se agrega al modelo un objeto del tipo Usuario con key 'usuario' para que el mismo sea asociado
 		// al model attribute del form que esta definido en la vista 'login'
 		Usuario usuario = new Usuario();
 		modelo.put("usuario", usuario);
@@ -59,7 +59,7 @@ public class ControladorLogin {
 		return new ModelAndView("home");
 	}
 
-	// escucha la url /, y redirige a la URL /login, es lo mismo que si se invoca la url /login directamente.
+	// Escucha la url /, y redirige a la URL /login, es lo mismo que si se invoca la url /login directamente.
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public ModelAndView inicio() {
 		return new ModelAndView("redirect:/login");
