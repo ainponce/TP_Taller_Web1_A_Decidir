@@ -20,7 +20,7 @@ public abstract class SpringTest {
     private SessionFactory sessionFactory;
 
     // Metodo para obtener una sesion de base de datos
-    protected Session getSession() {
+    protected Session session() {
         return this.sessionFactory.getCurrentSession();
     }
 

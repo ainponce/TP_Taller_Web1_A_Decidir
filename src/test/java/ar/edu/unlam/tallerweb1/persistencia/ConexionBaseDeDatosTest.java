@@ -13,6 +13,6 @@ public class ConexionBaseDeDatosTest extends SpringTest{
     @Test
     @Transactional @Rollback(true)
     public void pruebaConexion(){
-        assertThat(getSession().isConnected()).isTrue();
+        assertThat(session().isConnected()).isTrue();
     }
 }
