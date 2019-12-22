@@ -1,4 +1,4 @@
-package ar.edu.unlam.tallerweb1.dao;
+package ar.edu.unlam.tallerweb1.repositorios;
 
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import org.hibernate.Session;
@@ -8,11 +8,11 @@ import org.springframework.stereotype.Repository;
 
 import javax.inject.Inject;
 
-// implelemtacion del DAO de usuarios, la anotacion @Repository indica a Spring que esta clase es un componente que debe
+// implelemtacion del repositorio de usuarios, la anotacion @Repository indica a Spring que esta clase es un componente que debe
 // ser manejado por el framework, debe indicarse en applicationContext que busque en el paquete ar.edu.unlam.tallerweb1.dao
 // para encontrar esta clase.
-@Repository("usuarioDao")
-public class UsuarioDaoImpl implements UsuarioDao {
+@Repository("repositorioUsuario")
+public class RepositorioUsuarioImpl implements RepositorioUsuario {
 
 	// Como todo dao maneja acciones de persistencia, normalmente estará inyectado el session factory de hibernate
 	// el mismo está difinido en el archivo hibernateContext.xml
