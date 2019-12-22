@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.servicios;
 
 import javax.inject.Inject;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,8 +19,12 @@ import ar.edu.unlam.tallerweb1.modelo.Usuario;
 @Transactional
 public class ServicioLoginImpl implements ServicioLogin {
 
-	@Inject
 	private RepositorioUsuario servicioLoginDao;
+
+	@Autowired
+	public ServicioLoginImpl(RepositorioUsuario servicioLoginDao){
+		this.servicioLoginDao = servicioLoginDao;
+	}
 
 	@Override
 	public Usuario consultarUsuario (Usuario usuario) {

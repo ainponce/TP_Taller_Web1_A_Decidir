@@ -1,8 +1,8 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -10,17 +10,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import ar.edu.unlam.tallerweb1.modelo.Usuario;
-import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class ControladorLogin {
 
-	// La anotacion @Inject indica a Spring que en este atributo se debe setear (inyeccion de dependencias)
-	// un objeto de una clase que implemente la interface ServicioLogin, dicha clase debe estar anotada como
-	// @Service o @Repository y debe estar en un paquete de los indicados en applicationContext.xml
-	@Inject
+	// La anotacion @Autowired indica a Spring que se debe utilizar el contructor como mecanismo de inyección de dependencias,
+	// es decir, qeue lo parametros del mismo deben ser un bean de spring y el framewrok automaticamente pasa como parametro
+	// el bean correspondiente, en este caso, un objeto de una clase que implemente la interface ServicioLogin,
+	// dicha clase debe estar anotada como @Service o @Repository y debe estar en un paquete de los indicados en
+	// applicationContext.xml
 	private ServicioLogin servicioLogin;
+
+	@Autowired
+	public ControladorLogin(ServicioLogin servicioLogin){
+		this.servicioLogin = servicioLogin;
+	}
 
 	// Este metodo escucha la URL localhost:8080/NOMBRE_APP/login si la misma es invocada por metodo http GET
 	@RequestMapping("/login")

@@ -10,5 +10,6 @@
 	<import resource="classpath:test-hibernateContext.xml" />
 	
 	<tx:annotation-driven transaction-manager="transactionManager" />
+
 </beans>
 
