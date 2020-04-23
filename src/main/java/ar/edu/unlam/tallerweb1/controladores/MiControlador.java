@@ -18,7 +18,7 @@ public class MiControlador {
         model.put("nombreParaMostrar", nombre.toUpperCase());
         model.put("apellidoParaMostrar", apellido.toUpperCase());
         //Hola ${paramostrar}!
-        return new ModelAndView("saludo", model)
+        return new ModelAndView("saludo", model);
     }
 
 
