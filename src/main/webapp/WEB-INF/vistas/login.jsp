@@ -24,12 +24,13 @@
 					
 					<button class="btn btn-lg btn-primary btn-block" Type="Submit"/>Login</button>
 				</form:form>
-
+				<a href="registrar-usuario"	>Registrarme</a>
 				<%--Bloque que es visible si el elemento error no está vacío	--%>
 				<c:if test="${not empty error}">
 			        <h4><span>${error}</span></h4>
 			        <br>
-		        </c:if>	
+		        </c:if>
+				${msg}
 			</div>
 		</div>
 		
