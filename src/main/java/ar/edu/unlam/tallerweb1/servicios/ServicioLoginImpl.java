@@ -1,8 +1,5 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
-import javax.inject.Inject;
-
-import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuarioImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,8 +25,8 @@ public class ServicioLoginImpl implements ServicioLogin {
 	}
 
 	@Override
-	public Usuario consultarUsuario (Usuario usuario) {
-		return servicioLoginDao.consultarUsuario(usuario);
+	public Usuario consultarUsuario (String email, String password) {
+		return servicioLoginDao.buscarUsuario(email, password);
 	}
 
 }
