@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 @Repository("repositorioUsuario")
 public class RepositorioUsuarioImpl implements RepositorioUsuario {
 
-	// Como todo repositorio maneja acciones de persistencia, normalmente estara inyectado el session factory de hibernate
+	// Maneja acciones de persistencia, normalmente estara inyectado el session factory de hibernate
 	// el mismo esta difinido en el archivo hibernateContext.xml
 	private SessionFactory sessionFactory;
 
