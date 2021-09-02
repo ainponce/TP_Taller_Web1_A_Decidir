@@ -2,3 +2,8 @@ language: java
 script: mvn clean test
 jdk:
   - oraclejdk11
+otifications:
+  email:
+    recipients:
+      -sebastianismael@gmail.com
+      -damianspizzirri@gmail.com
