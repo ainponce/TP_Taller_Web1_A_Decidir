@@ -1,8 +1,6 @@
-package ar.edu.unlam.tallerweb1.repositorios;
+package ar.edu.unlam.tallerweb1.domain.usuarios;
 
-import ar.edu.unlam.tallerweb1.modelo.Usuario;
-
-import java.util.List;
+import ar.edu.unlam.tallerweb1.domain.usuarios.Usuario;
 
 // Interface que define los metodos del Repositorio de Usuarios.
 public interface RepositorioUsuario {
