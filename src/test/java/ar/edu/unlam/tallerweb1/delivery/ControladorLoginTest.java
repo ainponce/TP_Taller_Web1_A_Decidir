@@ -32,7 +32,7 @@ public class ControladorLoginTest {
         DatosLogin datosLogin = dadoQueTengoDatosDeLoginValidos();
         Usuario usuarioEsperado = dadoQueTengoUnUsuarioConRol(ROL);
 
-        ModelAndView vista = cuandoQuieroValidarElLogin(datosLogin, usuarioEsperado);
+        ModelAndView vista = cuandoQuieroValidarElLogin(datosLogin, usuarioEsperado, ROL);
 
         entoncesMeDevuelveLaVistaCorrecta(vista);
 
@@ -52,9 +52,10 @@ public class ControladorLoginTest {
     }
 
     //Dado
-    private ModelAndView cuandoQuieroValidarElLogin(DatosLogin datosLogin, Usuario usuarioEsperado) {
+    private ModelAndView cuandoQuieroValidarElLogin(DatosLogin datosLogin, Usuario usuarioEsperado,String rol) {
         when(servicioLogin.consultarUsuario(any(), any())).thenReturn(usuarioEsperado);
         when(request.getSession()).thenReturn(sesion);
+        when(sesion.getAttribute("ROL")).thenReturn(rol);
         return controladorLogin.validarLogin(datosLogin, request);
     }
 
