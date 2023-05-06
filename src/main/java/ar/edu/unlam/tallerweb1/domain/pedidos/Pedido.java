@@ -8,6 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class Pedido {
 
+    //prueba de mi rama...
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
