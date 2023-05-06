@@ -12,7 +12,7 @@ public class ControladorRegistracionTest {
 
        //Preparación
        //dadoQueNoExisteElUsuario();
-       //Ejecuciónholas
+       //Ejecución
        // ModelAndView mav =
        //Verificación
     }
