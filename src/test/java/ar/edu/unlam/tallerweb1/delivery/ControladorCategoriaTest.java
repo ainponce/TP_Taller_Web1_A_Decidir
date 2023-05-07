@@ -16,4 +16,6 @@ public class ControladorCategoriaTest {
         assertThat(categoria.getNombreCategoria().equals("Comida"));
 
     }
+
+
 }
