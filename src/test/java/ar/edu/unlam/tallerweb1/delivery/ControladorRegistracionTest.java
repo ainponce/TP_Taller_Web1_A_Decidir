@@ -8,5 +8,6 @@ public class ControladorRegistracionTest {
     @Test
     public void alIngresarCredencialesCorrectasDeUnUsuarioQueNoExisteMeRegistraYLlevaAlLogin() {
         //Corre y una contraseña valida
+
     }
 }
