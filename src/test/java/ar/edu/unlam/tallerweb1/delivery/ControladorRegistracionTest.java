@@ -6,4 +6,14 @@ import org.springframework.web.servlet.ModelAndView;
 public class ControladorRegistracionTest {
 
 
+    @Test
+    public void alIngresarCredencialesCorrectasDeUnUsuarioQueNoExisteMeRegistraYLlevaAlLogin() {
+        //Corre y una contraseña valida
+
+        //Preparación
+        //dadoQueNoExisteElUsuario();
+        //Ejecución
+        // ModelAndView mav =
+        //Verificación
+    }
 }
