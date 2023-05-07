@@ -18,8 +18,9 @@ public class ControladorDeudaTest {
         assertThat(deuda.getFecha()).isEqualTo("01/01/2023");
         assertThat(deuda.getMoneda()).isEqualTo(Moneda.Peso);
         assertThat(deuda.isYoDebo()).isEqualTo(true);
-        //crear test de queSeCreeUnaPersona
-        
+        assertThat(deuda.getDeudorOPrestamista()).isEqualTo(prestamista);
+
     }
+
 
 }
