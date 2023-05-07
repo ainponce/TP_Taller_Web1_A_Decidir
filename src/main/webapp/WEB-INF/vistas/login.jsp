@@ -9,9 +9,10 @@
 	    <!-- Bootstrap theme -->
 	    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
+		<meta charset="UTF-8">
 		<title>Hurr</title>
 	</head>
-	<body>
+	<body id="bodyLogin">
 		<div class = "container">
 			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 				<%--Definicion de un form asociado a la accion /validar-login por POST. Se indica ademas que el model attribute se--%>

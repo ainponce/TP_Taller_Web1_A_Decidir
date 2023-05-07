@@ -1,4 +1,4 @@
-body{
+#bodyLogin{
     background-image: url('../img/background.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -48,39 +48,47 @@ body{
 .registrarme:hover{
     color: #444444;
 }
-
-/* Estilos para dispositivos con un ancho máximo de 768px */
-@media (max-width: 768px) {
-    body {
-        background-size: auto;
-    }
+/*HOME*/
+.nav-link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+    padding: unset;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
 
-/* Estilos para dispositivos con un ancho máximo de 576px */
-@media (max-width: 576px) {
-    body {
-        background-size: auto;
-    }
+.nav-link:hover{
+    text-decoration: none;
 }
 
-/* Estilos para dispositivos con un ancho máximo de 480px */
-@media (max-width: 480px) {
-    #logoLogin {
-        width: 10em;
-        margin-bottom: 1em;
-    }
+.nav-perfil{
+    z-index: 1;
+    background-color: #2f73b2;
+    color: #ffffff;
+    box-shadow: 0px 1px 12px 0px rgba(0,0,0,0.75);;
+    height: 4em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
-    #btnLogin {
-        height: 2em;
-        font-size: 0.8em;
-    }
+.col-menu-home{
+    background-color: #ffffff;
+}
 
-    .form-control {
-        height: 1.8em;
-        opacity: 1;
-    }
+.row{
+    display: flex;
+    flex-wrap: nowrap;
+}
 
-    .registrarme {
-        margin-top: 0.5em;
-    }
+.icon-home{
+    margin-right: 0.5em;
+}
+
+.col-lg-10{
+    background-color: #dedede;
+    height: 500px;
 }
