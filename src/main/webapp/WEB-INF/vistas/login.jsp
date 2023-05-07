@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<!-- Bootstrap core CSS -->
-	   <%-- <link href="css/bootstrap.min.css" rel="stylesheet" >
-	    <!-- Bootstrap theme -->
-	    <link href="css/bootstrap-theme.min.css" rel="stylesheet"> --%>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+		<!-- Bootstrap core CSS -->
+	    <link href="css/bootstrap.min.css" rel="stylesheet" >
+	    <!-- Bootstrap theme -->
+	    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
 		<title>Hurr</title>
 	</head>
 	<body>
@@ -16,17 +17,15 @@
 				<%--Definicion de un form asociado a la accion /validar-login por POST. Se indica ademas que el model attribute se--%>
 				<%--debe referenciar con el nombre usuario, spring mapea los elementos de la vista con los atributos de dicho objeto--%>
 					<%--para eso debe coincidir el valor del elemento path de cada input con el nombre de un atributo del objeto --%>
-				<form:form action="validar-login" method="POST" modelAttribute="datosLogin">
-			    	<h3 class="form-signin-heading">Taller Web I</h3>
-					<hr class="colorgraph"><br>
-
+					<img src="./img/logo-hurr.png" alt="" id="logoLogin">
+					<form:form action="validar-login" method="POST" modelAttribute="datosLogin">
 					<%--Elementos de entrada de datos, el elemento path debe indicar en que atributo del objeto usuario se guardan los datos ingresados--%>
-					<form:input path="email" id="email" type="email" class="form-control" />
-					<form:input path="password" type="password" id="password" class="form-control"/>     		  
+					<form:input  path="email" id="email" type="email" class="form-control" />
+					<form:input  path="password" type="password" id="password" class="form-control"/>
 					
-					<button class="btn btn-lg btn-primary btn-block" Type="Submit"/>Login</button>
+					<button id="btnLogin" class="btn btn-lg btn-block" Type="Submit"/>Login</button>
 				</form:form>
-				<a href="registrar-usuario"	>Registrarme</a>
+				<a href="registrar-usuario" class="registrarme">Registrarme</a>
 				<%--Bloque que es visible si el elemento error no esta vacio	--%>
 				<c:if test="${not empty error}">
 			        <h4><span>${error}</span></h4>
