@@ -11,9 +11,9 @@ public class ControladorRegistracionTest {
        //Corre y una contraseña valida
 
        //Preparación
-       dadoQueNoExisteElUsuario();
+     //  dadoQueNoExisteElUsuario();
        //Ejecución
-        ModelAndView mav =
+      //  ModelAndView mav =
        //Verificación
     }
 }
