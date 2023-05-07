@@ -8,22 +8,5 @@ public class ControladorRegistracionTest {
     @Test
     public void alIngresarCredencialesCorrectasDeUnUsuarioQueNoExisteMeRegistraYLlevaAlLogin() {
         //Corre y una contraseña valida
-
-
-        public void alIngresarCredencialesCorrectasDeUnUsuarioQueNoExisteMeRegistraYLlevaAlLogin () {
-            //Corre y una contraseña valida
-
-            //Preparación
-            //dadoQueNoExisteElUsuario();
-            //Ejecución
-            // ModelAndView mav =
-            //Verificación
-
-            //Preparación
-            //dadoQueNoExisteElUsuario();
-            //Ejecución
-            // ModelAndView mav =
-            //Verificación
-        }
     }
 }
