@@ -34,9 +34,11 @@ public class ControladorDeRegistro {
         String viewName="registro-usuario";
         if(this.servicioRegistracion.registrarUsuario(datosRegistracion.getCorreo(), datosRegistracion.getClave())) {
             viewName="home";
+            model.put("datosLogin", new DatosLogin());
+            model.put("msg", "registro exitoso");
         }else{
             model.put("datosRegistro", new DatosRegistracion());
-            model.put("error", "registro fallido");
+            model.put("msg", "registro fallido");
         }
         return new ModelAndView(viewName, model);
     }

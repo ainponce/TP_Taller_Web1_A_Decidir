@@ -25,26 +25,18 @@ public class ControladorRegistroTest {
         this.controladorDeRegistro= new ControladorDeRegistro(this.servicioRegistracion);
     }
 
-
-
     @Test
     public void alIngresarCredencialesCorrectasDeUnUsuarioQueNoExisteMeRegistraYLlevaAlLogin(){
-
         dadoQueNoExisteElUsuario();
-
         ModelAndView mav= cuandoMeRegistro(datosRegistracion);
-
         entoncesElRegistroEsExitoso(mav);
-
     }
-
 
     @Test
     public void alIngresarCredencialesInvalidasNoMePermiteRegistrarme(){
         dadoQueLasCredencialesSonInvalidas();
         ModelAndView mav= cuandoMeRegistro(datosRegistracion);
         entoncesElRegistroFalla(mav);
-
     }
 
     @Test
@@ -63,7 +55,7 @@ public class ControladorRegistroTest {
 
 
     private void entoncesElRegistroFalla(ModelAndView mav) {
-        assertThat(mav.getViewName()).isEqualTo("registrarme");
+        assertThat(mav.getViewName()).isEqualTo("registro-usuario");
         assertThat(mav.getModel().get("msg")).isEqualTo("registro fallido");
     }
 
