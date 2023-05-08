@@ -16,11 +16,11 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	// para el resto de los atributo no se usan anotaciones entonces se usa el default de hibernate: la columna se llama igual que
-	// el atributo, la misma admite nulos, y el tipo de dato se deduce del tipo de dato de java.
-	private String email;
-	private String password;
-	private String rol;
-	private Boolean activo = false;
+	// el atributo, 	private String email;
+	//	private String password;
+	//	private String rol;
+	//	private Boolean activo = false;la misma admite nulos, y el tipo de dato se deduce del tipo de dato de java.
+
 	
 	public Long getId() {
 		return id;
