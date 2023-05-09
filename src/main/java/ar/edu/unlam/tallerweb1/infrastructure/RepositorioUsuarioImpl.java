@@ -18,6 +18,8 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 	// el mismo esta difinido en el archivo hibernateContext.xml
 	private SessionFactory sessionFactory;
 
+	public RepositorioUsuarioImpl(){}
+
     @Autowired
 	public RepositorioUsuarioImpl(SessionFactory sessionFactory){
 		this.sessionFactory = sessionFactory;
@@ -51,6 +53,11 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 	@Override
 	public void modificar(Usuario usuario) {
 		sessionFactory.getCurrentSession().update(usuario);
+	}
+
+	@Override
+	public Usuario buscarUsuarioPorId(Long id) {
+		return this.sessionFactory.getCurrentSession().get(Usuario.class, id);
 	}
 
 }
