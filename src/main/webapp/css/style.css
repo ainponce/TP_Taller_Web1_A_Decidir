@@ -3,10 +3,21 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+#bodyRegistro{
+    background-image: url('../img/backgroundRegistro.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.mensajeErrorRegistro{
+    font-size: 1em;
+
+}
 
 .container{
     z-index: 1;
 }
+
 #logoLogin{
     width: 20em;
     display: flex;
@@ -53,11 +64,8 @@
     display: flex;
     align-items: center;
     text-decoration: none;
-    margin-left: 1.5em;
-    margin-right: 1.5em;
     padding: unset;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+    margin: 0.5em 1.5em;
 }
 
 .nav-link:hover{
@@ -68,7 +76,7 @@
     z-index: 1;
     background-color: #2f73b2;
     color: #ffffff;
-    box-shadow: 0px 1px 12px 0px rgba(0,0,0,0.75);;
+    box-shadow: 0 1px 12px 0 rgba(0,0,0,0.75);;
     height: 4em;
     display: flex;
     align-items: center;

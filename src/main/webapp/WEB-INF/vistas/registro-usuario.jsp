@@ -3,29 +3,31 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet" >
     <!-- Bootstrap theme -->
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Registro de usuario</title>
 </head>
-<body id="bodyLogin">
+<body id="bodyRegistro">
 <div class = "container">
     <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <img src="./img/logo-hurr.png" alt="" id="logoLogin">
         <form:form action="registrar-usuario" method="POST" modelAttribute="datosRegistro">
-            <h3 class="form-signin-heading">Nuevo Usuario</h3>
-            <hr class="colorgraph"><br>
+            <form:input path="correo" id="correo" class="form-control" placeholder="Email"/>
+            <form:input path="clave" type="password" id="clave" class="form-control" placeholder="Password"/>
 
-            <form:input path="correo" id="correo" class="form-control"/>
-            <form:input path="clave" type="password" id="clave" class="form-control"/>
-
-            <button id="btn-registrarme" class="btn btn-lg btn-primary btn-block" Type="Submit"/>Registrarme</button>
+            <button id="btnLogin" class="btn btn-lg btn-block" Type="Submit"/>Registrarme</button>
         </form:form>
-
         <c:if test="${not empty error}">
-            <h4><span>${error}</span></h4>
+            <h4 class="mensajeErrorRegistro"><span>${error}</span></h4>
             <br>
         </c:if>
+        <a href="login" class="registrarme">Volver a Login</a>
     </div>
 </div>
 

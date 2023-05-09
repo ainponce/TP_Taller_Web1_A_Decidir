@@ -38,7 +38,11 @@ public class ControladorDeRegistro {
             model.put("msg", "registro exitoso");
         }else{
             model.put("datosRegistro", new DatosRegistracion());
+
+            model.put("error", "Datos incorrectos, por favor vuelta a intentarlo");
+
             model.put("msg", "registro fallido");
+
         }
         return new ModelAndView(viewName, model);
     }
