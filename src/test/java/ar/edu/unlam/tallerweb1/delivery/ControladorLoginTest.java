@@ -47,7 +47,6 @@ public class ControladorLoginTest {
 
     private Usuario dadoQueTengoUnUsuarioConRol(String rol) {
         Usuario usuario = new Usuario();
-        usuario.setRol(rol);
         return usuario;
     }
 
