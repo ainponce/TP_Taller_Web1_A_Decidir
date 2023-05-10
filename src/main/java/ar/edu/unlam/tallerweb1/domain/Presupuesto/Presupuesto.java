@@ -3,25 +3,32 @@ package ar.edu.unlam.tallerweb1.domain.Presupuesto;
 import ar.edu.unlam.tallerweb1.delivery.Moneda;
 import ar.edu.unlam.tallerweb1.domain.categorias.Categoria;
 
+import javax.persistence.*;
+
+@Entity
 public class Presupuesto {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String fechaDesde;
     private String fechaHasta;
     private double montoPresupuesto;
     private Moneda moneda;
-    private Categoria categoriaDelPresupuesto;
     private boolean estaActivo;
 
-    public Presupuesto(String fechaDesde, String fechaHasta, double montoPresupuesto, Moneda moneda, Categoria categoriaDelPresupuesto) {
-    this.fechaDesde = fechaDesde;
-    this.fechaHasta = fechaHasta;
-    this.montoPresupuesto = montoPresupuesto;
-    this.moneda = moneda;
-    this.categoriaDelPresupuesto = categoriaDelPresupuesto;
-    this.estaActivo = true;
+    //@ManyToOne
+    //@JoinColumn(name = "categoriaId")
+    //private Categoria categoriaDelPresupuesto;
 
+    public Long getId() {
+        return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
     public String getFechaDesde() {
         return fechaDesde;
     }
@@ -54,13 +61,13 @@ public class Presupuesto {
         this.moneda = moneda;
     }
 
-    public Categoria getCategoriaDelPresupuesto() {
-        return categoriaDelPresupuesto;
-    }
+    //public Categoria getCategoriaDelPresupuesto() {
+    //    return categoriaDelPresupuesto;
+    //}
 
-    public void setCategoriaDelPresupuesto(Categoria categoriaDelPresupuesto) {
-        this.categoriaDelPresupuesto = categoriaDelPresupuesto;
-    }
+    //public void setCategoriaDelPresupuesto(Categoria categoriaDelPresupuesto) {
+    //    this.categoriaDelPresupuesto = categoriaDelPresupuesto;
+   // }
 
     public boolean isEstaActivo() {
         return estaActivo;

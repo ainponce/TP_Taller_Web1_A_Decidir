@@ -9,7 +9,12 @@
 	    <!-- Bootstrap theme -->
 	    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
+<<<<<<< HEAD
 		<meta charset="UTF-8">
+=======
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+>>>>>>> dev
 		<title>Hurr</title>
 	</head>
 	<body id="bodyLogin">
@@ -21,6 +26,7 @@
 					<img src="./img/logo-hurr.png" alt="" id="logoLogin">
 					<form:form action="validar-login" method="POST" modelAttribute="datosLogin">
 					<%--Elementos de entrada de datos, el elemento path debe indicar en que atributo del objeto usuario se guardan los datos ingresados--%>
+<<<<<<< HEAD
 					<form:input  path="email" id="email" type="email" class="form-control" />
 					<form:input  path="password" type="password" id="password" class="form-control"/>
 					
@@ -33,6 +39,20 @@
 			        <br>
 		        </c:if>
 				${msg}
+=======
+					<form:input  path="email" id="email" type="email" class="form-control" placeholder="Email"/>
+					<form:input  path="password" type="password" id="password" class="form-control" placeholder="Password"/>
+					
+					<button id="btnLogin" class="btn btn-lg btn-block" Type="Submit"/>Login</button>
+				</form:form>
+					<%--Bloque que es visible si el elemento error no esta vacio	--%>
+					<c:if test="${not empty error}">
+						<h4 class="mensajeErrorRegistro"><span>${error}</span></h4>
+						<br>
+					</c:if>
+					${msg}
+				<a href="registrar-usuario" class="registrarme">Registrarme</a>
+>>>>>>> dev
 			</div>
 		</div>
 		

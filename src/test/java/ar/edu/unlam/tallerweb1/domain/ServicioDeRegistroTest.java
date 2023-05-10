@@ -18,8 +18,6 @@ public class ServicioDeRegistroTest {
         entoncesMiCorreo(esValido);
     }
 
-
-
     @Test
     public void alIngresarCredencialesValidasMePuedoRegistrarExitosamente(){
         dadoQueTengroCredencialesValidas();
