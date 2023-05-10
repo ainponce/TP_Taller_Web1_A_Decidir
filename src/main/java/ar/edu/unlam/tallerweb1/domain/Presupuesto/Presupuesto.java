@@ -17,10 +17,11 @@ public class Presupuesto {
     private double montoPresupuesto;
     private Moneda moneda;
     private boolean estaActivo;
+    @ManyToOne
+    @JoinColumn(name = "categoriaId")
+    private Categoria categoriaDelPresupuesto;
 
-    //@ManyToOne
-    //@JoinColumn(name = "categoriaId")
-    //private Categoria categoriaDelPresupuesto;
+    public Presupuesto(){}
 
     public Long getId() {
         return id;
@@ -61,13 +62,13 @@ public class Presupuesto {
         this.moneda = moneda;
     }
 
-    //public Categoria getCategoriaDelPresupuesto() {
-    //    return categoriaDelPresupuesto;
-    //}
+    public Categoria getCategoriaDelPresupuesto() {
+       return categoriaDelPresupuesto;
+    }
 
-    //public void setCategoriaDelPresupuesto(Categoria categoriaDelPresupuesto) {
-    //    this.categoriaDelPresupuesto = categoriaDelPresupuesto;
-   // }
+    public void setCategoriaDelPresupuesto(Categoria categoriaDelPresupuesto) {
+        this.categoriaDelPresupuesto = categoriaDelPresupuesto;
+    }
 
     public boolean isEstaActivo() {
         return estaActivo;
