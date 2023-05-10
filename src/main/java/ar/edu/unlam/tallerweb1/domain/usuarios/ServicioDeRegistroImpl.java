@@ -1,16 +1,27 @@
 package ar.edu.unlam.tallerweb1.domain.usuarios;
 
 
+import ar.edu.unlam.tallerweb1.infrastructure.RepositorioUsuarioImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-@Service
+@Service("servicioDeRegistro")
+@Transactional
 public class ServicioDeRegistroImpl implements ServicioDeRegistro {
 
+    private RepositorioUsuario servicioRegistroDao;
 
-
+    @Autowired
+    public ServicioDeRegistroImpl(RepositorioUsuario servicioRegistroDao){
+        this.servicioRegistroDao = servicioRegistroDao;
+    }
+    public ServicioDeRegistroImpl(){
+    }
     @Override
     public Boolean validarEmail(String email){
         String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
@@ -27,10 +38,12 @@ public class ServicioDeRegistroImpl implements ServicioDeRegistro {
     @Override
     public Boolean registrarUsuario(String email, String clave) {
           Boolean sonValidos= false;
+
            if (validarClave(clave) && validarEmail(email)){
                sonValidos=true;
+               Usuario usuario = new Usuario(email, clave);
+               servicioRegistroDao.guardar(usuario);
            }
            return sonValidos;
         }
-
 }
