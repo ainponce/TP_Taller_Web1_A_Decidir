@@ -39,9 +39,13 @@
 				<!--update: aplica cambios realizados-->
 				<!--none: no modifica nunca el esquema de datos-->
 <<<<<<< HEAD
+<<<<<<< HEAD
 				<prop key="hibernate.hbm2ddl.auto">create</prop>
 =======
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
+>>>>>>> dev
+=======
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
 >>>>>>> dev
 			</props>
 		</property>
