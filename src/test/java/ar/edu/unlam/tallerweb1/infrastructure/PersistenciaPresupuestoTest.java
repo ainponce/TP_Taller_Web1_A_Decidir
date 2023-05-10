@@ -1,4 +1,4 @@
-package ar.edu.unlam.tallerweb1.domain;
+package ar.edu.unlam.tallerweb1.infrastructure;
 
 import ar.edu.unlam.tallerweb1.SpringTest;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
