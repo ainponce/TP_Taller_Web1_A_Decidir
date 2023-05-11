@@ -9,7 +9,7 @@ public class ControladorDeudaTest {
     @Test
     public void queSeCreeUnaDeuda(){
         Categoria categoriaDeLaDeuda = new Categoria(1, "Salidas");
-        Persona prestamista = new Persona(123, "Shushu");
+        Persona prestamista = new Persona(1234L, "Shushu");
         Deuda deuda = new Deuda(1000.50, categoriaDeLaDeuda, "Entrada Shushu cine", "01/01/2023", true, prestamista, Moneda.Peso);
 
         assertThat(deuda.getMontoDeLaDeuda()).isEqualTo(1000.50);

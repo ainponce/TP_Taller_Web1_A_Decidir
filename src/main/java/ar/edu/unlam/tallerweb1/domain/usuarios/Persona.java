@@ -1,11 +1,19 @@
 package ar.edu.unlam.tallerweb1.domain.usuarios;
-
+import javax.persistence.*;
+@Entity
 public class Persona {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String nombre;
-    private int id;
+    @ManyToOne
+    @JoinColumn(name="usuarioId")
+    private Usuario usuarioAlQueLePertenece; //usuario que "crea" la persona
 
 
-    public Persona(int id, String nombre) {
+    public Persona(){};
+    public Persona(Long id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }
@@ -18,11 +26,11 @@ public class Persona {
         this.nombre = nombre;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }
