@@ -81,14 +81,14 @@
 			</div>
 			<div class="col-lg-5">
 				<h3>Monto</h3>
-				<form:form class="form-home" method="post" action="home" modelAttribute="transacciones"><!--method:que le pedimos al formulario, action: donde te envia ma:id de info dentro del form -->
+				<form:form action="home" method="post" modelAttribute="transacciones"><!--method:que le pedimos al formulario, action: donde te envia ma:id de info dentro del form -->
 
 
-						<form:input type="text" path="monto" class="form-control" placeholder="Ingrese monto..."/><br><br>
-						<form:input type="text" path="detalle" class="form-control" placeholder="Ingrese detalle..."/><br><br>
+						<form:input type="text" id="monto" path="monto" name="monto" class="form-control" placeholder="Ingrese monto..."/><br><br>
+						<form:input type="text" id="detalle"  path="detalle" name="detalle" class="form-control" placeholder="Ingrese detalle..."/><br><br>
 
 
-					<button  id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Subir</button>
+					<button  id="btnLogin" Type="submit" class="btn btnLogin btn-lg btn-block">Subir</button>
 				</form:form>
 					<%--Elementos de entrada de datos, el elemento path debe indicar en que atributo del objeto usuario se guardan los datos ingresados--%>
 
