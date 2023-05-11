@@ -5,7 +5,7 @@ public class Persona {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String nombre;
     @ManyToOne
     @JoinColumn(name="usuarioId")
@@ -13,7 +13,7 @@ public class Persona {
 
 
     public Persona(){};
-    public Persona(int id, String nombre) {
+    public Persona(Long id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }
@@ -26,11 +26,11 @@ public class Persona {
         this.nombre = nombre;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }
