@@ -21,17 +21,14 @@ public class Usuario {
 	private String password;
 	private Boolean activo = false;
 
-<<<<<<< HEAD
 
-	
-=======
 	public Usuario(String email, String password){
 		this.email = email;
 		this.password = password;
 	}
 	public Usuario(){
 	}
->>>>>>> dev
+
 	public Long getId() {
 		return id;
 	}

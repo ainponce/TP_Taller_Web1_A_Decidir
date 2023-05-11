@@ -1,10 +1,18 @@
 package ar.edu.unlam.tallerweb1.domain.usuarios;
-
+import javax.persistence.*;
+@Entity
 public class Persona {
-    private String nombre;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private String nombre;
+    @ManyToOne
+    @JoinColumn(name="usuarioId")
+    private Usuario usuarioAlQueLePertenece; //usuario que "crea" la persona
 
 
+    public Persona(){};
     public Persona(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
