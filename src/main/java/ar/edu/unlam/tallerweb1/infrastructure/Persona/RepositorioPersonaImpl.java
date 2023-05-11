@@ -1,11 +1,7 @@
-package ar.edu.unlam.tallerweb1.domain.usuarios;
+package ar.edu.unlam.tallerweb1.infrastructure.Persona;
 
-import ar.edu.unlam.tallerweb1.domain.usuarios.RepositorioUsuario;
-import ar.edu.unlam.tallerweb1.domain.usuarios.Usuario;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.factory.annotation.Autowired;
+import ar.edu.unlam.tallerweb1.domain.Persona.Persona;
+import ar.edu.unlam.tallerweb1.infrastructure.Persona.RepositorioPersona;
 import org.springframework.stereotype.Repository;
 @Repository("repositorioPersona")
 public class RepositorioPersonaImpl implements RepositorioPersona {

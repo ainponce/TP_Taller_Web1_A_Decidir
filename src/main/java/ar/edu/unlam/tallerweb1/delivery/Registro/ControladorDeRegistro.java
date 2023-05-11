@@ -1,6 +1,7 @@
-package ar.edu.unlam.tallerweb1.delivery;
+package ar.edu.unlam.tallerweb1.delivery.Registro;
 
-import ar.edu.unlam.tallerweb1.domain.usuarios.ServicioDeRegistro;
+import ar.edu.unlam.tallerweb1.delivery.Login.DatosLogin;
+import ar.edu.unlam.tallerweb1.infrastructure.Registro.ServicioDeRegistro;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

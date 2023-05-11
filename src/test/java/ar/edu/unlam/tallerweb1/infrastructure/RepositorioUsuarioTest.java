@@ -1,8 +1,9 @@
 package ar.edu.unlam.tallerweb1.infrastructure;
 
 import ar.edu.unlam.tallerweb1.SpringTest;
-import ar.edu.unlam.tallerweb1.domain.usuarios.RepositorioUsuario;
-import ar.edu.unlam.tallerweb1.domain.usuarios.Usuario;
+import ar.edu.unlam.tallerweb1.domain.Usuarios.Usuario;
+import ar.edu.unlam.tallerweb1.infrastructure.Usuario.RepositorioUsuario;
+import ar.edu.unlam.tallerweb1.infrastructure.Usuario.RepositorioUsuarioImpl;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;

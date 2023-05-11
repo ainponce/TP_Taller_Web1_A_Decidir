@@ -1,4 +1,4 @@
-package ar.edu.unlam.tallerweb1.domain.categorias;
+package ar.edu.unlam.tallerweb1.domain.Categorias;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

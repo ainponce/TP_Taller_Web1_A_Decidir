@@ -1,7 +1,8 @@
 package ar.edu.unlam.tallerweb1.delivery;
 
+import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
-import ar.edu.unlam.tallerweb1.domain.categorias.Categoria;
+import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import org.junit.Test;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 public class ControladorPresupuestoTest {

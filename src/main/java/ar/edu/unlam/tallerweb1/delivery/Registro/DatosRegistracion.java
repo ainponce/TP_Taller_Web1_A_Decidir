@@ -1,4 +1,4 @@
-package ar.edu.unlam.tallerweb1.delivery;
+package ar.edu.unlam.tallerweb1.delivery.Registro;
 
 public class DatosRegistracion {
     private String correo;

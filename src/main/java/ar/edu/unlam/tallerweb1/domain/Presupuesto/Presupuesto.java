@@ -1,7 +1,7 @@
 package ar.edu.unlam.tallerweb1.domain.Presupuesto;
 
-import ar.edu.unlam.tallerweb1.delivery.Moneda;
-import ar.edu.unlam.tallerweb1.domain.categorias.Categoria;
+import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
+import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 
 import javax.persistence.*;
 

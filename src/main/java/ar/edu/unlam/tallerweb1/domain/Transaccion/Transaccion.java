@@ -1,8 +1,8 @@
 package ar.edu.unlam.tallerweb1.domain.Transaccion;
-import ar.edu.unlam.tallerweb1.delivery.Concepto;
-import ar.edu.unlam.tallerweb1.delivery.Moneda;
-import ar.edu.unlam.tallerweb1.domain.categorias.Categoria;
-import ar.edu.unlam.tallerweb1.domain.usuarios.Usuario;
+import ar.edu.unlam.tallerweb1.domain.Concepto.Concepto;
+import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
+import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
+import ar.edu.unlam.tallerweb1.domain.Usuarios.Usuario;
 
 import javax.persistence.*;
 

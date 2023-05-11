@@ -1,7 +1,8 @@
 package ar.edu.unlam.tallerweb1.delivery;
 import ar.edu.unlam.tallerweb1.domain.Deuda.Deuda;
-import ar.edu.unlam.tallerweb1.domain.categorias.Categoria;
-import ar.edu.unlam.tallerweb1.domain.usuarios.Persona;
+import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
+import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
+import ar.edu.unlam.tallerweb1.domain.Persona.Persona;
 import org.junit.Test;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 public class ControladorDeudaTest {

@@ -1,10 +1,10 @@
 package ar.edu.unlam.tallerweb1.infrastructure;
 
 import ar.edu.unlam.tallerweb1.SpringTest;
-import ar.edu.unlam.tallerweb1.delivery.Moneda;
+import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
-import ar.edu.unlam.tallerweb1.domain.Presupuesto.RepositorioPresupuesto;
-import ar.edu.unlam.tallerweb1.domain.usuarios.Usuario;
+import ar.edu.unlam.tallerweb1.infrastructure.Presupuesto.RepositorioPresupuesto;
+import ar.edu.unlam.tallerweb1.infrastructure.Presupuesto.RepositorioPresupuestoImpl;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;

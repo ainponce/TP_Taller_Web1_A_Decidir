@@ -1,7 +1,9 @@
-package ar.edu.unlam.tallerweb1.domain.usuarios;
+package ar.edu.unlam.tallerweb1.infrastructure.Registro;
 
 
-import ar.edu.unlam.tallerweb1.infrastructure.RepositorioUsuarioImpl;
+import ar.edu.unlam.tallerweb1.domain.Usuarios.Usuario;
+import ar.edu.unlam.tallerweb1.infrastructure.Registro.ServicioDeRegistro;
+import ar.edu.unlam.tallerweb1.infrastructure.Usuario.RepositorioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

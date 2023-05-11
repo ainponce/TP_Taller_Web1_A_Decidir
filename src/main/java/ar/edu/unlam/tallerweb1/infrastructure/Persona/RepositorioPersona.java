@@ -1,4 +1,6 @@
-package ar.edu.unlam.tallerweb1.domain.usuarios;
+package ar.edu.unlam.tallerweb1.infrastructure.Persona;
+
+import ar.edu.unlam.tallerweb1.domain.Persona.Persona;
 
 // Interface que define los metodos del Repositorio de Persona.
 public interface RepositorioPersona {
