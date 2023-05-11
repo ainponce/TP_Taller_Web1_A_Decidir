@@ -1,13 +1,10 @@
-package ar.edu.unlam.tallerweb1.domain.usuarios;
+package ar.edu.unlam.tallerweb1.infrastructure.Transaccion;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.factory.annotation.Autowired;
+import ar.edu.unlam.tallerweb1.infrastructure.Transaccion.RepositorioTransaccion;
 import org.springframework.stereotype.Repository;
 
 @Repository("repositorioTransaccion")
-public class RepositorioTransaccionImpl implements RepositorioTransaccion{
+public class RepositorioTransaccionImpl implements RepositorioTransaccion {
 
 
     @Override
