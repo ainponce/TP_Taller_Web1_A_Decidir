@@ -25,7 +25,8 @@ public class ControladorDeTransaccion {
     }
 
     @RequestMapping(path="/home", method = RequestMethod.POST)
-    public ModelAndView registrarUnaTransaccion(@ModelAttribute DatosTransaccion datosTransaccion) {
+    public ModelAndView registrarUnaTransaccion(@ModelAttribute("transacciones") DatosTransaccion datosTransaccion) {
+        servicioDeTransaccion.registrarTransaccionDetalle(datosTransaccion.getMonto(), datosTransaccion.getDetalle());
         ModelMap map= new ModelMap();
         map.put("msg", "Transaccion existe");
         return new ModelAndView("home", map);

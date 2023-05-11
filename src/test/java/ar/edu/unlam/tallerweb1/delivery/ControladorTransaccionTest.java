@@ -23,8 +23,8 @@ public class ControladorTransaccionTest {
     public void init(){
         this.servicioDeTransaccion= mock(ServicioDeTransaccionImpl.class);
         this.controladorDeTransaccion= new ControladorDeTransaccion(this.servicioDeTransaccion);
-        this.datosTransaccion= new DatosTransaccion(1500.0, Concepto.Inversión);
-        this.datosInvalidos= new DatosTransaccion(-10.0, Concepto.Inversión);
+        this.datosTransaccion= new DatosTransaccion(1500.0, "Inversión");
+        this.datosInvalidos= new DatosTransaccion(-10.0, "gastos");
     }
 
 

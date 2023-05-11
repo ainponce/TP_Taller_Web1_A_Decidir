@@ -21,6 +21,20 @@ public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
     }
 
 
+
+
+    @Override
+    public Boolean registrarTransaccionDetalle(Double monto, String detalle) {
+        Boolean seRegistro = false;
+
+        if (monto > 0 ) {
+            Transaccion transaccion = new Transaccion(monto, detalle);
+            servicioTransaccionDao.guardarTransaccion(transaccion);
+            seRegistro = true;
+        }
+        return seRegistro;
+    }
+
     @Override
     public Boolean registrarTransaccion(Double monto, String detalle, String fecha, Moneda moneda) {
         Boolean seRegistro = false;

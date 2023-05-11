@@ -9,4 +9,6 @@ public interface ServicioDeTransaccion {
     public Boolean registrarTransaccion(Double monto, String detalle, String fecha, Moneda moneda);
 
     public Transaccion buscarTransaccionPorDetalle(String detalle);
+
+    public Boolean registrarTransaccionDetalle(Double monto, String detalle);
 }

@@ -80,18 +80,17 @@
 				</div>
 			</div>
 			<div class="col-lg-5">
-				<form class="formulario-home">
+				<form:form class="form-home" method="post" action="home" modelAttribute="transacciones"><!--method:que le pedimos al formulario, action: donde te envia ma:id de info dentro del form -->
 					<div class="mb-3">
 						<h3>Monto</h3>
-						<input type="text" class="form-control" placeholder="Ingrese monto...">
-						<select class="form-select form-select-sm form-control" aria-label=".form-select-sm example">
-							<option hidden>Seleccione tipo de monto</option>
-							<option value="1">Inversion</option>
-							<option value="2">Gasto</option>
-						</select>
+						<form:input type="text" path="monto" class="form-control" placeholder="Ingrese monto..."/>
+						<form:input type="text" path="detalle" class="form-control" placeholder="Ingrese detalle..."/>
+
 					</div>
 					<button  id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Subir</button>
-				</form>
+				</form:form>
+					<%--Elementos de entrada de datos, el elemento path debe indicar en que atributo del objeto usuario se guardan los datos ingresados--%>
+
 			</div>
 			<div class="col-lg-5">
 				<div class="list-group">
