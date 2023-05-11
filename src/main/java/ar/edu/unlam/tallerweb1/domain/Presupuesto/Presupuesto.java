@@ -3,25 +3,33 @@ package ar.edu.unlam.tallerweb1.domain.Presupuesto;
 import ar.edu.unlam.tallerweb1.delivery.Moneda;
 import ar.edu.unlam.tallerweb1.domain.categorias.Categoria;
 
+import javax.persistence.*;
+
+@Entity
 public class Presupuesto {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String fechaDesde;
     private String fechaHasta;
     private double montoPresupuesto;
     private Moneda moneda;
-    private Categoria categoriaDelPresupuesto;
     private boolean estaActivo;
+    @ManyToOne
+    @JoinColumn(name = "categoriaId")
+    private Categoria categoriaDelPresupuesto;
 
-    public Presupuesto(String fechaDesde, String fechaHasta, double montoPresupuesto, Moneda moneda, Categoria categoriaDelPresupuesto) {
-    this.fechaDesde = fechaDesde;
-    this.fechaHasta = fechaHasta;
-    this.montoPresupuesto = montoPresupuesto;
-    this.moneda = moneda;
-    this.categoriaDelPresupuesto = categoriaDelPresupuesto;
-    this.estaActivo = true;
+    public Presupuesto(){}
 
+    public Long getId() {
+        return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
     public String getFechaDesde() {
         return fechaDesde;
     }
@@ -55,7 +63,7 @@ public class Presupuesto {
     }
 
     public Categoria getCategoriaDelPresupuesto() {
-        return categoriaDelPresupuesto;
+       return categoriaDelPresupuesto;
     }
 
     public void setCategoriaDelPresupuesto(Categoria categoriaDelPresupuesto) {

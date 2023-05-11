@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
 Created-By: IntelliJ IDEA
+<<<<<<< HEAD
 Built-By: Pc
+=======
+Built-By: Shushu
+>>>>>>> dev
 Build-Jdk: Oracle OpenJDK version 11.0.17
 
