@@ -1,4 +1,4 @@
-package ar.edu.unlam.tallerweb1.infrastructure.Registro;
+package ar.edu.unlam.tallerweb1.domain.Registro;
 
 
 

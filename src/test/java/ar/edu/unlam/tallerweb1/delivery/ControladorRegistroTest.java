@@ -2,8 +2,8 @@ package ar.edu.unlam.tallerweb1.delivery;
 
 import ar.edu.unlam.tallerweb1.delivery.Registro.ControladorDeRegistro;
 import ar.edu.unlam.tallerweb1.delivery.Registro.DatosRegistracion;
-import ar.edu.unlam.tallerweb1.infrastructure.Registro.ServicioDeRegistro;
-import ar.edu.unlam.tallerweb1.infrastructure.Registro.ServicioDeRegistroImpl;
+import ar.edu.unlam.tallerweb1.domain.Registro.ServicioDeRegistro;
+import ar.edu.unlam.tallerweb1.domain.Registro.ServicioDeRegistroImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.web.servlet.ModelAndView;
