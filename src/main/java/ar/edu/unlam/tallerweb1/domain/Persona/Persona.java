@@ -1,4 +1,6 @@
-package ar.edu.unlam.tallerweb1.domain.usuarios;
+package ar.edu.unlam.tallerweb1.domain.Persona;
+import ar.edu.unlam.tallerweb1.domain.Usuarios.Usuario;
+
 import javax.persistence.*;
 @Entity
 public class Persona {

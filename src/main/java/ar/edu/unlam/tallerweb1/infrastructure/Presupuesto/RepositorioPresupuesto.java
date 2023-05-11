@@ -1,7 +1,7 @@
-package ar.edu.unlam.tallerweb1.domain.Presupuesto;
+package ar.edu.unlam.tallerweb1.infrastructure.Presupuesto;
 
-import ar.edu.unlam.tallerweb1.delivery.Moneda;
-import ar.edu.unlam.tallerweb1.domain.usuarios.Usuario;
+import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
+import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
 
 public interface RepositorioPresupuesto {
 
