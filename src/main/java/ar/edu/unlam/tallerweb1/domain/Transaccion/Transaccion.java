@@ -29,8 +29,7 @@ public class Transaccion {
     private Moneda moneda;
 
     public Transaccion(){};
-    public Transaccion (Long id, Categoria categoriaDeLaTransaccion, Concepto concepto, Double monto, String detalle,Moneda moneda) {
-        this.id = id;
+    public Transaccion (Categoria categoriaDeLaTransaccion, Concepto concepto, Double monto, String detalle,Moneda moneda) {
         this.categoriaDeLaTransaccion = categoriaDeLaTransaccion;
         this.concepto = concepto;
         this.monto = monto;
