@@ -21,6 +21,7 @@ public class ServicioLoginImpl implements ServicioLogin {
 
 	@Autowired
 	public ServicioLoginImpl(RepositorioUsuario servicioLoginDao){
+
 		this.servicioLoginDao = servicioLoginDao;
 	}
 

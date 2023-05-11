@@ -4,7 +4,7 @@ import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
 
 public interface RepositorioTransaccion {
 
-    //buscarTransaccion - por qué criterio?
+    Transaccion buscarTransaccionPorDetalle(String detalle);
     void guardarTransaccion(Transaccion transaccion);
     void modificar(Transaccion transaccion);
 
