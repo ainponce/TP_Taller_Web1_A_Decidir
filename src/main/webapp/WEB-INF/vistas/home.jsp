@@ -87,7 +87,7 @@
 						<form:input type="text" path="detalle" class="form-control" placeholder="Ingrese detalle..."/>
 
 					</div>
-					<button  id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Subir</button>
+					<button  href="prueba" id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Subir</button>
 				</form:form>
 					<%--Elementos de entrada de datos, el elemento path debe indicar en que atributo del objeto usuario se guardan los datos ingresados--%>
 
