@@ -44,6 +44,7 @@ public class ControladorLogin {
 	// Este metodo escucha la URL validar-login siempre y cuando se invoque con metodo http POST
 	// El metodo recibe un objeto Usuario el que tiene los datos ingresados en el form correspondiente y se corresponde con el modelAttribute definido en el
 	// tag form:form
+	//nahuel te quiero mucho
 	@RequestMapping(path = "/validar-login", method = RequestMethod.POST)
 	public ModelAndView validarLogin(@ModelAttribute("datosLogin") DatosLogin datosLogin, HttpServletRequest request) {
 		ModelMap model = new ModelMap();
