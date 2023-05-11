@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.domain.Transaccion;
 import ar.edu.unlam.tallerweb1.delivery.Concepto;
 import ar.edu.unlam.tallerweb1.delivery.Moneda;
 import ar.edu.unlam.tallerweb1.domain.categorias.Categoria;
+import ar.edu.unlam.tallerweb1.domain.usuarios.Usuario;
 
 import javax.persistence.*;
 
@@ -16,6 +17,10 @@ public class Transaccion {
     @ManyToOne
     @JoinColumn(name="categoriaId")
     private Categoria categoriaDeLaTransaccion;
+
+    @ManyToOne
+    @JoinColumn(name="usuarioId")
+    private Usuario usuarioDeLaTransaccion; //id del usuario que crea la transaccion
 
     private Concepto concepto;
     private Double monto;
