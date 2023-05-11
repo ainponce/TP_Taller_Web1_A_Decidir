@@ -45,7 +45,6 @@
     margin-top: 1em;
     border-radius: 1.5em;
     height: 2.5em;
-    opacity: 0.3;
 }
 
 .registrarme{
@@ -109,4 +108,9 @@
     margin-top: 0.5em;
     height: 2.5em;
     width: 90%;
+}
+
+.form-home{
+    display: flex;
+    flex-direction: column;
 }
