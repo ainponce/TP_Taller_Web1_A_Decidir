@@ -1,2 +1,4 @@
 /.#webclasspath
 src/main/resources/hibernateContext.xml
+target/classes/hibernateContext.xml
+target/proyecto-limpio-spring-0.0.1-SNAPSHOT/META-INF/MANIFEST.MF
