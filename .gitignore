@@ -1,5 +1,2 @@
 /.#webclasspath
-
-hibernatecontext.xml
-
-
+src/main/resources/hibernateContext.xml
