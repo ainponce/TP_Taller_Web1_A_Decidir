@@ -32,16 +32,25 @@ public class ControladorDeRegistro {
     public ModelAndView registrarUsuario(@ModelAttribute DatosRegistracion datosRegistracion){
         ModelMap model= new ModelMap();
         String viewName="registro-usuario";
-        if(this.servicioRegistracion.registrarUsuario(datosRegistracion.getCorreo(), datosRegistracion.getClave())) {
-            viewName="home";
-            model.put("datosLogin", new DatosLogin());
-            model.put("msg", "registro exitoso");
+        if(this.servicioRegistracion.buscar(datosRegistracion.getCorreo()) == false) {
+            if (this.servicioRegistracion.registrarUsuario(datosRegistracion.getCorreo(), datosRegistracion.getClave())) {
+                viewName = "home";
+                model.put("datosLogin", new DatosLogin());
+                model.put("msg", "registro exitoso");
+            } else {
+                model.put("datosRegistro", new DatosRegistracion());
+
+                model.put("error", "Datos incorrectos, por favor vuelta a intentarlo");
+
+                model.put("msg", "registro fallido");
+            }
         }else{
-            model.put("datosRegistro", new DatosRegistracion());
 
-            model.put("error", "Datos incorrectos, por favor vuelta a intentarlo");
+                model.put("datosRegistro", new DatosRegistracion());
 
-            model.put("msg", "registro fallido");
+                model.put("error", "Email ya registrado");
+
+                model.put("msg", "registro fallido");
 
         }
         return new ModelAndView(viewName, model);

@@ -46,4 +46,14 @@ public class ServicioDeRegistroImpl implements ServicioDeRegistro {
            }
            return sonValidos;
         }
+
+    @Override
+    public Boolean buscar(String email){
+        Boolean existe = false;
+
+        if (servicioRegistroDao.buscar(email) == null){
+            existe = true;
+        }
+        return existe;
+    }
 }
