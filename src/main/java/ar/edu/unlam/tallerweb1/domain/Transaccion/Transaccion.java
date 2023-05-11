@@ -26,6 +26,10 @@ public class Transaccion {
         this.moneda = moneda;
     }
 
+    public Transaccion(Double monto, Concepto concepto){
+        this.monto= monto;
+        this.concepto= concepto;
+    };
 
 }
 
