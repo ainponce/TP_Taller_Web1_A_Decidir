@@ -1,6 +1,5 @@
 package ar.edu.unlam.tallerweb1.domain.Transaccion;
 
-import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Concepto.Concepto;
 import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
 import ar.edu.unlam.tallerweb1.infrastructure.Transaccion.RepositorioTransaccion;
@@ -23,17 +22,16 @@ public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
 
 
     @Override
-    public Boolean registrarTransaccion(Categoria categoria, Concepto concepto, Double monto, String detalle, String fecha, Moneda moneda) {
+    public Boolean registrarTransaccion(Double monto, String detalle, String fecha, Moneda moneda) {
         Boolean seRegistro = false;
 
-        if (monto > 0 && !categoria.getNombreCategoria().isBlank() && !concepto.name().isBlank() && !fecha.isBlank() && !moneda.name().isBlank()) {
-            Transaccion transaccion = new Transaccion(categoria,concepto, monto, detalle, moneda);
-            servicioTransaccionDao.guardar(transaccion);
+        if (monto > 0 && !fecha.isBlank() && !moneda.name().isBlank()) {
+            Transaccion transaccion = new Transaccion(monto, detalle, fecha, moneda);
+            servicioTransaccionDao.guardarTransaccion(transaccion);
             seRegistro = true;
-            return null;
+        }
+        return seRegistro;
     }
-
-
 
     @Override
     public Transaccion buscarTransaccionPorDetalle(String detalle) {

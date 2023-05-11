@@ -1,10 +1,3 @@
 Manifest-Version: 1.0
-Created-By: IntelliJ IDEA
-<<<<<<< HEAD
-Built-By: Ain Ponce
-Build-Jdk: Amazon Corretto version 18.0.2
-=======
-Built-By: Pc
-Build-Jdk: Oracle OpenJDK version 11.0.17
->>>>>>> dev
+Class-Path: 
 
