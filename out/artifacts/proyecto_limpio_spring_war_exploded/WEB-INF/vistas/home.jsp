@@ -79,8 +79,31 @@
 					</nav>
 				</div>
 			</div>
-			<div class="col-lg-10">
-
+			<div class="col-lg-5">
+				<form class="formulario-home">
+					<div class="mb-3">
+						<h3>Monto</h3>
+						<input type="text" class="form-control" placeholder="Ingrese monto...">
+						<select class="form-select form-select-sm form-control" aria-label=".form-select-sm example">
+							<option hidden>Seleccione tipo de monto</option>
+							<option value="1">Inversion</option>
+							<option value="2">Gasto</option>
+						</select>
+					</div>
+					<button  id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Subir</button>
+				</form>
+			</div>
+			<div class="col-lg-5">
+				<div class="list-group">
+					<h3>Transacciones</h3>
+					<a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+						Ultima transaccion...
+					</a>
+					<a href="#" class="list-group-item list-group-item-action">A second link item</a>
+					<a href="#" class="list-group-item list-group-item-action">A third link item</a>
+					<a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
+					<a href="#" class="list-group-item list-group-item-action">A disabled link item</a>
+				</div>
 			</div>
 		</div>
 		<!-- Placed at the end of the document so the pages load faster -->
