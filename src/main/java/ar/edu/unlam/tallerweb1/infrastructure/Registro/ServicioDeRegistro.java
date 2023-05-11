@@ -8,4 +8,5 @@ public interface ServicioDeRegistro {
     public Boolean validarEmail(String mail);
     public Boolean registrarUsuario(String mail, String clave);
     public Boolean buscar(String email);
+
 }

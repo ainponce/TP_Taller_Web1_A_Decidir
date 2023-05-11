@@ -49,7 +49,7 @@ public class ControladorDeRegistro {
 
                 model.put("datosRegistro", new DatosRegistracion());
 
-                model.put("error", "Email ya registrado");
+                model.put("error", "Email ya registrado: " + this.servicioRegistracion.buscar(datosRegistracion.getCorreo()));
 
                 model.put("msg", "registro fallido");
 

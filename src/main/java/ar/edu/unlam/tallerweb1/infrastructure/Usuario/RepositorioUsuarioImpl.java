@@ -1,7 +1,6 @@
 package ar.edu.unlam.tallerweb1.infrastructure.Usuario;
 
 import ar.edu.unlam.tallerweb1.domain.Usuarios.Usuario;
-import ar.edu.unlam.tallerweb1.infrastructure.Usuario.RepositorioUsuario;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
