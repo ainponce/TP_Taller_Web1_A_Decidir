@@ -7,6 +7,8 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository("repositorioTransaccion")
 public class RepositorioTransaccionImpl implements RepositorioTransaccion {
     private SessionFactory sessionFactory;
@@ -22,10 +24,10 @@ public class RepositorioTransaccionImpl implements RepositorioTransaccion {
     public Transaccion buscarTransaccionPorDetalle(String detalle) {
         // Se obtiene la sesion asociada a la transaccion iniciada en el servicio que invoca a este metodo y se crea un criterio
         // de busqueda de Transaccion donde el detalle sea igual al del objeto recibido como parametro
-        this.sessionFactory.getCurrentSession().createCriteria(Transaccion.class)
+        return (Transaccion) this.sessionFactory.getCurrentSession().createCriteria(Transaccion.class)
                 .add(Restrictions.eq("detalle", detalle))
-                .list();
-        return null;
+                .uniqueResult();
+
     }
 
     @Override

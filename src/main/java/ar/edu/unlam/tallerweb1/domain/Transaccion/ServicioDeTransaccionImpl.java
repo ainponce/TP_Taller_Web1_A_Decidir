@@ -21,8 +21,6 @@ public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
     }
 
 
-
-
     @Override
     public Boolean registrarTransaccionDetalle(Double monto, String detalle) {
         Boolean seRegistro = false;
