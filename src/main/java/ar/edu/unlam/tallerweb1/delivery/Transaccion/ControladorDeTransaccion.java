@@ -16,7 +16,7 @@ public class ControladorDeTransaccion {
     public ControladorDeTransaccion(ServicioDeTransaccion servicioDeTransaccion){
 
     }
-    @RequestMapping(path="/home", method = RequestMethod.GET)
+    @RequestMapping(path="/agregar", method = RequestMethod.GET)
     public ModelAndView crearTransaccion() {
         ModelMap map= new ModelMap();
         map.put("datosTransaccion", new DatosTransaccion());

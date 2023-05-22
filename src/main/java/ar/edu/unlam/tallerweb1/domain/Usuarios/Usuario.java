@@ -12,7 +12,7 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	// el atributo, la misma admite nulos, y el tipo de dato se deduce del tipo de dato de java.
 
 	@Column(unique = true)
