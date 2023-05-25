@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -81,28 +82,26 @@
 			</div>
 			<div class="col-lg-5">
 				<h3>Monto</h3>
-				<form action="home" method="post" modelAttribute="transacciones"><!--method:que le pedimos al formulario, action: donde te envia ma:id de info dentro del form -->
+				<form action="agregar" method="post" modelAttribute="datosTransaccion"><!--method:que le pedimos al formulario, action: donde te envia ma:id de info dentro del form -->
 
 
 						<input type="text" id="monto" path="monto" name="monto" class="form-control" placeholder="Ingrese monto..."/><br><br>
 						<input type="text" id="detalle"  path="detalle" name="detalle" class="form-control" placeholder="Ingrese detalle..."/><br><br>
 
 
-					<button  id="btnLogin" Type="submit" class="btn btnLogin btn-lg btn-block">Subir</button>
+					<button  id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Subir</button>
 				</form>
 					<%--Elementos de entrada de datos, el elemento path debe indicar en que atributo del objeto usuario se guardan los datos ingresados--%>
 
 			</div>
 			<div class="col-lg-5">
-				<div class="list-group">
+				<div >
 					<h3>Transacciones</h3>
-					<a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-						Ultima transaccion...
-					</a>
-					<a href="#" class="list-group-item list-group-item-action">A second link item</a>
-					<a href="#" class="list-group-item list-group-item-action">A third link item</a>
-					<a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
-					<a href="#" class="list-group-item list-group-item-action">A disabled link item</a>
+					<ul>
+						<c:forEach var="transaccion" items="${transacciones}">
+							<li>${transaccion.monto} ${transaccion.detalle}</li>
+						</c:forEach>
+					</ul>
 				</div>
 			</div>
 		</div>

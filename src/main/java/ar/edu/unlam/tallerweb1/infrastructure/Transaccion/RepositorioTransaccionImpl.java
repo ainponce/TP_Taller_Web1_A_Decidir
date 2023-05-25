@@ -2,16 +2,21 @@ package ar.edu.unlam.tallerweb1.infrastructure.Transaccion;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
 import ar.edu.unlam.tallerweb1.infrastructure.Transaccion.RepositorioTransaccion;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Repository("repositorioTransaccion")
+@Transactional
 public class RepositorioTransaccionImpl implements RepositorioTransaccion {
-    private SessionFactory sessionFactory;
+    private final SessionFactory sessionFactory;
 
-    public RepositorioTransaccionImpl(){};
+
 
     @Autowired
     public RepositorioTransaccionImpl(SessionFactory sessionFactory){
@@ -19,13 +24,13 @@ public class RepositorioTransaccionImpl implements RepositorioTransaccion {
     }
 
     @Override
-    public Transaccion buscarTransaccionPorDetalle(String detalle) {
+    public List<Transaccion> buscarTransaccionPorDetalle(String detalle) {
         // Se obtiene la sesion asociada a la transaccion iniciada en el servicio que invoca a este metodo y se crea un criterio
         // de busqueda de Transaccion donde el detalle sea igual al del objeto recibido como parametro
-        this.sessionFactory.getCurrentSession().createCriteria(Transaccion.class)
+        final Session session = sessionFactory.getCurrentSession();
+        return (List<Transaccion>) session.createCriteria(Transaccion.class)
                 .add(Restrictions.eq("detalle", detalle))
                 .list();
-        return null;
     }
 
     @Override
@@ -37,4 +42,14 @@ public class RepositorioTransaccionImpl implements RepositorioTransaccion {
     public void modificar(Transaccion transaccion) {
         sessionFactory.getCurrentSession().update(transaccion);
     }
+
+
+    @Override
+    public List<Transaccion> listarTransaccion(){
+
+        final Session session = sessionFactory.getCurrentSession();
+        return (List<Transaccion>) session.createCriteria(Transaccion.class).list();
+
+    }
+
 }
