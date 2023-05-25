@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -82,15 +83,15 @@
 			</div>
 			<div class="col-lg-5">
 				<h3>Monto</h3>
-				<form action="agregar" method="post" modelAttribute="datosTransaccion"><!--method:que le pedimos al formulario, action: donde te envia ma:id de info dentro del form -->
+				<form:form action="agregar" method="post" modelAttribute="datosTransaccion"><!--method:que le pedimos al formulario, action: donde te envia ma:id de info dentro del form -->
 
 
-						<input type="text" id="monto" path="monto" name="monto" class="form-control" placeholder="Ingrese monto..."/><br><br>
-						<input type="text" id="detalle"  path="detalle" name="detalle" class="form-control" placeholder="Ingrese detalle..."/><br><br>
+						<form:input type="text" id="monto" path="monto" name="monto" class="form-control" placeholder="Ingrese monto..."/><br><br>
+						<form:input type="text" id="detalle"  path="detalle" name="detalle" class="form-control" placeholder="Ingrese detalle..."/><br><br>
 
 
 					<button  id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Subir</button>
-				</form>
+				</form:form>
 					<%--Elementos de entrada de datos, el elemento path debe indicar en que atributo del objeto usuario se guardan los datos ingresados--%>
 
 			</div>
