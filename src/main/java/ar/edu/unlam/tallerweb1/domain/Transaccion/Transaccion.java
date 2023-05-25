@@ -1,7 +1,7 @@
 package ar.edu.unlam.tallerweb1.domain.Transaccion;
+import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Concepto.Concepto;
 import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
-import ar.edu.unlam.tallerweb1.domain.Usuarios.Usuario;
 
 import javax.persistence.*;
 
@@ -18,12 +18,17 @@ public class Transaccion {
     private String fecha;
     private Moneda moneda;
 
+    private Categoria categoria;
+
+
     public Transaccion(){};
-    public Transaccion (Double monto, String detalle, String fecha, Moneda moneda) {
+    public Transaccion (Double monto, String detalle, String fecha, Moneda moneda, Concepto concepto, Categoria categoria) {
         this.monto = monto;
         this.detalle = detalle;
         this.fecha = fecha;
         this.moneda = moneda;
+        this.concepto=concepto;
+        this.categoria=categoria;
     }
 
     public Transaccion(Double monto, String detalle){
@@ -69,6 +74,22 @@ public class Transaccion {
 
     public void setMoneda(Moneda moneda) {
         this.moneda = moneda;
+    }
+
+    public Concepto getConcepto() {
+        return concepto;
+    }
+
+    public void setConcepto(Concepto concepto) {
+        this.concepto = concepto;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 }
 

@@ -1,5 +1,7 @@
 package ar.edu.unlam.tallerweb1.domain.Transaccion;
 
+import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
+import ar.edu.unlam.tallerweb1.domain.Concepto.Concepto;
 import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
 import ar.edu.unlam.tallerweb1.infrastructure.Transaccion.RepositorioTransaccion;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +22,6 @@ public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
         this.servicioTransaccionDao = servicioTransaccionDao;
     }
 
-
-
     @Override
     public Boolean registrarTransaccionDetalle(Double monto, String detalle) {
         Boolean seRegistro = false;
@@ -35,11 +35,10 @@ public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
     }
 
     @Override
-    public Boolean registrarTransaccion(Double monto, String detalle, String fecha, Moneda moneda) {
+    public Boolean registrarTransaccion(Double monto, String detalle, String fecha, Moneda moneda, Concepto concepto, Categoria categoria) {
         Boolean seRegistro = false;
-
-        if (monto > 0 && !fecha.isBlank() && !moneda.name().isBlank()) {
-            Transaccion transaccion = new Transaccion(monto, detalle, fecha, moneda);
+        if (monto > 0) {
+            Transaccion transaccion = new Transaccion(monto, detalle, fecha, moneda, concepto, categoria);
             servicioTransaccionDao.guardarTransaccion(transaccion);
             seRegistro = true;
         }

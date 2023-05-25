@@ -1,7 +1,7 @@
 package ar.edu.unlam.tallerweb1.domain.Presupuesto;
 
-import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
+import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
 
 import javax.persistence.*;
 
@@ -17,8 +17,7 @@ public class Presupuesto {
     private double montoPresupuesto;
     private Moneda moneda;
     private boolean estaActivo;
-    @ManyToOne
-    @JoinColumn(name = "categoriaId")
+
     private Categoria categoriaDelPresupuesto;
 
     public Presupuesto(){}

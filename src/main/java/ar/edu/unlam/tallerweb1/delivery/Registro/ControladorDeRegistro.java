@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.delivery.Registro;
 
 import ar.edu.unlam.tallerweb1.delivery.Login.DatosLogin;
 import ar.edu.unlam.tallerweb1.domain.Registro.ServicioDeRegistro;
+import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -37,6 +38,7 @@ public class ControladorDeRegistro {
             if (this.servicioRegistracion.registrarUsuario(datosRegistracion.getCorreo(), datosRegistracion.getClave())) {
                 viewName = "home";
                 model.put("datosLogin", new DatosLogin());
+                model.put("datosTransaccion", new Transaccion());
                 model.put("msg", "registro exitoso");
             } else {
                 model.put("datosRegistro", new DatosRegistracion());

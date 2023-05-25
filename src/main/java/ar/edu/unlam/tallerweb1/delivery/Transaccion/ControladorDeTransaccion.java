@@ -30,8 +30,8 @@ public class ControladorDeTransaccion {
     }
 
     @RequestMapping(path="/agregar", method = RequestMethod.POST)
-    public ModelAndView registrarUnaTransaccion(@ModelAttribute("datosTransaccion") DatosTransaccion datosTransaccion) {
-        servicioDeTransaccion.registrarTransaccionDetalle(datosTransaccion.getMonto(), datosTransaccion.getDetalle());
+    public ModelAndView registrarUnaTransaccion(@ModelAttribute("datosTransaccion") Transaccion transaccion) {
+        servicioDeTransaccion.registrarTransaccion(transaccion.getMonto(), transaccion.getDetalle(), transaccion.getFecha(), transaccion.getMoneda(), transaccion.getConcepto(), transaccion.getCategoria());
         ModelMap map= new ModelMap();
         map.put("msg", "Transaccion exitosa");
         return new ModelAndView("redirect:/home");

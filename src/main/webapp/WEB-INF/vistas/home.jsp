@@ -85,10 +85,17 @@
 				<h3>Monto</h3>
 				<form:form action="agregar" method="post" modelAttribute="datosTransaccion"><!--method:que le pedimos al formulario, action: donde te envia ma:id de info dentro del form -->
 
-
 						<form:input type="text" id="monto" path="monto" name="monto" class="form-control" placeholder="Ingrese monto..."/><br><br>
 						<form:input type="text" id="detalle"  path="detalle" name="detalle" class="form-control" placeholder="Ingrese detalle..."/><br><br>
-
+				       	<form:select path="moneda" id="moneda" name="moneda">
+						<form:options items="${Moneda.values()}" />
+						</form:select>
+						<form:select path="concepto" id="concpeto" name="concepto">
+						<form:options items="${Concepto.values()}" />
+						</form:select>
+						<form:select path="categoria" id="categoria" name="categoria">
+						<form:options items="${Categoria.values()}" />
+						</form:select>
 
 					<button  id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Subir</button>
 				</form:form>
@@ -100,7 +107,7 @@
 					<h3>Transacciones</h3>
 					<ul>
 						<c:forEach var="transaccion" items="${transacciones}">
-							<li>${transaccion.monto} ${transaccion.detalle}</li>
+							<li>${transaccion.monto} ${transaccion.detalle} ${transaccion.concepto} ${transaccion.categoria} ${transaccion.moneda}</li>
 						</c:forEach>
 					</ul>
 				</div>

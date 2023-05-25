@@ -16,8 +16,6 @@ import java.util.List;
 public class RepositorioTransaccionImpl implements RepositorioTransaccion {
     private final SessionFactory sessionFactory;
 
-
-
     @Autowired
     public RepositorioTransaccionImpl(SessionFactory sessionFactory){
         this.sessionFactory = sessionFactory;
