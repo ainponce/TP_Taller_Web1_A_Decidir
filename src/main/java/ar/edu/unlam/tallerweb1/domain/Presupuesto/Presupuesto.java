@@ -22,6 +22,15 @@ public class Presupuesto {
 
     public Presupuesto(){}
 
+    public Presupuesto(Double monto, String fechaDesde, String fechaHasta, Moneda moneda, Categoria categoria) {
+        this.montoPresupuesto = monto;
+        this.fechaDesde = fechaDesde;
+        this.fechaHasta = fechaHasta;
+        this.moneda = moneda;
+        this.categoriaDelPresupuesto = categoria;
+        this.estaActivo = true;
+    }
+
     public Long getId() {
         return id;
     }
