@@ -2,11 +2,15 @@ package ar.edu.unlam.tallerweb1.infrastructure.Presupuesto;
 
 import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
+import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
 import ar.edu.unlam.tallerweb1.infrastructure.Presupuesto.RepositorioPresupuesto;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository("repositorioPresupuesto")
 public class RepositorioPresupuestoImpl implements RepositorioPresupuesto {
@@ -37,12 +41,12 @@ public class RepositorioPresupuestoImpl implements RepositorioPresupuesto {
     }
 
     @Override
-    public Presupuesto buscarPorFecha(String fechaDesde, String fechaHasta) {
-        this.sessionFactory.getCurrentSession().createCriteria(Presupuesto.class)
+    public List<Presupuesto> buscarPorFecha(String fechaDesde, String fechaHasta) {
+        return  this.sessionFactory.getCurrentSession().createCriteria(Presupuesto.class)
                 .add(Restrictions.eq("fechaDesde", fechaDesde))
                 .add(Restrictions.eq("fechaHasta", fechaHasta))
                 .list();
-        return null;
+
     }
 
     @Override
@@ -58,5 +62,11 @@ public class RepositorioPresupuestoImpl implements RepositorioPresupuesto {
     @Override
     public Presupuesto buscarPresupuestoPorId(Long id) {
         return this.sessionFactory.getCurrentSession().get(Presupuesto.class, id);
+    }
+
+    @Override
+    public List<Presupuesto> listarTransaccion() {
+        final Session session = sessionFactory.getCurrentSession();
+        return (List<Presupuesto>) session.createCriteria(Presupuesto.class).list();
     }
 }

@@ -90,7 +90,7 @@
     </div>
     <div class="col-lg-5">
         <h3>Cree su presupuesto</h3>
-            <form:form action="establecerPresupuesto" method="post" modelAttribute="establecerPresupuesto">
+            <form:form action="agregarPresupuesto" method="post" modelAttribute="establecerPresupuesto">
                 <label>Monto</label>
                 <form:input type="text" id="monto" path="montoPresupuesto" name="monto" class="form-control" placeholder="Ingrese monto..."/>
                 <label>Fecha de inicio</label>
@@ -108,6 +108,16 @@
 
                 <button  id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Subir</button>
             </form:form>
+    </div>
+    <div class="col-lg-5">
+        <div >
+            <h3>Presupuestos Ingresados</h3>
+            <ul>
+                <c:forEach var="presupuesto" items="${presupuestos}">
+                    <li>${presupuestos.montoPresupuesto} ${presupuestos.categoriaDelPresupuesto} ${presupuestos.fechaDesde} ${presupuestos.fechaHasta}</li>
+                </c:forEach>
+            </ul>
+        </div>
     </div>
 </div>
 </body>
