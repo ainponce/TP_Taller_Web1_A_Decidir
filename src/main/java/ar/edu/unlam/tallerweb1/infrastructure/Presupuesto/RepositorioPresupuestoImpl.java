@@ -25,10 +25,10 @@ public class RepositorioPresupuestoImpl implements RepositorioPresupuesto {
         // Se obtiene la sesion asociada a la transaccion iniciada en el servicio que invoca a este metodo y se crea un criterio
         // de busqueda de Usuario donde el email y password sean iguales a los del objeto recibido como parametro
         // uniqueResult da error si se encuentran mas de un resultado en la busqueda.
-        this.sessionFactory.getCurrentSession().createCriteria(Presupuesto.class)
+        return (Presupuesto) this.sessionFactory.getCurrentSession().createCriteria(Presupuesto.class)
                 .add(Restrictions.eq("moneda", moneda))
                 .list();
-                return null;
+
     }
 
     @Override
@@ -38,11 +38,11 @@ public class RepositorioPresupuestoImpl implements RepositorioPresupuesto {
 
     @Override
     public Presupuesto buscarPorFecha(String fechaDesde, String fechaHasta) {
-        this.sessionFactory.getCurrentSession().createCriteria(Presupuesto.class)
+        return (Presupuesto) this.sessionFactory.getCurrentSession().createCriteria(Presupuesto.class)
                 .add(Restrictions.eq("fechaDesde", fechaDesde))
                 .add(Restrictions.eq("fechaHasta", fechaHasta))
                 .list();
-        return null;
+
     }
 
     @Override
