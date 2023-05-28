@@ -82,7 +82,7 @@
 				</div>
 			</div>
 			<div class="col-lg-5">
-				<h3>Monto</h3>
+				<h3>Ingrese un gasto o ingreso...</h3>
 				<form:form action="agregar" method="post" modelAttribute="datosTransaccion"><!--method:que le pedimos al formulario, action: donde te envia ma:id de info dentro del form -->
 
 						<form:input type="text" id="monto" path="monto" name="monto" class="form-control" placeholder="Ingrese monto..."/>
