@@ -112,6 +112,12 @@
 					</ul>
 				</div>
 			</div>
+
+            <c:if test="${not empty error}">
+                <h4 class="mensajeErrorPresupuesto"><span>${error}</span></h4>
+                <br>
+            </c:if>
+            ${msg}
 		</div>
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" ></script>

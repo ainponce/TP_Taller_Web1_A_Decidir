@@ -16,4 +16,8 @@ public interface ServicioDeTransaccion {
     public Boolean registrarTransaccionDetalle(Double monto, String detalle);
 
     public List<Transaccion> listarTransacciones();
+
+    Double sumarMontoDeTransaccionesPorCategoria(List<Transaccion> trans);
+
+
 }

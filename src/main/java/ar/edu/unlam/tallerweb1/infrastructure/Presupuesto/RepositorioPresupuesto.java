@@ -1,7 +1,10 @@
 package ar.edu.unlam.tallerweb1.infrastructure.Presupuesto;
 
+import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
+
+import java.util.List;
 
 public interface RepositorioPresupuesto {
 
@@ -9,7 +12,7 @@ public interface RepositorioPresupuesto {
 
     void guardar(Presupuesto presupuesto);
 
-    Presupuesto buscarPorFecha(String fechaDesde, String fechaHasta);
+    List<Presupuesto> buscarPorFecha(String fechaDesde, String fechaHasta);
 
     void modificar(Presupuesto presupuesto);
 
@@ -17,4 +20,7 @@ public interface RepositorioPresupuesto {
 
     Presupuesto buscarPresupuestoPorId(Long id);
 
+    List<Presupuesto> listarPresupuesto();
+
+    List<Presupuesto> buscarPorCategoria(Categoria categoria);
 }
