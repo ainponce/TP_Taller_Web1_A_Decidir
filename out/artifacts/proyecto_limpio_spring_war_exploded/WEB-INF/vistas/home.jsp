@@ -82,7 +82,7 @@
 				</div>
 			</div>
 			<div class="col-lg-5">
-				<h3>Monto</h3>
+				<h3>Ingrese un gasto o ingreso...</h3>
 				<form:form action="agregar" method="post" modelAttribute="datosTransaccion"><!--method:que le pedimos al formulario, action: donde te envia ma:id de info dentro del form -->
 
 						<form:input type="text" id="monto" path="monto" name="monto" class="form-control" placeholder="Ingrese monto..."/>
@@ -105,11 +105,28 @@
 			<div class="col-lg-5">
 				<div >
 					<h3>Transacciones</h3>
-					<ul>
+					<table class="table">
+						<thead>
+						<tr>
+							<th>Monto</th>
+							<th>Detalle</th>
+							<th>Concepto</th>
+							<th>Categoria</th>
+							<th>Moneda</th>
+						</tr>
+						</thead>
+						<tbody>
 						<c:forEach var="transaccion" items="${transacciones}">
-							<li>${transaccion.monto} ${transaccion.detalle} ${transaccion.concepto} ${transaccion.categoria} ${transaccion.moneda}</li>
+							<tr>
+								<td>${transaccion.monto}</td>
+								<td>${transaccion.detalle}</td>
+								<td>${transaccion.concepto}</td>
+								<td>${transaccion.categoria}</td>
+								<td>${transaccion.moneda}</td>
+							</tr>
 						</c:forEach>
-					</ul>
+						</tbody>
+					</table>
 				</div>
 			</div>
 

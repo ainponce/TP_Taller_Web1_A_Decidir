@@ -114,11 +114,26 @@
     <div class="col-lg-5">
         <div >
             <h3>Presupuestos Ingresados</h3>
-            <ul>
-                <c:forEach var="presupuesto" items="${presupuestos}"> <!--var es para llamadar a cada atributo y el item es lo que se ingresa en el map.put -->
-                    <li>${presupuesto.montoPresupuesto} ${presupuesto.categoriaDelPresupuesto} ${presupuesto.fechaDesde} ${presupuesto.fechaHasta}</li>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Monto</th>
+                    <th>Categoría</th>
+                    <th>Fecha Desde</th>
+                    <th>Fecha Hasta</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="presupuesto" items="${presupuestos}">
+                    <tr>
+                        <td>${presupuesto.montoPresupuesto}</td>
+                        <td>${presupuesto.categoriaDelPresupuesto}</td>
+                        <td>${presupuesto.fechaDesde}</td>
+                        <td>${presupuesto.fechaHasta}</td>
+                    </tr>
                 </c:forEach>
-            </ul>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

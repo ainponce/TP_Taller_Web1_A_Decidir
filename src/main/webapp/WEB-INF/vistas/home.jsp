@@ -105,11 +105,28 @@
 			<div class="col-lg-5">
 				<div >
 					<h3>Transacciones</h3>
-					<ul>
+					<table class="table">
+						<thead>
+						<tr>
+							<th>Monto</th>
+							<th>Detalle</th>
+							<th>Concepto</th>
+							<th>Categoria</th>
+							<th>Moneda</th>
+						</tr>
+						</thead>
+						<tbody>
 						<c:forEach var="transaccion" items="${transacciones}">
-							<li>${transaccion.monto} ${transaccion.detalle} ${transaccion.concepto} ${transaccion.categoria} ${transaccion.moneda}</li>
+							<tr>
+								<td>${transaccion.monto}</td>
+								<td>${transaccion.detalle}</td>
+								<td>${transaccion.concepto}</td>
+								<td>${transaccion.categoria}</td>
+								<td>${transaccion.moneda}</td>
+							</tr>
 						</c:forEach>
-					</ul>
+						</tbody>
+					</table>
 				</div>
 			</div>
 
