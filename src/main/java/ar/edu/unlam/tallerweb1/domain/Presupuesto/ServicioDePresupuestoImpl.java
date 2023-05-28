@@ -35,6 +35,6 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
 
     @Override
     public List<Presupuesto> listarPresupuestos() {
-        return repositorioPresupuesto.listarTransaccion();
+        return repositorioPresupuesto.listarPresupuesto();
     }
 }

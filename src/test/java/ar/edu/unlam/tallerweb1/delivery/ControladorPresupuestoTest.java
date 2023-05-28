@@ -18,4 +18,7 @@ public class ControladorPresupuestoTest {
         assertThat(presupuesto.getMoneda().equals(Moneda.Peso));
     //    assertThat(presupuesto.getCategoriaDelPresupuesto()).isEqualTo(categoriaDelPresupuesto);
     }
+
+
+
 }

@@ -1,4 +1,5 @@
 package ar.edu.unlam.tallerweb1.infrastructure.Transaccion;
+import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
 import ar.edu.unlam.tallerweb1.infrastructure.Transaccion.RepositorioTransaccion;
@@ -48,6 +49,14 @@ public class RepositorioTransaccionImpl implements RepositorioTransaccion {
         final Session session = sessionFactory.getCurrentSession();
         return (List<Transaccion>) session.createCriteria(Transaccion.class).list();
 
+    }
+
+    @Override
+    public List<Transaccion> buscarTransaccionPorCategoria(Categoria categoria) {
+        final Session session = sessionFactory.getCurrentSession();
+        return (List<Transaccion>) session.createCriteria(Transaccion.class)
+                .add(Restrictions.eq("categoria", categoria))
+                .list();
     }
 
 }

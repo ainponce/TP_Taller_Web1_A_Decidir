@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.infrastructure.Presupuesto;
 
+import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
@@ -65,8 +66,13 @@ public class RepositorioPresupuestoImpl implements RepositorioPresupuesto {
     }
 
     @Override
-    public List<Presupuesto> listarTransaccion() {
+    public List<Presupuesto> listarPresupuesto() {
         final Session session = sessionFactory.getCurrentSession();
         return (List<Presupuesto>) session.createCriteria(Presupuesto.class).list();
+    }
+
+    @Override
+    public List<Presupuesto> buscarPorCategoria(Categoria categoria) {
+        return null;
     }
 }

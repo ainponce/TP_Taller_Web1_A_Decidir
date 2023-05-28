@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Ain Ponce
@@ -90,6 +91,7 @@
     </div>
     <div class="col-lg-5">
         <h3>Cree su presupuesto</h3>
+
             <form:form action="agregarPresupuesto" method="post" modelAttribute="establecerPresupuesto">
                 <label>Monto</label>
                 <form:input type="text" id="monto" path="montoPresupuesto" name="monto" class="form-control" placeholder="Ingrese monto..."/>
@@ -113,8 +115,8 @@
         <div >
             <h3>Presupuestos Ingresados</h3>
             <ul>
-                <c:forEach var="presupuesto" items="${presupuestos}">
-                    <li>${presupuestos.montoPresupuesto} ${presupuestos.categoriaDelPresupuesto} ${presupuestos.fechaDesde} ${presupuestos.fechaHasta}</li>
+                <c:forEach var="presupuesto" items="${presupuestos}"> <!--var es para llamadar a cada atributo y el item es lo que se ingresa en el map.put -->
+                    <li>${presupuesto.montoPresupuesto} ${presupuesto.categoriaDelPresupuesto} ${presupuesto.fechaDesde} ${presupuesto.fechaHasta}</li>
                 </c:forEach>
             </ul>
         </div>

@@ -55,4 +55,13 @@ public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
     public List<Transaccion> listarTransacciones(){
         return servicioTransaccionDao.listarTransaccion();
     }
+
+    @Override
+    public Double sumarMontoDeTransaccionesPorCategoria(List<Transaccion> trans) {
+        double montoTotal = 0.0;
+        for (Transaccion transaccion: trans) {
+            montoTotal += transaccion.getMonto();
+        }
+        return montoTotal;
+    }
 }

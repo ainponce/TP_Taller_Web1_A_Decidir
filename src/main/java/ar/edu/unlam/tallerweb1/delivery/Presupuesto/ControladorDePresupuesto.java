@@ -2,7 +2,6 @@ package ar.edu.unlam.tallerweb1.delivery.Presupuesto;
 
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.ServicioDePresupuesto;
-import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -26,7 +25,7 @@ public class ControladorDePresupuesto {
    @RequestMapping(path = "/agregarPresupuesto", method = RequestMethod.GET)
     public ModelAndView crearPrespuesto(){
         ModelMap map = new ModelMap();
-       map.put("datosPresupuesto", new Presupuesto());
+       map.put("establecerPresupuesto", new Presupuesto());
         return new ModelAndView("establecerPresupuesto", map);
     }
 
@@ -39,12 +38,15 @@ public class ControladorDePresupuesto {
         return new ModelAndView("redirect:/establecerPresupuesto");
     }
 
+
     @RequestMapping(path="/establecerPresupuesto", method = RequestMethod.GET)
-    public ModelAndView listarUnaTransaccion() {
+    public ModelAndView listarUnPresupuestos() {
         ModelMap map= new ModelMap();
         List<Presupuesto> presupuestos = servicioDePresupuesto.listarPresupuestos();
-        map.put("presupuesto", presupuestos);
-        map.put("datosPresupuesto", new Presupuesto());
+        map.put("presupuestos", presupuestos);
+        map.put("establecerPresupuesto", new Presupuesto());
         return new ModelAndView("establecerPresupuesto", map);
     }
+
+
 }
