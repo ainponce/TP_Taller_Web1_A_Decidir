@@ -1,5 +1,16 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="ar.edu.unlam.tallerweb1.domain.Categorias.Categoria" %>
+
+<script>
+	// Obtener la referencia al elemento select
+	var dropdown = document.getElementById("categoriaDropdown");
+
+	// Obtener las opciones del dropdown original
+	var opciones = ${Categoria.values()};
+
+</script>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -106,43 +117,56 @@
 			<div class="col-lg-5">
 				<div>
 					<h3>Transacciones</h3>
-					<table class="table">
-						<thead>
-						<tr>
-							<th>Fecha</th>
-							<th>Monto</th>
-							<th>Detalle</th>
-							<th>Concepto</th>
-							<th>Categoria</th>
-							<th>Moneda</th>
-						</tr>
-						</thead>
-						<tbody>
-						<c:forEach var="transaccion" items="${transacciones}">
-							<tr>
-								<td>${transaccion.fecha}</td>
-								<td>${transaccion.monto}</td>
-								<td>${transaccion.detalle}</td>
-								<td>${transaccion.concepto}</td>
-								<td>${transaccion.categoria}</td>
-								<td>${transaccion.moneda}</td>
-							</tr>
-						</c:forEach>
-						</tbody>
-					</table>
-				</div>
-			</div>
+<%--select path="listarCategorias" id="listarCategorias" class="form-control" placeholder="Filtrar por categoria" >
+    <option value="opcion2" selected>Filtrar por categoria</option>
+    ${opcionesReturn}
+</select--%>
+					<form>
+						<select name="categoria">
+							<option value="" disabled selected>Filtrar por categoria</option>
+							<c:forEach items="${Categoria.values()}" var="option" >
+								<option value="${option}">${option}</option>
+							</c:forEach>
+						</select>
+					</form>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Fecha</th>
+        <th>Monto</th>
+        <th>Detalle</th>
+        <th>Concepto</th>
+        <th>Categoria</th>
+        <th>Moneda</th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach var="transaccion" items="${transacciones}">
+        <tr>
+            <td>${transaccion.fecha}</td>
+            <td>${transaccion.monto}</td>
+            <td>${transaccion.detalle}</td>
+            <td>${transaccion.concepto}</td>
+            <td>${transaccion.categoria}</td>
+            <td>${transaccion.moneda}</td>
+        </tr>
+    </c:forEach>
+    </tbody>
+</table>
+</div>
+</div>
 
-            <c:if test="${not empty error}">
-                <h4 class="mensajeErrorPresupuesto"><span>${error}</span></h4>
-                <br>
-            </c:if>
-            ${msg}
-		</div>
-		<!-- Placed at the end of the document so the pages load faster -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" ></script>
-		<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-		<script src="js/bootstrap.min.js" type="text/javascript"></script>
-	</body>
+<c:if test="${not empty error}">
+<h4 class="mensajeErrorPresupuesto"><span>${error}</span></h4>
+<br>
+</c:if>
+${msg}
+</div>
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" ></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+</body>
 </html>
+

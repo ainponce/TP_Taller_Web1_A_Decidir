@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.delivery.Transaccion;
 
+import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
 import org.springframework.beans.factory.annotation.Autowired;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.ServicioDeTransaccion;
@@ -44,5 +45,26 @@ public class ControladorDeTransaccion {
         map.put("transacciones", transacciones);
         map.put("datosTransaccion", new Transaccion());
         return new ModelAndView("home", map);
+    }
+
+    @RequestMapping(path="/listarCategorias", method = RequestMethod.GET)
+    public ModelAndView listarCategorias(){
+       ModelMap map= new ModelMap();
+    // Obtener los valores del enum Categoria
+    Categoria[] categorias = Categoria.values();
+
+    // Generar las opciones dinámicamente para el HTML
+    //StringBuilder opciones = new StringBuilder();
+
+    //for(Categoria categoria:categorias) {
+      //  opciones.append("<option value=\"" + categoria.name() + "\">" + categoria.name() + "</option>");
+    //}
+
+        map.put("categorias", categorias);
+    //request.setAttribute("opciones", opciones.toString());
+
+        //String opcionesReturn = opciones.toString();
+    return new ModelAndView("listarCategorias", map);
+        // return new ModelAndView("listarCategorias", map);
     }
 }
