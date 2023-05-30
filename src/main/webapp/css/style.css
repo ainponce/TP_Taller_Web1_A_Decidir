@@ -132,3 +132,21 @@
 .btn-blockFiltro{
     display: block;
 }
+
+.form-Filtro{
+    width: 25%;
+}
+
+.select-container-filtro {
+    display: flex;
+    align-items: center;
+}
+
+.select-container-filtro select {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.select-container-filtro input {
+    margin-left: 10px;
+}

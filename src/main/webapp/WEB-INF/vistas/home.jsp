@@ -119,13 +119,15 @@
 					<h3>Transacciones</h3>
 					<%--Form para filtrar por Categoria las Transacciones--%>
     <form:form action="filtrar" method="get">
-        <select name="categoriaTransaccion" id="categoriaTransaccion" class="form-control">
+		<div class= "select-container-filtro">
+        <select name="categoriaTransaccion" id="categoriaTransaccion" class="form-Filtro">
 			<option value="" disabled selected>Filtrar por categoria</option>
 			<c:forEach items="${Categoria.values()}" var="option" >
                 <option value="${option}">${option}</option>
             </c:forEach>
         </select>
         <input type="submit" value="Filtrar" class="btn btnFiltro btn-lg btn-blockFiltro">
+		</div>
     </form:form>
 <table class="table">
 <thead>
