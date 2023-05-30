@@ -20,4 +20,5 @@ public interface ServicioDeTransaccion {
     Double sumarMontoDeTransaccionesPorCategoria(List<Transaccion> trans);
 
 
+    public List<Transaccion> filtrarTransaccionesPorCategoria(Categoria categoria);
 }

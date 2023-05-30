@@ -47,6 +47,4 @@ public class ControladorDePresupuesto {
         map.put("establecerPresupuesto", new Presupuesto());
         return new ModelAndView("establecerPresupuesto", map);
     }
-
-
 }

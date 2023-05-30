@@ -117,41 +117,53 @@
 			<div class="col-lg-5">
 				<div>
 					<h3>Transacciones</h3>
-<%--select path="listarCategorias" id="listarCategorias" class="form-control" placeholder="Filtrar por categoria" >
-    <option value="opcion2" selected>Filtrar por categoria</option>
-    ${opcionesReturn}
-</select--%>
-					<form>
-						<select name="categoria">
-							<option value="" disabled selected>Filtrar por categoria</option>
-							<c:forEach items="${Categoria.values()}" var="option" >
-								<option value="${option}">${option}</option>
-							</c:forEach>
-						</select>
-					</form>
+					<%--Form para filtrar por Categoria las Transacciones--%>
+    <form:form action="filtrar" method="get">
+        <select name="categoriaTransaccion" id="categoriaTransaccion" class="form-control">
+			<option value="" disabled selected>Filtrar por categoria</option>
+			<c:forEach items="${Categoria.values()}" var="option" >
+                <option value="${option}">${option}</option>
+            </c:forEach>
+        </select>
+        <input type="submit" value="Filtrar" class="btn btnFiltro btn-lg btn-blockFiltro">
+    </form:form>
 <table class="table">
-    <thead>
-    <tr>
-        <th>Fecha</th>
-        <th>Monto</th>
-        <th>Detalle</th>
-        <th>Concepto</th>
-        <th>Categoria</th>
-        <th>Moneda</th>
-    </tr>
-    </thead>
-    <tbody>
-    <c:forEach var="transaccion" items="${transacciones}">
-        <tr>
-            <td>${transaccion.fecha}</td>
-            <td>${transaccion.monto}</td>
-            <td>${transaccion.detalle}</td>
-            <td>${transaccion.concepto}</td>
-            <td>${transaccion.categoria}</td>
-            <td>${transaccion.moneda}</td>
-        </tr>
-    </c:forEach>
-    </tbody>
+<thead>
+<tr>
+<th>Fecha</th>
+<th>Monto</th>
+<th>Detalle</th>
+<th>Concepto</th>
+<th>Categoria</th>
+<th>Moneda</th>
+</tr>
+</thead>
+<tbody>
+<c:forEach var="transaccion" items="${transacciones}">
+<tr>
+<td>${transaccion.fecha}</td>
+<td>${transaccion.monto}</td>
+<td>${transaccion.detalle}</td>
+<td>${transaccion.concepto}</td>
+<td>${transaccion.categoria}</td>
+<td>${transaccion.moneda}</td>
+</tr>
+</c:forEach>
+</tbody>
+	<thead>
+	<tr>
+		<th>Monto total</th>
+	   <tbody>
+       <c:set var="montoTotal" value="0" />
+	   <c:forEach var="transaccion" items="${transacciones}">
+		   <c:set var="montoTotal" value="${montoTotal + transaccion.monto}" />
+	   </c:forEach>
+	   <tr>
+		   <td>${montoTotal}</td>
+	   </tr>
+	</tbody>
+	</tr>
+	</thead>
 </table>
 </div>
 </div>

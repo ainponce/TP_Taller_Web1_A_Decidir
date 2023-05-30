@@ -115,3 +115,20 @@
     height: 2.5em;
     width: 90%;
 }
+
+.btnFiltro{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1em;
+    background-color: #2f73b2;
+    color: #fff;
+    border-radius: 1.5em;
+    height: 2.5em;
+    font-size: 1em;
+    line-height: 0;
+}
+
+.btn-blockFiltro{
+    display: block;
+}

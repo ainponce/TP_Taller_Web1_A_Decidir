@@ -9,6 +9,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -67,4 +68,18 @@ public class ControladorDeTransaccion {
     return new ModelAndView("listarCategorias", map);
         // return new ModelAndView("listarCategorias", map);
     }
+
+   @RequestMapping(path = "filtrar", method = RequestMethod.GET)
+    public ModelAndView filtrarTransaccionPorCategoria(@RequestParam(value = "categoriaTransaccion", required = false) Categoria categoria){
+       ModelMap map= new ModelMap();
+       List<Transaccion> transacciones = null;
+       if(categoria == categoria.Ocio || categoria == categoria.Compras || categoria == categoria.Salidas || categoria == categoria.Servicios){
+           transacciones = servicioDeTransaccion.filtrarTransaccionesPorCategoria(categoria);
+       }else {
+           transacciones = servicioDeTransaccion.listarTransacciones();
+       }
+       map.put("transacciones", transacciones);
+       map.put("datosTransaccion", new Transaccion());
+       return new ModelAndView("home", map);
+   }
 }
