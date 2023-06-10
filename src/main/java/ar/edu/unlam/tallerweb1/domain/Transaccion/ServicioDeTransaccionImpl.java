@@ -3,6 +3,7 @@ package ar.edu.unlam.tallerweb1.domain.Transaccion;
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Concepto.Concepto;
 import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
+import ar.edu.unlam.tallerweb1.infrastructure.Categoria.RepositorioCategoria;
 import ar.edu.unlam.tallerweb1.infrastructure.Transaccion.RepositorioTransaccion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,10 +17,12 @@ public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
 
 
     private final  RepositorioTransaccion servicioTransaccionDao;
+    private final RepositorioCategoria repositorioCategoria;
 
     @Autowired
-    public ServicioDeTransaccionImpl(RepositorioTransaccion servicioTransaccionDao){
+    public ServicioDeTransaccionImpl(RepositorioTransaccion servicioTransaccionDao, RepositorioCategoria repositorioCategoria){
         this.servicioTransaccionDao = servicioTransaccionDao;
+        this.repositorioCategoria=repositorioCategoria;
     }
 
     @Override
@@ -54,6 +57,11 @@ public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
     @Override
     public List<Transaccion> listarTransacciones(){
         return servicioTransaccionDao.listarTransaccion();
+    }
+
+    @Override
+    public List<Categoria> listarCategorias() {
+        return repositorioCategoria.listarCategoria();
     }
 
     @Override

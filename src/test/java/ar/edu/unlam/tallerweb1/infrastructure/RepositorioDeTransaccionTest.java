@@ -24,7 +24,6 @@ public class RepositorioDeTransaccionTest extends SpringTest {
     public void queTraigaLaListaDeTransacciones() {
         List<Transaccion> trans = listoTransacciones();
         QueSeanLaMismaCantidad(trans);
-
     }
 
     private void QueSeanLaMismaCantidad(List<Transaccion> trans) {

@@ -27,6 +27,8 @@ public class ControladorDeTransaccion {
     public ModelAndView crearTransaccion() {
         ModelMap map= new ModelMap();
         map.put("datosTransaccion", new Transaccion());
+        List<Categoria> categorias = servicioDeTransaccion.listarCategorias();
+        map.put("categorias", categorias);
         return new ModelAndView("establecerTransaccion", map);
     }
 
@@ -35,6 +37,7 @@ public class ControladorDeTransaccion {
         servicioDeTransaccion.registrarTransaccion(transaccion.getMonto(), transaccion.getDetalle(), transaccion.getFecha(), transaccion.getMoneda(), transaccion.getConcepto(), transaccion.getCategoria());
         ModelMap map= new ModelMap();
         map.put("msg", "Transaccion exitosa");
+
         return new ModelAndView("redirect:/home");
     }
 
@@ -44,31 +47,21 @@ public class ControladorDeTransaccion {
         List<Transaccion> transacciones = servicioDeTransaccion.listarTransacciones();
         map.put("transacciones", transacciones);
         map.put("datosTransaccion", new Transaccion());
+
         return new ModelAndView("home", map);
     }
 
-   /* @RequestMapping(path="/listarCategorias", method = RequestMethod.GET)
+    @RequestMapping(path="/listarCategorias", method = RequestMethod.GET)
     public ModelAndView listarCategorias(){
        ModelMap map= new ModelMap();
-    // Obtener los valores del enum Categoria
-    Categoria[] categorias = Categoria.values();
+    // Llamo a la lista de categorias
+    List<Categoria> categorias = servicioDeTransaccion.listarCategorias();
+    map.put("categorias", categorias);
 
-    // Generar las opciones dinámicamente para el HTML
-    //StringBuilder opciones = new StringBuilder();
-
-    //for(Categoria categoria:categorias) {
-      //  opciones.append("<option value=\"" + categoria.name() + "\">" + categoria.name() + "</option>");
-    //}
-
-        map.put("categorias", categorias);
-    //request.setAttribute("opciones", opciones.toString());
-
-        //String opcionesReturn = opciones.toString();
     return new ModelAndView("listarCategorias", map);
-        // return new ModelAndView("listarCategorias", map);
     }
 
-   @RequestMapping(path = "filtrar", method = RequestMethod.GET)
+   /*@RequestMapping(path = "filtrar", method = RequestMethod.GET)
     public ModelAndView filtrarTransaccionPorCategoria(@RequestParam(value = "categoriaTransaccion", required = false) Categoria categoria){
        ModelMap map= new ModelMap();
        List<Transaccion> transacciones = null;
