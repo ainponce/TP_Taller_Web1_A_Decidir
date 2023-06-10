@@ -9,7 +9,7 @@ public class ControladorDeudaTest {
 
     @Test
     public void queSeCreeUnaDeuda(){
-        Categoria categoriaDeLaDeuda = Categoria.Compras;
+        Categoria categoriaDeLaDeuda = new Categoria("compras", true);
         Persona prestamista = new Persona(1234L, "Shushu");
         Deuda deuda = new Deuda(1000.50, categoriaDeLaDeuda, "Entrada Shushu cine", "01/01/2023", true, prestamista, Moneda.Peso);
 

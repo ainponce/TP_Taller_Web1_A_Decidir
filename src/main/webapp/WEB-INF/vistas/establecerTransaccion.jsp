@@ -1,13 +1,13 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="ar.edu.unlam.tallerweb1.domain.Categorias.Categoria" %>
+ <%@ page import="ar.edu.unlam.tallerweb1.domain.Categorias.Categoria" %>
 
 <script>
     // Obtener la referencia al elemento select
-    var dropdown = document.getElementById("categoriaDropdown");
+   // var dropdown = document.getElementById("categoriaDropdown");
 
     // Obtener las opciones del dropdown original
-    var opciones = ${Categoria.values()};
+
 
 </script>
 
@@ -122,9 +122,9 @@
         <form:select path="concepto" id="concpeto" name="concepto" class="form-control">
             <form:options items="${Concepto.values()}"/>
         </form:select>
-        <form:select path="categoria" id="categoria" name="categoria" class="form-control">
-            <form:options items="${Categoria.values()}"/>
-        </form:select>
+        <%-- <form:select path="categoria" id="categoria" name="categoria" class="form-control">
+           // <form:options items="${Categoria.values()}"/>
+         </form:select>  --%>
 
         <button id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Subir</button>
         </form:form>

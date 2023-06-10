@@ -1,6 +1,5 @@
 package ar.edu.unlam.tallerweb1.infrastructure.Presupuesto;
 
-import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
 
@@ -22,5 +21,5 @@ public interface RepositorioPresupuesto {
 
     List<Presupuesto> listarPresupuesto();
 
-    List<Presupuesto> buscarPorCategoria(Categoria categoria);
+    //List<Presupuesto> buscarPorCategoria(Categoria categoria);
 }

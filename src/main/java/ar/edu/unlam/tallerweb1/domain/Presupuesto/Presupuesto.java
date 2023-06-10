@@ -18,6 +18,7 @@ public class Presupuesto {
     private Moneda moneda;
     private boolean estaActivo;
 
+    @OneToOne
     private Categoria categoriaDelPresupuesto;
 
     public Presupuesto(){}

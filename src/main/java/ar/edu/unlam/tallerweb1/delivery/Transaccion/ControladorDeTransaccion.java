@@ -47,7 +47,7 @@ public class ControladorDeTransaccion {
         return new ModelAndView("home", map);
     }
 
-    @RequestMapping(path="/listarCategorias", method = RequestMethod.GET)
+   /* @RequestMapping(path="/listarCategorias", method = RequestMethod.GET)
     public ModelAndView listarCategorias(){
        ModelMap map= new ModelMap();
     // Obtener los valores del enum Categoria
@@ -79,5 +79,5 @@ public class ControladorDeTransaccion {
        }
        map.put("transacciones", transacciones);
        return new ModelAndView("home", map);
-   }
+   } */
 }

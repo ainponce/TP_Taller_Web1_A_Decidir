@@ -104,9 +104,9 @@
                     <form:options items="${Moneda.values()}" />
                 </form:select>
                 <label>Categoria del presupuesto</label>
-                <form:select path="categoriaDelPresupuesto" id="categoria" name="categoria" class="form-select" placeholder="Ingrese tipo de categorias">
+                <%--<form:select path="categoriaDelPresupuesto" id="categoria" name="categoria" class="form-select" placeholder="Ingrese tipo de categorias">
                     <form:options items="${Categoria.values()}" />
-                </form:select>
+                </form:select> --%>
                 <button  id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Subir</button>
             </form:form>
     </div>

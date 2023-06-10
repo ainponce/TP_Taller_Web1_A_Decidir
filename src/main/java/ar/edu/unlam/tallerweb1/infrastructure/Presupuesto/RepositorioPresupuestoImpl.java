@@ -3,8 +3,6 @@ package ar.edu.unlam.tallerweb1.infrastructure.Presupuesto;
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
-import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
-import ar.edu.unlam.tallerweb1.infrastructure.Presupuesto.RepositorioPresupuesto;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -72,9 +70,9 @@ public class RepositorioPresupuestoImpl implements RepositorioPresupuesto {
         return (List<Presupuesto>) session.createCriteria(Presupuesto.class).list();
     }
 
-    @Override
+   /* @Override
     public List<Presupuesto> buscarPorCategoria(Categoria categoria) {
         final Session session = sessionFactory.getCurrentSession();
         return (List<Presupuesto>) session.createCriteria(Presupuesto.class).list();
-    }
+    }*/
 }

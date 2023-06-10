@@ -66,6 +66,6 @@ public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
     }
     @Override
     public List<Transaccion> filtrarTransaccionesPorCategoria(Categoria categoria){
-        return servicioTransaccionDao.buscarTransaccionPorCategoria(categoria);
+        return null; //servicioTransaccionDao.buscarTransaccionPorCategoria(categoria);
     }
 }

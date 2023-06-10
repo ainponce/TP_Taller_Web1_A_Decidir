@@ -4,10 +4,10 @@
 
 <script>
 	// Obtener la referencia al elemento select
-	var dropdown = document.getElementById("categoriaDropdown");
+	//var dropdown = document.getElementById("categoriaDropdown");
 
 	// Obtener las opciones del dropdown original
-	var opciones = ${Categoria.values()};
+
 
 </script>
 
@@ -96,7 +96,7 @@
 				<div>
 					<h3>Transacciones</h3>
 					<%--Form para filtrar por Categoria las Transacciones--%>
-    <form:form action="filtrar" method="get">
+   <%-- <form:form action="filtrar" method="get">
         <select name="categoriaTransaccion" id="categoriaTransaccion" class="form-control">
 			<option value="" disabled selected>Filtrar por categoria</option>
 			<c:forEach items="${Categoria.values()}" var="option" >
@@ -104,7 +104,7 @@
             </c:forEach>
         </select>
         <input type="submit" value="Filtrar" class="btn btnFiltro btn-lg btn-blockFiltro">
-    </form:form>
+    </form:form>--%>
 <table class="table">
 <thead>
 <tr>
