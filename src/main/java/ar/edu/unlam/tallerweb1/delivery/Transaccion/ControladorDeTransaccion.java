@@ -23,15 +23,14 @@ public class ControladorDeTransaccion {
     public ControladorDeTransaccion(ServicioDeTransaccion servicioDeTransaccion){
         this.servicioDeTransaccion=servicioDeTransaccion;
     }
-    @RequestMapping(path="/agregar", method = RequestMethod.GET)
+    @RequestMapping(path="/establecerTransaccion", method = RequestMethod.GET)
     public ModelAndView crearTransaccion() {
         ModelMap map= new ModelMap();
-        // map.put("datosTransaccion", new DatosTransaccion());
         map.put("datosTransaccion", new Transaccion());
-        return new ModelAndView("home", map);
+        return new ModelAndView("establecerTransaccion", map);
     }
 
-    @RequestMapping(path="/agregar", method = RequestMethod.POST)
+    @RequestMapping(path="/establecerTransaccion", method = RequestMethod.POST)
     public ModelAndView registrarUnaTransaccion(@ModelAttribute("datosTransaccion") Transaccion transaccion) {
         servicioDeTransaccion.registrarTransaccion(transaccion.getMonto(), transaccion.getDetalle(), transaccion.getFecha(), transaccion.getMoneda(), transaccion.getConcepto(), transaccion.getCategoria());
         ModelMap map= new ModelMap();
@@ -79,7 +78,6 @@ public class ControladorDeTransaccion {
            transacciones = servicioDeTransaccion.listarTransacciones();
        }
        map.put("transacciones", transacciones);
-       map.put("datosTransaccion", new Transaccion());
        return new ModelAndView("home", map);
    }
 }
