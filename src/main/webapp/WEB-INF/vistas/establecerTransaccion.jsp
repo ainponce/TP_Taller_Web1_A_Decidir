@@ -123,8 +123,8 @@
             <form:options items="${Concepto.values()}"/>
         </form:select>
          <form:select path="categoria" id="categoria" name="categoria" class="form-control">
-             <c:forEach var="categorias" items="${categoria}">
-                 <form:options value="${categoria.nombre}">${categoria.nombre}</form:options>
+             <c:forEach var="categoria" items="${categorias}">
+                 <form:option value="${categoria.id}">${categoria.nombre}</form:option>
              </c:forEach>
          </form:select>
         <button id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Subir</button>

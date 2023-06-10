@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.delivery.Presupuesto;
 
+import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.ServicioDePresupuesto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +27,14 @@ public class ControladorDePresupuesto {
     public ModelAndView crearPrespuesto(){
         ModelMap map = new ModelMap();
        map.put("establecerPresupuesto", new Presupuesto());
+       List<Categoria> categorias = servicioDePresupuesto.listarCategorias();
+       map.put("categorias", categorias);
         return new ModelAndView("establecerPresupuesto", map);
     }
 
     @RequestMapping(path = "/agregarPresupuesto", method = RequestMethod.POST)
     public ModelAndView registrarUnPresupuesto(@ModelAttribute("establecerPresupuesto") Presupuesto presupuesto){
-        servicioDePresupuesto.establecerPresupuesto(presupuesto.getMontoPresupuesto(), presupuesto.getFechaDesde(), presupuesto.getFechaHasta(), presupuesto.getMoneda(), presupuesto.getCategoriaDelPresupuesto());
+        servicioDePresupuesto.establecerPresupuesto(presupuesto.getMontoPresupuesto(), presupuesto.getFechaDesde(), presupuesto.getFechaHasta(), presupuesto.getMoneda(), presupuesto.getCategoria());
         ModelMap map = new ModelMap();
         map.put("establecerPresupuesto", new Presupuesto());
         map.put("msg", "Prespuesto creado");
@@ -45,6 +48,7 @@ public class ControladorDePresupuesto {
         List<Presupuesto> presupuestos = servicioDePresupuesto.listarPresupuestos();
         map.put("presupuestos", presupuestos);
         map.put("establecerPresupuesto", new Presupuesto());
+
         return new ModelAndView("establecerPresupuesto", map);
     }
 }

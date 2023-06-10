@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.domain.Presupuesto;
 
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
+import ar.edu.unlam.tallerweb1.infrastructure.Categoria.RepositorioCategoria;
 import ar.edu.unlam.tallerweb1.infrastructure.Presupuesto.RepositorioPresupuesto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,10 +15,12 @@ import java.util.List;
 public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
 
     private final RepositorioPresupuesto repositorioPresupuesto;
+    private final RepositorioCategoria repositorioCategoria;
 
     @Autowired
-    public ServicioDePresupuestoImpl(RepositorioPresupuesto servicioPresupuestoDao) {
+    public ServicioDePresupuestoImpl(RepositorioPresupuesto servicioPresupuestoDao, RepositorioCategoria repositorioCategoria) {
         this.repositorioPresupuesto = servicioPresupuestoDao;
+        this.repositorioCategoria=repositorioCategoria;
     }
 
 
@@ -37,6 +40,10 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
     @Override
     public List<Presupuesto> listarPresupuestos() {
         return repositorioPresupuesto.listarPresupuesto();
+    }
+    @Override
+    public List<Categoria> listarCategorias() {
+        return repositorioCategoria.listarCategoria();
     }
 
 

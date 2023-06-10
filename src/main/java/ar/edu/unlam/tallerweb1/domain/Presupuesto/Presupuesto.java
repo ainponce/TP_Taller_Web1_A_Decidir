@@ -19,7 +19,7 @@ public class Presupuesto {
     private boolean estaActivo;
 
     @OneToOne
-    private Categoria categoriaDelPresupuesto;
+    private Categoria categoria;
 
     public Presupuesto(){}
 
@@ -28,7 +28,7 @@ public class Presupuesto {
         this.fechaDesde = fechaDesde;
         this.fechaHasta = fechaHasta;
         this.moneda = moneda;
-        this.categoriaDelPresupuesto = categoria;
+        this.categoria = categoria;
         this.estaActivo = true;
     }
 
@@ -71,12 +71,12 @@ public class Presupuesto {
         this.moneda = moneda;
     }
 
-    public Categoria getCategoriaDelPresupuesto() {
-       return categoriaDelPresupuesto;
+    public Categoria getCategoria() {
+       return categoria;
     }
 
-    public void setCategoriaDelPresupuesto(Categoria categoriaDelPresupuesto) {
-        this.categoriaDelPresupuesto = categoriaDelPresupuesto;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     public boolean isEstaActivo() {
