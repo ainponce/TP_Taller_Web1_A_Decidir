@@ -23,14 +23,6 @@ public class ControladorDePresupuesto {
         this.servicioDePresupuesto = servicioDePresupuesto;
     }
 
-   @RequestMapping(path = "/agregarPresupuesto", method = RequestMethod.GET)
-    public ModelAndView crearPrespuesto(){
-        ModelMap map = new ModelMap();
-       map.put("establecerPresupuesto", new Presupuesto());
-       List<Categoria> categorias = servicioDePresupuesto.listarCategorias();
-       map.put("categorias", categorias);
-        return new ModelAndView("establecerPresupuesto", map);
-    }
 
     @RequestMapping(path = "/agregarPresupuesto", method = RequestMethod.POST)
     public ModelAndView registrarUnPresupuesto(@ModelAttribute("establecerPresupuesto") Presupuesto presupuesto){
@@ -43,12 +35,13 @@ public class ControladorDePresupuesto {
 
 
     @RequestMapping(path="/establecerPresupuesto", method = RequestMethod.GET)
-    public ModelAndView listarUnPresupuestos() {
+    public ModelAndView crearUnPresupuesto() {
         ModelMap map= new ModelMap();
         List<Presupuesto> presupuestos = servicioDePresupuesto.listarPresupuestos();
         map.put("presupuestos", presupuestos);
         map.put("establecerPresupuesto", new Presupuesto());
-
+        List<Categoria> categorias = servicioDePresupuesto.listarCategorias();
+        map.put("categorias", categorias);
         return new ModelAndView("establecerPresupuesto", map);
     }
 }
