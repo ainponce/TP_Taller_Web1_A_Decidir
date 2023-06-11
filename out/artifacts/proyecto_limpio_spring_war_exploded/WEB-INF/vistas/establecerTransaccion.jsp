@@ -127,7 +127,9 @@
                  <form:option value="${categoria.id}">${categoria.nombre}</form:option>
              </c:forEach>
          </form:select>
-        <button id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Subir</button>
+        <a href="home.jsp">
+            <button id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Subir</button>
+        </a>
         </form:form>
         <%--Elementos de entrada de datos, el elemento path debe indicar en que atributo del objeto usuario se guardan los datos ingresados--%>
     </div>

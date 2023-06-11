@@ -106,7 +106,7 @@
                 <label>Categoria del presupuesto</label>
                 <form:select path="categoria" id="categoria" name="categoria" class="form-control">
                     <c:forEach var="categoria" items="${categorias}">
-                        <form:option value="${categoria.nombre}">${categoria.nombre}</form:option>
+                        <form:option value="${categoria.id}">${categoria.nombre}</form:option>
                     </c:forEach>
                 </form:select>
                 <button  id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Subir</button>
