@@ -29,8 +29,14 @@ public class RepositorioCategoriaImp implements RepositorioCategoria{
         this.repositorioPresupuesto=repositorioPresupuesto;
     }
 
+
     @Override
     public List<Categoria> listarCategoria(){
+        final Session session = sessionFactory.getCurrentSession();
+        return (List<Categoria>) session.createCriteria(Categoria.class).list();
+    }
+    @Override
+    public List<Categoria> listarCategoriaParaPresupuestos(){
             final Session session = sessionFactory.getCurrentSession();
             List<Categoria> categoriasSinAsignar = new ArrayList<>();
 
@@ -58,11 +64,7 @@ public class RepositorioCategoriaImp implements RepositorioCategoria{
 
             return categoriasSinAsignar;
         }
-
-
-
-
-
+        
 
 
         @Override

@@ -9,4 +9,7 @@ public interface RepositorioCategoria {
     public List<Categoria> listarCategoria();
 
     public Categoria traerCategoriaPorId(long id);
+
+
+    public List<Categoria> listarCategoriaParaPresupuestos();
 }

@@ -48,7 +48,7 @@ public class ControladorDePresupuesto {
         List<Presupuesto> presupuestos = servicioDePresupuesto.listarPresupuestos();
         map.put("presupuestos", presupuestos);
         map.put("establecerPresupuesto", new Presupuesto());
-        List<Categoria> categorias = servicioDePresupuesto.listarCategorias();
+        List<Categoria> categorias = servicioDeCategoria.listarCategoriaParaPresupuestos();
         map.put("categorias", categorias);
         return new ModelAndView("establecerPresupuesto", map);
     }

@@ -28,6 +28,12 @@ public class ServicioDeCategoriaImpl implements ServicioDeCategoria {
     }
 
     @Override
+    public List<Categoria> listarCategoriaParaPresupuestos() {
+
+        return repositorioCategoria.listarCategoriaParaPresupuestos();
+    }
+
+    @Override
     public Categoria buscarCategoriaPorId(long id){
         return repositorioCategoria.traerCategoriaPorId(id);
     }
