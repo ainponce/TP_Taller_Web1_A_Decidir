@@ -8,6 +8,8 @@ import ar.edu.unlam.tallerweb1.infrastructure.Categoria.RepositorioCategoria;
 import ar.edu.unlam.tallerweb1.infrastructure.Transaccion.RepositorioTransaccion;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -21,6 +23,7 @@ public class RepositorioCategoriaTest extends SpringTest {
     private ServicioDeTransaccion service;
 
     @Test
+    @Transactional @Rollback
     public void queTraigaLaListaDeCategorias() {
         List<Categoria> categorias = listoCategorias();
         QueSeanLaMismaCantidad(categorias);
@@ -31,6 +34,6 @@ public class RepositorioCategoriaTest extends SpringTest {
     }
 
     private List<Categoria> listoCategorias() {
-        return repo.listarCategoria();
+        return repo.listarCategoriaPorPresupuesto();
     }
 }

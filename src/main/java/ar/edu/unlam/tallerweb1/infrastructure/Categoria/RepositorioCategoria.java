@@ -6,7 +6,8 @@ import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
 import java.util.List;
 
 public interface RepositorioCategoria {
-    public List<Categoria> listarCategoria();
+    public List<Categoria> listarCategoriaPorPresupuesto();
+    public List<Categoria> listarCategoriaPorTransaccion();
 
     public Categoria traerCategoriaPorId(long id);
 }

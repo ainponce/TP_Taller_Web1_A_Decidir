@@ -119,14 +119,14 @@
         <form:select path="moneda" id="moneda" name="moneda" class="form-control">
             <form:options items="${Moneda.values()}"/>
         </form:select>
-        <form:select path="concepto" id="concpeto" name="concepto" class="form-control">
+        <form:select path="concepto" id="concepto" name="concepto" class="form-control">
             <form:options items="${Concepto.values()}"/>
         </form:select>
-         <form:select path="categoria" id="categoria" name="categoria" class="form-control">
-             <c:forEach var="categoria" items="${categorias}">
-                 <form:option value="${categoria.GetId()}">${categoria.GetNombre()}</form:option>
-             </c:forEach>
-         </form:select>
+        <form:select path="categoria" id="categoria" name="categoria" class="form-control">
+            <c:forEach var="categoria" items="${categorias}">
+                <form:option value="${categoria.GetId()}">${categoria.GetNombre()}</form:option>
+            </c:forEach>
+        </form:select>
         <a href="home.jsp">
             <button id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Subir</button>
         </a>

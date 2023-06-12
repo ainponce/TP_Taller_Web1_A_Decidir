@@ -1,6 +1,9 @@
 package ar.edu.unlam.tallerweb1.delivery.Transaccion;
 
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
+import ar.edu.unlam.tallerweb1.domain.Categorias.ServicioDeCategoria;
+import ar.edu.unlam.tallerweb1.domain.Concepto.Concepto;
+import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
 import org.springframework.beans.factory.annotation.Autowired;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.ServicioDeTransaccion;
@@ -17,11 +20,13 @@ import java.util.List;
 @Controller
 public class ControladorDeTransaccion {
 
+    private final ServicioDeCategoria servicioDeCategoria;
     private ServicioDeTransaccion servicioDeTransaccion;
 
     @Autowired
-    public ControladorDeTransaccion(ServicioDeTransaccion servicioDeTransaccion){
+    public ControladorDeTransaccion(ServicioDeTransaccion servicioDeTransaccion, ServicioDeCategoria servicioDeCategoria){
         this.servicioDeTransaccion=servicioDeTransaccion;
+        this.servicioDeCategoria= servicioDeCategoria;
     }
     @RequestMapping(path="/establecerTransaccion", method = RequestMethod.GET)
     public ModelAndView crearTransaccion() {
@@ -33,11 +38,12 @@ public class ControladorDeTransaccion {
     }
 
     @RequestMapping(path="/establecerTransaccion", method = RequestMethod.POST)
-    public ModelAndView registrarUnaTransaccion(@ModelAttribute("datosTransaccion") Transaccion transaccion) {
-        servicioDeTransaccion.registrarTransaccion(transaccion.getMonto(), transaccion.getDetalle(), transaccion.getFecha(), transaccion.getMoneda(), transaccion.getConcepto(), transaccion.getCategoria());
+    public ModelAndView registrarUnaTransaccion(@RequestParam("monto") double monto, @RequestParam("detalle") String detalle,
+                                                @RequestParam("fecha") String fecha, @RequestParam("moneda") Moneda moneda , @RequestParam("concepto") Concepto concepto, @RequestParam("categoria") long categoria) {
+        Categoria cat =servicioDeCategoria.buscarCategoriaPorId(categoria);
+        servicioDeTransaccion.registrarTransaccion(monto, detalle, fecha, moneda, concepto, cat);
         ModelMap map= new ModelMap();
         map.put("msg", "Transaccion exitosa");
-
         return new ModelAndView("redirect:/home");
     }
 

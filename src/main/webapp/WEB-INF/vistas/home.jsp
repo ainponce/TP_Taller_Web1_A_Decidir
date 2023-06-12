@@ -123,7 +123,7 @@
 <td>${transaccion.monto}</td>
 <td>${transaccion.detalle}</td>
 <td>${transaccion.concepto}</td>
-<td>${transaccion.categoria}</td>
+<td>${transaccion.categoria.GetNombre()}</td>
 <td>${transaccion.moneda}</td>
 </tr>
 </c:forEach>

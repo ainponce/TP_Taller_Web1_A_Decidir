@@ -8,6 +8,7 @@ import java.util.List;
 public interface ServicioDeCategoria {
 
     public List<Categoria> listarCategorias();
+    public List<Categoria> listarCategoriasPorTransaccion();
 
     public Categoria buscarCategoriaPorId(long id);
 
