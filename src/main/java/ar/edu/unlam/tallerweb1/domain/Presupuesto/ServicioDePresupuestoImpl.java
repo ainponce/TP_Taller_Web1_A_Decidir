@@ -25,7 +25,7 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
 
 
     @Override
-    public Boolean establecerPresupuesto(Double monto, String fechaDesde, String fechaHasta, Moneda moneda,  Categoria categoria) {
+    public Boolean establecerPresupuesto(Double monto, String fechaDesde, String fechaHasta, Moneda moneda, Categoria categoria) {
         Boolean seRegistro = false;
         List <Presupuesto> validacionDeCategoria= repositorioPresupuesto.listarPresupuesto();
         if (monto > 0){
@@ -46,8 +46,18 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
         return repositorioCategoria.listarCategoriaParaPresupuestos();
     }
 
-
-
+    @Override
+    public Double buscarMontoPresupuestoPorCategoria(Categoria cat) {
+        Double montoPresupuesto=0.0;
+        List<Presupuesto> presupuestos = repositorioPresupuesto.listarPresupuesto();
+        for (Presupuesto presu: presupuestos) {
+            if(presu.getCategoria().GetNombre().equals(cat.GetNombre())){
+                montoPresupuesto=presu.getMontoPresupuesto();
+                return montoPresupuesto;
+            }
+        }
+        return montoPresupuesto;
+    }
 
 
 }

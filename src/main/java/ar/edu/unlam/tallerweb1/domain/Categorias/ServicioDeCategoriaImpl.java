@@ -32,9 +32,13 @@ public class ServicioDeCategoriaImpl implements ServicioDeCategoria {
 
     @Override
     public List<Categoria> listarCategoriaParaPresupuestos() {
-
         return repositorioCategoria.listarCategoriaParaPresupuestos();
     }
+
+    /*@Override
+    public List<Categoria> listarCategoriasPorID(Long id) {
+        return repositorioCategoria.traerListaDeCategoriasPorId(id);
+    }*/
 
     @Override
     public Categoria buscarCategoriaPorId(long id){

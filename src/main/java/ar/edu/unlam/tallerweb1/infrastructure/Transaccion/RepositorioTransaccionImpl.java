@@ -49,12 +49,13 @@ public class RepositorioTransaccionImpl implements RepositorioTransaccion {
 
     }
 
-   /* @Override
+    @Override
     public List<Transaccion> buscarTransaccionPorCategoria(Categoria categoria) {
         final Session session = sessionFactory.getCurrentSession();
         return (List<Transaccion>) session.createCriteria(Transaccion.class)
                 .add(Restrictions.eq("categoria", categoria))
                 .list();
-    }*/
+    }
+
 
 }

@@ -6,6 +6,7 @@ import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Categorias.ServicioDeCategoria;
 import ar.edu.unlam.tallerweb1.domain.Concepto.Concepto;
 import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
+import ar.edu.unlam.tallerweb1.domain.Presupuesto.ServicioDePresupuesto;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.ServicioDeTransaccion;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.ServicioDeTransaccionImpl;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
@@ -23,11 +24,12 @@ public class ControladorTransaccionTest {
     private Transaccion transaccion;
     private DatosTransaccion datosInvalidos;
     private ServicioDeCategoria servicioDeCategoria;
+    private ServicioDePresupuesto servicioDePresupuesto;
 
     @Before
     public void init(){
         this.servicioDeTransaccion= mock(ServicioDeTransaccionImpl.class);
-        this.controladorDeTransaccion= new ControladorDeTransaccion(this.servicioDeTransaccion, this.servicioDeCategoria);
+        this.controladorDeTransaccion= new ControladorDeTransaccion(this.servicioDeTransaccion, this.servicioDeCategoria, this.servicioDePresupuesto);
         this.transaccion= new Transaccion(1500.0, "Inversión", "123", Moneda.Peso, Concepto.Gasto, new Categoria());
         this.datosInvalidos= new DatosTransaccion(-10.0, "gastos");
     }

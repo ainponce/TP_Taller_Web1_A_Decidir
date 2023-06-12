@@ -13,4 +13,6 @@ public interface RepositorioCategoria {
 
 
     public List<Categoria> listarCategoriaParaPresupuestos();
+
+    //List<Categoria> traerListaDeCategoriasPorId(Long );
 }

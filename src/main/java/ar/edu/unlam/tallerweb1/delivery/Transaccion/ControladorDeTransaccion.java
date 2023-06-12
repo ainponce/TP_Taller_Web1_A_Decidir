@@ -4,6 +4,8 @@ import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Categorias.ServicioDeCategoria;
 import ar.edu.unlam.tallerweb1.domain.Concepto.Concepto;
 import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
+import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
+import ar.edu.unlam.tallerweb1.domain.Presupuesto.ServicioDePresupuesto;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
 import org.springframework.beans.factory.annotation.Autowired;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.ServicioDeTransaccion;
@@ -22,11 +24,13 @@ public class ControladorDeTransaccion {
 
     private final ServicioDeCategoria servicioDeCategoria;
     private ServicioDeTransaccion servicioDeTransaccion;
+    private final ServicioDePresupuesto servicioDePresupuesto;
 
     @Autowired
-    public ControladorDeTransaccion(ServicioDeTransaccion servicioDeTransaccion, ServicioDeCategoria servicioDeCategoria){
+    public ControladorDeTransaccion(ServicioDeTransaccion servicioDeTransaccion, ServicioDeCategoria servicioDeCategoria, ServicioDePresupuesto servicioDePresupuesto){
         this.servicioDeTransaccion=servicioDeTransaccion;
         this.servicioDeCategoria= servicioDeCategoria;
+        this.servicioDePresupuesto=servicioDePresupuesto;
     }
     @RequestMapping(path="/establecerTransaccion", method = RequestMethod.GET)
     public ModelAndView crearTransaccion() {
@@ -43,7 +47,14 @@ public class ControladorDeTransaccion {
         Categoria cat =servicioDeCategoria.buscarCategoriaPorId(categoria);
         servicioDeTransaccion.registrarTransaccion(monto, detalle, fecha, moneda, concepto, cat);
         ModelMap map= new ModelMap();
-        map.put("msg", "Transaccion exitosa");
+        List <Transaccion> transacciones = servicioDeTransaccion.filtrarTransaccionesPorCategoria(cat);
+        Double presupuestoDeCategoria = servicioDePresupuesto.buscarMontoPresupuestoPorCategoria(cat);
+        Boolean registroTransaccionPosible = servicioDeTransaccion.registroTransaccionExitoso(transacciones, presupuestoDeCategoria);
+        if(registroTransaccionPosible){
+            map.put("msg", "Transaccion exitosa");
+        }else{
+            map.put("error", "El monto del presupuesto esta por llegar a su limite");
+        }
         return new ModelAndView("redirect:/home");
     }
 
@@ -53,6 +64,8 @@ public class ControladorDeTransaccion {
         List<Transaccion> transacciones = servicioDeTransaccion.listarTransacciones();
         map.put("transacciones", transacciones);
         map.put("datosTransaccion", new Transaccion());
+        List<Categoria> categorias = servicioDeCategoria.listarCategoriasPorTransaccion();
+        map.put("categorias", categorias);
 
         return new ModelAndView("home", map);
     }
@@ -67,16 +80,19 @@ public class ControladorDeTransaccion {
     return new ModelAndView("listarCategorias", map);
     }
 
-   /*@RequestMapping(path = "filtrar", method = RequestMethod.GET)
-    public ModelAndView filtrarTransaccionPorCategoria(@RequestParam(value = "categoriaTransaccion", required = false) Categoria categoria){
+   @RequestMapping(path = "filtrar", method = RequestMethod.GET)
+    public ModelAndView filtrarTransaccionPorCategoria(@RequestParam(value = "categoriaTransaccion", required=false) Long categoria){
        ModelMap map= new ModelMap();
        List<Transaccion> transacciones = null;
-       if(categoria == categoria.Ocio || categoria == categoria.Compras || categoria == categoria.Salidas || categoria == categoria.Servicios){
-           transacciones = servicioDeTransaccion.filtrarTransaccionesPorCategoria(categoria);
-       }else {
-           transacciones = servicioDeTransaccion.listarTransacciones();
-       }
+       Categoria cat =servicioDeCategoria.buscarCategoriaPorId(categoria);
+       List<Categoria> categorias = servicioDeTransaccion.listarCategorias();
+       map.put("categorias", categorias);
+           if(cat.GetId() != null) {
+               transacciones = servicioDeTransaccion.filtrarTransaccionesPorCategoria(cat);
+           }else {
+               transacciones = servicioDeTransaccion.listarTransacciones();
+           }
        map.put("transacciones", transacciones);
        return new ModelAndView("home", map);
-   } */
+   }
 }

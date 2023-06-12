@@ -13,6 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -60,6 +63,16 @@ public class RepositorioCategoriaImp implements RepositorioCategoria {
             return categoriasSinAsignar;
         }
 
+    /*@Override
+    public List<Categoria> traerListaDeCategoriasPorId(Long id) {
+        final Session session = sessionFactory.getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Categoria> query = builder.createQuery(Categoria.class);
+        Root<Categoria> root = query.from(Categoria.class);
+        query.select(root).where(builder.equal(root.get("id"), id));
+        return session.createQuery(query).getResultList();
+    }*/
+
 
     @Override
     public List<Categoria> listarCategoriaPorTransaccion() {
@@ -69,8 +82,8 @@ public class RepositorioCategoriaImp implements RepositorioCategoria {
         // Obtener todas las categorías existentes
         List<Categoria> todasCategorias = session.createCriteria(Categoria.class).list();
 
-        for (Categoria categoria : todasCategorias) {
-            boolean asignada = false;
+       /* for (Categoria categoria : todasCategorias) {
+            boolean asignada = true;
 
             // Verificar si la categoría está asignada en algún presupuesto
             for (Transaccion transaccion : transacciones) {
@@ -84,9 +97,9 @@ public class RepositorioCategoriaImp implements RepositorioCategoria {
             if (!asignada) {
                 categoriasSinAsignar.add(categoria);
             }
-        }
+        }*/
 
-        return categoriasSinAsignar;
+        return todasCategorias;
     }
 
 

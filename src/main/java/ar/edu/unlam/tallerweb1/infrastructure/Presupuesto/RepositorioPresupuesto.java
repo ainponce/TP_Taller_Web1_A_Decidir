@@ -21,5 +21,5 @@ public interface RepositorioPresupuesto {
 
     List<Presupuesto> listarPresupuesto();
 
-    //List<Presupuesto> buscarPorCategoria(Categoria categoria);
+
 }

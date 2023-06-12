@@ -3,7 +3,6 @@ package ar.edu.unlam.tallerweb1.domain.Transaccion;
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Concepto.Concepto;
 import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
-import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
 import ar.edu.unlam.tallerweb1.infrastructure.Categoria.RepositorioCategoria;
 import ar.edu.unlam.tallerweb1.infrastructure.Transaccion.RepositorioTransaccion;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,6 +75,21 @@ public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
     }
     @Override
     public List<Transaccion> filtrarTransaccionesPorCategoria(Categoria categoria){
-        return null; //servicioTransaccionDao.buscarTransaccionPorCategoria(categoria);
+        return servicioTransaccionDao.buscarTransaccionPorCategoria(categoria);
+    }
+
+    @Override
+    public Boolean registroTransaccionExitoso(List<Transaccion> transacciones, Double presupuestoDeCategoria) {
+        Double montoTotalDeUnaCategoria=0.0;
+        Double diferencia=0.0;
+        Double montoEstimadoANoSobrepasar=1000.0;
+        for (Transaccion tran: transacciones) {
+            montoTotalDeUnaCategoria += tran.getMonto();
+        }
+        diferencia= presupuestoDeCategoria-montoTotalDeUnaCategoria;
+        if(diferencia<montoEstimadoANoSobrepasar){
+            return false;
+        };
+        return true;
     }
 }

@@ -32,12 +32,10 @@ public class ServicioDeTransiccionesTest extends SpringTest {
         assertThat(categorias.size()).isEqualTo(2);
     }
 
-   /* @Test
+    @Test
     public void sumarElMontoPorCategoria() {
-        List<Transaccion> trans = listoTransaccionesPorCategoria();
-        Double montoTotal = service.sumarMontoDeTransaccionesPorCategoria(trans);
-        validarMonto(montoTotal);
-    }*/
+
+    }
 
     private void validarMonto(Double montoTotal) {
         assertThat(montoTotal).isEqualTo(15000.0);
