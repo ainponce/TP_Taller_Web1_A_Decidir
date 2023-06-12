@@ -23,6 +23,7 @@ public class ServicioDeCategoriaImpl implements ServicioDeCategoria {
 
     @Override
     public List<Categoria> listarCategorias() {
+
         return repositorioCategoria.listarCategoria();
     }
 
