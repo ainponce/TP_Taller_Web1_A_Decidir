@@ -19,11 +19,11 @@ public class Categoria {
         this.estaActiva = estaActiva;
     }
 
-    public Long getId() {
+    public Long GetId() {
         return id;
     }
 
-    public String getNombre() {
+    public String GetNombre() {
         return nombre;
     }
 
@@ -38,4 +38,6 @@ public class Categoria {
     public void setEstaActiva(Boolean estaActiva) {
         this.estaActiva = estaActiva;
     }
+
+
 }

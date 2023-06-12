@@ -74,16 +74,4 @@ public class Presupuesto {
     public Categoria getCategoria() {
        return categoria;
     }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
-
-    public boolean isEstaActivo() {
-        return estaActivo;
-    }
-
-    public void setEstaActivo(boolean estaActivo) {
-        this.estaActivo = estaActivo;
-    }
 }

@@ -4,6 +4,7 @@ import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,5 +25,12 @@ public class RepositorioCategoriaImp implements RepositorioCategoria{
     public List<Categoria> listarCategoria() {
         final Session session = sessionFactory.getCurrentSession();
         return (List<Categoria>) session.createCriteria(Categoria.class).list();
+    }
+
+    @Override
+    public Categoria traerCategoriaPorId(long id){
+        final Session session = sessionFactory.getCurrentSession();
+        return session.get(Categoria.class, id);
+
     }
 }

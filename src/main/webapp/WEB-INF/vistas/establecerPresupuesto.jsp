@@ -94,11 +94,11 @@
 
             <form:form action="agregarPresupuesto" method="post" modelAttribute="establecerPresupuesto">
                 <label>Monto</label>
-                <form:input type="text" id="monto" path="montoPresupuesto" name="monto" class="form-control" placeholder="Ingrese monto..."/>
+                <form:input type="text" id="monto" path="montoPresupuesto" name="montoPresupuesto" class="form-control" placeholder="Ingrese monto..."/>
                 <label>Fecha de inicio</label>
-                <form:input type="text" id="monto" path="fechaDesde" name="monto" class="form-control" placeholder="Ingrese fecha de inicio"/>
+                <form:input type="text" id="monto" path="fechaDesde" name="fechaDesde" class="form-control" placeholder="Ingrese fecha de inicio"/>
                 <label>Fecha de fin</label>
-                <form:input type="text" id="monto" path="fechaHasta" name="monto" class="form-control" placeholder="Ingrese fecha de fin"/>
+                <form:input type="text" id="monto" path="fechaHasta" name="fechaHasta" class="form-control" placeholder="Ingrese fecha de fin"/>
                 <label>Tipo de moneda</label>
                 <form:select path="moneda" id="moneda" name="moneda" class="form-select " placeholder="Ingrese tipo de moneda">
                     <form:options items="${Moneda.values()}" />
@@ -106,7 +106,7 @@
                 <label>Categoria del presupuesto</label>
                 <form:select path="categoria" id="categoria" name="categoria" class="form-control">
                     <c:forEach var="categoria" items="${categorias}">
-                        <form:option value="${categoria.id}">${categoria.nombre}</form:option>
+                        <form:option value="${categoria.GetId()}">${categoria.GetNombre()}</form:option>
                     </c:forEach>
                 </form:select>
                 <button  id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Subir</button>
@@ -128,7 +128,7 @@
                 <c:forEach var="presupuesto" items="${presupuestos}">
                     <tr>
                         <td>${presupuesto.montoPresupuesto}</td>
-                        <td>${presupuesto.categoriaDelPresupuesto}</td>
+                        <td>${presupuesto.categoria.GetNombre()}</td>
                         <td>${presupuesto.fechaDesde}</td>
                         <td>${presupuesto.fechaHasta}</td>
                     </tr>

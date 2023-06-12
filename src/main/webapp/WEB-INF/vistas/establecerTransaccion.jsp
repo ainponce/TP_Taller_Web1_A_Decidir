@@ -124,7 +124,7 @@
         </form:select>
          <form:select path="categoria" id="categoria" name="categoria" class="form-control">
              <c:forEach var="categoria" items="${categorias}">
-                 <form:option value="${categoria.id}">${categoria.nombre}</form:option>
+                 <form:option value="${categoria.GetId()}">${categoria.GetNombre()}</form:option>
              </c:forEach>
          </form:select>
         <a href="home.jsp">

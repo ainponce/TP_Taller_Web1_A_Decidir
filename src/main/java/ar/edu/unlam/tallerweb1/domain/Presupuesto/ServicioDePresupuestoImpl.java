@@ -25,7 +25,7 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
 
 
     @Override
-    public Boolean establecerPresupuesto(Double monto, String fechaDesde, String fechaHasta, Moneda moneda, Categoria categoria) {
+    public Boolean establecerPresupuesto(Double monto, String fechaDesde, String fechaHasta, Moneda moneda,  Categoria categoria) {
         Boolean seRegistro = false;
         List <Presupuesto> validacionDeCategoria= repositorioPresupuesto.listarPresupuesto();
         if (monto > 0){
@@ -45,6 +45,8 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
     public List<Categoria> listarCategorias() {
         return repositorioCategoria.listarCategoria();
     }
+
+
 
 
 
