@@ -32,8 +32,10 @@ public class RepositorioCategoriaImp implements RepositorioCategoria {
         this.repositorioTransaccion=repositorioTransaccion;
     }
 
+
     @Override
-    public List<Categoria> listarCategoriaPorPresupuesto(){
+    public List<Categoria> listarCategoriaParaPresupuestos(){
+
             final Session session = sessionFactory.getCurrentSession();
             List<Categoria> categoriasSinAsignar = new ArrayList<>();
             List<Presupuesto> presupuestos = repositorioPresupuesto.listarPresupuesto();
@@ -57,6 +59,7 @@ public class RepositorioCategoriaImp implements RepositorioCategoria {
             }
             return categoriasSinAsignar;
         }
+
 
     @Override
     public List<Categoria> listarCategoriaPorTransaccion() {
@@ -87,7 +90,8 @@ public class RepositorioCategoriaImp implements RepositorioCategoria {
     }
 
 
-    @Override
+
+        @Override
     public Categoria traerCategoriaPorId(long id){
         final Session session = sessionFactory.getCurrentSession();
         return session.get(Categoria.class, id);

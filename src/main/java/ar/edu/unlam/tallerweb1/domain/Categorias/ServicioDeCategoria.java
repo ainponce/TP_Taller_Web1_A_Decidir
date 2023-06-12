@@ -12,5 +12,5 @@ public interface ServicioDeCategoria {
 
     public Categoria buscarCategoriaPorId(long id);
 
-
+    public List<Categoria> listarCategoriaParaPresupuestos();
 }
