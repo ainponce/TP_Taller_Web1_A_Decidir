@@ -1,3 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Class-Path: 
+=======
+Created-By: IntelliJ IDEA
+Built-By: nitof
+Build-Jdk: 11.0.18
+>>>>>>> 894430b1a02b02941dd208cf67e1b946903466de
 

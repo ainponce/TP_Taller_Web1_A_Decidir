@@ -1,13 +1,10 @@
 package ar.edu.unlam.tallerweb1.domain;
 
 
-import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.ServicioDePresupuesto;
-import ar.edu.unlam.tallerweb1.domain.Presupuesto.ServicioDePresupuestoImpl;
 import ar.edu.unlam.tallerweb1.infrastructure.Presupuesto.RepositorioPresupuesto;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,13 +15,13 @@ public class ServicioDePresupuestoTest {
     private ServicioDePresupuesto servicePresupuesto;
     private RepositorioPresupuesto repoPresupuesto;
 
-    @Test
+   /* @Test
     @Transactional
     @Rollback
     public void queTireUnaAlarmaDePresupuestoPorAlcanzar(){
         List<Presupuesto> pres = repoPresupuesto.buscarPorCategoria(Categoria.Salidas);
         compararPresupuestosDeCategoriaYTransaccion(pres);
-    }
+    }*/
 
     private void compararPresupuestosDeCategoriaYTransaccion(List<Presupuesto> pres) {
     }

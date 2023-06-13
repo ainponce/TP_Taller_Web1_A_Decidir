@@ -1,8 +1,6 @@
 package ar.edu.unlam.tallerweb1.infrastructure.Transaccion;
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
-import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
-import ar.edu.unlam.tallerweb1.infrastructure.Transaccion.RepositorioTransaccion;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -45,10 +43,8 @@ public class RepositorioTransaccionImpl implements RepositorioTransaccion {
 
     @Override
     public List<Transaccion> listarTransaccion(){
-
         final Session session = sessionFactory.getCurrentSession();
         return (List<Transaccion>) session.createCriteria(Transaccion.class).list();
-
     }
 
     @Override
@@ -58,5 +54,6 @@ public class RepositorioTransaccionImpl implements RepositorioTransaccion {
                 .add(Restrictions.eq("categoria", categoria))
                 .list();
     }
+
 
 }

@@ -15,4 +15,5 @@ public interface RepositorioTransaccion {
 
     List<Transaccion> buscarTransaccionPorCategoria(Categoria categoria);
 
+
 }

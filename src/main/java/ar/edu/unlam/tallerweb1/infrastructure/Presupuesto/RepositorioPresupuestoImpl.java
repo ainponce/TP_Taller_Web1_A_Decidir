@@ -4,7 +4,6 @@ import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
-import ar.edu.unlam.tallerweb1.infrastructure.Presupuesto.RepositorioPresupuesto;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -65,6 +64,10 @@ public class RepositorioPresupuestoImpl implements RepositorioPresupuesto {
     public Presupuesto buscarPresupuestoPorId(Long id) {
         return this.sessionFactory.getCurrentSession().get(Presupuesto.class, id);
     }
+    @Override
+    public Presupuesto buscarPresupuestoPorCategoria(Categoria categoria) {
+        return this.sessionFactory.getCurrentSession().get(Presupuesto.class, categoria.GetId());
+    }
 
     @Override
     public List<Presupuesto> listarPresupuesto() {
@@ -72,8 +75,4 @@ public class RepositorioPresupuestoImpl implements RepositorioPresupuesto {
         return (List<Presupuesto>) session.createCriteria(Presupuesto.class).list();
     }
 
-    @Override
-    public List<Presupuesto> buscarPorCategoria(Categoria categoria) {
-        return null;
-    }
 }

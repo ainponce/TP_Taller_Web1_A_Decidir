@@ -11,4 +11,8 @@ public interface ServicioDePresupuesto {
     public Boolean establecerPresupuesto(Double monto, String fechaDesde, String fechaHasta, Moneda moneda, Categoria categoria);
 
     List<Presupuesto> listarPresupuestos();
+    public List<Categoria> listarCategorias();
+
+
+    Double buscarMontoPresupuestoPorCategoria(Categoria cat);
 }

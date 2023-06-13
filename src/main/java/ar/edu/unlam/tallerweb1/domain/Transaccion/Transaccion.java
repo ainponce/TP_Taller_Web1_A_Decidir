@@ -18,6 +18,7 @@ public class Transaccion {
     private String fecha;
     private Moneda moneda;
 
+    @ManyToOne
     private Categoria categoria;
 
 
