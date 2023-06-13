@@ -43,10 +43,8 @@ public class RepositorioTransaccionImpl implements RepositorioTransaccion {
 
     @Override
     public List<Transaccion> listarTransaccion(){
-
         final Session session = sessionFactory.getCurrentSession();
         return (List<Transaccion>) session.createCriteria(Transaccion.class).list();
-
     }
 
     @Override

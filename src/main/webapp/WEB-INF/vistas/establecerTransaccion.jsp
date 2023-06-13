@@ -127,10 +127,13 @@
                 <form:option value="${categoria.GetId()}">${categoria.GetNombre()}</form:option>
             </c:forEach>
         </form:select>
-        <a href="home.jsp">
             <button id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Subir</button>
-        </a>
         </form:form>
+        <c:if test="${not empty error}">
+            <h4 class="mensajeErrorRegistro"><span>${error}</span></h4>
+            <br>
+        </c:if>
+        ${msg}
         <%--Elementos de entrada de datos, el elemento path debe indicar en que atributo del objeto usuario se guardan los datos ingresados--%>
     </div>
 </div>

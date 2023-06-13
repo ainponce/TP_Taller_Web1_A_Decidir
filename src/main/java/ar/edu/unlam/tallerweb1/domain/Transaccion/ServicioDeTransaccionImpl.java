@@ -79,17 +79,19 @@ public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
     }
 
     @Override
-    public Boolean registroTransaccionExitoso(List<Transaccion> transacciones, Double presupuestoDeCategoria) {
-        Double montoTotalDeUnaCategoria=0.0;
+    public Boolean registroTransaccionExitoso(List<Transaccion> transaccion, Double presupuestoDeCategoria, Double monto) {
         Double diferencia=0.0;
-        Double montoEstimadoANoSobrepasar=1000.0;
-        for (Transaccion tran: transacciones) {
-            montoTotalDeUnaCategoria += tran.getMonto();
+        Double montoTransacciones=0.0;
+        Double montoTransaccionesTotal=0.0;
+        final Double montoEstimadoANoSobrepasar=1000.0;
+        for (Transaccion tran: transaccion) {
+            montoTransacciones += tran.getMonto();
+            montoTransaccionesTotal= montoTransacciones+monto;
         }
-        diferencia= presupuestoDeCategoria-montoTotalDeUnaCategoria;
+        diferencia= presupuestoDeCategoria-montoTransaccionesTotal;
         if(diferencia<montoEstimadoANoSobrepasar){
             return false;
-        };
+        }
         return true;
     }
 }

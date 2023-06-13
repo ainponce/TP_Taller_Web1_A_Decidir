@@ -45,17 +45,22 @@ public class ControladorDeTransaccion {
     public ModelAndView registrarUnaTransaccion(@RequestParam("monto") double monto, @RequestParam("detalle") String detalle,
                                                 @RequestParam("fecha") String fecha, @RequestParam("moneda") Moneda moneda , @RequestParam("concepto") Concepto concepto, @RequestParam("categoria") long categoria) {
         Categoria cat =servicioDeCategoria.buscarCategoriaPorId(categoria);
-        servicioDeTransaccion.registrarTransaccion(monto, detalle, fecha, moneda, concepto, cat);
         ModelMap map= new ModelMap();
-        List <Transaccion> transacciones = servicioDeTransaccion.filtrarTransaccionesPorCategoria(cat);
+        List<Transaccion> transacciones = servicioDeTransaccion.filtrarTransaccionesPorCategoria(cat);
         Double presupuestoDeCategoria = servicioDePresupuesto.buscarMontoPresupuestoPorCategoria(cat);
-        Boolean registroTransaccionPosible = servicioDeTransaccion.registroTransaccionExitoso(transacciones, presupuestoDeCategoria);
+        Boolean registroTransaccionPosible = servicioDeTransaccion.registroTransaccionExitoso(transacciones, presupuestoDeCategoria, monto);
         if(registroTransaccionPosible){
-            map.put("msg", "Transaccion exitosa");
+            servicioDeTransaccion.registrarTransaccion(monto, detalle, fecha, moneda, concepto, cat);
+             map.put("msg", "Transaccion exitosa");
+             return new ModelAndView("redirect:/home");
         }else{
-            map.put("error", "El monto del presupuesto esta por llegar a su limite");
+            map.put("error", "El monto del presupuesto excedio el limite");
+            map.put("datosTransaccion", new Transaccion());
+            List<Categoria> categorias = servicioDeTransaccion.listarCategorias();
+            map.put("categorias", categorias);
+            return new ModelAndView("establecerTransaccion", map);
         }
-        return new ModelAndView("redirect:/home");
+
     }
 
     @RequestMapping(path="/home", method = RequestMethod.GET)

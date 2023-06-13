@@ -108,6 +108,7 @@
     <div class="col-lg-5">
         <div>
             <h3>Transacciones</h3>
+
             <%--Form para filtrar por Categoria las Transacciones--%>
             <form action="filtrar" method="get">
                 <select path="categoriaTransaccion" name="categoriaTransaccion" id="categoriaTransaccion"
@@ -146,27 +147,26 @@
                 <tr>
                     <th>Monto total</th>
                 <tbody>
-                <c:set var="montoTotal" value="0"/>
-                <c:forEach var="transaccion" items="${transacciones}">
-                    <c:set var="montoTotal" value="${montoTotal + transaccion.monto}"/>
-                </c:forEach>
                 <tr>
+                    <c:set var="montoTotal" value="0"/>
+                    <c:forEach var="transaccion" items="${transacciones}">
+                        <c:set var="montoTotal" value="${montoTotal + transaccion.monto}"/>
+                    </c:forEach>
                     <td>${montoTotal}</td>
                 </tr>
+                <c:if test="${not empty error}">
+                    <h4 class="mensajeErrorRegistro"><span>${error}</span></h4>
+                    <br>
+                </c:if>
+                ${msg}
                 </tbody>
                 </tr>
                 </thead>
             </table>
-            <c:if test="${not empty error}">
-                <h4 class="mensajeErrorRegistro"><span>${error}</span></h4>
-                <br>
-            </c:if>
-            ${msg}
         </div>
     </div>
-
     <c:if test="${not empty error}">
-        <h4 class="mensajeErrorPresupuesto"><span>${error}</span></h4>
+        <h4 class="mensajeErrorRegistro"><span>${error}</span></h4>
         <br>
     </c:if>
     ${msg}
