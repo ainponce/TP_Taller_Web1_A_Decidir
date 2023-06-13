@@ -94,4 +94,9 @@ public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
         }
         return true;
     }
+
+    @Override
+    public List<Transaccion> filtrarTransaccionesPorConcepto(Concepto concepto) {
+        return servicioTransaccionDao.buscarTransaccionPorConcepto(concepto);
+    }
 }

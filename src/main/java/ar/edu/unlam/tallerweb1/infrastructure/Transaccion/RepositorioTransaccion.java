@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.infrastructure.Transaccion;
 
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
+import ar.edu.unlam.tallerweb1.domain.Concepto.Concepto;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
 
 import java.util.List;
@@ -16,4 +17,5 @@ public interface RepositorioTransaccion {
     List<Transaccion> buscarTransaccionPorCategoria(Categoria categoria);
 
 
+    List<Transaccion> buscarTransaccionPorConcepto(Concepto concepto);
 }

@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.infrastructure.Transaccion;
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
+import ar.edu.unlam.tallerweb1.domain.Concepto.Concepto;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -52,6 +53,14 @@ public class RepositorioTransaccionImpl implements RepositorioTransaccion {
         final Session session = sessionFactory.getCurrentSession();
         return (List<Transaccion>) session.createCriteria(Transaccion.class)
                 .add(Restrictions.eq("categoria", categoria))
+                .list();
+    }
+
+    @Override
+    public List<Transaccion> buscarTransaccionPorConcepto(Concepto concepto) {
+        final Session session = sessionFactory.getCurrentSession();
+        return (List<Transaccion>) session.createCriteria(Transaccion.class)
+                .add(Restrictions.eq("concepto", concepto))
                 .list();
     }
 

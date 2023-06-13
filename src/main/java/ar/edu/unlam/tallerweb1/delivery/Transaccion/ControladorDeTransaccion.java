@@ -54,7 +54,7 @@ public class ControladorDeTransaccion {
              map.put("msg", "Transaccion exitosa");
              return new ModelAndView("redirect:/home");
         }else{
-            map.put("error", "El monto del presupuesto excedio el limite");
+            map.put("error", "¡Error al ingresar la nueva transaccion!. El monto del presupuesto excedio el limite");
             map.put("datosTransaccion", new Transaccion());
             List<Categoria> categorias = servicioDeTransaccion.listarCategorias();
             map.put("categorias", categorias);
@@ -100,4 +100,17 @@ public class ControladorDeTransaccion {
        map.put("transacciones", transacciones);
        return new ModelAndView("home", map);
    }
+
+   /* @RequestMapping(path = "filtrarConcepto", method = RequestMethod.GET)
+    public ModelAndView filtrarTransaccionPorConcepto(@RequestParam(value = "concepto", required=false) Concepto concepto){
+        ModelMap map= new ModelMap();
+        List<Transaccion> transacciones = null;
+        if(concepto.equals(Concepto.Gasto) || concepto.equals(Concepto.Inversión)) {
+            transacciones = servicioDeTransaccion.filtrarTransaccionesPorConcepto(concepto);
+        }else {
+            transacciones = servicioDeTransaccion.listarTransacciones();
+        }
+        map.put("transacciones", transacciones);
+        return new ModelAndView("home", map);
+    }*/
 }
