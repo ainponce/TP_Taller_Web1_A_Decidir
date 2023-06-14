@@ -38,11 +38,11 @@ public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
     }
 
     @Override
-    public Boolean registrarTransaccion(Double monto, String detalle, String fecha, Moneda moneda, Concepto concepto, Categoria categoria) {
+    public Boolean registrarTransaccion(Double monto, String detalle, String fecha, Concepto concepto, Categoria categoria) {
         Boolean seRegistro = false;
         List <Transaccion> validacionDeCategoria= servicioTransaccionDao.listarTransaccion();
         if (monto > 0) {
-            Transaccion transaccion = new Transaccion(monto, detalle, fecha, moneda, concepto, categoria);
+            Transaccion transaccion = new Transaccion(monto, detalle, fecha, concepto, categoria);
             servicioTransaccionDao.guardarTransaccion(transaccion);
             seRegistro = true;
         }
@@ -73,6 +73,12 @@ public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
         }
         return montoTotal;
     }
+
+    @Override
+    public Double convertirMontoTransaccion(Double monto) {
+        return null;
+    }
+
     @Override
     public List<Transaccion> filtrarTransaccionesPorCategoria(Categoria categoria){
         return servicioTransaccionDao.buscarTransaccionPorCategoria(categoria);

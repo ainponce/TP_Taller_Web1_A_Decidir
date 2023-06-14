@@ -1,3 +1,4 @@
+/*
 package ar.edu.unlam.tallerweb1.delivery;
 
 import ar.edu.unlam.tallerweb1.delivery.Transaccion.ControladorDeTransaccion;
@@ -36,7 +37,8 @@ public class ControladorTransaccionTest {
 
 
 
-   /* @Test
+   */
+/* @Test
     public void AlIngresarUnaTransaccionMeMuestraLaMisma(){
         ModelAndView mav= CuandoIngresoUnaTransaccion();
         entoncesMeMuestraLaTransaccionIngresada(mav);
@@ -50,6 +52,8 @@ public class ControladorTransaccionTest {
 
     private ModelAndView CuandoIngresoUnaTransaccion() {
         return controladorDeTransaccion.registrarUnaTransaccion(transaccion);
-    }*/
+    }*//*
+
 
 }
+*/

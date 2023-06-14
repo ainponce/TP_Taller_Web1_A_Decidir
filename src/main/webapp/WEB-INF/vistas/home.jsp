@@ -1,15 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="ar.edu.unlam.tallerweb1.domain.Moneda.Moneda" %>
 <%@ page import="ar.edu.unlam.tallerweb1.domain.Categorias.Categoria" %>
-
-<script>
-    // Obtener la referencia al elemento select
-    //var dropdown = document.getElementById("categoriaDropdown");
-
-    // Obtener las opciones del dropdown original
-
-
-</script>
 
 <!DOCTYPE html>
 <html>
@@ -111,6 +103,7 @@
 
             <%--Form para filtrar por Categoria las Transacciones--%>
             <form action="filtrar" method="get">
+                <label>Eliga la categoria</label>
                 <select path="categoriaTransaccion" name="categoriaTransaccion" id="categoriaTransaccion"
                         class="form-control">
                     <%--<option value="" disabled selected>Filtrar por categoria</option>--%>
@@ -119,6 +112,13 @@
                     </c:forEach>
                 </select>
                 <input type="submit" value="Filtrar" class="btn btnFiltro btn-lg btn-blockFiltro">
+                <label path="">Eliga el tipo de moneda</label>
+                <select path="moneda" id="moneda" name="moneda" class="form-control">
+                    <c:forEach items="${moneda}" var="option">
+                        <option value="${option.getId()}">${option.getNombre()}</option>
+                    </c:forEach>
+                </select>
+                <button id="btnLogin" type="submit" value="convertir" class="btn btnLogin btn-lg btn-block">Convertir</button>
             </form>
             <table class="table">
                 <thead>
@@ -128,7 +128,6 @@
                     <th>Detalle</th>
                     <th>Concepto</th>
                     <th>Categoria</th>
-                    <th>Moneda</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -139,7 +138,6 @@
                         <td>${transaccion.detalle}</td>
                         <td>${transaccion.concepto}</td>
                         <td>${transaccion.categoria.GetNombre()}</td>
-                        <td>${transaccion.moneda}</td>
                     </tr>
                 </c:forEach>
                 </tbody>

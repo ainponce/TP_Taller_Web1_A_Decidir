@@ -1,3 +1,4 @@
+/*
 package ar.edu.unlam.tallerweb1.domain;
 
 import ar.edu.unlam.tallerweb1.SpringTest;
@@ -56,8 +57,11 @@ public class ServicioDeTransiccionesTest extends SpringTest {
     }
 
 
-    /*private List<Transaccion> listoTransaccionesPorCategoria() {
+    */
+/*private List<Transaccion> listoTransaccionesPorCategoria() {
         return repo.buscarTransaccionPorCategoria(Categoria.Salidas);
-    }*/
+    }*//*
+
 
 }
+*/

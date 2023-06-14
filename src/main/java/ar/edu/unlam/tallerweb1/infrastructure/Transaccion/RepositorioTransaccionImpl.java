@@ -55,5 +55,11 @@ public class RepositorioTransaccionImpl implements RepositorioTransaccion {
                 .list();
     }
 
+    @Override
+    public Double convertirMontoTransaccion(Double monto) {
+        final Session session = sessionFactory.getCurrentSession();
+        return null;
+    }
+
 
 }
