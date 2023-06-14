@@ -1,7 +1,7 @@
 package ar.edu.unlam.tallerweb1.domain.Deuda;
 
-import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
+import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
 import ar.edu.unlam.tallerweb1.domain.Persona.Persona;
 
 public class Deuda {

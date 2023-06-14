@@ -1,0 +1,134 @@
+#bodyLogin{
+    background-image: url('../img/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#bodyRegistro{
+    background-image: url('../img/backgroundRegistro.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.mensajeErrorRegistro{
+    font-size: 1em;
+
+}
+
+.container{
+    z-index: 1;
+}
+
+#logoLogin{
+    width: 20em;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5em;
+}
+#btnLogin{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1em;
+    background-color: #2f73b2;
+    color: #fff;
+    border-radius: 1.5em;
+    height: 2.5em;
+    font-size: 1em;
+}
+
+#btnLogin:hover{
+    background-color: #3764a2;
+}
+
+.form-control{
+    margin-top: 0.5em;
+    border-radius: 1.5em;
+    height: 2.5em;
+}
+
+.form-select{
+    margin-top: 0.5em;
+    border-radius: 1.5em;
+    height: 2.5em;
+}
+
+.registrarme{
+    color: grey;
+    text-decoration: underline;
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+}
+
+.registrarme:hover{
+    color: #444444;
+}
+/*HOME*/
+.nav-link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: unset;
+    margin: 0.5em 1.5em;
+}
+
+.nav-link:hover{
+    text-decoration: none;
+}
+
+.nav-perfil{
+    z-index: 1;
+    background-color: #2f73b2;
+    color: #ffffff;
+    box-shadow: 0 1px 12px 0 rgba(0,0,0,0.75);;
+    height: 4em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.col-menu-home{
+    background-color: #ffffff;
+}
+
+.row{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.icon-home{
+    margin-right: 0.5em;
+}
+
+.col-lg-10{
+    background-color: #dedede;
+    height: 500px;
+}
+
+.formulario-home{
+    margin-top: 1em;
+}
+
+.list-group{
+    margin-top: 0.5em;
+    height: 2.5em;
+    width: 90%;
+}
+
+.btnFiltro{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1em;
+    background-color: #2f73b2;
+    color: #fff;
+    border-radius: 1.5em;
+    height: 2.5em;
+    font-size: 1em;
+    line-height: 0;
+}
+
+.btn-blockFiltro{
+    display: block;
+}

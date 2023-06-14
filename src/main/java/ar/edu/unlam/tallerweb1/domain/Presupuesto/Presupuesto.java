@@ -1,7 +1,7 @@
 package ar.edu.unlam.tallerweb1.domain.Presupuesto;
 
-import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
+import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
 
 import javax.persistence.*;
 
@@ -15,13 +15,21 @@ public class Presupuesto {
     private String fechaDesde;
     private String fechaHasta;
     private double montoPresupuesto;
-    private Moneda moneda;
+
     private boolean estaActivo;
-    @ManyToOne
-    @JoinColumn(name = "categoriaId")
-    private Categoria categoriaDelPresupuesto;
+
+    @OneToOne
+    private Categoria categoria;
 
     public Presupuesto(){}
+
+    public Presupuesto(Double monto, String fechaDesde, String fechaHasta, Categoria categoria) {
+        this.montoPresupuesto = monto;
+        this.fechaDesde = fechaDesde;
+        this.fechaHasta = fechaHasta;
+        this.categoria = categoria;
+        this.estaActivo = true;
+    }
 
     public Long getId() {
         return id;
@@ -54,27 +62,8 @@ public class Presupuesto {
         this.montoPresupuesto = montoPresupuesto;
     }
 
-    public Moneda getMoneda() {
-        return moneda;
-    }
 
-    public void setMoneda(Moneda moneda) {
-        this.moneda = moneda;
-    }
-
-    public Categoria getCategoriaDelPresupuesto() {
-       return categoriaDelPresupuesto;
-    }
-
-    public void setCategoriaDelPresupuesto(Categoria categoriaDelPresupuesto) {
-        this.categoriaDelPresupuesto = categoriaDelPresupuesto;
-    }
-
-    public boolean isEstaActivo() {
-        return estaActivo;
-    }
-
-    public void setEstaActivo(boolean estaActivo) {
-        this.estaActivo = estaActivo;
+    public Categoria getCategoria() {
+       return categoria;
     }
 }
