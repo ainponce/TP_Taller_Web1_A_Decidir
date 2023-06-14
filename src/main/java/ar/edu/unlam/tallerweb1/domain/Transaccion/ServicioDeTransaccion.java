@@ -26,4 +26,6 @@ public interface ServicioDeTransaccion {
     public List<Transaccion> filtrarTransaccionesPorCategoria(Categoria categoria);
 
     Boolean registroTransaccionExitoso(List<Transaccion> transacciones, Double presupuestoDeCategoria, Double monto);
+
+    List<Transaccion> filtrarTransaccionesPorConcepto(Concepto concepto);
 }

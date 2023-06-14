@@ -44,6 +44,7 @@
             </svg>
         </a>
     </div>
+
 </div>
 <div class="row">
     <div class="col-md-2 d-none d-md-block bg-light sidebar">
@@ -111,67 +112,67 @@
 
             <%--Form para filtrar por Categoria las Transacciones--%>
             <form action="filtrar" method="get">
-                <select path="categoriaTransaccion" name="categoriaTransaccion" id="categoriaTransaccion"
-                        class="form-control">
-                    <%--<option value="" disabled selected>Filtrar por categoria</option>--%>
+                <select path="categoriaTransaccion" name="categoriaTransaccion" id="categoriaTransaccion" class="form-control">
+                    <option disabled selected>Selecciona una opcion</option>
                     <c:forEach items="${categorias}" var="option">
                         <option value="${option.GetId()}">${option.GetNombre()}</option>
                     </c:forEach>
                 </select>
                 <input type="submit" value="Filtrar" class="btn btnFiltro btn-lg btn-blockFiltro">
             </form>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>Fecha</th>
-                    <th>Monto</th>
-                    <th>Detalle</th>
-                    <th>Concepto</th>
-                    <th>Categoria</th>
-                    <th>Moneda</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach var="transaccion" items="${transacciones}">
-                    <tr>
-                        <td>${transaccion.fecha}</td>
-                        <td>${transaccion.monto}</td>
-                        <td>${transaccion.detalle}</td>
-                        <td>${transaccion.concepto}</td>
-                        <td>${transaccion.categoria.GetNombre()}</td>
-                        <td>${transaccion.moneda}</td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-                <thead>
-                <tr>
-                    <th>Monto total</th>
-                <tbody>
-                <tr>
-                    <c:set var="montoTotal" value="0"/>
-                    <c:forEach var="transaccion" items="${transacciones}">
-                        <c:set var="montoTotal" value="${montoTotal + transaccion.monto}"/>
-                    </c:forEach>
-                    <td>${montoTotal}</td>
-                </tr>
-                </tbody>
-                </tr>
-                </thead>
-            </table>
-        </div>
-    </div>
-    <c:if test="${not empty error}">
-        <h4 class="mensajeErrorRegistro"><span>${error}</span></h4>
-        <br>
-    </c:if>
-    ${msg}
+<%--<form action="filtrarConcepto" method="get">
+    <form:select path="concepto" id="concepto" name="concepto" class="form-control">
+        <form:options items="${Concepto.values()}"/>
+    </form:select>
+    <input type="submit" value="Filtrar" class="btn btnFiltro btn-lg btn-blockFiltro">
+</form>--%>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Fecha</th>
+        <th>Monto</th>
+        <th>Detalle</th>
+        <th>Concepto</th>
+        <th>Categoria</th>
+        <th>Moneda</th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach var="transaccion" items="${transacciones}">
+        <tr>
+            <td>${transaccion.fecha}</td>
+            <td>${transaccion.monto}</td>
+            <td>${transaccion.detalle}</td>
+            <td>${transaccion.concepto}</td>
+            <td>${transaccion.categoria.GetNombre()}</td>
+            <td>${transaccion.moneda}</td>
+        </tr>
+    </c:forEach>
+    </tbody>
+    <thead>
+    <tr>
+        <th>Monto total</th>
+    <tbody>
+    <tr>
+        <c:set var="montoTotal" value="0"/>
+        <c:forEach var="transaccion" items="${transacciones}">
+            <c:set var="montoTotal" value="${montoTotal + transaccion.monto}"/>
+        </c:forEach>
+        <td>${montoTotal}</td>
+    </tr>
+    </tbody>
+    </tr>
+    </thead>
+</table>
+</div>
+</div>
 </div>
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-        crossorigin="anonymous"></script>
+integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+crossorigin="anonymous"></script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
 </body>
 </html>

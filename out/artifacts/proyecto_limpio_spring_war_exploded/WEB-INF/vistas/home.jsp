@@ -44,6 +44,7 @@
             </svg>
         </a>
     </div>
+
 </div>
 <div class="row">
     <div class="col-md-2 d-none d-md-block bg-light sidebar">
@@ -111,13 +112,18 @@
 
             <%--Form para filtrar por Categoria las Transacciones--%>
             <form action="filtrar" method="get">
-                <select path="categoriaTransaccion" name="categoriaTransaccion" id="categoriaTransaccion"
-                        class="form-control">
-                    <%--<option value="" disabled selected>Filtrar por categoria</option>--%>
+                <select path="categoriaTransaccion" name="categoriaTransaccion" id="categoriaTransaccion" class="form-control">
+                    <option disabled selected>Selecciona una opcion</option>
                     <c:forEach items="${categorias}" var="option">
                         <option value="${option.GetId()}">${option.GetNombre()}</option>
                     </c:forEach>
                 </select>
+                <input type="submit" value="Filtrar" class="btn btnFiltro btn-lg btn-blockFiltro">
+            </form>
+            <form action="filtrarConcepto" method="get">
+                <form:select path="concepto" id="concepto" name="concepto" class="form-control">
+                    <form:options items="${Concepto.values()}"/>
+                </form:select>
                 <input type="submit" value="Filtrar" class="btn btnFiltro btn-lg btn-blockFiltro">
             </form>
             <table class="table">
@@ -160,11 +166,6 @@
             </table>
         </div>
     </div>
-    <c:if test="${not empty error}">
-        <h4 class="mensajeErrorRegistro"><span>${error}</span></h4>
-        <br>
-    </c:if>
-    ${msg}
 </div>
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
