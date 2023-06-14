@@ -134,6 +134,11 @@
             <br>
         </c:if>
         ${msg}
+        <c:if test="${not empty errorPresu}">
+            <h4 class="mensajeErrorRegistro"><span>${errorPresu}</span></h4>
+            <br>
+        </c:if>
+        ${msg}
         <%--Elementos de entrada de datos, el elemento path debe indicar en que atributo del objeto usuario se guardan los datos ingresados--%>
     </div>
 </div>

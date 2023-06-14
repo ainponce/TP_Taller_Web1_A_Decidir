@@ -48,6 +48,14 @@ public class ControladorDeTransaccion {
         ModelMap map= new ModelMap();
         List<Transaccion> transacciones = servicioDeTransaccion.filtrarTransaccionesPorCategoria(cat);
         Double presupuestoDeCategoria = servicioDePresupuesto.buscarMontoPresupuestoPorCategoria(cat);
+        Presupuesto presupuesto = servicioDePresupuesto.buscarPresupuestoPorCategoria(cat);
+        if(presupuesto==null){
+            map.put("errorPresu", "El presupuesto no existe");
+            map.put("datosTransaccion", new Transaccion());
+            List<Categoria> categorias = servicioDeTransaccion.listarCategorias();
+            map.put("categorias", categorias);
+            return new ModelAndView("establecerTransaccion", map);
+        }
         Boolean registroTransaccionPosible = servicioDeTransaccion.registroTransaccionExitoso(transacciones, presupuestoDeCategoria, monto);
         if(registroTransaccionPosible){
             servicioDeTransaccion.registrarTransaccion(monto, detalle, fecha, moneda, concepto, cat);
@@ -55,6 +63,7 @@ public class ControladorDeTransaccion {
              return new ModelAndView("redirect:/home");
         }else{
             map.put("error", "El monto del presupuesto excedio el limite");
+            //map.put("errorPresu", "El presupuesto no existe");
             map.put("datosTransaccion", new Transaccion());
             List<Categoria> categorias = servicioDeTransaccion.listarCategorias();
             map.put("categorias", categorias);

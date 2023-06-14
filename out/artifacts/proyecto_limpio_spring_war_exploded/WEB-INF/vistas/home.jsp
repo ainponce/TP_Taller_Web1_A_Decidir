@@ -154,11 +154,6 @@
                     </c:forEach>
                     <td>${montoTotal}</td>
                 </tr>
-                <c:if test="${not empty error}">
-                    <h4 class="mensajeErrorRegistro"><span>${error}</span></h4>
-                    <br>
-                </c:if>
-                ${msg}
                 </tbody>
                 </tr>
                 </thead>

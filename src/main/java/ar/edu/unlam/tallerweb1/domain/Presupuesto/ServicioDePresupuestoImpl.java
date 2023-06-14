@@ -50,9 +50,18 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
     public Double buscarMontoPresupuestoPorCategoria(Categoria cat) {
         Double montoPresupuesto=0.0;
         Presupuesto presupuesto = repositorioPresupuesto.buscarPresupuestoPorCategoria(cat);
-        montoPresupuesto=presupuesto.getMontoPresupuesto();
+        if(presupuesto!=null){
+            montoPresupuesto=presupuesto.getMontoPresupuesto();
+        }else{
+            montoPresupuesto=0.0;
+        }
         return montoPresupuesto;
     }
+    @Override
+    public Presupuesto buscarPresupuestoPorCategoria(Categoria cat){
+        return repositorioPresupuesto.buscarPresupuestoPorCategoria(cat);
+    }
+
 
 
 }
