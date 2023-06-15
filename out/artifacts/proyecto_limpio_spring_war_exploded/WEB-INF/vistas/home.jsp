@@ -13,6 +13,7 @@
 	<!-- Bootstrap theme -->
 	<link href="css/bootstrap-theme.min.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="UTF-8">
 	<title>Hurr</title>
@@ -101,7 +102,6 @@
 	<div class="col-lg-5">
 		<div>
 			<h3>Transacciones</h3>
-
 			<%--Form para filtrar por Categoria las Transacciones--%>
 			<form action="filtrar" method="get">
 				<label>Elija la categoria</label>
@@ -135,6 +135,7 @@
 				</tr>
 				</thead>
 				<tbody>
+				
 				<c:forEach var="transaccion" items="${transacciones}">
 					<tr>
 						<td>${transaccion.fecha}</td>
@@ -142,9 +143,21 @@
 						<td>${transaccion.detalle}</td>
 						<td>${transaccion.concepto}</td>
 						<td>${transaccion.categoria.GetNombre()}</td>
-
+						<td>
+							<form action="delete" method="post">
+								<input type="hidden" name="id" value="${transaccion.id}" />
+							<button class="btn-delete"type="submit"><i class=" fa fa-trash"></i></button>
+								<style>
+									.btn-delete{
+										border-style: none;
+										border-color: transparent;
+									}
+								</style>
+							</form>
+						</td>
 					</tr>
 				</c:forEach>
+				</>
 				</tbody>
 				<thead>
 				<tr>
