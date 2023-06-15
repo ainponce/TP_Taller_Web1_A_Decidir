@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface ServicioDeTransaccion {
 
-    public Boolean registrarTransaccion(Double monto, String detalle, String fecha, Moneda moneda, Concepto concepto, Categoria categoria);
+    public Boolean registrarTransaccion(Double monto, String detalle, String fecha, Concepto concepto, Categoria categoria);
 
     public List<Transaccion> buscarTransaccionPorDetalle(String detalle);
 
@@ -18,10 +18,10 @@ public interface ServicioDeTransaccion {
 
     public List<Transaccion> listarTransacciones();
     public List<Categoria> listarCategorias();
+    public List<Transaccion> convertirMontoEnMonedaSeleccionada(Moneda moneda);
+    public Double sumarMontoDeTransaccionesPorCategoria(List<Transaccion> trans);
 
-
-    Double sumarMontoDeTransaccionesPorCategoria(List<Transaccion> trans);
-
+    public Double convertirMontoTransaccion(Double monto);
 
     public List<Transaccion> filtrarTransaccionesPorCategoria(Categoria categoria);
 

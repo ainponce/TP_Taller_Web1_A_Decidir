@@ -62,7 +62,12 @@ public class RepositorioTransaccionImpl implements RepositorioTransaccion {
         return (List<Transaccion>) session.createCriteria(Transaccion.class)
                 .add(Restrictions.eq("concepto", concepto))
                 .list();
+}
+
+    @Override
+    public Double convertirMontoTransaccion(Double monto) {
+        final Session session = sessionFactory.getCurrentSession();
+        return null;
     }
 
 
-}

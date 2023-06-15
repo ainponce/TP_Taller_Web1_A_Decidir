@@ -14,9 +14,6 @@
 		<property name="password" value="" />
 	</bean>
 
-
-
-
 	<!--Configuracion de la factory encargada de generar las sesiones con la base de datos, la misma -->
 	<!--usa el data source configurado antes-->
 	<bean id="sessionFactory"

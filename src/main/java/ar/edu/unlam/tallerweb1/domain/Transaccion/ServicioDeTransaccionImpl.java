@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service("servicioDeTransaccion")
@@ -39,11 +40,11 @@ public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
     }
 
     @Override
-    public Boolean registrarTransaccion(Double monto, String detalle, String fecha, Moneda moneda, Concepto concepto, Categoria categoria) {
+    public Boolean registrarTransaccion(Double monto, String detalle, String fecha, Concepto concepto, Categoria categoria) {
         Boolean seRegistro = false;
         List <Transaccion> validacionDeCategoria= servicioTransaccionDao.listarTransaccion();
         if (monto > 0) {
-            Transaccion transaccion = new Transaccion(monto, detalle, fecha, moneda, concepto, categoria);
+            Transaccion transaccion = new Transaccion(monto, detalle, fecha, concepto, categoria);
             servicioTransaccionDao.guardarTransaccion(transaccion);
             seRegistro = true;
         }
@@ -74,6 +75,12 @@ public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
         }
         return montoTotal;
     }
+
+    @Override
+    public Double convertirMontoTransaccion(Double monto) {
+        return null;
+    }
+
     @Override
     public List<Transaccion> filtrarTransaccionesPorCategoria(Categoria categoria){
         return servicioTransaccionDao.buscarTransaccionPorCategoria(categoria);
@@ -99,5 +106,17 @@ public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
     @Override
     public List<Transaccion> filtrarTransaccionesPorConcepto(Concepto concepto) {
         return servicioTransaccionDao.buscarTransaccionPorConcepto(concepto);
-    }
 }
+
+
+    public List<Transaccion> convertirMontoEnMonedaSeleccionada(Moneda moneda){
+        List<Transaccion> transacciones = servicioTransaccionDao.listarTransaccion();
+        List<Transaccion> transaccionesNuevoMonto = new ArrayList<>();
+        Double tipoMoneda = moneda.getValor();
+        Double montoFinal = 0.0;
+        for (Transaccion transaccion: transacciones) {
+            montoFinal = transaccion.getMonto() / tipoMoneda;
+            transaccionesNuevoMonto.add(new Transaccion(montoFinal, transaccion.getDetalle(), transaccion.getFecha(), transaccion.getConcepto(), transaccion.getCategoria()));
+        }
+        return transaccionesNuevoMonto;
+    }

@@ -4,14 +4,13 @@ import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Categorias.ServicioDeCategoria;
 import ar.edu.unlam.tallerweb1.domain.Concepto.Concepto;
 import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
-import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
+import ar.edu.unlam.tallerweb1.domain.Moneda.ServicioDeMoneda;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.ServicioDePresupuesto;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
 import org.springframework.beans.factory.annotation.Autowired;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.ServicioDeTransaccion;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,14 +22,16 @@ import java.util.List;
 public class ControladorDeTransaccion {
 
     private final ServicioDeCategoria servicioDeCategoria;
-    private ServicioDeTransaccion servicioDeTransaccion;
+    private final ServicioDeTransaccion servicioDeTransaccion;
     private final ServicioDePresupuesto servicioDePresupuesto;
+    private final ServicioDeMoneda servicioDeMoneda;
 
     @Autowired
-    public ControladorDeTransaccion(ServicioDeTransaccion servicioDeTransaccion, ServicioDeCategoria servicioDeCategoria, ServicioDePresupuesto servicioDePresupuesto){
+    public ControladorDeTransaccion(ServicioDeTransaccion servicioDeTransaccion, ServicioDeCategoria servicioDeCategoria, ServicioDePresupuesto servicioDePresupuesto, ServicioDeMoneda servicioDeMoneda){
         this.servicioDeTransaccion=servicioDeTransaccion;
         this.servicioDeCategoria= servicioDeCategoria;
         this.servicioDePresupuesto=servicioDePresupuesto;
+        this.servicioDeMoneda = servicioDeMoneda;
     }
     @RequestMapping(path="/establecerTransaccion", method = RequestMethod.GET)
     public ModelAndView crearTransaccion() {
@@ -43,9 +44,10 @@ public class ControladorDeTransaccion {
 
     @RequestMapping(path="/establecerTransaccion", method = RequestMethod.POST)
     public ModelAndView registrarUnaTransaccion(@RequestParam("monto") double monto, @RequestParam("detalle") String detalle,
-                                                @RequestParam("fecha") String fecha, @RequestParam("moneda") Moneda moneda , @RequestParam("concepto") Concepto concepto, @RequestParam("categoria") long categoria) {
+                                                @RequestParam("fecha") String fecha, @RequestParam("concepto") Concepto concepto,@RequestParam(value = "categoria", required=false) Long categoria) {
         Categoria cat =servicioDeCategoria.buscarCategoriaPorId(categoria);
         ModelMap map= new ModelMap();
+        ModelAndView mapeo = new ModelAndView();
         List<Transaccion> transacciones = servicioDeTransaccion.filtrarTransaccionesPorCategoria(cat);
         Double presupuestoDeCategoria = servicioDePresupuesto.buscarMontoPresupuestoPorCategoria(cat);
         Presupuesto presupuesto = servicioDePresupuesto.buscarPresupuestoPorCategoria(cat);
@@ -69,17 +71,18 @@ public class ControladorDeTransaccion {
             map.put("categorias", categorias);
             return new ModelAndView("establecerTransaccion", map);
         }
-
     }
 
     @RequestMapping(path="/home", method = RequestMethod.GET)
     public ModelAndView listarUnaTransaccion() {
         ModelMap map= new ModelMap();
         List<Transaccion> transacciones = servicioDeTransaccion.listarTransacciones();
-        map.put("transacciones", transacciones);
-        map.put("datosTransaccion", new Transaccion());
         List<Categoria> categorias = servicioDeCategoria.listarCategoriasPorTransaccion();
+        List<Moneda> moneda = servicioDeMoneda.listarMonedas();
+        map.put("datosTransaccion", new Transaccion());
+        map.put("transacciones", transacciones);
         map.put("categorias", categorias);
+        map.put("moneda", moneda);
 
         return new ModelAndView("home", map);
     }
@@ -97,29 +100,31 @@ public class ControladorDeTransaccion {
    @RequestMapping(path = "filtrar", method = RequestMethod.GET)
     public ModelAndView filtrarTransaccionPorCategoria(@RequestParam(value = "categoriaTransaccion", required=false) Long categoria){
        ModelMap map= new ModelMap();
-       List<Transaccion> transacciones = null;
        Categoria cat =servicioDeCategoria.buscarCategoriaPorId(categoria);
+       List<Transaccion> transacciones = null;
        List<Categoria> categorias = servicioDeTransaccion.listarCategorias();
-       map.put("categorias", categorias);
+       List<Moneda> moneda = servicioDeMoneda.listarMonedas();
            if(cat.GetId() != null) {
                transacciones = servicioDeTransaccion.filtrarTransaccionesPorCategoria(cat);
            }else {
                transacciones = servicioDeTransaccion.listarTransacciones();
            }
        map.put("transacciones", transacciones);
+       map.put("categorias", categorias);
+       map.put("moneda", moneda);
        return new ModelAndView("home", map);
    }
 
-   /* @RequestMapping(path = "filtrarConcepto", method = RequestMethod.GET)
-    public ModelAndView filtrarTransaccionPorConcepto(@RequestParam(value = "concepto", required=false) Concepto concepto){
-        ModelMap map= new ModelMap();
-        List<Transaccion> transacciones = null;
-        if(concepto.equals(Concepto.Gasto) || concepto.equals(Concepto.Inversión)) {
-            transacciones = servicioDeTransaccion.filtrarTransaccionesPorConcepto(concepto);
-        }else {
-            transacciones = servicioDeTransaccion.listarTransacciones();
-        }
-        map.put("transacciones", transacciones);
-        return new ModelAndView("home", map);
-    }*/
+   @RequestMapping(path = "convertir", method = RequestMethod.GET)
+    public ModelAndView cambiarMonedaDeTransacciones(@RequestParam(value = "moneda") Long  moneda, @RequestParam(value = "categoriaTransaccion", required=false) Long categoria){
+       ModelMap map= new ModelMap();
+       Moneda mon = servicioDeMoneda.buscarMonedaPorId(moneda);
+       List<Transaccion> transacciones = servicioDeTransaccion.convertirMontoEnMonedaSeleccionada(mon);
+       List<Categoria> categorias = servicioDeTransaccion.listarCategorias();
+       List<Moneda> moneda1 = servicioDeMoneda.listarMonedas();
+       map.put("categorias", categorias);
+       map.put("moneda", moneda1);
+       map.put("transacciones", transacciones);
+       return new ModelAndView("home", map);
+    }
 }

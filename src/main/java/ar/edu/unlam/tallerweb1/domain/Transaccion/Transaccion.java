@@ -16,18 +16,16 @@ public class Transaccion {
     private Double monto;
     private String detalle;
     private String fecha;
-    private Moneda moneda;
 
     @ManyToOne
     private Categoria categoria;
 
 
     public Transaccion(){};
-    public Transaccion (Double monto, String detalle, String fecha, Moneda moneda, Concepto concepto, Categoria categoria) {
+    public Transaccion (Double monto, String detalle, String fecha, Concepto concepto, Categoria categoria) {
         this.monto = monto;
         this.detalle = detalle;
         this.fecha = fecha;
-        this.moneda = moneda;
         this.concepto=concepto;
         this.categoria=categoria;
     }
@@ -67,14 +65,6 @@ public class Transaccion {
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
-    }
-
-    public Moneda getMoneda() {
-        return moneda;
-    }
-
-    public void setMoneda(Moneda moneda) {
-        this.moneda = moneda;
     }
 
     public Concepto getConcepto() {

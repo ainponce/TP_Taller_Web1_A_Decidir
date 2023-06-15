@@ -14,8 +14,8 @@ public interface RepositorioTransaccion {
 
     public List<Transaccion> listarTransaccion();
 
-    List<Transaccion> buscarTransaccionPorCategoria(Categoria categoria);
-
 
     List<Transaccion> buscarTransaccionPorConcepto(Concepto concepto);
+    public List<Transaccion> buscarTransaccionPorCategoria(Categoria categoria);
+    public Double convertirMontoTransaccion(Double monto);
 }

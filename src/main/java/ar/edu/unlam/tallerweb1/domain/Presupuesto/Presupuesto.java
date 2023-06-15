@@ -15,7 +15,7 @@ public class Presupuesto {
     private String fechaDesde;
     private String fechaHasta;
     private double montoPresupuesto;
-    private Moneda moneda;
+
     private boolean estaActivo;
 
     @OneToOne
@@ -23,11 +23,10 @@ public class Presupuesto {
 
     public Presupuesto(){}
 
-    public Presupuesto(Double monto, String fechaDesde, String fechaHasta, Moneda moneda, Categoria categoria) {
+    public Presupuesto(Double monto, String fechaDesde, String fechaHasta, Categoria categoria) {
         this.montoPresupuesto = monto;
         this.fechaDesde = fechaDesde;
         this.fechaHasta = fechaHasta;
-        this.moneda = moneda;
         this.categoria = categoria;
         this.estaActivo = true;
     }
@@ -63,13 +62,6 @@ public class Presupuesto {
         this.montoPresupuesto = montoPresupuesto;
     }
 
-    public Moneda getMoneda() {
-        return moneda;
-    }
-
-    public void setMoneda(Moneda moneda) {
-        this.moneda = moneda;
-    }
 
     public Categoria getCategoria() {
        return categoria;

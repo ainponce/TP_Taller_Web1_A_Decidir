@@ -1,15 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- <%@ page import="ar.edu.unlam.tallerweb1.domain.Categorias.Categoria" %>
-
-<script>
-    // Obtener la referencia al elemento select
-   // var dropdown = document.getElementById("categoriaDropdown");
-
-    // Obtener las opciones del dropdown original
-
-
-</script>
+<%@ page import="ar.edu.unlam.tallerweb1.domain.Categorias.Categoria" %>
 
 <!DOCTYPE html>
 <html>
@@ -116,9 +107,6 @@
                     placeholder="Ingrese monto..."/>
         <form:input type="text" id="detalle" path="detalle" name="detalle" class="form-control"
                     placeholder="Ingrese detalle..."/>
-        <form:select path="moneda" id="moneda" name="moneda" class="form-control">
-            <form:options items="${Moneda.values()}"/>
-        </form:select>
         <form:select path="concepto" id="concepto" name="concepto" class="form-control">
             <form:options items="${Concepto.values()}"/>
         </form:select>

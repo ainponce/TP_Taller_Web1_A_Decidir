@@ -99,10 +99,6 @@
                 <form:input type="text" id="monto" path="fechaDesde" name="fechaDesde" class="form-control" placeholder="Ingrese fecha de inicio"/>
                 <label>Fecha de fin</label>
                 <form:input type="text" id="monto" path="fechaHasta" name="fechaHasta" class="form-control" placeholder="Ingrese fecha de fin"/>
-                <label>Tipo de moneda</label>
-                <form:select path="moneda" id="moneda" name="moneda" class="form-select " placeholder="Ingrese tipo de moneda">
-                    <form:options items="${Moneda.values()}" />
-                </form:select>
                 <label>Categoria del presupuesto</label>
                 <form:select path="categoria" id="categoria" name="categoria" class="form-control">
                     <option disabled selected>Selecciona una opcion</option>
