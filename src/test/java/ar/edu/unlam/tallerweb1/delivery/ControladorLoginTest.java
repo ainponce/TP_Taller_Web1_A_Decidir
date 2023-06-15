@@ -2,7 +2,7 @@ package ar.edu.unlam.tallerweb1.delivery;
 
 import ar.edu.unlam.tallerweb1.delivery.Login.ControladorLogin;
 import ar.edu.unlam.tallerweb1.delivery.Login.DatosLogin;
-import ar.edu.unlam.tallerweb1.infrastructure.Login.ServicioLogin;
+import ar.edu.unlam.tallerweb1.domain.Login.ServicioLogin;
 import ar.edu.unlam.tallerweb1.domain.Usuarios.Usuario;
 import org.junit.Before;
 import org.junit.Test;

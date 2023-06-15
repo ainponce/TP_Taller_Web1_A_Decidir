@@ -8,40 +8,36 @@ import javax.persistence.Id;
 @Entity
 public class Categoria {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String nombreCategoria;
-    private boolean estaActivo;
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Long id;
+    private String nombre;
+    private Boolean estaActiva;
+    public Categoria(){}
 
-    public Categoria(int id, String nombreCategoria) {
-        this.id = id;
-        this.nombreCategoria = nombreCategoria;
-        this.estaActivo = true;
-    }
-    public Categoria() {
+    public Categoria(String nombre, Boolean estaActiva) {
+        this.nombre = nombre;
+        this.estaActiva = estaActiva;
     }
 
-    public int getId() {
+    public Long GetId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String GetNombre() {
+        return nombre;
     }
 
-    public String getNombreCategoria() {
-        return nombreCategoria;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public void setNombreCategoria(String nombreCategoria) {
-        this.nombreCategoria = nombreCategoria;
+    public Boolean getEstaActiva() {
+        return estaActiva;
     }
 
-    public boolean isEstaActivo() {
-        return estaActivo;
+    public void setEstaActiva(Boolean estaActiva) {
+        this.estaActiva = estaActiva;
     }
 
-    public void setEstaActivo(boolean estaActivo) {
-        this.estaActivo = estaActivo;
-    }
+
 }

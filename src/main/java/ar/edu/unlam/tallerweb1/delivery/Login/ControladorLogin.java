@@ -1,8 +1,7 @@
 package ar.edu.unlam.tallerweb1.delivery.Login;
 
-import ar.edu.unlam.tallerweb1.delivery.Login.DatosLogin;
 import ar.edu.unlam.tallerweb1.domain.Usuarios.Usuario;
-import ar.edu.unlam.tallerweb1.infrastructure.Login.ServicioLogin;
+import ar.edu.unlam.tallerweb1.domain.Login.ServicioLogin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -61,11 +60,6 @@ public class ControladorLogin {
 		return new ModelAndView("login", model);
 	}
 
-	// Escucha la URL /home por GET, y redirige a una vista.
-	@RequestMapping(path = "/home", method = RequestMethod.GET)
-	public ModelAndView irAHome() {
-		return new ModelAndView("home");
-	}
 
 	// Escucha la url /, y redirige a la URL /login, es lo mismo que si se invoca la url /login directamente.
 	@RequestMapping(path = "/", method = RequestMethod.GET)
