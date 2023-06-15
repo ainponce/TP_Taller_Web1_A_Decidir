@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -165,51 +164,7 @@
 			<table class="table">
 				<thead>
 				<tr>
-<<<<<<< HEAD
-					<th>Fecha</th>
-					<th>Monto</th>
-					<th>Detalle</th>
-					<th>Concepto</th>
-					<th>Categoria</th>
 
-				</tr>
-				</thead>
-				<tbody>
-				<c:forEach var="transaccion" items="${transacciones}">
-					<tr>
-						<td>${transaccion.fecha}</td>
-						<td><fmt:formatNumber value="${transaccion.monto}" minFractionDigits="0" maxFractionDigits="2" /></td>
-						<td>${transaccion.detalle}</td>
-						<td>${transaccion.concepto}</td>
-						<td>${transaccion.categoria.GetNombre()}</td>
-
-					</tr>
-				</c:forEach>
-				</tbody>
-				<thead>
-				<tr>
-					<th>Monto total</th>
-				<tbody>
-				<tr>
-					<c:set var="montoTotal" value="0"/>
-					<c:forEach var="transaccion" items="${transacciones}">
-						<c:set var="montoTotal" value="${montoTotal + transaccion.monto}"/>
-					</c:forEach>
-					<td><fmt:formatNumber value="${montoTotal}" minFractionDigits="0" maxFractionDigits="2" /></td>
-				</tr>
-				</tbody>
-				</tr>
-				</thead>
-			</table>
-		</div>
-	</div>
-	<div id="chart_div"></div>
-	<c:if test="${not empty error}">
-		<h4 class="mensajeErrorRegistro"><span>${error}</span></h4>
-		<br>
-	</c:if>
-	${msg}
-=======
                     <th>Fecha</th>
                     <th>Monto</th>
                     <th>Detalle</th>
@@ -221,7 +176,7 @@
                 <c:forEach var="transaccion" items="${transacciones}">
                     <tr>
                         <td>${transaccion.fecha}</td>
-                        <td>${transaccion.monto}</td>
+                        <td><fmt:formatNumber value="${transaccion.monto}" minFractionDigits="0" maxFractionDigits="2" /></td>
                         <td>${transaccion.detalle}</td>
                         <td>${transaccion.concepto}</td>
                         <td>${transaccion.categoria.GetNombre()}</td>
@@ -249,7 +204,7 @@
                     <c:forEach var="transaccion" items="${transacciones}">
                         <c:set var="montoTotal" value="${montoTotal + transaccion.monto}"/>
                     </c:forEach>
-                    <td>${montoTotal}</td>
+					<td><fmt:formatNumber value="${montoTotal}" minFractionDigits="0" maxFractionDigits="2" /></td>
                 </tr>
                 </tbody>
                 </tr>
@@ -263,7 +218,7 @@
         <br>
     </c:if>
     ${msg}
->>>>>>> 75197bfdaac6984f5cfea39aae8bf258af1ca681
+
 </div>
 
 <!-- Placed at the end of the document so the pages load faster -->
@@ -274,37 +229,6 @@
 		crossorigin="anonymous"></script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">
-	// Carga la biblioteca de Google Charts
-	google.charts.load('current', {'packages':['corechart']});
-
-	// Ejecuta la función de dibujo del gráfico cuando la biblioteca esté cargada
-	google.charts.setOnLoadCallback(drawChart);
-
-	function drawChart() {
-		// Crea los datos del gráfico
-		var data = new google.visualization.DataTable();
-		data.addColumn('string', 'Título');
-		data.addColumn('number', 'Valor');
-		data.addRows([
-			['A', 5],
-			['B', 10],
-			['C', 8],
-			['D', 12],
-			['E', 3]
-		]);
-
-		// Configura las opciones del gráfico
-		var options = {
-			title: 'Ejemplo de gráfico',
-			width: 400,
-			height: 300
-		};
-
-		// Crea una instancia del gráfico de columnas y dibújalo en el elemento con ID 'chart_div'
-		var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-		chart.draw(data, options);
-	}
-</script>
+<script type="text/javascript"> </script>
 </body>
 </html>
