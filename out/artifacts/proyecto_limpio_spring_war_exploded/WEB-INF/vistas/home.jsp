@@ -163,6 +163,7 @@
 			</table>
 		</div>
 	</div>
+	<div id="chart_div"></div>
 	<c:if test="${not empty error}">
 		<h4 class="mensajeErrorRegistro"><span>${error}</span></h4>
 		<br>
@@ -176,5 +177,38 @@
 		integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
 		crossorigin="anonymous"></script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+	// Carga la biblioteca de Google Charts
+	google.charts.load('current', {'packages':['corechart']});
+
+	// Ejecuta la función de dibujo del gráfico cuando la biblioteca esté cargada
+	google.charts.setOnLoadCallback(drawChart);
+
+	function drawChart() {
+		// Crea los datos del gráfico
+		var data = new google.visualization.DataTable();
+		data.addColumn('string', 'Título');
+		data.addColumn('number', 'Valor');
+		data.addRows([
+			['A', 5],
+			['B', 10],
+			['C', 8],
+			['D', 12],
+			['E', 3]
+		]);
+
+		// Configura las opciones del gráfico
+		var options = {
+			title: 'Ejemplo de gráfico',
+			width: 400,
+			height: 300
+		};
+
+		// Crea una instancia del gráfico de columnas y dibújalo en el elemento con ID 'chart_div'
+		var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+		chart.draw(data, options);
+	}
+</script>
 </body>
 </html>

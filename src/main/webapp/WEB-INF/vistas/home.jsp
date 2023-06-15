@@ -163,6 +163,7 @@
 			</table>
 		</div>
 	</div>
+	<div id="chart_div"></div>
 	<c:if test="${not empty error}">
 		<h4 class="mensajeErrorRegistro"><span>${error}</span></h4>
 		<br>
@@ -176,5 +177,7 @@
 		integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
 		crossorigin="anonymous"></script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript"> </script>
 </body>
 </html>
