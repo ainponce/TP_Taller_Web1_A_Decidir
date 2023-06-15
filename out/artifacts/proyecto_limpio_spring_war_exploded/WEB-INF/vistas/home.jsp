@@ -211,8 +211,8 @@
                 </thead>
             </table>
         </div>
+        <div id="myPieChart"/>
     </div>
-	<div id="myPieChart"/>
     <c:if test="${not empty error}">
         <h4 class="mensajeErrorRegistro"><span>${error}</span></h4>
         <br>
