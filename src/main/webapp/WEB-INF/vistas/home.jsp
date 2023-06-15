@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -165,6 +164,7 @@
 			<table class="table">
 				<thead>
 				<tr>
+
                     <th>Fecha</th>
                     <th>Monto</th>
                     <th>Detalle</th>
@@ -176,7 +176,7 @@
                 <c:forEach var="transaccion" items="${transacciones}">
                     <tr>
                         <td>${transaccion.fecha}</td>
-                        <td>${transaccion.monto}</td>
+                        <td><fmt:formatNumber value="${transaccion.monto}" minFractionDigits="0" maxFractionDigits="2" /></td>
                         <td>${transaccion.detalle}</td>
                         <td>${transaccion.concepto}</td>
                         <td>${transaccion.categoria.GetNombre()}</td>
@@ -204,7 +204,7 @@
                     <c:forEach var="transaccion" items="${transacciones}">
                         <c:set var="montoTotal" value="${montoTotal + transaccion.monto}"/>
                     </c:forEach>
-                    <td>${montoTotal}</td>
+					<td><fmt:formatNumber value="${montoTotal}" minFractionDigits="0" maxFractionDigits="2" /></td>
                 </tr>
                 </tbody>
                 </tr>
@@ -218,6 +218,7 @@
         <br>
     </c:if>
     ${msg}
+
 </div>
 
 <!-- Placed at the end of the document so the pages load faster -->
@@ -227,5 +228,7 @@
 		integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
 		crossorigin="anonymous"></script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript"> </script>
 </body>
 </html>
