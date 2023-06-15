@@ -164,47 +164,60 @@
 			<table class="table">
 				<thead>
 				<tr>
-                    <th>Fecha</th>
-                    <th>Monto</th>
-                    <th>Detalle</th>
-                    <th>Concepto</th>
-                    <th>Categoria</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach var="transaccion" items="${transacciones}">
-                    <tr>
-                        <td>${transaccion.fecha}</td>
-                        <td>${transaccion.monto}</td>
-                        <td>${transaccion.detalle}</td>
-                        <td>${transaccion.concepto}</td>
-                        <td>${transaccion.categoria.GetNombre()}</td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-                <thead>
-                <tr>
-                    <th>Monto total</th>
-                <tbody>
-                <tr>
-                    <c:set var="montoTotal" value="0"/>
-                    <c:forEach var="transaccion" items="${transacciones}">
-                        <c:set var="montoTotal" value="${montoTotal + transaccion.monto}"/>
-                    </c:forEach>
-                    <td>${montoTotal}</td>
-                </tr>
-                </tbody>
-                </tr>
-                </thead>
-            </table>
-        </div>
-        <div id="myPieChart"/>
-    </div>
-    <c:if test="${not empty error}">
-        <h4 class="mensajeErrorRegistro"><span>${error}</span></h4>
-        <br>
-    </c:if>
-    ${msg}
+					<th>Fecha</th>
+					<th>Monto</th>
+					<th>Detalle</th>
+					<th>Concepto</th>
+					<th>Categoria</th>
+
+				</tr>
+				</thead>
+				<tbody>
+				<c:forEach var="transaccion" items="${transacciones}">
+					<tr>
+						<td>${transaccion.fecha}</td>
+						<td><fmt:formatNumber value="${transaccion.monto}" minFractionDigits="0" maxFractionDigits="2" /></td>
+						<td>${transaccion.detalle}</td>
+						<td>${transaccion.concepto}</td>
+						<td>${transaccion.categoria.GetNombre()}</td>
+						<td>
+							<form action="delete" method="post">
+								<input type="hidden" name="id" value="${transaccion.id}" />
+								<button class="btn-delete"type="submit"><i class=" fa fa-trash"></i></button>
+								<style>
+									.btn-delete{
+										border-style: none;
+										border-color: transparent;
+									}
+								</style>
+							</form>
+						</td>
+
+					</tr>
+				</c:forEach>
+				</tbody>
+				<thead>
+				<tr>
+					<th>Monto total</th>
+				<tbody>
+				<tr>
+					<c:set var="montoTotal" value="0"/>
+					<c:forEach var="transaccion" items="${transacciones}">
+						<c:set var="montoTotal" value="${montoTotal + transaccion.monto}"/>
+					</c:forEach>
+					<td><fmt:formatNumber value="${montoTotal}" minFractionDigits="0" maxFractionDigits="2" /></td>
+				</tr>
+				</tbody>
+				</tr>
+				</thead>
+			</table>
+		</div>
+	</div>
+	<c:if test="${not empty error}">
+		<h4 class="mensajeErrorRegistro"><span>${error}</span></h4>
+		<br>
+	</c:if>
+	${msg}
 </div>
 
 <!-- Placed at the end of the document so the pages load faster -->

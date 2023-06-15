@@ -1,6 +1,6 @@
 package ar.edu.unlam.tallerweb1.delivery.Transaccion;
 
-import ar.edu.unlam.tallerweb1.delivery.Login.DatosLogin;
+
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Categorias.ServicioDeCategoria;
 import ar.edu.unlam.tallerweb1.domain.Concepto.Concepto;
@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.ServicioDeTransaccion;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -79,7 +78,6 @@ public class ControladorDeTransaccion {
     @RequestMapping(path="/home", method = RequestMethod.GET)
     public ModelAndView listarUnaTransaccion() {
         ModelMap map= new ModelMap();
-
         List<Transaccion> transacciones = servicioDeTransaccion.listarTransacciones();
         List<Categoria> categorias = servicioDeCategoria.listarCategoriasPorTransaccion();
         List<Moneda> moneda = servicioDeMoneda.listarMonedas();
@@ -89,19 +87,6 @@ public class ControladorDeTransaccion {
         map.put("moneda", moneda);
 
         return new ModelAndView("home", map);
-    }
-    @RequestMapping(path="/delete", method = RequestMethod.POST)
-    public ModelAndView eliminarUnaTransaccion(@RequestParam("id") Long id){
-        ModelMap map= new ModelMap();
-        Transaccion transaccionAEliminar = null;
-        transaccionAEliminar =  servicioDeTransaccion.buscarTransaccionPorIdParaEliminar(id);
-        if(transaccionAEliminar!=null){
-            servicioDeTransaccion.eliminarTransaccion(transaccionAEliminar);
-        }else{
-            map.put("msg", "No existe la transaccion");
-        }
-
-        return new ModelAndView("redirect:/home", map);
     }
 
     @RequestMapping(path="/listarCategorias", method = RequestMethod.GET)

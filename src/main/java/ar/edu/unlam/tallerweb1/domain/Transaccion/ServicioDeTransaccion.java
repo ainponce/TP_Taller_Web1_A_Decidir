@@ -28,9 +28,4 @@ public interface ServicioDeTransaccion {
     Boolean registroTransaccionExitoso(List<Transaccion> transacciones, Double presupuestoDeCategoria, Double monto);
 
     List<Transaccion> filtrarTransaccionesPorConcepto(Concepto concepto);
-
-    void eliminarTransaccion(Transaccion tranAEliminar);
-
-
-    Transaccion buscarTransaccionPorIdParaEliminar(Long id);
 }
