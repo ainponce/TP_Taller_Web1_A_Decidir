@@ -2,9 +2,7 @@ package ar.edu.unlam.tallerweb1.infrastructure;
 
 
 import ar.edu.unlam.tallerweb1.SpringTest;
-import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.ServicioDeTransaccion;
-import ar.edu.unlam.tallerweb1.domain.Transaccion.ServicioDeTransaccionImpl;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
 import ar.edu.unlam.tallerweb1.infrastructure.Transaccion.RepositorioTransaccion;
 import org.junit.Test;
@@ -26,7 +24,6 @@ public class RepositorioDeTransaccionTest extends SpringTest {
     public void queTraigaLaListaDeTransacciones() {
         List<Transaccion> trans = listoTransacciones();
         QueSeanLaMismaCantidad(trans);
-
     }
 
     private void QueSeanLaMismaCantidad(List<Transaccion> trans) {

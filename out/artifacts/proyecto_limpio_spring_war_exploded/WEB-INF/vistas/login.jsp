@@ -22,11 +22,11 @@
 					<img src="./img/logo-hurr.png" alt="" id="logoLogin">
 					<form:form action="validar-login" method="POST" modelAttribute="datosLogin">
 					<%--Elementos de entrada de datos, el elemento path debe indicar en que atributo del objeto usuario se guardan los datos ingresados--%>
-					<form:input  path="email" id="email" type="email" class="form-control" placeholder="Email"/>
-					<form:input  path="password" type="password" id="password" class="form-control" placeholder="Password"/>
+						<form:input  path="email" id="email" type="email" class="form-control" placeholder="Email"/>
+						<form:input  path="password" type="password" id="password" class="form-control" placeholder="Password"/>
 					
 					<button id="btnLogin" class="btn btn-lg btn-block" Type="Submit"/>Login</button>
-				</form:form>
+					</form:form>
 					<%--Bloque que es visible si el elemento error no esta vacio	--%>
 					<c:if test="${not empty error}">
 						<h4 class="mensajeErrorRegistro"><span>${error}</span></h4>
