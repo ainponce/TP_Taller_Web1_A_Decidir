@@ -176,7 +176,7 @@
                 <c:forEach var="transaccion" items="${transacciones}">
                     <tr>
                         <td>${transaccion.fecha}</td>
-                        <td>${transaccion.monto}</td>
+                        <td><fmt:formatNumber value="${transaccion.monto}" minFractionDigits="0" maxFractionDigits="2" /></td>
                         <td>${transaccion.detalle}</td>
                         <td>${transaccion.concepto}</td>
                         <td>${transaccion.categoria.GetNombre()}</td>
@@ -204,7 +204,7 @@
                     <c:forEach var="transaccion" items="${transacciones}">
                         <c:set var="montoTotal" value="${montoTotal + transaccion.monto}"/>
                     </c:forEach>
-                    <td>${montoTotal}</td>
+					<td><fmt:formatNumber value="${montoTotal}" minFractionDigits="0" maxFractionDigits="2" /></td>
                 </tr>
                 </tbody>
                 </tr>
