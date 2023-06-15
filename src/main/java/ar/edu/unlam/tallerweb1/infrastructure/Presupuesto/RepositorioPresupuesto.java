@@ -23,7 +23,7 @@ public interface RepositorioPresupuesto {
 
     Presupuesto buscarPresupuestoPorId(Long id);
 
-    public Presupuesto buscarPresupuestoPorCategoria(Categoria categoria);
+    public Presupuesto buscarPresupuestoPorCategoria(Categoria cat);
 
     List<Presupuesto> listarPresupuesto();
 

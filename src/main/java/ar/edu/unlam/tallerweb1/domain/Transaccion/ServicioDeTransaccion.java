@@ -3,6 +3,7 @@ package ar.edu.unlam.tallerweb1.domain.Transaccion;
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Concepto.Concepto;
 import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
+import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
 
 import java.util.List;
 
@@ -17,12 +18,19 @@ public interface ServicioDeTransaccion {
 
     public List<Transaccion> listarTransacciones();
     public List<Categoria> listarCategorias();
-
+    public List<Transaccion> convertirMontoEnMonedaSeleccionada(Moneda moneda);
     public Double sumarMontoDeTransaccionesPorCategoria(List<Transaccion> trans);
 
     public Double convertirMontoTransaccion(Double monto);
 
     public List<Transaccion> filtrarTransaccionesPorCategoria(Categoria categoria);
 
-    public Boolean registroTransaccionExitoso(List<Transaccion> transacciones, Double presupuestoDeCategoria, Double monto);
+    Boolean registroTransaccionExitoso(List<Transaccion> transacciones, Double presupuestoDeCategoria, Double monto);
+
+    List<Transaccion> filtrarTransaccionesPorConcepto(Concepto concepto);
+
+    void eliminarTransaccion(Transaccion tranAEliminar);
+
+
+    Transaccion buscarTransaccionPorIdParaEliminar(Long id);
 }

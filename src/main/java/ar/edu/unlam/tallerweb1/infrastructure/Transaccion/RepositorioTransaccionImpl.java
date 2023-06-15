@@ -3,6 +3,8 @@ import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
 import ar.edu.unlam.tallerweb1.infrastructure.Transaccion.RepositorioTransaccion;
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
+import ar.edu.unlam.tallerweb1.domain.Concepto.Concepto;
+import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -46,6 +48,11 @@ public class RepositorioTransaccionImpl implements RepositorioTransaccion {
         sessionFactory.getCurrentSession().update(transaccion);
     }
 
+    @Override
+    public void eliminarTransaccion(Transaccion transaccion) {
+        sessionFactory.getCurrentSession().delete(transaccion);
+    }
+
 
 
     @Override
@@ -63,11 +70,23 @@ public class RepositorioTransaccionImpl implements RepositorioTransaccion {
     }
 
     @Override
+    public List<Transaccion> buscarTransaccionPorConcepto(Concepto concepto) {
+        final Session session = sessionFactory.getCurrentSession();
+        return (List<Transaccion>) session.createCriteria(Transaccion.class)
+                .add(Restrictions.eq("concepto", concepto))
+                .list();
+}
+
+    @Override
     public Double convertirMontoTransaccion(Double monto) {
         final Session session = sessionFactory.getCurrentSession();
         return null;
     }
 
+    @Override
+    public Transaccion buscarTransaccionPorIdParaEliminar(Long id) {
+        return this.sessionFactory.getCurrentSession().get(Transaccion.class, id);
+    }
+
 
 }
-

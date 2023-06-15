@@ -12,6 +12,7 @@ public interface ServicioDePresupuesto {
 
     List<Presupuesto> listarPresupuestos();
     public List<Categoria> listarCategorias();
+    public Presupuesto buscarPresupuestoPorCategoria(Categoria cat);
 
 
     Double buscarMontoPresupuestoPorCategoria(Categoria cat);

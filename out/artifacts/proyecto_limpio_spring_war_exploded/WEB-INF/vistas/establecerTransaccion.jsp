@@ -111,14 +111,20 @@
             <form:options items="${Concepto.values()}"/>
         </form:select>
         <form:select path="categoria" id="categoria" name="categoria" class="form-control">
+            <option disabled selected>Selecciona una opcion</option>
             <c:forEach var="categoria" items="${categorias}">
-                <form:option value="${categoria.GetId()}">${categoria.GetNombre()}</form:option>
+                <form:option  value="${categoria.GetId()}">${categoria.GetNombre()}</form:option>
             </c:forEach>
         </form:select>
             <button id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Subir</button>
         </form:form>
         <c:if test="${not empty error}">
             <h4 class="mensajeErrorRegistro"><span>${error}</span></h4>
+            <br>
+        </c:if>
+        ${msg}
+        <c:if test="${not empty errorPresu}">
+            <h4 class="mensajeErrorRegistro"><span>${errorPresu}</span></h4>
             <br>
         </c:if>
         ${msg}

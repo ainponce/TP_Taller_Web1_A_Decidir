@@ -14,6 +14,8 @@
 
 }
 
+
+
 .container{
     z-index: 1;
 }
@@ -116,11 +118,6 @@
     width: 90%;
 }
 
-<<<<<<< HEAD
-.form-home{
-    display: flex;
-    flex-direction: column;
-=======
 .btnFiltro{
     display: flex;
     align-items: center;
@@ -136,5 +133,22 @@
 
 .btn-blockFiltro{
     display: block;
->>>>>>> dev
+}
+
+.form-Filtro{
+    width: 25%;
+}
+
+.select-container-filtro {
+    display: flex;
+    align-items: center;
+}
+
+.select-container-filtro select {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.select-container-filtro input {
+    margin-left: 10px;
 }
