@@ -4,7 +4,6 @@ import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
 import ar.edu.unlam.tallerweb1.infrastructure.Transaccion.RepositorioTransaccion;
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Concepto.Concepto;
-import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -48,11 +47,6 @@ public class RepositorioTransaccionImpl implements RepositorioTransaccion {
         sessionFactory.getCurrentSession().update(transaccion);
     }
 
-    @Override
-    public void eliminarTransaccion(Transaccion transaccion) {
-        sessionFactory.getCurrentSession().delete(transaccion);
-    }
-
 
 
     @Override
@@ -83,6 +77,7 @@ public class RepositorioTransaccionImpl implements RepositorioTransaccion {
         return null;
     }
 
+
     @Override
     public Transaccion buscarTransaccionPorIdParaEliminar(Long id) {
         return this.sessionFactory.getCurrentSession().get(Transaccion.class, id);
@@ -90,3 +85,4 @@ public class RepositorioTransaccionImpl implements RepositorioTransaccion {
 
 
 }
+

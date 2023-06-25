@@ -165,6 +165,7 @@
 			<table class="table">
 				<thead>
 				<tr>
+
                     <th>Fecha</th>
                     <th>Monto</th>
                     <th>Detalle</th>
@@ -180,6 +181,7 @@
                         <td>${transaccion.detalle}</td>
                         <td>${transaccion.concepto}</td>
                         <td>${transaccion.categoria.GetNombre()}</td>
+
 						<td>
 							<form action="delete" method="post">
 								<input type="hidden" name="id" value="${transaccion.id}" />
@@ -192,6 +194,7 @@
 								</style>
 							</form>
 						</td>
+
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -218,6 +221,7 @@
         <br>
     </c:if>
     ${msg}
+
 </div>
 
 <!-- Placed at the end of the document so the pages load faster -->
