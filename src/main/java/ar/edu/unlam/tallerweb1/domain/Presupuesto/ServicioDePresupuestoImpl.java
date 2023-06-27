@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.domain.Presupuesto;
 
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
+import ar.edu.unlam.tallerweb1.domain.Transaccion.MontoMenorACero;
 import ar.edu.unlam.tallerweb1.infrastructure.Categoria.RepositorioCategoria;
 import ar.edu.unlam.tallerweb1.infrastructure.Presupuesto.RepositorioPresupuesto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,8 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
             Presupuesto presupuesto = new Presupuesto(monto, fechaDesde, fechaHasta, categoria);
             repositorioPresupuesto.guardar(presupuesto);
             seRegistro = true;
+        }else{
+            throw new MontoMenorACero();
         }
 
         return seRegistro;
@@ -53,7 +56,7 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
         if(presupuesto!=null){
             montoPresupuesto=presupuesto.getMontoPresupuesto();
         }else{
-            montoPresupuesto=0.0;
+            throw new ElPresupuestoEsNulo();
         }
         return montoPresupuesto;
     }

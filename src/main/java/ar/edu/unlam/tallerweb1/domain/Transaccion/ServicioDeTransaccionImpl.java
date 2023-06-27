@@ -35,6 +35,8 @@ public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
             Transaccion transaccion = new Transaccion(monto, detalle);
             servicioTransaccionDao.guardarTransaccion(transaccion);
             seRegistro = true;
+        }else {
+            throw new MontoMenorACero();
         }
         return seRegistro;
     }
@@ -47,6 +49,8 @@ public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
             Transaccion transaccion = new Transaccion(monto, detalle, fecha, concepto, categoria);
             servicioTransaccionDao.guardarTransaccion(transaccion);
             seRegistro = true;
+        }else {
+            throw new MontoMenorACero();
         }
         return seRegistro;
     }
@@ -98,7 +102,7 @@ public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
         }
         diferencia = presupuestoDeCategoria - montoTransaccionesTotal;
         if (diferencia < montoEstimadoANoSobrepasar) {
-            return false;
+            throw new ElMontoEstaPorLlegarASuLimite();
         }
         return true;
     }
