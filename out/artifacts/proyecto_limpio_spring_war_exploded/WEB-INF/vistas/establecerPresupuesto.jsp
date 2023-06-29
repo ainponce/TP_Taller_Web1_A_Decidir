@@ -110,6 +110,10 @@
                 </form:select>
                 <button  id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Subir</button>
             </form:form>
+        <c:if test="${not empty Error}">
+            <h4 class="mensajeErrorRegistro"><span>${Error}</span></h4>
+            <br>
+        </c:if>
     </div>
     <div class="col-lg-5">
         <div >

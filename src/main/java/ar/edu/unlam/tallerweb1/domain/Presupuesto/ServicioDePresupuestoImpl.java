@@ -29,14 +29,26 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
     public Boolean establecerPresupuesto(Double monto, String fechaDesde, String fechaHasta, Categoria categoria) {
         Boolean seRegistro = false;
         List <Presupuesto> validacionDeCategoria= repositorioPresupuesto.listarPresupuesto();
-        if (monto > 0){
-            Presupuesto presupuesto = new Presupuesto(monto, fechaDesde, fechaHasta, categoria);
-            repositorioPresupuesto.guardar(presupuesto);
-            seRegistro = true;
-        }else{
-            throw new MontoMenorACero();
+        boolean categoriaEnUso = false;
+
+        for (Presupuesto presupuesto : validacionDeCategoria) {
+            if (presupuesto.getCategoria().GetId().equals(categoria.GetId())) {
+                categoriaEnUso = true;
+                break;  // Si encuentras una categoría igual, sales del bucle
+            }
         }
 
+        if (categoriaEnUso) {
+            throw new CategoriaEnUso();  // Lanzas la excepción si la categoría ya está en uso
+        } else {
+            if (monto > 0) {
+                Presupuesto presupuestoNuevo = new Presupuesto(monto, fechaDesde, fechaHasta, categoria);
+                repositorioPresupuesto.guardar(presupuestoNuevo);
+                seRegistro = true;
+            } else {
+                throw new MontoMenorACero();  // Lanzas la excepción si el monto es menor a cero
+            }
+        }
         return seRegistro;
     }
 
@@ -67,12 +79,29 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
     }
 
     @Override
-    public void editarPresupuesto(long id, double montoPresupuesto, String fechaDesde, String fechaHasta, Categoria cat) {
-       Presupuesto presu= repositorioPresupuesto.buscarPresupuestoPorId(id);
-        presu.setMontoPresupuesto(montoPresupuesto);
-        presu.setFechaDesde(fechaDesde);
-        presu.setFechaHasta(fechaHasta);
-        presu.setCategoria(cat);
+    public void editarPresupuesto(long id, double montoPresupuesto, String fechaDesde, String fechaHasta, Categoria categoria) {
+        Boolean seRegistro = false;
+        List <Presupuesto> listaPresupuestos= repositorioPresupuesto.listarPresupuesto();
+        boolean categoriaEnUso = false;
+
+            for (Presupuesto presupuesto : listaPresupuestos) {
+                if (presupuesto.getCategoria().GetId() == categoria.GetId()) {
+                    categoriaEnUso = true;
+                    break;  // Si encuentras una categoría igual, sales del bucle
+                }
+            }
+
+            if (categoriaEnUso && montoPresupuesto <= 0) {
+                Presupuesto presupuestoExistente = repositorioPresupuesto.obtenerPresupuestoPorCategoria(categoria);
+                presupuestoExistente.setMontoPresupuesto(montoPresupuesto);
+                presupuestoExistente.setFechaDesde(fechaDesde);
+                presupuestoExistente.setFechaHasta(fechaHasta);
+                repositorioPresupuesto.actualizarPresupuesto(presupuestoExistente);
+            }else {
+                throw new MontoMenorACero();  // Lanzas la excepción si el monto es menor a cero
+            }
+
+        return seRegistro;
     }
 
     @Override
