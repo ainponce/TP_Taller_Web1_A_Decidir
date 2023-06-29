@@ -17,7 +17,6 @@ public class ServicioDePresupuestoTest {
 
    /* @Test
     @Transactional
-    @Rollback
     public void queTireUnaAlarmaDePresupuestoPorAlcanzar(){
         List<Presupuesto> pres = repoPresupuesto.buscarPorCategoria(Categoria.Salidas);
         compararPresupuestosDeCategoriaYTransaccion(pres);

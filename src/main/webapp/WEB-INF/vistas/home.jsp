@@ -183,7 +183,7 @@
 						<td>
 							<form action="delete" method="post">
 								<input type="hidden" name="id" value="${transaccion.id}" />
-								<button class="btn-delete"type="submit"><i class=" fa fa-trash"></i></button>
+								<button class="btn-delete" type="submit"><i class=" fa fa-trash"></i></button>
 								<style>
 									.btn-delete{
 										border-style: none;
@@ -211,8 +211,8 @@
                 </thead>
             </table>
         </div>
-        <div id="myPieChart"/>
     </div>
+	<div id="myPieChart"/>
     <c:if test="${not empty error}">
         <h4 class="mensajeErrorRegistro"><span>${error}</span></h4>
         <br>

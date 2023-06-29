@@ -57,6 +57,21 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
         }
         return montoPresupuesto;
     }
+
+    @Override
+    public Presupuesto buscarPresupuestoPorId(long idPresupuesto) {
+        return repositorioPresupuesto.buscarPresupuestoPorId(idPresupuesto);
+    }
+
+    @Override
+    public void editarPresupuesto(long id, double montoPresupuesto, String fechaDesde, String fechaHasta, Categoria cat) {
+       Presupuesto presu= repositorioPresupuesto.buscarPresupuestoPorId(id);
+        presu.setMontoPresupuesto(montoPresupuesto);
+        presu.setFechaDesde(fechaDesde);
+        presu.setFechaHasta(fechaHasta);
+        presu.setCategoria(cat);
+    }
+
     @Override
     public Presupuesto buscarPresupuestoPorCategoria(Categoria cat){
         return repositorioPresupuesto.buscarPresupuestoPorCategoria(cat);
