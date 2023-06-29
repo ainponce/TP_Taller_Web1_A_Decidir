@@ -5,3 +5,7 @@ out/artifacts/proyecto_limpio_spring_war_exploded/WEB-INF/classes/hibernateConte
 .idea/modules.xml
 out/artifacts/proyecto_limpio_spring_war_exploded/META-INF/MANIFEST.MF
 target/classes/hibernateContext.xml
+target/classes/hibernateContext.xml
+out/artifacts/proyecto_limpio_spring_war_exploded/META-INF/MANIFEST.MF
+out/artifacts/proyecto_limpio_spring_war_exploded/WEB-INF/classes/hibernateContext.xml
+src/main/resources/hibernateContext.xml

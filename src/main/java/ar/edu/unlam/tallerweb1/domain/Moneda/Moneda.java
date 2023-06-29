@@ -22,6 +22,11 @@ public class Moneda {
 
     }
 
+    public Moneda(String nombre, Double valor) {
+        this.nombre=nombre;
+        this.valor=valor;
+    }
+
     public Long getId() {
         return id;
     }

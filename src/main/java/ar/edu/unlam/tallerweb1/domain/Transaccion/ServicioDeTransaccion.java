@@ -29,8 +29,7 @@ public interface ServicioDeTransaccion {
 
     List<Transaccion> filtrarTransaccionesPorConcepto(Concepto concepto);
 
-    void eliminarTransaccion(Transaccion tranAEliminar);
-
-
     Transaccion buscarTransaccionPorIdParaEliminar(Long id);
+
+    void eliminarTransaccion(Transaccion tranAEliminar);
 }

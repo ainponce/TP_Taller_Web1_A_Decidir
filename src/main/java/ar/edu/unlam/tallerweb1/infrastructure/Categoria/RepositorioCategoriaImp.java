@@ -35,71 +35,10 @@ public class RepositorioCategoriaImp implements RepositorioCategoria {
         this.repositorioTransaccion=repositorioTransaccion;
     }
 
-
     @Override
-    public List<Categoria> listarCategoriaParaPresupuestos(){
-
-            final Session session = sessionFactory.getCurrentSession();
-            List<Categoria> categoriasSinAsignar = new ArrayList<>();
-            List<Presupuesto> presupuestos = repositorioPresupuesto.listarPresupuesto();
-
-            // Obtener todas las categorías existentes
-            List<Categoria> todasCategorias = session.createCriteria(Categoria.class).list();
-
-            for (Categoria categoria : todasCategorias) {
-                boolean asignada = false;
-                // Verificar si la categoría está asignada en algún presupuesto
-                for (Presupuesto presupuesto : presupuestos) {
-                    if (categoria.equals(presupuesto.getCategoria())) {
-                        asignada = true;
-                        break;
-                    }
-                }
-                // Si la categoría no está asignada, agregarla a la lista
-                if (!asignada) {
-                    categoriasSinAsignar.add(categoria);
-                }
-            }
-            return categoriasSinAsignar;
-        }
-
-    /*@Override
-    public List<Categoria> traerListaDeCategoriasPorId(Long id) {
+    public List<Categoria> listarCategorias() {
         final Session session = sessionFactory.getCurrentSession();
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<Categoria> query = builder.createQuery(Categoria.class);
-        Root<Categoria> root = query.from(Categoria.class);
-        query.select(root).where(builder.equal(root.get("id"), id));
-        return session.createQuery(query).getResultList();
-    }*/
-
-
-    @Override
-    public List<Categoria> listarCategoriaPorTransaccion() {
-        final Session session = sessionFactory.getCurrentSession();
-        List<Categoria> categoriasSinAsignar = new ArrayList<>();
-        List<Transaccion> transacciones = repositorioTransaccion.listarTransaccion();
-        // Obtener todas las categorías existentes
-        List<Categoria> todasCategorias = session.createCriteria(Categoria.class).list();
-
-       /* for (Categoria categoria : todasCategorias) {
-            boolean asignada = true;
-
-            // Verificar si la categoría está asignada en algún presupuesto
-            for (Transaccion transaccion : transacciones) {
-                if (categoria.equals(transaccion.getCategoria())) {
-                    asignada = true;
-                    break;
-                }
-            }
-
-            // Si la categoría no está asignada, agregarla a la lista
-            if (!asignada) {
-                categoriasSinAsignar.add(categoria);
-            }
-        }*/
-
-        return todasCategorias;
+        return (List<Categoria>) session.createCriteria(Categoria.class).list();
     }
 
 
