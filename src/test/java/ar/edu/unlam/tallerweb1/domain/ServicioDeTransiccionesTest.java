@@ -82,20 +82,6 @@ public class ServicioDeTransiccionesTest extends SpringTest{
         assertThat(categorias.size()).isEqualTo(2);
     }
 
-    @Test
-    public void sumarElMontoPorCategoria() {
-
-    }
-
-    private void validarMonto(Double montoTotal) {
-        assertThat(montoTotal).isEqualTo(15000.0);
-    }
-
-
-
-/*private List<Transaccion> listoTransaccionesPorCategoria() {
-        return repo.buscarTransaccionPorCategoria(Categoria.Salidas);
-    }*/
 
 
 }

@@ -71,8 +71,10 @@ public class ControladorDePresupuesto {
     public ModelAndView editarUnPresupuesto(@RequestParam("id") long idPresupuesto){
         ModelMap map= new ModelMap();
         List<Categoria> categorias = servicioDeCategoria.listarCategoriaParaPresupuestos();
+        List<Presupuesto> presupuestos = servicioDePresupuesto.listarPresupuestos();
         Presupuesto pres = servicioDePresupuesto.buscarPresupuestoPorId(idPresupuesto);
         map.put("presupuesto", pres);
+        map.put("presupuestos", presupuestos);
         map.put("categorias", categorias);
         return new ModelAndView("editarPresupuesto", map);
     }
