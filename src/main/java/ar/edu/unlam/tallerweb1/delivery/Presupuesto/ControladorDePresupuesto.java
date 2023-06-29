@@ -85,7 +85,7 @@ public class ControladorDePresupuesto {
         List<Categoria> categorias = servicioDeCategoria.listarCategoriaParaPresupuestos();
         List<Presupuesto> presupuestos = servicioDePresupuesto.listarPresupuestos();
         try {
-            servicioDePresupuesto.editarPresupuesto(montoPresupuesto, fechaDesde, fechaHasta, cat);
+            servicioDePresupuesto.editarPresupuesto(idPresupuesto,montoPresupuesto, fechaDesde, fechaHasta, cat);
             map.put("msg", "Prespuesto creado");
         } catch (CategoriaEnUso e){
             map.put("Error", e.getMessage());

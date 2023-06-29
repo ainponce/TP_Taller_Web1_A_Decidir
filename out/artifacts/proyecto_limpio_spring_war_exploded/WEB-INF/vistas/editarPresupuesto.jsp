@@ -102,12 +102,8 @@
                 <label>Fecha de fin</label>
                 <form:input value="${presupuesto.fechaHasta}" type="text" id="monto" path="fechaHasta" name="fechaHasta" class="form-control" placeholder="Ingrese fecha de fin"/>
                 <label>Categoria del presupuesto</label>
-                <form:select path="categoria" id="categoria" name="categoria" class="form-control">
-                    <option disabled selected>Selecciona una opcion</option>
-                    <c:forEach var="categoria" items="${categorias}">
-                        <form:option  value="${categoria.GetId()}">${categoria.GetNombre()}</form:option>
-                    </c:forEach>
-                </form:select>
+                <span class="form-control" disabled>${presupuesto.categoria.GetNombre()}</span>
+                <input type="hidden" value="${presupuesto.categoria.GetId()}" name="categoria" path="categoria" >
                 <button  id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Guardar</button>
             </form:form>
     </div>

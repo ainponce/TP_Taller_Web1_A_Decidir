@@ -19,6 +19,8 @@ public interface RepositorioTransaccion {
     public List<Transaccion> buscarTransaccionPorCategoria(Categoria categoria);
     public Double convertirMontoTransaccion(Double monto);
 
+    void eliminarTransaccion(Transaccion transaccion);
+
     Transaccion buscarTransaccionPorIdParaEliminar(Long id);
 }
 

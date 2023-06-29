@@ -113,6 +113,19 @@ public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
     }
 
 
+    @Override
+    public void eliminarTransaccion(Transaccion tranAEliminar) {
+        servicioTransaccionDao.eliminarTransaccion(tranAEliminar);
+        servicioTransaccionDao.listarTransaccion().remove(tranAEliminar);
+    }
+
+    @Override
+    public Transaccion buscarTransaccionPorIdParaEliminar(Long id) {
+        return servicioTransaccionDao.buscarTransaccionPorIdParaEliminar(id);
+    }
+
+
+
     public List<Transaccion> convertirMontoEnMonedaSeleccionada(Moneda moneda) {
         List<Transaccion> transacciones = servicioTransaccionDao.listarTransaccion();
         List<Transaccion> transaccionesNuevoMonto = new ArrayList<>();

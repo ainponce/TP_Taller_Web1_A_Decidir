@@ -128,4 +128,21 @@ public class ControladorDeTransaccion {
        map.put("transacciones", transacciones);
        return new ModelAndView("home", map);
     }
+
+
+    @RequestMapping(path="/delete", method = RequestMethod.POST)
+    public ModelAndView eliminarUnaTransaccion(@RequestParam("id") Long id){
+        ModelMap map= new ModelMap();
+        Transaccion transaccionAEliminar = null;
+        transaccionAEliminar =  servicioDeTransaccion.buscarTransaccionPorIdParaEliminar(id);
+        if(transaccionAEliminar!=null){
+            servicioDeTransaccion.eliminarTransaccion(transaccionAEliminar);
+        }else{
+            map.put("msg", "No existe la transaccion");
+        }
+
+        return new ModelAndView("redirect:/home", map);
+    }
+
+
 }
