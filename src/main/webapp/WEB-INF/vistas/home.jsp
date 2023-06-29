@@ -177,7 +177,7 @@
                 <c:forEach var="transaccion" items="${transacciones}">
                     <tr>
                         <td>${transaccion.fecha}</td>
-                        <td>${transaccion.monto}</td>
+                        <td><fmt:formatNumber value="${transaccion.monto}" minFractionDigits="0" maxFractionDigits="2" /></td>
                         <td>${transaccion.detalle}</td>
                         <td>${transaccion.concepto}</td>
                         <td>${transaccion.categoria.GetNombre()}</td>
@@ -185,7 +185,7 @@
 						<td>
 							<form action="delete" method="post">
 								<input type="hidden" name="id" value="${transaccion.id}" />
-								<button class="btn-delete"type="submit"><i class=" fa fa-trash"></i></button>
+								<button class="btn-delete" type="submit"><i class=" fa fa-trash"></i></button>
 								<style>
 									.btn-delete{
 										border-style: none;
@@ -207,15 +207,15 @@
                     <c:forEach var="transaccion" items="${transacciones}">
                         <c:set var="montoTotal" value="${montoTotal + transaccion.monto}"/>
                     </c:forEach>
-                    <td>${montoTotal}</td>
+					<td><fmt:formatNumber value="${montoTotal}" minFractionDigits="0" maxFractionDigits="2" /></td>
                 </tr>
                 </tbody>
                 </tr>
                 </thead>
             </table>
         </div>
-        <div id="myPieChart"/>
     </div>
+	<div id="myPieChart"/>
     <c:if test="${not empty error}">
         <h4 class="mensajeErrorRegistro"><span>${error}</span></h4>
         <br>

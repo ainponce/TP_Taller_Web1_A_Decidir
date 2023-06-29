@@ -68,7 +68,7 @@ public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
 
     @Override
     public List<Categoria> listarCategorias() {
-        return repositorioCategoria.listarCategoriaPorTransaccion();
+        return repositorioCategoria.listarCategorias();
     }
 
     @Override

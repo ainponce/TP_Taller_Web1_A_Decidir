@@ -15,8 +15,6 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" >
     <!-- Bootstrap theme -->
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
     <link href="css/style.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
@@ -92,15 +90,17 @@
         </div>
     </div>
     <div class="col-lg-5">
-        <h3>Cree su presupuesto</h3>
+        <h3>Editar su presupuesto</h3>
 
-            <form:form action="agregarPresupuesto" method="post" modelAttribute="establecerPresupuesto">
+            <form:form action="editarPresupuesto" method="post" modelAttribute="presupuesto">
+                <form:input value="${presupuesto.id}" type="hidden" id="id" path="id" name="id" class="form-control" />
+
                 <label>Monto</label>
-                <form:input type="text" id="monto" path="montoPresupuesto" name="montoPresupuesto" class="form-control" placeholder="Ingrese monto..."/>
+                <form:input value="${presupuesto.montoPresupuesto}" type="text" id="montoPresupuesto" path="montoPresupuesto" name="montoPresupuesto" class="form-control" placeholder="Ingrese monto..."/>
                 <label>Fecha de inicio</label>
-                <form:input type="text" id="monto" path="fechaDesde" name="fechaDesde" class="form-control" placeholder="Ingrese fecha de inicio"/>
+                <form:input value="${presupuesto.fechaDesde}" type="text" id="monto" path="fechaDesde" name="fechaDesde" class="form-control" placeholder="Ingrese fecha de inicio"/>
                 <label>Fecha de fin</label>
-                <form:input type="text" id="monto" path="fechaHasta" name="fechaHasta" class="form-control" placeholder="Ingrese fecha de fin"/>
+                <form:input value="${presupuesto.fechaHasta}" type="text" id="monto" path="fechaHasta" name="fechaHasta" class="form-control" placeholder="Ingrese fecha de fin"/>
                 <label>Categoria del presupuesto</label>
                 <form:select path="categoria" id="categoria" name="categoria" class="form-control">
                     <option disabled selected>Selecciona una opcion</option>
@@ -108,12 +108,8 @@
                         <form:option  value="${categoria.GetId()}">${categoria.GetNombre()}</form:option>
                     </c:forEach>
                 </form:select>
-                <button  id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Subir</button>
+                <button  id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Guardar</button>
             </form:form>
-        <c:if test="${not empty Error}">
-            <h4 class="mensajeErrorRegistro"><span>${Error}</span></h4>
-            <br>
-        </c:if>
     </div>
     <div class="col-lg-5">
         <div >
@@ -134,7 +130,7 @@
                         <td>${presupuesto.categoria.GetNombre()}</td>
                         <td>${presupuesto.fechaDesde}</td>
                         <td>${presupuesto.fechaHasta}</td>
-                        <td><form action="editarPresupuesto" method="get">
+                        <td><form action="editarPresupuesto" method="post">
                             <input type="hidden" name="id" value="${presupuesto.id}" />
                             <button class="fa fa-edit " style="background-color: initial; border: none" type="submit"></button>
                         </form></td>

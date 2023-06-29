@@ -66,4 +66,10 @@ public class Presupuesto {
     public Categoria getCategoria() {
        return categoria;
     }
+
+    public void setCategoria(Categoria cat) {
+        this.categoria= cat;
+    }
+
+
 }
