@@ -65,7 +65,6 @@ public class ServicioDeTransiccionesTest extends SpringTest{
     }
 
     private void queNoSePuedaRegistrarPorPresupuesto(List<Transaccion> t, Double montopresu, Double monto) {
-       // montopresu=25000.0;
         service.registroTransaccionExitoso(t, montopresu, monto);
     }
 
