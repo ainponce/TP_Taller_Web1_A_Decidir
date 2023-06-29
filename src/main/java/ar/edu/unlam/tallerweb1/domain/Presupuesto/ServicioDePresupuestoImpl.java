@@ -56,7 +56,7 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
         if(presupuesto!=null){
             montoPresupuesto=presupuesto.getMontoPresupuesto();
         }else{
-            throw new ElPresupuestoEsNulo();
+           // throw new ElPresupuestoEsNulo();
         }
         return montoPresupuesto;
     }

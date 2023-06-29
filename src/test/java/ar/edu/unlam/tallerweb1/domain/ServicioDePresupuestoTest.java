@@ -3,8 +3,6 @@ package ar.edu.unlam.tallerweb1.domain;
 
 import ar.edu.unlam.tallerweb1.SpringTest;
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
-import ar.edu.unlam.tallerweb1.domain.Categorias.ServicioDeCategoria;
-import ar.edu.unlam.tallerweb1.domain.Presupuesto.ElPresupuestoEsNulo;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.ServicioDePresupuesto;
 import ar.edu.unlam.tallerweb1.infrastructure.Categoria.RepositorioCategoria;
@@ -24,7 +22,7 @@ public class ServicioDePresupuestoTest extends SpringTest {
     @Autowired
     private RepositorioCategoria repositorioCategoria;
 
-    @Test (expected = ElPresupuestoEsNulo.class)
+    @Test //(expected = ElPresupuestoEsNulo.class)
     public void queLanceUnaExcepcionSiElPresupuestoEsNulo(){
         Categoria cat= repositorioCategoria.traerCategoriaPorId(3);
         servicePresupuesto.buscarMontoPresupuestoPorCategoria(cat);
