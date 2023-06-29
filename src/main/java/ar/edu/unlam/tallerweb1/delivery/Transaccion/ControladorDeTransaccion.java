@@ -105,7 +105,7 @@ public class ControladorDeTransaccion {
        List<Transaccion> transacciones = null;
        List<Categoria> categorias = servicioDeTransaccion.listarCategorias();
        List<Moneda> moneda = servicioDeMoneda.listarMonedas();
-           if(cat.GetId() != null) {
+           if(cat.getId() != null) {
                transacciones = servicioDeTransaccion.filtrarTransaccionesPorCategoria(cat);
            }else {
                transacciones = servicioDeTransaccion.listarTransacciones();

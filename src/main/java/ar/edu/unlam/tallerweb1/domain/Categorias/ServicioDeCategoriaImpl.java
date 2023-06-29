@@ -32,6 +32,18 @@ public class ServicioDeCategoriaImpl implements ServicioDeCategoria {
     }
 
     @Override
+    public Boolean regsitrarCategoria(String nombre) {
+       Boolean seRegistro = false;
+
+       if (nombre != null){
+           Categoria categoria = new Categoria(nombre);
+            repositorioCategoria.crearCategoria(categoria);
+       }
+
+        return null;
+    }
+
+    @Override
     public Categoria buscarCategoriaPorId(long id){
         return repositorioCategoria.traerCategoriaPorId(id);
     }

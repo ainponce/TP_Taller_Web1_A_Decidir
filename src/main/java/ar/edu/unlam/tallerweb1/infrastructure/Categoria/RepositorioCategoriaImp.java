@@ -49,4 +49,9 @@ public class RepositorioCategoriaImp implements RepositorioCategoria {
         return session.get(Categoria.class, id);
 
     }
+
+    @Override
+    public void crearCategoria(Categoria categoria) {
+        sessionFactory.getCurrentSession().save(categoria);
+    }
 }

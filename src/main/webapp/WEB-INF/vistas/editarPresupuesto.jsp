@@ -102,8 +102,8 @@
                 <label>Fecha de fin</label>
                 <form:input value="${presupuesto.fechaHasta}" type="text" id="monto" path="fechaHasta" name="fechaHasta" class="form-control" placeholder="Ingrese fecha de fin"/>
                 <label>Categoria del presupuesto</label>
-                <span class="form-control" disabled>${presupuesto.categoria.GetNombre()}</span>
-                <input type="hidden" value="${presupuesto.categoria.GetId()}" name="categoria" path="categoria" >
+                <span class="form-control" disabled>${presupuesto.categoria.getNombre()}</span>
+                <input type="hidden" value="${presupuesto.categoria.getId()}" name="categoria" path="categoria" >
                 <button  id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Guardar</button>
             </form:form>
     </div>
@@ -123,7 +123,7 @@
                 <c:forEach var="presupuesto" items="${presupuestos}">
                     <tr>
                         <td>${presupuesto.montoPresupuesto}</td>
-                        <td>${presupuesto.categoria.GetNombre()}</td>
+                        <td>${presupuesto.categoria.getNombre()}</td>
                         <td>${presupuesto.fechaDesde}</td>
                         <td>${presupuesto.fechaHasta}</td>
                         <td><form action="editarPresupuesto" method="post">

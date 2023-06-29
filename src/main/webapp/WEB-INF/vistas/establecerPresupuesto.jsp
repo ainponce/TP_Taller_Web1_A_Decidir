@@ -105,7 +105,7 @@
                 <form:select path="categoria" id="categoria" name="categoria" class="form-control">
                     <option disabled selected>Selecciona una opcion</option>
                     <c:forEach var="categoria" items="${categorias}">
-                        <form:option  value="${categoria.GetId()}">${categoria.GetNombre()}</form:option>
+                        <form:option  value="${categoria.getId()}">${categoria.getNombre()}</form:option>
                     </c:forEach>
                 </form:select>
                 <button  id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Subir</button>
@@ -131,7 +131,7 @@
                 <c:forEach var="presupuesto" items="${presupuestos}">
                     <tr>
                         <td>${presupuesto.montoPresupuesto}</td>
-                        <td>${presupuesto.categoria.GetNombre()}</td>
+                        <td>${presupuesto.categoria.getNombre()}</td>
                         <td>${presupuesto.fechaDesde}</td>
                         <td>${presupuesto.fechaHasta}</td>
                         <td><form action="editarPresupuesto" method="get">

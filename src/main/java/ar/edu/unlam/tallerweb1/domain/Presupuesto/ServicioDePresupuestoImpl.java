@@ -32,7 +32,7 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
         boolean categoriaEnUso = false;
 
         for (Presupuesto presupuesto : validacionDeCategoria) {
-            if (presupuesto.getCategoria().GetId().equals(categoria.GetId())) {
+            if (presupuesto.getCategoria().getId().equals(categoria.getId())) {
                 categoriaEnUso = true;
                 break;  // Si encuentras una categoría igual, sales del bucle
             }
@@ -84,7 +84,7 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
         boolean categoriaDelPresupuesto = false;
 
             for (Presupuesto presupuesto : listaPresupuestos) {
-                if (presupuesto.getCategoria().GetId() == categoria.GetId()) {
+                if (presupuesto.getCategoria().getId() == categoria.getId()) {
                     categoriaDelPresupuesto = true;
                     break;  // Si encuentras una categoría igual, sales del bucle
                 }
