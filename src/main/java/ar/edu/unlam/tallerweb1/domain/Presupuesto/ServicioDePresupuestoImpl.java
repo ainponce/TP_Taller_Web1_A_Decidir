@@ -90,7 +90,7 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
                 }
             }
 
-            if (categoriaDelPresupuesto && montoPresupuesto <= 0) {
+            if (categoriaDelPresupuesto && montoPresupuesto >= 0) {
                 Presupuesto presupuestoExistente = repositorioPresupuesto.buscarPresupuestoPorId(id);
                 presupuestoExistente.setMontoPresupuesto(montoPresupuesto);
                 presupuestoExistente.setFechaDesde(fechaDesde);
