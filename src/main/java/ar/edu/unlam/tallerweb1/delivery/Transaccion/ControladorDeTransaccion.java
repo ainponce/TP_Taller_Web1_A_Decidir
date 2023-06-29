@@ -8,6 +8,7 @@ import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
 import ar.edu.unlam.tallerweb1.domain.Moneda.ServicioDeMoneda;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.ServicioDePresupuesto;
+import ar.edu.unlam.tallerweb1.domain.Transaccion.MontoMenorACero;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
 import org.springframework.beans.factory.annotation.Autowired;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.ServicioDeTransaccion;
@@ -39,8 +40,8 @@ public class ControladorDeTransaccion {
     public ModelAndView crearTransaccion() {
         ModelMap map= new ModelMap();
         map.put("datosTransaccion", new Transaccion());
-        List<Categoria> categorias = servicioDeTransaccion.listarCategorias();
-        map.put("categorias", categorias);
+        List<Presupuesto> presupuestos = servicioDePresupuesto.listarPresupuestos();
+        map.put("listaDePresupuesto", presupuestos);
         return new ModelAndView("establecerTransaccion", map);
     }
 
@@ -55,23 +56,33 @@ public class ControladorDeTransaccion {
         if(presupuesto==null){
             map.put("errorPresu", "El presupuesto no existe");
             map.put("datosTransaccion", new Transaccion());
-            List<Categoria> categorias = servicioDeTransaccion.listarCategorias();
-            map.put("categorias", categorias);
+            List<Presupuesto> presupuestos = servicioDePresupuesto.listarPresupuestos();
+            map.put("listaDePresupuesto", presupuestos);
             return new ModelAndView("establecerTransaccion", map);
         }
-        Boolean registroTransaccionPosible = servicioDeTransaccion.registroTransaccionExitoso(transacciones, presupuestoDeCategoria, monto);
-        if(registroTransaccionPosible){
-            servicioDeTransaccion.registrarTransaccion(monto, detalle, fecha, concepto, cat);
-             map.put("msg", "Transaccion exitosa");
-             return new ModelAndView("redirect:/home");
-        }else{
 
+        Boolean registroTransaccionExistoso = servicioDeTransaccion.registroTransaccionExitoso(transacciones, presupuestoDeCategoria, monto);
+        if(registroTransaccionExistoso){
+            try{
+                servicioDeTransaccion.registrarTransaccion(monto, detalle, fecha, concepto, cat);
+                map.put("msg", "Transaccion exitosa");
+                map.put("datosTransaccion", new Transaccion());
+            }catch (MontoMenorACero m){
+                map.put("error", m.getMessage());
+                map.put("datosTransaccion", new Transaccion());
+                List<Presupuesto> presupuestos = servicioDePresupuesto.listarPresupuestos();
+                map.put("listaDePresupuesto", presupuestos);
+                return new ModelAndView("establecerTransaccion", map);
+            }
+            return new ModelAndView("redirect:/home");
+        }else{
             map.put("error", "¡Error al ingresar la nueva transaccion!. El monto del presupuesto excedio el limite");
             map.put("datosTransaccion", new Transaccion());
-            List<Categoria> categorias = servicioDeTransaccion.listarCategorias();
-            map.put("categorias", categorias);
+            List<Presupuesto> presupuestos = servicioDePresupuesto.listarPresupuestos();
+            map.put("listaDePresupuesto", presupuestos);
             return new ModelAndView("establecerTransaccion", map);
         }
+
     }
 
     @RequestMapping(path="/home", method = RequestMethod.GET)
