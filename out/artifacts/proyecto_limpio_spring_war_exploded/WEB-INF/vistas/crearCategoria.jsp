@@ -92,14 +92,14 @@
     <div class="col-lg-5">
         <h3>Cree su categoria personalizada</h3>
 
-            <form:form action="crearCategoria" method="post" modelAttribute="crearCategoria">
+            <form:form action="crearCategoria" method="post"  modelAttribute="datosCategoria">
                 <label>Nombre de la categoria</label>
-                <form:input type="text" id="nombreCategoria" path="nombreCategoria" name="nombreCategoria" class="form-control" placeholder="Ingrese un nombre para su categoria..."/>
+                <form:input type="text" id="nombre" path="nombre" name="nombre" class="form-control" placeholder="Ingrese un nombre para su categoria..."/>
                 <button  id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Crear</button>
             </form:form>
     </div>
     <div class="col-lg-5">
-        <div >
+        <div>
             <h3>Mis categorias</h3>
             <table class="table">
                 <thead>
@@ -108,12 +108,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="presupuesto" items="${presupuestos}">
+                <c:forEach var="categoria" items="${categorias}">
                     <tr>
-                        <td>${presupuesto.montoPresupuesto}</td>
-                        <td>${presupuesto.categoria.GetNombre()}</td>
-                        <td>${presupuesto.fechaDesde}</td>
-                        <td>${presupuesto.fechaHasta}</td>
+                        <td>${categoria.getNombre()}</td>
                     </tr>
                 </c:forEach>
                 </tbody>

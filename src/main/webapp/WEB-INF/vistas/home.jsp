@@ -31,7 +31,7 @@
             var stringTransacciones = [];
             var categoriasProcesadas = new Set();
             <c:forEach var="transaccion" items="${transacciones}">
-                var categoria = "${transaccion.categoria.GetNombre()}";
+                var categoria = "${transaccion.categoria.getNombre()}";
                 var monto = ${transaccion.monto};
             if (!categoriasProcesadas.has(categoria)) {
                 categoriasProcesadas.add(categoria);
@@ -113,7 +113,7 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">
+						<a class="nav-link" href="crearCategoria">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 								 class="bi bi-plus-circle icon-home" viewBox="0 0 16 16">
 								<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -148,7 +148,7 @@
 						class="form-control">
 					<%--<option value="" disabled selected>Filtrar por categoria</option>--%>
 					<c:forEach items="${categorias}" var="option">
-						<option value="${option.GetId()}">${option.GetNombre()}</option>
+						<option value="${option.getId()}">${option.getNombre()}</option>
 					</c:forEach>
 				</select>
 				<input type="submit" value="Filtrar" class="btn btnFiltro btn-lg btn-blockFiltro">
@@ -180,7 +180,7 @@
                         <td><fmt:formatNumber value="${transaccion.monto}" minFractionDigits="0" maxFractionDigits="2" /></td>
                         <td>${transaccion.detalle}</td>
                         <td>${transaccion.concepto}</td>
-                        <td>${transaccion.categoria.GetNombre()}</td>
+                        <td>${transaccion.categoria.getNombre()}</td>
 
 						<td>
 							<form action="delete" method="post">

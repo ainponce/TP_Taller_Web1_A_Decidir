@@ -14,16 +14,16 @@ public class Categoria {
     private Boolean estaActiva;
     public Categoria(){}
 
-    public Categoria(String nombre, Boolean estaActiva) {
+    public Categoria(String nombre) {
         this.nombre = nombre;
-        this.estaActiva = estaActiva;
+        this.estaActiva = true;
     }
 
-    public Long GetId() {
+    public Long getId() {
         return id;
     }
 
-    public String GetNombre() {
+    public String getNombre() {
         return nombre;
     }
 
