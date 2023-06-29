@@ -52,4 +52,30 @@ public class ControladorDePresupuesto {
         map.put("categorias", categorias);
         return new ModelAndView("establecerPresupuesto", map);
     }
+
+    @RequestMapping(path="/editarPresupuesto", method = RequestMethod.GET)
+    public ModelAndView editarUnPresupuesto(@RequestParam("id") long idPresupuesto){
+        ModelMap map= new ModelMap();
+        List<Categoria> categorias = servicioDeCategoria.listarCategoriaParaPresupuestos();
+        Presupuesto pres = servicioDePresupuesto.buscarPresupuestoPorId(idPresupuesto);
+        map.put("presupuesto", pres);
+        map.put("categorias", categorias);
+        return new ModelAndView("editarPresupuesto", map);
+    }
+
+    @RequestMapping(path = "/editarPresupuesto", method = RequestMethod.POST                                                                                                                                                                                                                                                                )
+    public ModelAndView editarUnPresupuesto(@RequestParam("id") long idPresupuesto, @RequestParam("montoPresupuesto") double montoPresupuesto, @RequestParam("fechaDesde") String fechaDesde,
+                                               @RequestParam("fechaHasta") String fechaHasta, @RequestParam("categoria") long categoria ){
+        Categoria cat =servicioDeCategoria.buscarCategoriaPorId(categoria);
+        servicioDePresupuesto.editarPresupuesto(idPresupuesto, montoPresupuesto,fechaDesde, fechaHasta, cat );
+        ModelMap map = new ModelMap();
+        map.put("establecerPresupuesto", new Presupuesto());
+        map.put("msg", "Prespuesto creado");
+        return new ModelAndView("redirect:/establecerPresupuesto");
+    }
+
+
+
+
+
 }

@@ -16,4 +16,8 @@ public interface ServicioDePresupuesto {
 
 
     Double buscarMontoPresupuestoPorCategoria(Categoria cat);
+
+    Presupuesto buscarPresupuestoPorId(long idPresupuesto);
+
+    void editarPresupuesto(long id, double montoPresupuesto, String fechaDesde, String fechaHasta, Categoria cat);
 }
