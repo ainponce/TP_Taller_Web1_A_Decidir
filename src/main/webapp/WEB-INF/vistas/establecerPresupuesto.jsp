@@ -15,6 +15,8 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" >
     <!-- Bootstrap theme -->
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
     <link href="css/style.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
@@ -108,6 +110,10 @@
                 </form:select>
                 <button  id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Subir</button>
             </form:form>
+        <c:if test="${not empty Error}">
+            <h4 class="mensajeErrorRegistro"><span>${Error}</span></h4>
+            <br>
+        </c:if>
     </div>
     <div class="col-lg-5">
         <div >
@@ -128,6 +134,16 @@
                         <td>${presupuesto.categoria.GetNombre()}</td>
                         <td>${presupuesto.fechaDesde}</td>
                         <td>${presupuesto.fechaHasta}</td>
+                        <td><form action="editarPresupuesto" method="get">
+                            <input type="hidden" name="id" value="${presupuesto.id}" />
+                            <button class="fa fa-edit " style="background-color: initial; border: none" type="submit"></button>
+                        </form></td>
+                        <td>
+                            <form action="deletePresupuesto" method="post">
+                                <input type="hidden" name="id" value="${presupuesto.id}" />
+                                <button class="fa fa-trash" type="submit" style="background-color: transparent; border: none;"></button>
+                            </form>
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>

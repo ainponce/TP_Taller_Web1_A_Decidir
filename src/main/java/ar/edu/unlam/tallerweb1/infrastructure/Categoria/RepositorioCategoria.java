@@ -7,12 +7,8 @@ import java.util.List;
 
 public interface RepositorioCategoria {
 
-    public List<Categoria> listarCategoriaPorTransaccion();
+    public List<Categoria> listarCategorias();
 
     public Categoria traerCategoriaPorId(long id);
 
-
-    public List<Categoria> listarCategoriaParaPresupuestos();
-
-    //List<Categoria> traerListaDeCategoriasPorId(Long );
 }

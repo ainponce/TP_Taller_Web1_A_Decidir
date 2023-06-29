@@ -15,13 +15,11 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" >
     <!-- Bootstrap theme -->
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
     <link href="css/style.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title>Hurr</title>
-    <title>Title</title>
+    <title>Crear Categoria</title>
 </head>
 <body>
 <div class="row">
@@ -92,39 +90,21 @@
         </div>
     </div>
     <div class="col-lg-5">
-        <h3>Cree su presupuesto</h3>
+        <h3>Cree su categoria personalizada</h3>
 
-            <form:form action="agregarPresupuesto" method="post" modelAttribute="establecerPresupuesto">
-                <label>Monto</label>
-                <form:input type="text" id="monto" path="montoPresupuesto" name="montoPresupuesto" class="form-control" placeholder="Ingrese monto..."/>
-                <label>Fecha de inicio</label>
-                <form:input type="text" id="monto" path="fechaDesde" name="fechaDesde" class="form-control" placeholder="Ingrese fecha de inicio"/>
-                <label>Fecha de fin</label>
-                <form:input type="text" id="monto" path="fechaHasta" name="fechaHasta" class="form-control" placeholder="Ingrese fecha de fin"/>
-                <label>Categoria del presupuesto</label>
-                <form:select path="categoria" id="categoria" name="categoria" class="form-control">
-                    <option disabled selected>Selecciona una opcion</option>
-                    <c:forEach var="categoria" items="${categorias}">
-                        <form:option  value="${categoria.GetId()}">${categoria.GetNombre()}</form:option>
-                    </c:forEach>
-                </form:select>
-                <button  id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Subir</button>
+            <form:form action="crearCategoria" method="post" modelAttribute="crearCategoria">
+                <label>Nombre de la categoria</label>
+                <form:input type="text" id="nombreCategoria" path="nombreCategoria" name="nombreCategoria" class="form-control" placeholder="Ingrese un nombre para su categoria..."/>
+                <button  id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Crear</button>
             </form:form>
-        <c:if test="${not empty Error}">
-            <h4 class="mensajeErrorRegistro"><span>${Error}</span></h4>
-            <br>
-        </c:if>
     </div>
     <div class="col-lg-5">
         <div >
-            <h3>Presupuestos Ingresados</h3>
+            <h3>Mis categorias</h3>
             <table class="table">
                 <thead>
                 <tr>
-                    <th>Monto</th>
-                    <th>Categoría</th>
-                    <th>Fecha Desde</th>
-                    <th>Fecha Hasta</th>
+                    <th>Nombre</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -134,16 +114,6 @@
                         <td>${presupuesto.categoria.GetNombre()}</td>
                         <td>${presupuesto.fechaDesde}</td>
                         <td>${presupuesto.fechaHasta}</td>
-                        <td><form action="editarPresupuesto" method="get">
-                            <input type="hidden" name="id" value="${presupuesto.id}" />
-                            <button class="fa fa-edit " style="background-color: initial; border: none" type="submit"></button>
-                        </form></td>
-                        <td>
-                            <form action="deletePresupuesto" method="post">
-                                <input type="hidden" name="id" value="${presupuesto.id}" />
-                                <button class="fa fa-trash" type="submit" style="background-color: transparent; border: none;"></button>
-                            </form>
-                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>

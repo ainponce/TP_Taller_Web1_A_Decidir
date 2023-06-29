@@ -12,12 +12,15 @@ public interface RepositorioTransaccion {
     public void guardarTransaccion(Transaccion transaccion);
     public void modificar(Transaccion transaccion);
 
-    public void eliminarTransaccion(Transaccion transaccion);
     public List<Transaccion> listarTransaccion();
 
 
     List<Transaccion> buscarTransaccionPorConcepto(Concepto concepto);
     public List<Transaccion> buscarTransaccionPorCategoria(Categoria categoria);
     public Double convertirMontoTransaccion(Double monto);
+
+    void eliminarTransaccion(Transaccion transaccion);
+
     Transaccion buscarTransaccionPorIdParaEliminar(Long id);
 }
+

@@ -34,6 +34,6 @@ public class RepositorioCategoriaTest extends SpringTest {
     }
 
     private List<Categoria> listoCategorias() {
-        return repo.listarCategoriaParaPresupuestos();
+        return repo.listarCategorias();
     }
 }
