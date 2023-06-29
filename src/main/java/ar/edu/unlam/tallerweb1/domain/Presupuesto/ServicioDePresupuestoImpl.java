@@ -80,28 +80,25 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
 
     @Override
     public void editarPresupuesto(long id, double montoPresupuesto, String fechaDesde, String fechaHasta, Categoria categoria) {
-        Boolean seRegistro = false;
         List <Presupuesto> listaPresupuestos= repositorioPresupuesto.listarPresupuesto();
-        boolean categoriaEnUso = false;
+        boolean categoriaDelPresupuesto = false;
 
             for (Presupuesto presupuesto : listaPresupuestos) {
                 if (presupuesto.getCategoria().GetId() == categoria.GetId()) {
-                    categoriaEnUso = true;
+                    categoriaDelPresupuesto = true;
                     break;  // Si encuentras una categoría igual, sales del bucle
                 }
             }
 
-            if (categoriaEnUso && montoPresupuesto <= 0) {
-                Presupuesto presupuestoExistente = repositorioPresupuesto.obtenerPresupuestoPorCategoria(categoria);
+            if (categoriaDelPresupuesto && montoPresupuesto <= 0) {
+                Presupuesto presupuestoExistente = repositorioPresupuesto.buscarPresupuestoPorId(id);
                 presupuestoExistente.setMontoPresupuesto(montoPresupuesto);
                 presupuestoExistente.setFechaDesde(fechaDesde);
                 presupuestoExistente.setFechaHasta(fechaHasta);
-                repositorioPresupuesto.actualizarPresupuesto(presupuestoExistente);
+                repositorioPresupuesto.modificar(presupuestoExistente);
             }else {
                 throw new MontoMenorACero();  // Lanzas la excepción si el monto es menor a cero
             }
-
-        return seRegistro;
     }
 
     @Override

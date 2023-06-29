@@ -47,6 +47,11 @@ public class RepositorioTransaccionImpl implements RepositorioTransaccion {
         sessionFactory.getCurrentSession().update(transaccion);
     }
 
+    @Override
+    public void eliminarTransaccion(Transaccion transaccion) {
+        sessionFactory.getCurrentSession().delete(transaccion);
+    }
+
 
 
     @Override
