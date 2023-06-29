@@ -46,7 +46,7 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
     }
     @Override
     public List<Categoria> listarCategorias() {
-        return repositorioCategoria.listarCategoriaParaPresupuestos();
+        return repositorioCategoria.listarCategorias();
     }
 
     @Override

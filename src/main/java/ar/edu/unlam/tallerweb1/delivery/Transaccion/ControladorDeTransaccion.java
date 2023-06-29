@@ -49,7 +49,6 @@ public class ControladorDeTransaccion {
                                                 @RequestParam("fecha") String fecha, @RequestParam("concepto") Concepto concepto,@RequestParam(value = "categoria", required=false) Long categoria) {
         Categoria cat =servicioDeCategoria.buscarCategoriaPorId(categoria);
         ModelMap map= new ModelMap();
-        ModelAndView mapeo = new ModelAndView();
         List<Transaccion> transacciones = servicioDeTransaccion.filtrarTransaccionesPorCategoria(cat);
         Double presupuestoDeCategoria = servicioDePresupuesto.buscarMontoPresupuestoPorCategoria(cat);
         Presupuesto presupuesto = servicioDePresupuesto.buscarPresupuestoPorCategoria(cat);
@@ -79,7 +78,7 @@ public class ControladorDeTransaccion {
     public ModelAndView listarUnaTransaccion() {
         ModelMap map= new ModelMap();
         List<Transaccion> transacciones = servicioDeTransaccion.listarTransacciones();
-        List<Categoria> categorias = servicioDeCategoria.listarCategoriasPorTransaccion();
+        List<Categoria> categorias = servicioDeCategoria.listarCategorias();
         List<Moneda> moneda = servicioDeMoneda.listarMonedas();
         map.put("datosTransaccion", new Transaccion());
         map.put("transacciones", transacciones);

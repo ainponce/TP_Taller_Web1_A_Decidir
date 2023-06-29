@@ -104,7 +104,6 @@
                 <label>Categoria del presupuesto</label>
                 <form:select path="categoria" id="categoria" name="categoria" class="form-control">
                     <option disabled selected>Selecciona una opcion</option>
-                    <option value="${presupuesto.categoria}">${presupuesto.categoria.GetNombre()}</option>
                     <c:forEach var="categoria" items="${categorias}">
                         <form:option  value="${categoria.GetId()}">${categoria.GetNombre()}</form:option>
                     </c:forEach>
