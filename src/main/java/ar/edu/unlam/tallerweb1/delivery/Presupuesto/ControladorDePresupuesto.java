@@ -32,7 +32,7 @@ public class ControladorDePresupuesto {
     }
 
 
-    @RequestMapping(path = "/agregarPresupuesto", method = RequestMethod.POST)
+    @RequestMapping(path = "/establecerPresupuesto", method = RequestMethod.POST)
     public ModelAndView registrarUnPresupuesto(@RequestParam("montoPresupuesto") double montoPresupuesto, @RequestParam("fechaDesde") String fechaDesde,
                                                @RequestParam("fechaHasta") String fechaHasta, @RequestParam("categoria") long categoria ){
         ModelMap map = new ModelMap();
@@ -44,15 +44,17 @@ public class ControladorDePresupuesto {
             map.put("msg", "Prespuesto creado");
         } catch (CategoriaEnUso e){
              map.put("Error", e.getMessage());
+            return new ModelAndView("establecerPresupuesto", map);
         } catch (MontoMenorACero e) {
             map.put("Error", e.getMessage());
+            return new ModelAndView("establecerPresupuesto", map);
         }
 
         map.put("establecerPresupuesto", new Presupuesto());
         map.put("presupuestos", presupuestos);
         map.put("categorias", categorias);
 
-        return new ModelAndView("establecerPresupuesto", map);
+        return new ModelAndView("redirect:/establecerPresupuesto", map);
     }
 
 
