@@ -4,6 +4,7 @@ package ar.edu.unlam.tallerweb1.domain;
 import ar.edu.unlam.tallerweb1.SpringTest;
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Categorias.ServicioDeCategoria;
+import ar.edu.unlam.tallerweb1.domain.Presupuesto.CategoriaEnUso;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.ElPresupuestoEsNulo;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.ServicioDePresupuesto;
@@ -28,6 +29,12 @@ public class ServicioDePresupuestoTest extends SpringTest {
     public void queLanceUnaExcepcionSiElPresupuestoEsNulo(){
         Categoria cat= repositorioCategoria.traerCategoriaPorId(3);
         servicePresupuesto.buscarMontoPresupuestoPorCategoria(cat);
+    }
+
+    @Test (expected = CategoriaEnUso.class)
+    public void queLanceUnaExcpecionSiLaCategoriaEstaEnUso(){
+        Categoria cat = repositorioCategoria.traerCategoriaPorId(2);
+        servicePresupuesto.establecerPresupuesto(122.00, "15-06-2023", "30-06-2023", cat);
     }
 
 
