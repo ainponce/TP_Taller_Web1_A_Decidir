@@ -35,6 +35,7 @@ public class Transaccion {
         this.detalle = detalle;
     };
 
+
     public Long getId() {
         return id;
     }

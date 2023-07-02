@@ -24,7 +24,7 @@ import java.util.Set;
 @Repository("repositorioCategoria")
 @Transactional
 public class RepositorioCategoriaImp implements RepositorioCategoria {
-    private final SessionFactory sessionFactory;
+    private  SessionFactory sessionFactory;
     private RepositorioPresupuesto repositorioPresupuesto;
     private RepositorioTransaccion repositorioTransaccion;
 
@@ -34,6 +34,11 @@ public class RepositorioCategoriaImp implements RepositorioCategoria {
         this.repositorioPresupuesto=repositorioPresupuesto;
         this.repositorioTransaccion=repositorioTransaccion;
     }
+
+    public RepositorioCategoriaImp() {
+
+    }
+
 
     @Override
     public List<Categoria> listarCategorias() {

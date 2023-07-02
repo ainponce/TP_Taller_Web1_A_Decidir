@@ -13,11 +13,14 @@ import java.util.List;
 @Service
 @Transactional
 public class ServicioDeCategoriaImpl implements ServicioDeCategoria {
-    private final RepositorioCategoria repositorioCategoria;
+    private RepositorioCategoria repositorioCategoria;
 
     @Autowired
     public ServicioDeCategoriaImpl( RepositorioCategoria repositorioCategoria) {
         this.repositorioCategoria=repositorioCategoria;
+    }
+
+    public ServicioDeCategoriaImpl() {
     }
 
 
