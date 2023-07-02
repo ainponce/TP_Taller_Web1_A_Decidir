@@ -2,13 +2,17 @@
 package ar.edu.unlam.tallerweb1.delivery;
 
 import ar.edu.unlam.tallerweb1.SpringTest;
+import ar.edu.unlam.tallerweb1.delivery.Categoria.ControladorDeCategoria;
 import ar.edu.unlam.tallerweb1.delivery.Transaccion.ControladorDeTransaccion;
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Categorias.ServicioDeCategoria;
+import ar.edu.unlam.tallerweb1.domain.Categorias.ServicioDeCategoriaImpl;
 import ar.edu.unlam.tallerweb1.domain.Concepto.Concepto;
 import ar.edu.unlam.tallerweb1.domain.Moneda.ServicioDeMoneda;
+import ar.edu.unlam.tallerweb1.domain.Moneda.ServicioDeMonedaImpl;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.ServicioDePresupuesto;
+import ar.edu.unlam.tallerweb1.domain.Presupuesto.ServicioDePresupuestoImpl;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.ServicioDeTransaccion;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.ServicioDeTransaccionImpl;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
@@ -26,8 +30,6 @@ public class ControladorTransaccionTest extends SpringTest {
     @Autowired
     private ControladorDeTransaccion controladorDeTransaccion;
 
-    private Transaccion transaccion;
-
     @Autowired
     private ServicioDeCategoria servicioDeCategoria;
     @Autowired
@@ -36,12 +38,19 @@ public class ControladorTransaccionTest extends SpringTest {
     @Autowired
     private ServicioDeMoneda servicioDeMoneda;
 
+    private ControladorDeCategoria controladorDeCategoria;
+    private ModelAndView model;
 
     @Before
     public void init(){
         this.servicioDeTransaccion= mock(ServicioDeTransaccionImpl.class);
+        this.servicioDeCategoria = mock(ServicioDeCategoriaImpl.class);
+        this.servicioDePresupuesto = mock(ServicioDePresupuestoImpl.class);
+        this.controladorDeCategoria = mock(ControladorDeCategoria.class);
+        this.servicioDeMoneda = mock(ServicioDeMonedaImpl.class);
+        model = mock(ModelAndView.class);
         this.controladorDeTransaccion= new ControladorDeTransaccion(this.servicioDeTransaccion, this.servicioDeCategoria, this.servicioDePresupuesto, this.servicioDeMoneda);
-        this.transaccion= new Transaccion(1500.0, "Inversión", "123", Concepto.Gasto, new Categoria());
+
     }
 
    @Test
@@ -70,8 +79,9 @@ public class ControladorTransaccionTest extends SpringTest {
     private ModelAndView cuandoQuieroRegistrarUnaTransaccion(Transaccion t, Presupuesto p) {
         when(servicioDeCategoria.buscarCategoriaPorId(t.getCategoria().getId())).thenReturn(t.getCategoria());
         when(servicioDeCategoria.buscarCategoriaPorId(p.getCategoria().getId())).thenReturn(p.getCategoria());
-        when(servicioDePresupuesto.establecerPresupuesto(p.getMontoPresupuesto(), p.getFechaDesde(), p.getFechaHasta(), p.getCategoria())).thenReturn(true);
+        when(servicioDePresupuesto.establecerPresupuesto(p.getMontoPresupuesto(),p.getFechaDesde(),p.getFechaHasta(),p.getCategoria())).thenReturn(true);
         when(servicioDeTransaccion.registrarTransaccion(t.getMonto(),t.getDetalle(),t.getFecha(),t.getConcepto(),t.getCategoria())).thenReturn(true);
+        when(model.getViewName()).thenReturn("/redirect:home");
         return controladorDeTransaccion.registrarUnaTransaccion(t.getMonto(),t.getDetalle(),t.getFecha(),t.getConcepto(),t.getCategoria().getId());
     }
 
@@ -83,6 +93,7 @@ public class ControladorTransaccionTest extends SpringTest {
     private Transaccion cuandoIngresoUnaTransaccion() {
         Categoria cat = new Categoria("bebidas");
        Transaccion transaccionNueva = new Transaccion(120.0, "compras", "12/04/2023", Concepto.Gasto,cat);
+        transaccionNueva.getCategoria().setId(5L);
        return transaccionNueva;
     }
 
