@@ -4,11 +4,13 @@ package ar.edu.unlam.tallerweb1.domain;
 import ar.edu.unlam.tallerweb1.SpringTest;
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Categorias.ServicioDeCategoria;
+import ar.edu.unlam.tallerweb1.domain.Categorias.ServicioDeCategoriaImpl;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.CategoriaEnUso;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.ElPresupuestoEsNulo;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.ServicioDePresupuesto;
 import ar.edu.unlam.tallerweb1.infrastructure.Categoria.RepositorioCategoria;
+import ar.edu.unlam.tallerweb1.infrastructure.Categoria.RepositorioCategoriaImp;
 import ar.edu.unlam.tallerweb1.infrastructure.Presupuesto.RepositorioPresupuesto;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,18 +19,18 @@ import java.util.List;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
-public class ServicioDePresupuestoTest extends SpringTest {
-    @Autowired
+public class ServicioDePresupuestoTest {
+
     private ServicioDePresupuesto servicePresupuesto;
-    @Autowired
+
     private RepositorioPresupuesto repoPresupuesto;
-    @Autowired
     private RepositorioCategoria repositorioCategoria;
+    private ServicioDeCategoria serviceCategoria;
 
     @Test (expected = ElPresupuestoEsNulo.class)
     public void queLanceUnaExcepcionSiElPresupuestoEsNulo(){
-        Categoria cat= repositorioCategoria.traerCategoriaPorId(3);
-        servicePresupuesto.buscarMontoPresupuestoPorCategoria(cat);
+        Boolean esValido = serviceCategoria.regsitrarCategoria("servicio");
+        assertThat(esValido).isTrue();
     }
 
     @Test (expected = CategoriaEnUso.class)
