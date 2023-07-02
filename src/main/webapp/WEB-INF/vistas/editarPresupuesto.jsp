@@ -128,7 +128,7 @@
                         <td>${presupuesto.categoria.getNombre()}</td>
                         <td>${presupuesto.fechaDesde}</td>
                         <td>${presupuesto.fechaHasta}</td>
-                        <td><form action="editarPresupuesto" method="post">
+                        <td><form action="editarPresupuesto" method="get">
                             <input type="hidden" name="id" value="${presupuesto.id}" />
                             <button class="fa fa-edit " style="background-color: initial; border: none" type="submit"></button>
                         </form></td>
