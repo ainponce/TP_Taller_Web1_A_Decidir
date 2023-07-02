@@ -62,7 +62,7 @@ public class ControladorDeTransaccion {
         }
 
         Boolean registroTransaccionExistoso = servicioDeTransaccion.registroTransaccionExitoso(transacciones, presupuestoDeCategoria, monto);
-        if(registroTransaccionExistoso){
+        if(registroTransaccionExistoso){ //regitrar transaccion deberia estar en registrar transaccion
             try{
                 servicioDeTransaccion.registrarTransaccion(monto, detalle, fecha, concepto, cat);
                 map.put("msg", "Transaccion exitosa");
