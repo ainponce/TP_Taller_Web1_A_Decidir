@@ -96,7 +96,7 @@
     <div class="col-lg-5">
         <h3>Cree su presupuesto</h3>
 
-            <form:form action="agregarPresupuesto" method="post" modelAttribute="establecerPresupuesto">
+            <form:form action="establecerPresupuesto" method="post" modelAttribute="establecerPresupuesto">
                 <label>Monto</label>
                 <form:input type="text" id="monto" path="montoPresupuesto" name="montoPresupuesto" class="form-control" placeholder="Ingrese monto..."/>
                 <label>Fecha de inicio</label>

@@ -28,16 +28,11 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
     @Override
     public Boolean establecerPresupuesto(Double monto, String fechaDesde, String fechaHasta, Categoria categoria) {
         Boolean seRegistro = false;
-        List <Presupuesto> validacionDeCategoria= repositorioPresupuesto.listarPresupuesto();
+        Presupuesto presupuesto = repositorioPresupuesto.buscarPresupuestoPorCategoria(categoria);
         boolean categoriaEnUso = false;
-
-        for (Presupuesto presupuesto : validacionDeCategoria) {
-            if (presupuesto.getCategoria().getId().equals(categoria.getId())) {
+        if (presupuesto!=null && presupuesto.getCategoria().equals(categoria)){
                 categoriaEnUso = true;
-                break;  // Si encuentras una categoría igual, sales del bucle
-            }
         }
-
         if (categoriaEnUso) {
             throw new CategoriaEnUso();  // Lanzas la excepción si la categoría ya está en uso
         } else {
