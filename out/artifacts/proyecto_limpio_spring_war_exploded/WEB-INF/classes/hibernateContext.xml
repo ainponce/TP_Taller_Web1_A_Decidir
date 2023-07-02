@@ -11,9 +11,10 @@
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/hurr?useSSL=true&amp;serverTimezone=UTC" />
 		<property name="username" value="root" />
-		<property name="password" value="admin" />
-	</bean>
+		<property name="password" value="juflorcan01+" />
 
+
+	</bean>
 	<!--Configuracion de la factory encargada de generar las sesiones con la base de datos, la misma -->
 	<!--usa el data source configurado antes-->
 	<bean id="sessionFactory"

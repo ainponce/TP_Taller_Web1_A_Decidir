@@ -29,7 +29,7 @@ public class ControladorDeTransaccion {
     private final ServicioDePresupuesto servicioDePresupuesto;
     private final ServicioDeMoneda servicioDeMoneda;
 
-
+@Autowired
     public ControladorDeTransaccion(ServicioDeTransaccion servicioDeTransaccion, ServicioDeCategoria servicioDeCategoria, ServicioDePresupuesto servicioDePresupuesto, ServicioDeMoneda servicioDeMoneda){
         this.servicioDeTransaccion=servicioDeTransaccion;
         this.servicioDeCategoria= servicioDeCategoria;

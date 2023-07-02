@@ -6,56 +6,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap theme -->
-    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+		  integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+	<!-- Bootstrap core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap theme -->
+	<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
-    <title>Hurr</title>
-    <script src="https://www.gstatic.com/charts/loader.js"></script>
-    <script>
-        google.charts.load('current', {packages: ['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<title>Hurr</title>
+	<script src="https://www.gstatic.com/charts/loader.js"></script>
+	<script>
+		google.charts.load('current', {packages: ['corechart']});
+		google.charts.setOnLoadCallback(drawChart);
 
-        function drawChart() {
-            // Define the chart to be drawn.
-            var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Categoria');
-            data.addColumn('number', 'Monto');
+		function drawChart() {
+			// Define the chart to be drawn.
+			var data = new google.visualization.DataTable();
+			data.addColumn('string', 'Categoria');
+			data.addColumn('number', 'Monto');
 
-            var stringTransacciones = [];
-            var categoriasProcesadas = new Set();
-            <c:forEach var="transaccion" items="${transacciones}">
-                var categoria = "${transaccion.categoria.getNombre()}";
-                var monto = ${transaccion.monto};
-            if (!categoriasProcesadas.has(categoria)) {
-                categoriasProcesadas.add(categoria);
-                console.log(categoria, monto);
-                stringTransacciones.push([categoria, monto]);
-            }
-            </c:forEach>
-            stringTransacciones.join();
-            stringTransacciones.toString();
-            data.addRows(stringTransacciones);
+			var stringTransacciones = [];
+			var categoriasProcesadas = new Set();
+			<c:forEach var="transaccion" items="${transacciones}">
+			var categoria = "${transaccion.categoria.getNombre()}";
+			var monto = ${transaccion.monto};
+			if (!categoriasProcesadas.has(categoria)) {
+				categoriasProcesadas.add(categoria);
+				console.log(categoria, monto);
+				stringTransacciones.push([categoria, monto]);
+			}
+			</c:forEach>
+			stringTransacciones.join();
+			stringTransacciones.toString();
+			data.addRows(stringTransacciones);
 
 
 
-            // Instantiate and draw the chart.
+			// Instantiate and draw the chart.
 
-            var options = {'title':'Gastos por Categoria',
-                'width':400,
-                'height':300,
-                is3D: true};
+			var options = {'title':'Gastos por Categoria',
+				'width':400,
+				'height':300,
+				is3D: true};
 
-            var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
-            chart.draw(data, options);
-        }
-    </script>
+			var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
+			chart.draw(data, options);
+		}
+	</script>
 </head>
 <body>
 <div class="row">
@@ -166,21 +166,21 @@
 				<thead>
 				<tr>
 
-                    <th>Fecha</th>
-                    <th>Monto</th>
-                    <th>Detalle</th>
-                    <th>Concepto</th>
-                    <th>Categoria</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach var="transaccion" items="${transacciones}">
-                    <tr>
-                        <td>${transaccion.fecha}</td>
-                        <td><fmt:formatNumber value="${transaccion.monto}" minFractionDigits="0" maxFractionDigits="2" /></td>
-                        <td>${transaccion.detalle}</td>
-                        <td>${transaccion.concepto}</td>
-                        <td>${transaccion.categoria.getNombre()}</td>
+					<th>Fecha</th>
+					<th>Monto</th>
+					<th>Detalle</th>
+					<th>Concepto</th>
+					<th>Categoria</th>
+				</tr>
+				</thead>
+				<tbody>
+				<c:forEach var="transaccion" items="${transacciones}">
+					<tr>
+						<td>${transaccion.fecha}</td>
+						<td><fmt:formatNumber value="${transaccion.monto}" minFractionDigits="0" maxFractionDigits="2" /></td>
+						<td>${transaccion.detalle}</td>
+						<td>${transaccion.concepto}</td>
+						<td>${transaccion.categoria.getNombre()}</td>
 
 						<td>
 							<form action="delete" method="post">
@@ -195,32 +195,32 @@
 							</form>
 						</td>
 
-                    </tr>
-                </c:forEach>
-                </tbody>
-                <thead>
-                <tr>
-                    <th>Monto total</th>
-                <tbody>
-                <tr>
-                    <c:set var="montoTotal" value="0"/>
-                    <c:forEach var="transaccion" items="${transacciones}">
-                        <c:set var="montoTotal" value="${montoTotal + transaccion.monto}"/>
-                    </c:forEach>
+					</tr>
+				</c:forEach>
+				</tbody>
+				<thead>
+				<tr>
+					<th>Monto total</th>
+				<tbody>
+				<tr>
+					<c:set var="montoTotal" value="0"/>
+					<c:forEach var="transaccion" items="${transacciones}">
+						<c:set var="montoTotal" value="${montoTotal + transaccion.monto}"/>
+					</c:forEach>
 					<td><fmt:formatNumber value="${montoTotal}" minFractionDigits="0" maxFractionDigits="2" /></td>
-                </tr>
-                </tbody>
-                </tr>
-                </thead>
-            </table>
-        </div>
-    </div>
+				</tr>
+				</tbody>
+				</tr>
+				</thead>
+			</table>
+		</div>
+	</div>
 	<div id="myPieChart"/>
-    <c:if test="${not empty error}">
-        <h4 class="mensajeErrorRegistro"><span>${error}</span></h4>
-        <br>
-    </c:if>
-    ${msg}
+	<c:if test="${not empty error}">
+		<h4 class="mensajeErrorRegistro"><span>${error}</span></h4>
+		<br>
+	</c:if>
+	${msg}
 
 </div>
 
