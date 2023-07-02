@@ -74,7 +74,7 @@ public class ControladorDePresupuesto {
         ModelMap map= new ModelMap();
         List<Categoria> categorias = servicioDeCategoria.listarCategoriaParaPresupuestos();
         Presupuesto pres = servicioDePresupuesto.buscarPresupuestoPorId(idPresupuesto);
-        map.put("presupuesto", pres);
+        map.put("presupuestos", pres);
         map.put("categorias", categorias);
         return new ModelAndView("editarPresupuesto", map);
     }
