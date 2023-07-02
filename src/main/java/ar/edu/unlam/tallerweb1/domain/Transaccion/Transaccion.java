@@ -16,6 +16,8 @@ public class Transaccion {
     private Double monto;
     private String detalle;
     private String fecha;
+    @OneToOne
+    private Moneda moneda;
 
     @ManyToOne
     private Categoria categoria;
@@ -35,10 +37,6 @@ public class Transaccion {
         this.detalle = detalle;
     };
 
-<<<<<<< HEAD
-=======
-
->>>>>>> Shushu
     public Long getId() {
         return id;
     }
@@ -47,7 +45,7 @@ public class Transaccion {
         this.id = id;
     }
 
-<<<<<<< HEAD
+
     public Concepto getConcepto() {
         return concepto;
     }
@@ -56,8 +54,6 @@ public class Transaccion {
         this.concepto = concepto;
     }
 
-=======
->>>>>>> Shushu
     public Double getMonto() {
         return monto;
     }
@@ -82,21 +78,16 @@ public class Transaccion {
         this.fecha = fecha;
     }
 
-<<<<<<< HEAD
+
     public Moneda getMoneda() {
         return moneda;
     }
 
     public void setMoneda(Moneda moneda) {
         this.moneda = moneda;
-=======
-    public Concepto getConcepto() {
-        return concepto;
-    }
+        }
 
-    public void setConcepto(Concepto concepto) {
-        this.concepto = concepto;
-    }
+
 
     public Categoria getCategoria() {
         return categoria;
@@ -104,7 +95,6 @@ public class Transaccion {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
->>>>>>> Shushu
     }
 }
 

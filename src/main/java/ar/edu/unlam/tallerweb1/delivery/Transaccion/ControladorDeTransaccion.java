@@ -18,12 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-<<<<<<< HEAD
-=======
-
 import java.util.List;
 
->>>>>>> Shushu
+
 @Controller
 public class ControladorDeTransaccion {
 
@@ -32,20 +29,14 @@ public class ControladorDeTransaccion {
     private final ServicioDePresupuesto servicioDePresupuesto;
     private final ServicioDeMoneda servicioDeMoneda;
 
-    @Autowired
-<<<<<<< HEAD
-    public ControladorDeTransaccion(ServicioDeTransaccion servicioDeTransaccion){
-        this.servicioDeTransaccion=servicioDeTransaccion;
-    }
-    @RequestMapping(path="/prueba", method = RequestMethod.GET)
-    public ModelAndView crearTransaccion() {
-=======
+
     public ControladorDeTransaccion(ServicioDeTransaccion servicioDeTransaccion, ServicioDeCategoria servicioDeCategoria, ServicioDePresupuesto servicioDePresupuesto, ServicioDeMoneda servicioDeMoneda){
         this.servicioDeTransaccion=servicioDeTransaccion;
         this.servicioDeCategoria= servicioDeCategoria;
         this.servicioDePresupuesto=servicioDePresupuesto;
         this.servicioDeMoneda = servicioDeMoneda;
     }
+
     @RequestMapping(path="/establecerTransaccion", method = RequestMethod.GET)
     public ModelAndView crearTransaccion() {
         ModelMap map= new ModelMap();
@@ -97,7 +88,6 @@ public class ControladorDeTransaccion {
 
     @RequestMapping(path="/home", method = RequestMethod.GET)
     public ModelAndView listarUnaTransaccion() {
->>>>>>> Shushu
         ModelMap map= new ModelMap();
         List<Transaccion> transacciones = servicioDeTransaccion.listarTransacciones();
         List<Categoria> categorias = servicioDeCategoria.listarCategorias();

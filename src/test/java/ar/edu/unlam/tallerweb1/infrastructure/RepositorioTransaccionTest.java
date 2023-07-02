@@ -6,6 +6,7 @@ import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
 import ar.edu.unlam.tallerweb1.infrastructure.Transaccion.RepositorioTransaccion;
 import ar.edu.unlam.tallerweb1.infrastructure.Transaccion.RepositorioTransaccionImpl;
+import org.hibernate.SessionFactory;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
@@ -20,7 +21,10 @@ public class RepositorioTransaccionTest extends SpringTest {
     private String detalle = "Carga de nafta";
 
     @Autowired
-    RepositorioTransaccion repositorio = new RepositorioTransaccionImpl();
+    SessionFactory session;
+
+    @Autowired
+    RepositorioTransaccion repositorio = new RepositorioTransaccionImpl(this.session);
 
     @Test
     @Transactional @Rollback
@@ -49,7 +53,7 @@ public class RepositorioTransaccionTest extends SpringTest {
     }
 
     private Transaccion cuandoLoBuscoPorSuDetalle(Double monto, String detalle) {
-        return repositorio.buscarTransaccionPorDetalle(detalle);
+        return repositorio.buscarTransaccionPorDetalle(detalle).get(1);
     }
 
     private Transaccion dadoQueExisteTransaccion(Double monto, String detalle) {

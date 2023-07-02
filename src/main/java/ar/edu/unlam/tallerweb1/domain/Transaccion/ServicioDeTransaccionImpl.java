@@ -18,20 +18,19 @@ import java.util.List;
 public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
 
 
-    private final RepositorioTransaccion servicioTransaccionDao;
-    private final RepositorioCategoria repositorioCategoria;
+    private RepositorioTransaccion servicioTransaccionDao;
+    private  RepositorioCategoria repositorioCategoria;
 
     @Autowired
     public ServicioDeTransaccionImpl(RepositorioTransaccion servicioTransaccionDao, RepositorioCategoria repositorioCategoria) {
         this.servicioTransaccionDao = servicioTransaccionDao;
         this.repositorioCategoria = repositorioCategoria;
+
     }
-<<<<<<< HEAD
+
     public ServicioDeTransaccionImpl(){
     }
 
-=======
->>>>>>> Shushu
 
     @Override
     public Boolean registrarTransaccionDetalle(Double monto, String detalle) {

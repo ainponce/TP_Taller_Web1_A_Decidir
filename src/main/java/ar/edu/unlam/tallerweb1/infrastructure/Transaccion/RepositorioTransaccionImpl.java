@@ -11,11 +11,8 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-<<<<<<< HEAD
-=======
 import org.springframework.transaction.annotation.Transactional;
 
->>>>>>> Shushu
 import java.util.List;
 
 @Repository("repositorioTransaccion")
@@ -34,17 +31,12 @@ public class RepositorioTransaccionImpl implements RepositorioTransaccion {
     public List<Transaccion> buscarTransaccionPorDetalle(String detalle) {
         // Se obtiene la sesion asociada a la transaccion iniciada en el servicio que invoca a este metodo y se crea un criterio
         // de busqueda de Transaccion donde el detalle sea igual al del objeto recibido como parametro
-<<<<<<< HEAD
-        return (Transaccion) this.sessionFactory.getCurrentSession().createCriteria(Transaccion.class)
-                .add(Restrictions.eq("detalle", detalle))
-                .uniqueResult();
 
-=======
         final Session session = sessionFactory.getCurrentSession();
         return (List<Transaccion>) session.createCriteria(Transaccion.class)
                 .add(Restrictions.eq("detalle", detalle))
                 .list();
->>>>>>> Shushu
+
     }
 
     @Override
