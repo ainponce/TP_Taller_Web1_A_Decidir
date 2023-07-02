@@ -40,15 +40,5 @@ public class ServicioDePresupuestoTest {
     }
 
 
-    /* @Test
-
-    public void queTireUnaAlarmaDePresupuestoPorAlcanzar(){
-        List<Presupuesto> pres = repoPresupuesto.buscarPorCategoria(Categoria.Salidas);
-        compararPresupuestosDeCategoriaYTransaccion(pres);
-    }*/
-
-    private void compararPresupuestosDeCategoriaYTransaccion(List<Presupuesto> pres) {
-    }
-
 
 }

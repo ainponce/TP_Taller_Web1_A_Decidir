@@ -41,9 +41,10 @@ public class ServicioDeCategoriaImpl implements ServicioDeCategoria {
        if (nombre != null){
            Categoria categoria = new Categoria(nombre);
             repositorioCategoria.crearCategoria(categoria);
+            seRegistro = true;
        }
 
-        return null;
+        return seRegistro;
     }
 
     @Override

@@ -45,6 +45,7 @@ public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
     public Boolean registrarTransaccion(Double monto, String detalle, String fecha, Concepto concepto, Categoria categoria) {
         Boolean seRegistro = false;
         List<Transaccion> validacionDeCategoria = servicioTransaccionDao.listarTransaccion();
+        //un if de metodo registroexitoso
         if (monto > 0) {
             Transaccion transaccion = new Transaccion(monto, detalle, fecha, concepto, categoria);
             servicioTransaccionDao.guardarTransaccion(transaccion);
