@@ -39,9 +39,14 @@ public class ControladorDePresupuesto {
         Categoria cat =servicioDeCategoria.buscarCategoriaPorId(categoria);
         List<Presupuesto> presupuestos = servicioDePresupuesto.listarPresupuestos();
         List<Categoria> categorias = servicioDeCategoria.listarCategoriaParaPresupuestos();
+
+        map.put("establecerPresupuesto", new Presupuesto());
+        map.put("presupuestos", presupuestos);
+        map.put("categorias", categorias);
+
         try {
             servicioDePresupuesto.establecerPresupuesto(montoPresupuesto, fechaDesde, fechaHasta, cat);
-            map.put("msg", "Prespuesto creado");
+            map.put("msg", "Presupuesto creado");
         } catch (CategoriaEnUso e){
              map.put("Error", e.getMessage());
             return new ModelAndView("establecerPresupuesto", map);
@@ -49,10 +54,6 @@ public class ControladorDePresupuesto {
             map.put("Error", e.getMessage());
             return new ModelAndView("establecerPresupuesto", map);
         }
-
-        map.put("establecerPresupuesto", new Presupuesto());
-        map.put("presupuestos", presupuestos);
-        map.put("categorias", categorias);
 
         return new ModelAndView("redirect:/establecerPresupuesto", map);
     }
