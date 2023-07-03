@@ -110,7 +110,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="categoria" items="${categorias}">
+                <c:forEach var="categorias" items="${categorias}">
                     <tr>
                         <td>${categoria.getNombre()}</td>
                     </tr>

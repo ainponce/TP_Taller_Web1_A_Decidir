@@ -69,7 +69,7 @@ public class ServicioDeTransiccionesTest extends SpringTest{
     }
 
     private void queNoSePuedaRegistrar(Transaccion t) {
-        service.registrarTransaccion(t.getMonto(), t.getDetalle(), t.getFecha(), t.getConcepto(), t.getCategoria());
+        service.registrarTransaccion(t.getMonto(), null, t.getDetalle(), t.getFecha(), t.getConcepto(), t.getCategoria());
     }
 
     private Transaccion dadoQueExisteUnaTransaccion() {

@@ -10,7 +10,10 @@ import java.util.List;
 
 public interface ServicioDeTransaccion {
 
-    public Boolean registrarTransaccion(Double monto, String detalle, String fecha, Concepto concepto, Categoria categoria);
+    //public Boolean registrarTransaccion(Double monto, String detalle, String fecha, Concepto concepto, Categoria categoria);
+    Boolean registrarTransaccion(double monto, Double presupuestoDeCategoria, String detalle, String fecha, Concepto concepto, Categoria cat);
+
+    //Boolean registrarTransaccion(Double monto, Double presupuestoDeCategoria, String detalle, String fecha, Concepto concepto, Categoria categoria);
 
     public List<Transaccion> buscarTransaccionPorDetalle(String detalle);
 
@@ -32,4 +35,6 @@ public interface ServicioDeTransaccion {
     Transaccion buscarTransaccionPorIdParaEliminar(Long id);
 
     void eliminarTransaccion(Transaccion tranAEliminar);
+
+
 }

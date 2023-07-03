@@ -2,15 +2,14 @@ package ar.edu.unlam.tallerweb1.delivery.Presupuesto;
 
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Categorias.ServicioDeCategoria;
-import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.CategoriaEnUso;
+import ar.edu.unlam.tallerweb1.domain.Presupuesto.NoExistePresupuesto;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.ServicioDePresupuesto;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.MontoMenorACero;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -105,7 +104,23 @@ public class ControladorDePresupuesto {
         return new ModelAndView("redirect:/establecerPresupuesto");
     }
 
+    @RequestMapping(path="/deletePresupuesto", method = RequestMethod.POST)
+    public ModelAndView eliminarUnPresupuesto(@RequestParam("id") Long id){
+        ModelMap map= new ModelMap();
+        Presupuesto presupuestoAEliminar = null;
+        presupuestoAEliminar =  servicioDePresupuesto.buscarPresupuestoPorIdParaEliminar(id);
+        if(presupuestoAEliminar!=null) {
+            try {
+                servicioDePresupuesto.eliminarPresupuesto(presupuestoAEliminar);
+                map.put("msg", "Prespuesto eliminado");
+            } catch (NoExistePresupuesto n) {
+                map.put("msg", "No existe el presupuesto");
+                map.put("Error", n.getMessage());
+            }
+        }
 
+        return new ModelAndView("redirect:/establecerPresupuesto", map);
+    }
 
 
 

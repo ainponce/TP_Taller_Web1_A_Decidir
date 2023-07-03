@@ -75,4 +75,20 @@ public class RepositorioPresupuestoImpl implements RepositorioPresupuesto {
         return (List<Presupuesto>) session.createCriteria(Presupuesto.class).list();
     }
 
+    @Override
+    public Presupuesto buscarPresupuestoPorIdParaEliminar(Long id) {
+        return this.sessionFactory.getCurrentSession().get(Presupuesto.class, id);
+    }
+
+    @Override
+    public void eliminarTransaccion(Presupuesto presupuestoAEliminar) {
+        sessionFactory.getCurrentSession().delete(presupuestoAEliminar);
+    }
+
+    @Override
+    public List<Presupuesto> listarTransaccion() {
+        final Session session = sessionFactory.getCurrentSession();
+        return (List<Presupuesto>) session.createCriteria(Presupuesto.class).list();
+    }
+
 }

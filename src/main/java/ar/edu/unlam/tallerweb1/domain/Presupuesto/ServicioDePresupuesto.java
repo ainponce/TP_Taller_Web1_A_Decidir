@@ -1,7 +1,7 @@
 package ar.edu.unlam.tallerweb1.domain.Presupuesto;
 
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
-import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
+import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
 
 import java.util.List;
 
@@ -20,4 +20,8 @@ public interface ServicioDePresupuesto {
     Presupuesto buscarPresupuestoPorId(long idPresupuesto);
 
     void editarPresupuesto(long id, double montoPresupuesto, String fechaDesde, String fechaHasta, Categoria cat);
+
+    Presupuesto buscarPresupuestoPorIdParaEliminar(Long id);
+
+    void eliminarPresupuesto(Presupuesto presupuestoAEliminar);
 }

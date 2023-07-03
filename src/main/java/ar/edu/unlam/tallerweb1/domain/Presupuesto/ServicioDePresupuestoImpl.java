@@ -1,8 +1,8 @@
 package ar.edu.unlam.tallerweb1.domain.Presupuesto;
 
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
-import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.MontoMenorACero;
+import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
 import ar.edu.unlam.tallerweb1.infrastructure.Categoria.RepositorioCategoria;
 import ar.edu.unlam.tallerweb1.infrastructure.Presupuesto.RepositorioPresupuesto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,6 +94,17 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
             }else {
                 throw new MontoMenorACero();  // Lanzas la excepción si el monto es menor a cero
             }
+    }
+
+    @Override
+    public Presupuesto buscarPresupuestoPorIdParaEliminar(Long id) {
+        return repositorioPresupuesto.buscarPresupuestoPorIdParaEliminar(id);
+    }
+
+    @Override
+    public void eliminarPresupuesto(Presupuesto presupuestoAEliminar) {
+        repositorioPresupuesto.eliminarTransaccion(presupuestoAEliminar);
+        repositorioPresupuesto.listarTransaccion().remove(presupuestoAEliminar);
     }
 
     @Override

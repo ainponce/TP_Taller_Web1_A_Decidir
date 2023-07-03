@@ -81,7 +81,7 @@ public class ControladorTransaccionTest extends SpringTest {
         when(servicioDeCategoria.buscarCategoriaPorId(t.getCategoria().getId())).thenReturn(t.getCategoria());
         when(servicioDeCategoria.buscarCategoriaPorId(p.getCategoria().getId())).thenReturn(p.getCategoria());
         when(servicioDePresupuesto.establecerPresupuesto(p.getMontoPresupuesto(),p.getFechaDesde(),p.getFechaHasta(),p.getCategoria())).thenReturn(true);
-        when(servicioDeTransaccion.registrarTransaccion(t.getMonto(),t.getDetalle(),t.getFecha(),t.getConcepto(),t.getCategoria())).thenReturn(true);
+        when(servicioDeTransaccion.registrarTransaccion(t.getMonto(),p.getMontoPresupuesto(),t.getDetalle(),t.getFecha(),t.getConcepto(),t.getCategoria())).thenReturn(true);
         when(model.getViewName()).thenReturn("/redirect:home");
         return controladorDeTransaccion.registrarUnaTransaccion(t.getMonto(),t.getDetalle(),t.getFecha(),t.getConcepto(),t.getCategoria().getId());
     }

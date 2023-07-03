@@ -28,4 +28,9 @@ public interface RepositorioPresupuesto {
     List<Presupuesto> listarPresupuesto();
 
 
+    Presupuesto buscarPresupuestoPorIdParaEliminar(Long id);
+
+    void eliminarTransaccion(Presupuesto presupuestoAEliminar);
+
+    <E> List<E> listarTransaccion();
 }
