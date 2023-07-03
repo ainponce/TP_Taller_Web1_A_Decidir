@@ -53,10 +53,10 @@ public class ControladorTransaccionTest extends SpringTest {
 
     }
 
-   @Test
-    public void AlIngresarUnaTransaccionMeMuestraLaMisma(){
-      Transaccion transaccion1 = cuandoIngresoUnaTransaccion();
-      Presupuesto p = cuandoIngresoUnPresupuestoParaLaTransaccion();
+    @Test
+    public void cuandoQuieroRegistrarUnaTransaccionExitosa(){
+        Transaccion transaccion1 = cuandoIngresoUnaTransaccion();
+        Presupuesto p = cuandoIngresoUnPresupuestoParaLaTransaccion();
         ModelAndView mav = cuandoQuieroRegistrarUnaTransaccion(transaccion1, p);
         entoncesMeMuestraLaTransaccionIngresada(mav);
 
@@ -68,6 +68,7 @@ public class ControladorTransaccionTest extends SpringTest {
         String fechaDesde = "12/04/2023";
         String fechaHasta = "30/04/2023";
         Categoria cat = new Categoria("bebidas");
+        presupuesto.setId(1L);
         presupuesto.setMontoPresupuesto(montoPresupuesto);
         presupuesto.setFechaDesde(fechaDesde);
         presupuesto.setFechaHasta(fechaHasta);
@@ -93,7 +94,8 @@ public class ControladorTransaccionTest extends SpringTest {
     private Transaccion cuandoIngresoUnaTransaccion() {
         Categoria cat = new Categoria("bebidas");
        Transaccion transaccionNueva = new Transaccion(120.0, "compras", "12/04/2023", Concepto.Gasto,cat);
-        transaccionNueva.getCategoria().setId(5L);
+        transaccionNueva.setId(1L);
+       transaccionNueva.getCategoria().setId(5L);
        return transaccionNueva;
     }
 

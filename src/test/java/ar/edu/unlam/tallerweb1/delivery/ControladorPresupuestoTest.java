@@ -41,12 +41,38 @@ public class ControladorPresupuestoTest {
         controladorDePresupuesto = new ControladorDePresupuesto(this.servicioDePresupuesto, this.servicioDeCategoria);
     }
 
-        @Test
+    @Test
         public void dadoQueTengoDatosDeUnPresupuestoValidosQueMeCreeUnPresupuesto() {
             Presupuesto presupuesto = dadoQueTengoDatosDePresupuestoValidos();
             ModelAndView vista = cuandoquieroValidarElPresupuesto(presupuesto);
             entoncesMeDevuelveLaVistaCorrecta(vista);
         }
+
+    @Test
+    public void dadoQueTengoDatosDeUnPresupuestoValidosQueMeCreeUnPresupuestoYQuieroEditarlo() {
+        Presupuesto presupuesto = dadoQueTengoDatosDePresupuestoValidos();
+        Presupuesto presupuestoNuevo = dadoQueTengoDatosDePresupuestoNuevosValidos();
+        ModelAndView vista = cuandoquieroValidarElPresupuestoEditado(presupuesto,presupuestoNuevo);
+        entoncesMeDevuelveLaVistaCorrectaDelPresupuestoEditado(vista);
+    }
+
+
+
+
+    private Presupuesto dadoQueTengoDatosDePresupuestoNuevosValidos() {
+        Presupuesto presupuesto = new Presupuesto();
+        Double montoPresupuesto = 2200.0;
+        String fechaDesde = "12/04/2023";
+        String fechaHasta = "30/04/2023";
+        Categoria cat = new Categoria("ocio");
+        presupuesto.setId(1L);
+        presupuesto.setMontoPresupuesto(montoPresupuesto);
+        presupuesto.setFechaDesde(fechaDesde);
+        presupuesto.setFechaHasta(fechaHasta);
+        presupuesto.setCategoria(cat);
+        presupuesto.getCategoria().setId(8L);
+        return presupuesto;
+    }
 
 
     private Presupuesto dadoQueTengoDatosDePresupuestoValidos () {
@@ -55,6 +81,7 @@ public class ControladorPresupuestoTest {
             String fechaDesde = "12/04/2023";
             String fechaHasta = "30/04/2023";
             Categoria cat = new Categoria("ocio");
+            presupuesto.setId(1L);
             presupuesto.setMontoPresupuesto(montoPresupuesto);
             presupuesto.setFechaDesde(fechaDesde);
             presupuesto.setFechaHasta(fechaHasta);
@@ -68,17 +95,25 @@ public class ControladorPresupuestoTest {
         private ModelAndView cuandoquieroValidarElPresupuesto (Presupuesto presupuesto){
             when(servicioDeCategoria.buscarCategoriaPorId(presupuesto.getCategoria().getId())).thenReturn(presupuesto.getCategoria());
             when(servicioDePresupuesto.establecerPresupuesto(presupuesto.getMontoPresupuesto(), presupuesto.getFechaDesde(), presupuesto.getFechaHasta(), presupuesto.getCategoria())).thenReturn(true);
-            when(model.getViewName()).thenReturn("establecerPresupuesto");
+            when(model.getViewName()).thenReturn("redirect:/establecerPresupuesto");
             return controladorDePresupuesto.registrarUnPresupuesto(presupuesto.getMontoPresupuesto(), presupuesto.getFechaDesde(), presupuesto.getFechaHasta(), presupuesto.getCategoria().getId());
         }
 
+    private ModelAndView cuandoquieroValidarElPresupuestoEditado(Presupuesto presupuesto, Presupuesto presupuestoNuevo) {
+        when(servicioDeCategoria.buscarCategoriaPorId(presupuesto.getCategoria().getId())).thenReturn(presupuesto.getCategoria());
+        when(servicioDePresupuesto.establecerPresupuesto(presupuesto.getMontoPresupuesto(), presupuesto.getFechaDesde(), presupuesto.getFechaHasta(), presupuesto.getCategoria())).thenReturn(true);
+        return controladorDePresupuesto.editarUnPresupuesto(presupuestoNuevo.getId(),presupuestoNuevo.getMontoPresupuesto(),presupuestoNuevo.getFechaDesde(),presupuestoNuevo.getFechaHasta(),presupuestoNuevo.getCategoria().getId());
+    }
+
         //Entonces
         private static void entoncesMeDevuelveLaVistaCorrecta (ModelAndView vista){
-            assertThat(vista.getViewName()).isEqualTo("establecerPresupuesto");
+            assertThat(vista.getViewName()).isEqualTo("redirect:/establecerPresupuesto");
 
         }
 
-
+    private void entoncesMeDevuelveLaVistaCorrectaDelPresupuestoEditado(ModelAndView vista) {
+        assertThat(vista.getViewName()).isEqualTo("redirect:/establecerPresupuesto");
+    }
     }
 
 
