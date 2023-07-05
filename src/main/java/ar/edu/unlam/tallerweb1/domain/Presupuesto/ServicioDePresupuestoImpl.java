@@ -29,15 +29,8 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
     @Override
     public Boolean establecerPresupuesto(Double monto, LocalDate fechaDesde, LocalDate fechaHasta, Categoria categoria) {
         Boolean seRegistro = false;
-        Boolean categoriaEnUso=false;
         Presupuesto presupuesto = repositorioPresupuesto.buscarPresupuestoPorCategoria(categoria);
-        if (presupuesto != null && presupuesto.getCategoria().equals(categoria)){
-             categoriaEnUso =true;
-        }
-        if(categoriaEnUso){
-            throw new CategoriaEnUso();
-        }
-        if(rangoDeFechaPresupuestoNoDisponible(presupuesto, fechaDesde, fechaHasta)){
+        if(rangoDeFechaPresupuestoNoDisponible(presupuesto, categoria, fechaDesde, fechaHasta)){
             throw new PresupuestoExistenteEnEseRangoDeFechas();
         }
             else {
@@ -52,10 +45,15 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
         return seRegistro;
     }
 
-    private Boolean rangoDeFechaPresupuestoNoDisponible(Presupuesto presupuesto, LocalDate fechaDesde, LocalDate fechaHasta) {
-            if(presupuesto.getFechaDesde().isEqual(fechaDesde) && presupuesto.getFechaHasta().isEqual(fechaHasta)){
+    private Boolean rangoDeFechaPresupuestoNoDisponible(Presupuesto presupuesto, Categoria categoria, LocalDate fechaDesde, LocalDate fechaHasta) {
+        if(presupuesto != null && presupuesto.getCategoria().equals(categoria)){
+            if(presupuesto.getFechaDesde().isEqual(fechaDesde) || presupuesto.getFechaDesde().isEqual(fechaHasta) &&
+            presupuesto.getFechaHasta().isEqual(fechaHasta) || presupuesto.getFechaHasta().isEqual(fechaDesde)){
                 return true;
             }
+
+        }
+
         return false;
     }
 
