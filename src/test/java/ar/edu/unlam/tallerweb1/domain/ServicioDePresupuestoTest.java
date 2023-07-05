@@ -17,6 +17,8 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
@@ -46,12 +48,38 @@ public class ServicioDePresupuestoTest {
         Presupuesto presupuesto = dadoQueExisteUnPresupuesto();
         queLanceUnaExcepcionPorMontoMenorACero(presupuesto);
     }
+    @Test (expected = PresupuestoExistenteEnEseRangoDeFechas.class)
+    public void queLanceUnaExcepcionSiSequiereCrearUnPresupuestoDeunaCategoriaEnUnRangoDeFechasExistente(){
+        Presupuesto presupuesto = dadoQueExisteUnPresupuestoCorrecto();
+        Presupuesto presupuesto1 = dadoQueExisteUnPresupuestoRepetido();
+        queAgregueUnPresupuesto(presupuesto);
+        queLanceUnaExcpecionPorPresupuestoExistenteEnEseRango(presupuesto1);
+
+    }
+
+    private void queAgregueUnPresupuesto(Presupuesto presupuesto) {
+      when(repoPresupuesto.guardar(presupuesto)).thenReturn(true);
+    }
+
+    private void queLanceUnaExcpecionPorPresupuestoExistenteEnEseRango(Presupuesto presupuesto1) {
+      when(repoPresupuesto.guardar(presupuesto1)).thenThrow(PresupuestoExistenteEnEseRangoDeFechas.class);
+    }
+
+    private Presupuesto dadoQueExisteUnPresupuestoCorrecto() {
+        Presupuesto presupuesto = new Presupuesto(12.0, LocalDate.of(2023, 04, 01), LocalDate.of(2023, 04, 30), new Categoria("servicios"));
+        return presupuesto;
+    }
+
+    private Presupuesto dadoQueExisteUnPresupuestoRepetido() {
+        Presupuesto presupuesto = new Presupuesto(12.0, LocalDate.of(2023, 04, 01), LocalDate.of(2023, 04, 30), new Categoria("servicios"));
+        return presupuesto;
+    }
 
     private void queLanceUnaExcepcionPorMontoMenorACero(Presupuesto presupuesto) {
         when(servicePresupuesto.establecerPresupuesto(presupuesto.getMontoPresupuesto(), presupuesto.getFechaDesde(), presupuesto.getFechaHasta(), presupuesto.getCategoria())).thenThrow(MontoMenorACero.class);
     }
 
-    private Presupuesto dadoQueExisteUnPresupuesto() {Presupuesto presupuesto = new Presupuesto(-12.0, "12/04/2023", "30/04/2023", new Categoria("servicios"));
+    private Presupuesto dadoQueExisteUnPresupuesto() {Presupuesto presupuesto = new Presupuesto(-12.0, LocalDate.of(2023, 04, 01), LocalDate.of(2023, 04, 30), new Categoria("servicios"));
     return presupuesto;
     }
 
@@ -59,7 +87,7 @@ public class ServicioDePresupuestoTest {
     @Test (expected = CategoriaEnUso.class)
     public void queLanceUnaExcpecionSiLaCategoriaEstaEnUso(){
         Categoria cat = repositorioCategoria.traerCategoriaPorId(2);
-        servicePresupuesto.establecerPresupuesto(122.00, "15-06-2023", "30-06-2023", cat);
+        servicePresupuesto.establecerPresupuesto(122.00, LocalDate.of(2023, 04, 01), LocalDate.of(2023, 04, 30), cat);
     }
 
 

@@ -4,6 +4,7 @@ import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 public class Presupuesto {
@@ -12,8 +13,8 @@ public class Presupuesto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String fechaDesde;
-    private String fechaHasta;
+    private LocalDate fechaDesde;
+    private LocalDate fechaHasta;
     private double montoPresupuesto;
 
     private boolean estaActivo;
@@ -23,7 +24,7 @@ public class Presupuesto {
 
     public Presupuesto(){}
 
-    public Presupuesto(Double monto, String fechaDesde, String fechaHasta, Categoria categoria) {
+    public Presupuesto(Double monto, LocalDate fechaDesde, LocalDate fechaHasta, Categoria categoria) {
         this.montoPresupuesto = monto;
         this.fechaDesde = fechaDesde;
         this.fechaHasta = fechaHasta;
@@ -38,19 +39,20 @@ public class Presupuesto {
     public void setId(Long id) {
         this.id = id;
     }
-    public String getFechaDesde() {
+
+    public LocalDate getFechaDesde() {
         return fechaDesde;
     }
 
-    public void setFechaDesde(String fechaDesde) {
+    public void setFechaDesde(LocalDate fechaDesde) {
         this.fechaDesde = fechaDesde;
     }
 
-    public String getFechaHasta() {
+    public LocalDate getFechaHasta() {
         return fechaHasta;
     }
 
-    public void setFechaHasta(String fechaHasta) {
+    public void setFechaHasta(LocalDate fechaHasta) {
         this.fechaHasta = fechaHasta;
     }
 

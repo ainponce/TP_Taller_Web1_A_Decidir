@@ -3,12 +3,13 @@ package ar.edu.unlam.tallerweb1.domain.Presupuesto;
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface ServicioDePresupuesto {
 
 
-    public Boolean establecerPresupuesto(Double monto, String fechaDesde, String fechaHasta, Categoria categoria);
+    public Boolean establecerPresupuesto(Double monto, LocalDate fechaDesde, LocalDate fechaHasta, Categoria categoria);
 
     List<Presupuesto> listarPresupuestos();
     public List<Categoria> listarCategorias();
@@ -19,7 +20,7 @@ public interface ServicioDePresupuesto {
 
     Presupuesto buscarPresupuestoPorId(long idPresupuesto);
 
-    void editarPresupuesto(long id, double montoPresupuesto, String fechaDesde, String fechaHasta, Categoria cat);
+    void editarPresupuesto(long id, double montoPresupuesto, LocalDate fechaDesde, LocalDate fechaHasta, Categoria cat);
 
     Presupuesto buscarPresupuestoPorIdParaEliminar(Long id);
 

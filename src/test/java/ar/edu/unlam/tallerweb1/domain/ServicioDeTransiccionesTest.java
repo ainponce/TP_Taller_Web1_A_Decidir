@@ -15,6 +15,7 @@ import ar.edu.unlam.tallerweb1.infrastructure.Transaccion.RepositorioTransaccion
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -40,7 +41,7 @@ public class ServicioDeTransiccionesTest extends SpringTest{
     public void queSeBusqueElMontoDePresupuestoPorCategoria(){
         Categoria cat = new Categoria("compras");
        // Transaccion transaccion = new Transaccion(120.)
-        Presupuesto p1 = new Presupuesto(1000.0, "1/04/2023", "30/04/2023", cat);
+        Presupuesto p1 = new Presupuesto(1000.0, LocalDate.of(2023, 04, 01), LocalDate.of(2023, 04, 30), cat);
         servicePresupuesto.listarPresupuestos().add(p1);
         Double presupuestoDeCategoria = servicePresupuesto.buscarMontoPresupuestoPorCategoria(cat);
         assertThat(presupuestoDeCategoria).isEqualTo(0.0);

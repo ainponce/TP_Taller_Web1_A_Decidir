@@ -100,9 +100,9 @@
                 <label>Monto</label>
                 <form:input type="text" id="monto" path="montoPresupuesto" name="montoPresupuesto" class="form-control" placeholder="Ingrese monto..."/>
                 <label>Fecha de inicio</label>
-                <form:input type="text" id="monto" path="fechaDesde" name="fechaDesde" class="form-control" placeholder="Ingrese fecha de inicio"/>
+                <form:input type="date" id="monto" path="fechaDesde" name="fechaDesde" class="form-control"/>
                 <label>Fecha de fin</label>
-                <form:input type="text" id="monto" path="fechaHasta" name="fechaHasta" class="form-control" placeholder="Ingrese fecha de fin"/>
+                <form:input type="date" id="monto" path="fechaHasta" name="fechaHasta" class="form-control"/>
                 <label>Categoria del presupuesto</label>
                 <form:select path="categoria" id="categoria" name="categoria" class="form-control">
                     <option disabled selected>Selecciona una opcion</option>

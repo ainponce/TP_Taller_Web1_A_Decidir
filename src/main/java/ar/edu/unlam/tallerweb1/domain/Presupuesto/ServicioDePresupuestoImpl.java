@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -26,16 +27,20 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
 
 
     @Override
-    public Boolean establecerPresupuesto(Double monto, String fechaDesde, String fechaHasta, Categoria categoria) {
+    public Boolean establecerPresupuesto(Double monto, LocalDate fechaDesde, LocalDate fechaHasta, Categoria categoria) {
         Boolean seRegistro = false;
+        Boolean categoriaEnUso=false;
         Presupuesto presupuesto = repositorioPresupuesto.buscarPresupuestoPorCategoria(categoria);
-        boolean categoriaEnUso = false;
-        if (presupuesto!=null && presupuesto.getCategoria().equals(categoria)){
-                categoriaEnUso = true;
+        if (presupuesto != null && presupuesto.getCategoria().equals(categoria)){
+             categoriaEnUso =true;
         }
-        if (categoriaEnUso) {
-            throw new CategoriaEnUso();  // Lanzas la excepción si la categoría ya está en uso
-        } else {
+        if(categoriaEnUso){
+            throw new CategoriaEnUso();
+        }
+        if(rangoDeFechaPresupuestoNoDisponible(presupuesto, fechaDesde, fechaHasta)){
+            throw new PresupuestoExistenteEnEseRangoDeFechas();
+        }
+            else {
             if (monto > 0) {
                 Presupuesto presupuestoNuevo = new Presupuesto(monto, fechaDesde, fechaHasta, categoria);
                 repositorioPresupuesto.guardar(presupuestoNuevo);
@@ -45,6 +50,13 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
             }
         }
         return seRegistro;
+    }
+
+    private Boolean rangoDeFechaPresupuestoNoDisponible(Presupuesto presupuesto, LocalDate fechaDesde, LocalDate fechaHasta) {
+            if(presupuesto.getFechaDesde().isEqual(fechaDesde) && presupuesto.getFechaHasta().isEqual(fechaHasta)){
+                return true;
+            }
+        return false;
     }
 
     @Override
@@ -74,7 +86,7 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
     }
 
     @Override
-    public void editarPresupuesto(long id, double montoPresupuesto, String fechaDesde, String fechaHasta, Categoria categoria) {
+    public void editarPresupuesto(long id, double montoPresupuesto, LocalDate fechaDesde, LocalDate fechaHasta, Categoria categoria) {
         List <Presupuesto> listaPresupuestos= repositorioPresupuesto.listarPresupuesto();
         boolean categoriaDelPresupuesto = false;
 

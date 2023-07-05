@@ -7,15 +7,16 @@ import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface RepositorioPresupuesto {
 
     Presupuesto buscarPresupuestoPorMoneda(Moneda moneda);
 
-    void guardar(Presupuesto presupuesto);
+    Boolean guardar(Presupuesto presupuesto);
 
-    List<Presupuesto> buscarPorFecha(String fechaDesde, String fechaHasta);
+    List<Presupuesto> buscarPorFecha(LocalDate fechaDesde, LocalDate fechaHasta);
 
     void modificar(Presupuesto presupuesto);
 

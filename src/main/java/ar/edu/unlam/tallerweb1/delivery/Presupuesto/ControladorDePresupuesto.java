@@ -8,6 +8,7 @@ import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.ServicioDePresupuesto;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.MontoMenorACero;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
@@ -32,13 +35,12 @@ public class ControladorDePresupuesto {
 
 
     @RequestMapping(path = "/establecerPresupuesto", method = RequestMethod.POST)
-    public ModelAndView registrarUnPresupuesto(@RequestParam("montoPresupuesto") double montoPresupuesto, @RequestParam("fechaDesde") String fechaDesde,
-                                               @RequestParam("fechaHasta") String fechaHasta, @RequestParam("categoria") long categoria ){
+    public ModelAndView registrarUnPresupuesto(@RequestParam("montoPresupuesto") double montoPresupuesto, @RequestParam("fechaDesde") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaDesde,
+                                               @RequestParam("fechaHasta") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaHasta, @RequestParam("categoria") long categoria ){
         ModelMap map = new ModelMap();
         Categoria cat =servicioDeCategoria.buscarCategoriaPorId(categoria);
         List<Presupuesto> presupuestos = servicioDePresupuesto.listarPresupuestos();
         List<Categoria> categorias = servicioDeCategoria.listarCategoriaParaPresupuestos();
-
         map.put("establecerPresupuesto", new Presupuesto());
         map.put("presupuestos", presupuestos);
         map.put("categorias", categorias);
@@ -82,8 +84,8 @@ public class ControladorDePresupuesto {
     }
 
     @RequestMapping(path = "/editarPresupuesto", method = RequestMethod.POST)
-    public ModelAndView editarUnPresupuesto(@RequestParam("id") long idPresupuesto, @RequestParam("montoPresupuesto") double montoPresupuesto, @RequestParam("fechaDesde") String fechaDesde,
-                                               @RequestParam("fechaHasta") String fechaHasta, @RequestParam("categoria") long categoria ){
+    public ModelAndView editarUnPresupuesto(@RequestParam("id") long idPresupuesto, @RequestParam("montoPresupuesto") double montoPresupuesto, @RequestParam("fechaDesde") LocalDate fechaDesde,
+                                               @RequestParam("fechaHasta") LocalDate fechaHasta, @RequestParam("categoria") long categoria ){
         ModelMap map = new ModelMap();
         Categoria cat =servicioDeCategoria.buscarCategoriaPorId(categoria);
         List<Categoria> categorias = servicioDeCategoria.listarCategoriaParaPresupuestos();

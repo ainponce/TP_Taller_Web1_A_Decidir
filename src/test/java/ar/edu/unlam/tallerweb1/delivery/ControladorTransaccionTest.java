@@ -21,6 +21,8 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDate;
+
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -65,8 +67,8 @@ public class ControladorTransaccionTest extends SpringTest {
     private Presupuesto cuandoIngresoUnPresupuestoParaLaTransaccion() {
         Presupuesto presupuesto = new Presupuesto();
         Double montoPresupuesto = 1200.0;
-        String fechaDesde = "12/04/2023";
-        String fechaHasta = "30/04/2023";
+        LocalDate fechaDesde = LocalDate.of(2023, 4, 01);
+        LocalDate fechaHasta = LocalDate.of(2023, 4, 30);
         Categoria cat = new Categoria("bebidas");
         presupuesto.setId(1L);
         presupuesto.setMontoPresupuesto(montoPresupuesto);

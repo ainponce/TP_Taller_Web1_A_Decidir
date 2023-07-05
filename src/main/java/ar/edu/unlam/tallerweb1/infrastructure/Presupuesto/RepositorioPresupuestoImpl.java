@@ -10,6 +10,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository("repositorioPresupuesto")
@@ -36,13 +37,14 @@ public class RepositorioPresupuestoImpl implements RepositorioPresupuesto {
     }
 
     @Override
-    public void guardar(Presupuesto presupuesto) {
+    public Boolean guardar(Presupuesto presupuesto) {
         sessionFactory.getCurrentSession().save(presupuesto);
+        return true;
     }
 
     @Override
 
-    public List<Presupuesto> buscarPorFecha(String fechaDesde, String fechaHasta) {
+    public List<Presupuesto> buscarPorFecha(LocalDate fechaDesde, LocalDate fechaHasta) {
         return  this.sessionFactory.getCurrentSession().createCriteria(Presupuesto.class)
                 .add(Restrictions.eq("fechaDesde", fechaDesde))
                 .add(Restrictions.eq("fechaHasta", fechaHasta))

@@ -21,6 +21,8 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import java.time.LocalDate;
+
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mock.*;
@@ -62,8 +64,8 @@ public class ControladorPresupuestoTest {
     private Presupuesto dadoQueTengoDatosDePresupuestoNuevosValidos() {
         Presupuesto presupuesto = new Presupuesto();
         Double montoPresupuesto = 2200.0;
-        String fechaDesde = "12/04/2023";
-        String fechaHasta = "30/04/2023";
+        LocalDate fechaDesde = LocalDate.of(2023, 4, 01);
+        LocalDate fechaHasta = LocalDate.of(2023, 4, 30);
         Categoria cat = new Categoria("ocio");
         presupuesto.setId(1L);
         presupuesto.setMontoPresupuesto(montoPresupuesto);
@@ -71,6 +73,7 @@ public class ControladorPresupuestoTest {
         presupuesto.setFechaHasta(fechaHasta);
         presupuesto.setCategoria(cat);
         presupuesto.getCategoria().setId(8L);
+
         return presupuesto;
     }
 
@@ -78,8 +81,8 @@ public class ControladorPresupuestoTest {
     private Presupuesto dadoQueTengoDatosDePresupuestoValidos () {
             Presupuesto presupuesto = new Presupuesto();
             Double montoPresupuesto = 1200.0;
-            String fechaDesde = "12/04/2023";
-            String fechaHasta = "30/04/2023";
+        LocalDate fechaDesde = LocalDate.of(2023, 4, 01);
+        LocalDate fechaHasta = LocalDate.of(2023, 4, 30);
             Categoria cat = new Categoria("ocio");
             presupuesto.setId(1L);
             presupuesto.setMontoPresupuesto(montoPresupuesto);
