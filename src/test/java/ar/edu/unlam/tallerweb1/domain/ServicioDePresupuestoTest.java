@@ -46,8 +46,10 @@ public class ServicioDePresupuestoTest {
     @Test (expected = MontoMenorACero.class)
     public void queLanceUnaExcepcionSiElMontoDelPresupuestoEsMenorACero(){
         Presupuesto presupuesto = dadoQueExisteUnPresupuesto();
-        queLanceUnaExcepcionPorMontoMenorACero(presupuesto);
+        giqueLanceUnaExcepcionPorMontoMenorACero(presupuesto);
     }
+
+
     @Test
     public void queLanceUnaExcepcionSiSequiereCrearUnPresupuestoDeunaCategoriaEnUnRangoDeFechasExistente(){
         Presupuesto presupuesto = dadoQueExisteUnPresupuestoCorrecto();
@@ -75,7 +77,7 @@ public class ServicioDePresupuestoTest {
         return presupuesto;
     }
 
-    private void queLanceUnaExcepcionPorMontoMenorACero(Presupuesto presupuesto) {
+    private void giqueLanceUnaExcepcionPorMontoMenorACero(Presupuesto presupuesto) {
         when(servicePresupuesto.establecerPresupuesto(presupuesto.getMontoPresupuesto(), presupuesto.getFechaDesde(), presupuesto.getFechaHasta(), presupuesto.getCategoria())).thenThrow(MontoMenorACero.class);
     }
 
