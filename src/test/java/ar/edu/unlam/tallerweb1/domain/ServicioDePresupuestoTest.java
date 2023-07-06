@@ -52,19 +52,7 @@ public class ServicioDePresupuestoTest {
         Presupuesto presupuesto = dadoQueExisteUnPresupuesto();
         giqueLanceUnaExcepcionPorMontoMenorACero(presupuesto);
     }
-<<<<<<< HEAD
-=======
 
-
-    @Test
-    public void queLanceUnaExcepcionSiSequiereCrearUnPresupuestoDeunaCategoriaEnUnRangoDeFechasExistente(){
-        Presupuesto presupuesto = dadoQueExisteUnPresupuestoCorrecto();
-        Presupuesto presupuesto1 = dadoQueExisteUnPresupuestoRepetido();
-        queAgregueUnPresupuesto(presupuesto);
-        queLanceUnaExcpecionPorPresupuestoExistenteEnEseRango(presupuesto1);
-
-    }
->>>>>>> 89889376768752150dde3032e6dfc1755150c33a
 
     @Test //(expected = ElPresupuestoEsNulo.class)
     public void queLanceUnaExcepcionSiElPresupuestoEsNulo(){
