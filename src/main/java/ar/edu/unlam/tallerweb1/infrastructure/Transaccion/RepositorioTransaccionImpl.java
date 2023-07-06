@@ -38,8 +38,9 @@ public class RepositorioTransaccionImpl implements RepositorioTransaccion {
     }
 
     @Override
-    public void guardarTransaccion(Transaccion transaccion) {
+    public boolean guardarTransaccion(Transaccion transaccion) {
         sessionFactory.getCurrentSession().save(transaccion);
+        return true;
     }
 
     @Override

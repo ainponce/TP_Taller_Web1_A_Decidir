@@ -49,9 +49,22 @@ public class ServicioDeTransiccionesTest{
         Transaccion t = dadoQueExisteUnaTransaccion();
         queSePuedaGuardar(t);
     }
+    @Test
+    public void queTraigaUnaListaDeTransaccionesPorCategoria(){
+        Transaccion t = dadoQueExisteUnaTransaccion();
+        Categoria cat = t.getCategoria();
+        queSePuedaBuscarPorCategoria(t, cat);
+    }
+
+    private void queSePuedaBuscarPorCategoria(Transaccion t, Categoria cat) {
+        List<Transaccion> lista = repositorioTransaccion.listarTransaccion();
+        lista.add(t);
+        when(repositorioTransaccion.buscarTransaccionPorCategoria(cat)).thenReturn(lista);
+        assertThat(lista.size()).isEqualTo(1);
+    }
 
     private void queSePuedaGuardar(Transaccion t) {
-        //when(repositorioTransaccion.guardarTransaccion(t)).
+        when(repositorioTransaccion.guardarTransaccion(t)).thenReturn(true);
     }
 
 
