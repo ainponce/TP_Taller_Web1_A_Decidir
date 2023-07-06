@@ -5,15 +5,14 @@ import ar.edu.unlam.tallerweb1.SpringTest;
 import ar.edu.unlam.tallerweb1.delivery.Categoria.ControladorDeCategoria;
 import ar.edu.unlam.tallerweb1.delivery.Presupuesto.ControladorDePresupuesto;
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
-<<<<<<< HEAD
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.ServicioDePresupuesto;
-=======
+
 import ar.edu.unlam.tallerweb1.domain.Categorias.ServicioDeCategoria;
 import ar.edu.unlam.tallerweb1.domain.Categorias.ServicioDeCategoriaImpl;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.*;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.MontoMenorACero;
->>>>>>> 3eb122e3fb0f049240acddaf360b23f81aa5ddec
+
 import ar.edu.unlam.tallerweb1.infrastructure.Categoria.RepositorioCategoria;
 import ar.edu.unlam.tallerweb1.infrastructure.Categoria.RepositorioCategoriaImp;
 import ar.edu.unlam.tallerweb1.infrastructure.Presupuesto.RepositorioPresupuesto;
@@ -53,24 +52,11 @@ public class ServicioDePresupuestoTest {
         Presupuesto presupuesto = dadoQueExisteUnPresupuesto();
         queLanceUnaExcepcionPorMontoMenorACero(presupuesto);
     }
-    @Test (expected = PresupuestoExistenteEnEseRangoDeFechas.class)
-    public void queLanceUnaExcepcionSiSequiereCrearUnPresupuestoDeunaCategoriaEnUnRangoDeFechasExistente(){
-        Presupuesto presupuesto = dadoQueExisteUnPresupuestoCorrecto();
-        Presupuesto presupuesto1 = dadoQueExisteUnPresupuestoRepetido();
-        queAgregueUnPresupuesto(presupuesto);
-        queLanceUnaExcpecionPorPresupuestoExistenteEnEseRango(presupuesto1);
 
-    }
-
-<<<<<<< HEAD
     @Test //(expected = ElPresupuestoEsNulo.class)
     public void queLanceUnaExcepcionSiElPresupuestoEsNulo(){
         Categoria cat= repositorioCategoria.traerCategoriaPorId(3);
         servicePresupuesto.buscarMontoPresupuestoPorCategoria(cat);
-=======
-    private void queAgregueUnPresupuesto(Presupuesto presupuesto) {
-      when(repoPresupuesto.guardar(presupuesto)).thenReturn(true);
->>>>>>> 3eb122e3fb0f049240acddaf360b23f81aa5ddec
     }
 
     private void queLanceUnaExcpecionPorPresupuestoExistenteEnEseRango(Presupuesto presupuesto1) {
