@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -98,16 +99,16 @@
   <div class="col-lg-5">
     <h3>Crear Ahorro</h3>
 
-    <form:form action="calcularAhorro" method="post" modelAttribute="ListarAhorroPordia">
+    <form:form action="calculadoraDeAhorro" method="post" modelAttribute="ListarAhorroPordia">
       <label>Nombre</label>
-      <form:input type="text" id="nombre" path="nombre" name="nombreAhorro" class="form-control" placeholder="Ingrese nombre del ahorro..."/>
+      <form:input type="text" id="nombre" path="nombreAhorro" name="nombreAhorro" class="form-control" placeholder="Ingrese nombre del ahorro..."/>
       <label>Ingese monto final a ahorrar</label>
       <form:input type="text" id="monto" path="montoAhorro" name="montoAhorro" class="form-control" placeholder="Ingrese monto en $"/>
       <label>Seleccione el presupuesto</label>
       <form:select path="montoDePresupuesto" id="presupuesto" name="presupuesto" class="form-control">
         <option disabled selected>Selecciona una opcion</option>
         <c:forEach var="presupuesto" items="${listaDePresupuesto}">
-          <form:option  value="${presupuesto.getMontoPresupuesto()}">${presupuesto.categoria.getNombre()} - $${presupuesto.getMontoPresupuesto()}}</form:option>
+          <form:option  value="${presupuesto.montoPresupuesto}">${presupuesto.categoria.getNombre()} - $${presupuesto.getMontoPresupuesto()}</form:option>
         </c:forEach>
       </form:select>
       <button  id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Calcular</button>
@@ -123,15 +124,20 @@
       <table class="table">
         <thead>
         <tr>
-          <th>Monto</th>
-          <th>Categoría</th>
-          <th>Fecha Desde</th>
-          <th>Fecha Hasta</th>
+          <th>Nombre</th>
+          <th>Monto Deseado</th>
+          <th>Presupuesto</th>
+          <th>Gastos Estipulados: Por Dia</th>
+          <th>Por Semana </th>
         </tr>
         </thead>
         <tbody>
           <tr>
-            <td>${ahorroPorDia}</td>
+            <td>${ahorros.ahorro.getNombreAhorro()}</td>
+            <td>${ahorros.ahorro.getMontoAhorro()}</td>
+            <td>${ahorros.ahorro.getMontoDePresupuesto()}</td>
+            <td>${ahorros.getAhorroPorDia()} </td>
+            <td>${ahorros.getAhorroPorSemana()}</td>
           </tr>
         </tbody>
       </table>

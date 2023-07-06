@@ -16,11 +16,11 @@ public class Ahorro {
         this.montoDePresupuesto = montoDePresupuesto;
     }
 
-    public String getNombre() {
+    public String getNombreAhorro() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    public void setNombreAhorro(String nombre) {
         this.nombre = nombre;
     }
 
