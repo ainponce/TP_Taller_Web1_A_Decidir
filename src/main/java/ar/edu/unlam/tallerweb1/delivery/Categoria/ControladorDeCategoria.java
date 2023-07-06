@@ -5,6 +5,8 @@ import ar.edu.unlam.tallerweb1.domain.Categorias.CategoriaDuplicadaEx;
 import ar.edu.unlam.tallerweb1.domain.Categorias.NombreDeCategoriaNuloEx;
 import ar.edu.unlam.tallerweb1.domain.Categorias.ServicioDeCategoria;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.ServicioDePresupuesto;
+import ar.edu.unlam.tallerweb1.domain.Transaccion.NoExisteTransaccion;
+import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -50,5 +52,21 @@ public class ControladorDeCategoria {
         return new ModelAndView("crearCategoria", map);
     }
 
+    @RequestMapping(path="/deleteCategoria", method = RequestMethod.POST)
+    public ModelAndView eliminarUnaTransaccion(@RequestParam("id") Long id){
+        ModelMap map= new ModelMap();
+        Categoria categoriaAEliminar = null;
+        categoriaAEliminar = servicioDeCategoria.buscarCategoriaPorId(id);
+        if(categoriaAEliminar!=null){
+            try{
+                servicioDeCategoria.eliminarCategoria(categoriaAEliminar);
+            }catch(NombreDeCategoriaNuloEx nc){
+                map.put("msg", "No existe la categoria");
+                map.put("Error", nc.getMessage());
+            }
 
+        }
+
+        return new ModelAndView("redirect:/crearCategoria", map);
+    }
 }
