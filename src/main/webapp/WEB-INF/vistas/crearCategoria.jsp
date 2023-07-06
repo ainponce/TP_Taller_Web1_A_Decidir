@@ -112,7 +112,7 @@
                 <tbody>
                 <c:forEach var="categorias" items="${categorias}">
                     <tr>
-                        <td>${categoria.getNombre()}</td>
+                        <td>${categorias.getNombre()}</td>
                     </tr>
                 </c:forEach>
                 </tbody>

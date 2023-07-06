@@ -74,7 +74,7 @@ public class ServicioDeTransiccionesTest extends SpringTest{
     }
 
     private Transaccion dadoQueExisteUnaTransaccion() {
-        return new Transaccion(-12.0,"me compre papas", "01/06/2023", Concepto.Gasto, new Categoria("compras"));
+        return new Transaccion(-12.0,"me compre papas", "01/06/2023", Concepto.Fijo, new Categoria("compras"));
     }
 
 
