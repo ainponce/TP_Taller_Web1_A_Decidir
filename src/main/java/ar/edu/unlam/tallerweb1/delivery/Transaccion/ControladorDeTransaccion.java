@@ -142,9 +142,13 @@ public class ControladorDeTransaccion {
         Transaccion transaccionAEliminar = null;
         transaccionAEliminar =  servicioDeTransaccion.buscarTransaccionPorIdParaEliminar(id);
         if(transaccionAEliminar!=null){
+            try{
             servicioDeTransaccion.eliminarTransaccion(transaccionAEliminar);
-        }else{
-            map.put("msg", "No existe la transaccion");
+        }catch(NoExisteTransaccion nt){
+                map.put("msg", "No existe la transaccion");
+                map.put("Error", nt.getMessage());
+            }
+
         }
 
         return new ModelAndView("redirect:/home", map);

@@ -43,7 +43,7 @@ public class ServicioDePresupuestoTest {
         servicePresupuesto = new ServicioDePresupuestoImpl(repoPresupuesto, repositorioCategoria);
 
     }
-    @Test
+    @Test (expected = MontoMenorACero.class)
     public void queLanceUnaExcepcionSiElMontoDelPresupuestoEsMenorACero(){
         Presupuesto presupuesto = dadoQueExisteUnPresupuesto();
         queLanceUnaExcepcionPorMontoMenorACero(presupuesto);
