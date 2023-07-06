@@ -2,10 +2,7 @@ package ar.edu.unlam.tallerweb1.delivery.Presupuesto;
 
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Categorias.ServicioDeCategoria;
-import ar.edu.unlam.tallerweb1.domain.Presupuesto.CategoriaEnUso;
-import ar.edu.unlam.tallerweb1.domain.Presupuesto.NoExistePresupuesto;
-import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
-import ar.edu.unlam.tallerweb1.domain.Presupuesto.ServicioDePresupuesto;
+import ar.edu.unlam.tallerweb1.domain.Presupuesto.*;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.MontoMenorACero;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -48,7 +45,7 @@ public class ControladorDePresupuesto {
         try {
             servicioDePresupuesto.establecerPresupuesto(montoPresupuesto, fechaDesde, fechaHasta, cat);
             map.put("msg", "Presupuesto creado");
-        } catch (CategoriaEnUso e){
+        } catch (PresupuestoExistenteEnEseRangoDeFechas e){
              map.put("Error", e.getMessage());
             return new ModelAndView("establecerPresupuesto", map);
         } catch (MontoMenorACero e) {

@@ -4,6 +4,7 @@ import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Concepto.Concepto;
 import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
 import ar.edu.unlam.tallerweb1.infrastructure.Categoria.RepositorioCategoria;
+import ar.edu.unlam.tallerweb1.infrastructure.Categoria.RepositorioCategoriaImp;
 import ar.edu.unlam.tallerweb1.infrastructure.Transaccion.RepositorioTransaccion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,9 +22,9 @@ public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
     private final RepositorioCategoria repositorioCategoria;
 
     @Autowired
-    public ServicioDeTransaccionImpl(RepositorioTransaccion servicioTransaccionDao, RepositorioCategoria repositorioCategoria) {
+    public ServicioDeTransaccionImpl(RepositorioTransaccion servicioTransaccionDao) {
         this.RepoTransaccionDao = servicioTransaccionDao;
-        this.repositorioCategoria = repositorioCategoria;
+        this.repositorioCategoria = new RepositorioCategoriaImp();
     }
 
     @Override
