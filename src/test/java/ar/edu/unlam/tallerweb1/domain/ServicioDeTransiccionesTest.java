@@ -80,11 +80,9 @@ public class ServicioDeTransiccionesTest{
     }
 
     private Transaccion dadoQueExisteUnaTransaccion() {
-<<<<<<< HEAD
-        return new Transaccion(0.0,"me compre papas", "01/06/2023", Concepto.Gasto, new Categoria("compras"));
-=======
+
         return new Transaccion(-12.0,"me compre papas", "01/06/2023", Concepto.Fijo, new Categoria("compras"));
->>>>>>> e9f39c0988bba47d0ecb6eeab36361678c9fc56a
+
     }
 
 
