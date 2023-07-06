@@ -3,7 +3,6 @@ package ar.edu.unlam.tallerweb1.domain.Transaccion;
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Concepto.Concepto;
 import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
-import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
 import ar.edu.unlam.tallerweb1.infrastructure.Categoria.RepositorioCategoria;
 import ar.edu.unlam.tallerweb1.infrastructure.Transaccion.RepositorioTransaccion;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +17,12 @@ import java.util.List;
 public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
 
 
-    private final RepositorioTransaccion servicioTransaccionDao;
+    private final RepositorioTransaccion RepoTransaccionDao;
     private final RepositorioCategoria repositorioCategoria;
 
     @Autowired
     public ServicioDeTransaccionImpl(RepositorioTransaccion servicioTransaccionDao, RepositorioCategoria repositorioCategoria) {
-        this.servicioTransaccionDao = servicioTransaccionDao;
+        this.RepoTransaccionDao = servicioTransaccionDao;
         this.repositorioCategoria = repositorioCategoria;
     }
 
@@ -33,7 +32,7 @@ public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
 
         if (monto > 0) {
             Transaccion transaccion = new Transaccion(monto, detalle);
-            servicioTransaccionDao.guardarTransaccion(transaccion);
+            RepoTransaccionDao.guardarTransaccion(transaccion);
             seRegistro = true;
         }else {
             throw new MontoMenorACero();
@@ -42,28 +41,33 @@ public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
     }
 
     @Override
-    public Boolean registrarTransaccion(Double monto, String detalle, String fecha, Concepto concepto, Categoria categoria) {
+    public Boolean registrarTransaccion(double monto, Double presupuestoDeCategoria, String detalle, String fecha, Concepto concepto, Categoria categoria) {
         Boolean seRegistro = false;
-        List<Transaccion> validacionDeCategoria = servicioTransaccionDao.listarTransaccion();
-        if (monto > 0) {
-            Transaccion transaccion = new Transaccion(monto, detalle, fecha, concepto, categoria);
-            servicioTransaccionDao.guardarTransaccion(transaccion);
-            seRegistro = true;
-        }else {
-            throw new MontoMenorACero();
+        List<Transaccion> validacionDeCategoria = RepoTransaccionDao.listarTransaccion();
+        List<Transaccion> transacciones = filtrarTransaccionesPorCategoria(categoria);
+        //un if de metodo registroexitoso
+        if(registroTransaccionExitoso(transacciones,presupuestoDeCategoria,monto)){
+            if (monto > 0) {
+                Transaccion transaccion = new Transaccion(monto, detalle, fecha, concepto, categoria);
+                RepoTransaccionDao.guardarTransaccion(transaccion);
+                seRegistro = true;
+            } else {
+                throw new MontoMenorACero();
+            }
         }
         return seRegistro;
     }
+
 
     @Override
     public List<Transaccion> buscarTransaccionPorDetalle(String detalle) {
-        return servicioTransaccionDao.buscarTransaccionPorDetalle(detalle);
+        return RepoTransaccionDao.buscarTransaccionPorDetalle(detalle);
     }
 
 
     @Override
     public List<Transaccion> listarTransacciones() {
-        return servicioTransaccionDao.listarTransaccion();
+        return RepoTransaccionDao.listarTransaccion();
     }
 
     @Override
@@ -87,7 +91,7 @@ public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
 
     @Override
     public List<Transaccion> filtrarTransaccionesPorCategoria(Categoria categoria) {
-        return servicioTransaccionDao.buscarTransaccionPorCategoria(categoria);
+        return RepoTransaccionDao.buscarTransaccionPorCategoria(categoria);
     }
 
     @Override
@@ -104,30 +108,31 @@ public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
         if (diferencia < montoEstimadoANoSobrepasar) {
             throw new ElMontoEstaPorLlegarASuLimite();
         }
+
         return true;
     }
 
     @Override
     public List<Transaccion> filtrarTransaccionesPorConcepto(Concepto concepto) {
-        return servicioTransaccionDao.buscarTransaccionPorConcepto(concepto);
+        return RepoTransaccionDao.buscarTransaccionPorConcepto(concepto);
     }
 
 
     @Override
     public void eliminarTransaccion(Transaccion tranAEliminar) {
-        servicioTransaccionDao.eliminarTransaccion(tranAEliminar);
-        servicioTransaccionDao.listarTransaccion().remove(tranAEliminar);
+        RepoTransaccionDao.eliminarTransaccion(tranAEliminar);
+        RepoTransaccionDao.listarTransaccion().remove(tranAEliminar);
     }
 
     @Override
     public Transaccion buscarTransaccionPorIdParaEliminar(Long id) {
-        return servicioTransaccionDao.buscarTransaccionPorIdParaEliminar(id);
+        return RepoTransaccionDao.buscarTransaccionPorIdParaEliminar(id);
     }
 
 
 
     public List<Transaccion> convertirMontoEnMonedaSeleccionada(Moneda moneda) {
-        List<Transaccion> transacciones = servicioTransaccionDao.listarTransaccion();
+        List<Transaccion> transacciones = RepoTransaccionDao.listarTransaccion();
         List<Transaccion> transaccionesNuevoMonto = new ArrayList<>();
         Double tipoMoneda = moneda.getValor();
         Double montoFinal = 0.0;

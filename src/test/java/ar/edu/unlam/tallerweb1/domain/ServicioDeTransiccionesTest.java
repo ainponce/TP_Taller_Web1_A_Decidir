@@ -15,6 +15,7 @@ import ar.edu.unlam.tallerweb1.infrastructure.Transaccion.RepositorioTransaccion
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -38,9 +39,9 @@ public class ServicioDeTransiccionesTest extends SpringTest{
     }
     @Test
     public void queSeBusqueElMontoDePresupuestoPorCategoria(){
-        Categoria cat = new Categoria("compras", true);
+        Categoria cat = new Categoria("compras");
        // Transaccion transaccion = new Transaccion(120.)
-        Presupuesto p1 = new Presupuesto(1000.0, "1/04/2023", "30/04/2023", cat);
+        Presupuesto p1 = new Presupuesto(1000.0, LocalDate.of(2023, 04, 01), LocalDate.of(2023, 04, 30), cat);
         servicePresupuesto.listarPresupuestos().add(p1);
         Double presupuestoDeCategoria = servicePresupuesto.buscarMontoPresupuestoPorCategoria(cat);
         assertThat(presupuestoDeCategoria).isEqualTo(0.0);
@@ -65,16 +66,15 @@ public class ServicioDeTransiccionesTest extends SpringTest{
     }
 
     private void queNoSePuedaRegistrarPorPresupuesto(List<Transaccion> t, Double montopresu, Double monto) {
-       // montopresu=25000.0;
         service.registroTransaccionExitoso(t, montopresu, monto);
     }
 
     private void queNoSePuedaRegistrar(Transaccion t) {
-        service.registrarTransaccion(t.getMonto(), t.getDetalle(), t.getFecha(), t.getConcepto(), t.getCategoria());
+        service.registrarTransaccion(t.getMonto(), null, t.getDetalle(), t.getFecha(), t.getConcepto(), t.getCategoria());
     }
 
     private Transaccion dadoQueExisteUnaTransaccion() {
-        return new Transaccion(-12.0,"me compre papas", "01/06/2023", Concepto.Gasto, new Categoria("compras", true));
+        return new Transaccion(-12.0,"me compre papas", "01/06/2023", Concepto.Fijo, new Categoria("compras"));
     }
 
 
@@ -82,20 +82,6 @@ public class ServicioDeTransiccionesTest extends SpringTest{
         assertThat(categorias.size()).isEqualTo(2);
     }
 
-    @Test
-    public void sumarElMontoPorCategoria() {
-
-    }
-
-    private void validarMonto(Double montoTotal) {
-        assertThat(montoTotal).isEqualTo(15000.0);
-    }
-
-
-
-/*private List<Transaccion> listoTransaccionesPorCategoria() {
-        return repo.buscarTransaccionPorCategoria(Categoria.Salidas);
-    }*/
 
 
 }

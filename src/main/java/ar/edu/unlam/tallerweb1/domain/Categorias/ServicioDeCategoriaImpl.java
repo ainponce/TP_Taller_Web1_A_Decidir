@@ -13,11 +13,14 @@ import java.util.List;
 @Service
 @Transactional
 public class ServicioDeCategoriaImpl implements ServicioDeCategoria {
-    private final RepositorioCategoria repositorioCategoria;
+    private RepositorioCategoria repositorioCategoria;
 
     @Autowired
     public ServicioDeCategoriaImpl( RepositorioCategoria repositorioCategoria) {
         this.repositorioCategoria=repositorioCategoria;
+    }
+
+    public ServicioDeCategoriaImpl() {
     }
 
 
@@ -29,6 +32,29 @@ public class ServicioDeCategoriaImpl implements ServicioDeCategoria {
     @Override
     public List<Categoria> listarCategoriaParaPresupuestos() {
         return repositorioCategoria.listarCategorias();
+    }
+
+    @Override
+    public Boolean regsitrarCategoria(String nombre) {
+       Boolean seRegistro = false;
+       Categoria categoriaEncontrada = buscarCategoriaPorNombre(nombre);
+
+       if(categoriaEncontrada.getNombre() == nombre){
+           throw new CategoriaDuplicadaEx();
+       } else if (nombre != null){
+           Categoria categoria = new Categoria(nombre);
+           repositorioCategoria.crearCategoria(categoria);
+           seRegistro = true;
+       } else throw new NombreDeCategoriaNuloEx();
+
+
+
+        return seRegistro;
+    }
+
+    @Override
+    public Categoria buscarCategoriaPorNombre(String nombre) {
+        return repositorioCategoria.traerCategoriaPorNombre(nombre);
     }
 
     @Override

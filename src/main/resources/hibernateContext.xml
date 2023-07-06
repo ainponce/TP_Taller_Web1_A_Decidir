@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <beans xmlns="http://www.springframework.org/schema/beans"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans
@@ -11,9 +12,16 @@
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/hurr?useSSL=true&amp;serverTimezone=UTC" />
 		<property name="username" value="root" />
+<<<<<<< HEAD
 		<property name="password" value="juflorcan01+" />
 	</bean>
+=======
+		<property name="password" value="" />
+>>>>>>> 3eb122e3fb0f049240acddaf360b23f81aa5ddec
 
+
+
+	</bean>
 	<!--Configuracion de la factory encargada de generar las sesiones con la base de datos, la misma -->
 	<!--usa el data source configurado antes-->
 	<bean id="sessionFactory"

@@ -69,11 +69,23 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle icon-home" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                        <a class="nav-link" href="calculadoraDeAhorro">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 class="bi bi-plus-circle icon-home" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                             </svg>
-                            Ingrese gasto
+                            Crear categoria
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="crearCategoria">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 class="bi bi-plus-circle icon-home" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                            </svg>
+                            Calcular Ahorros
                         </a>
                     </li>
                     <li class="nav-item">
@@ -92,14 +104,14 @@
     <div class="col-lg-5">
         <h3>Cree su categoria personalizada</h3>
 
-            <form:form action="crearCategoria" method="post" modelAttribute="crearCategoria">
+            <form:form action="crearCategoria" method="post"  modelAttribute="datosCategoria">
                 <label>Nombre de la categoria</label>
-                <form:input type="text" id="nombreCategoria" path="nombreCategoria" name="nombreCategoria" class="form-control" placeholder="Ingrese un nombre para su categoria..."/>
+                <form:input type="text" id="nombre" path="nombre" name="nombre" class="form-control" placeholder="Ingrese un nombre para su categoria..."/>
                 <button  id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Crear</button>
             </form:form>
     </div>
     <div class="col-lg-5">
-        <div >
+        <div>
             <h3>Mis categorias</h3>
             <table class="table">
                 <thead>
@@ -108,12 +120,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="presupuesto" items="${presupuestos}">
+                <c:forEach var="categorias" items="${categorias}">
                     <tr>
-                        <td>${presupuesto.montoPresupuesto}</td>
-                        <td>${presupuesto.categoria.GetNombre()}</td>
-                        <td>${presupuesto.fechaDesde}</td>
-                        <td>${presupuesto.fechaHasta}</td>
+                        <td>${categorias.getNombre()}</td>
                     </tr>
                 </c:forEach>
                 </tbody>

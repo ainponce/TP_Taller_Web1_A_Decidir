@@ -36,4 +36,14 @@ public class RepositorioCategoriaTest extends SpringTest {
     private List<Categoria> listoCategorias() {
         return repo.listarCategorias();
     }
+
+    @Test
+    public void queTraigaCategoriaPorNombre(){
+        Categoria categoria = new Categoria("Gastos inesperados");
+        repo.crearCategoria(categoria);
+
+        Categoria categoriaObtenida = repo.traerCategoriaPorNombre("Gastos inesperados");
+
+        assertThat(categoria.getNombre()).isEqualTo(categoriaObtenida.getNombre());
+    }
 }

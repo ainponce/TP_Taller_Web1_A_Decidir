@@ -1,14 +1,15 @@
 package ar.edu.unlam.tallerweb1.domain.Presupuesto;
 
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
-import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.MontoMenorACero;
+import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
 import ar.edu.unlam.tallerweb1.infrastructure.Categoria.RepositorioCategoria;
 import ar.edu.unlam.tallerweb1.infrastructure.Presupuesto.RepositorioPresupuesto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -26,21 +27,13 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
 
 
     @Override
-    public Boolean establecerPresupuesto(Double monto, String fechaDesde, String fechaHasta, Categoria categoria) {
+    public Boolean establecerPresupuesto(Double monto, LocalDate fechaDesde, LocalDate fechaHasta, Categoria categoria) {
         Boolean seRegistro = false;
-        List <Presupuesto> validacionDeCategoria= repositorioPresupuesto.listarPresupuesto();
-        boolean categoriaEnUso = false;
-
-        for (Presupuesto presupuesto : validacionDeCategoria) {
-            if (presupuesto.getCategoria().GetId().equals(categoria.GetId())) {
-                categoriaEnUso = true;
-                break;  // Si encuentras una categoría igual, sales del bucle
-            }
+        Presupuesto presupuesto = repositorioPresupuesto.buscarPresupuestoPorCategoria(categoria);
+        if(rangoDeFechaPresupuestoNoDisponible(presupuesto, categoria, fechaDesde, fechaHasta)){
+            throw new PresupuestoExistenteEnEseRangoDeFechas();
         }
-
-        if (categoriaEnUso) {
-            throw new CategoriaEnUso();  // Lanzas la excepción si la categoría ya está en uso
-        } else {
+            else {
             if (monto > 0) {
                 Presupuesto presupuestoNuevo = new Presupuesto(monto, fechaDesde, fechaHasta, categoria);
                 repositorioPresupuesto.guardar(presupuestoNuevo);
@@ -50,6 +43,18 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
             }
         }
         return seRegistro;
+    }
+
+    private Boolean rangoDeFechaPresupuestoNoDisponible(Presupuesto presupuesto, Categoria categoria, LocalDate fechaDesde, LocalDate fechaHasta) {
+        if(presupuesto != null && presupuesto.getCategoria().equals(categoria)){
+            if(presupuesto.getFechaDesde().isEqual(fechaDesde) || presupuesto.getFechaDesde().isEqual(fechaHasta) &&
+            presupuesto.getFechaHasta().isEqual(fechaHasta) || presupuesto.getFechaHasta().isEqual(fechaDesde)){
+                return true;
+            }
+
+        }
+
+        return false;
     }
 
     @Override
@@ -79,12 +84,12 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
     }
 
     @Override
-    public void editarPresupuesto(long id, double montoPresupuesto, String fechaDesde, String fechaHasta, Categoria categoria) {
+    public void editarPresupuesto(long id, double montoPresupuesto, LocalDate fechaDesde, LocalDate fechaHasta, Categoria categoria) {
         List <Presupuesto> listaPresupuestos= repositorioPresupuesto.listarPresupuesto();
         boolean categoriaDelPresupuesto = false;
 
             for (Presupuesto presupuesto : listaPresupuestos) {
-                if (presupuesto.getCategoria().GetId() == categoria.GetId()) {
+                if (presupuesto.getCategoria().getId() == categoria.getId()) {
                     categoriaDelPresupuesto = true;
                     break;  // Si encuentras una categoría igual, sales del bucle
                 }
@@ -99,6 +104,17 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
             }else {
                 throw new MontoMenorACero();  // Lanzas la excepción si el monto es menor a cero
             }
+    }
+
+    @Override
+    public Presupuesto buscarPresupuestoPorIdParaEliminar(Long id) {
+        return repositorioPresupuesto.buscarPresupuestoPorIdParaEliminar(id);
+    }
+
+    @Override
+    public void eliminarPresupuesto(Presupuesto presupuestoAEliminar) {
+        repositorioPresupuesto.eliminarTransaccion(presupuestoAEliminar);
+        repositorioPresupuesto.listarTransaccion().remove(presupuestoAEliminar);
     }
 
     @Override

@@ -10,6 +10,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository("repositorioPresupuesto")
@@ -36,13 +37,14 @@ public class RepositorioPresupuestoImpl implements RepositorioPresupuesto {
     }
 
     @Override
-    public void guardar(Presupuesto presupuesto) {
+    public Boolean guardar(Presupuesto presupuesto) {
         sessionFactory.getCurrentSession().save(presupuesto);
+        return true;
     }
 
     @Override
 
-    public List<Presupuesto> buscarPorFecha(String fechaDesde, String fechaHasta) {
+    public List<Presupuesto> buscarPorFecha(LocalDate fechaDesde, LocalDate fechaHasta) {
         return  this.sessionFactory.getCurrentSession().createCriteria(Presupuesto.class)
                 .add(Restrictions.eq("fechaDesde", fechaDesde))
                 .add(Restrictions.eq("fechaHasta", fechaHasta))
@@ -66,11 +68,27 @@ public class RepositorioPresupuestoImpl implements RepositorioPresupuesto {
     }
     @Override
     public Presupuesto buscarPresupuestoPorCategoria(Categoria categoria) {
-        return this.sessionFactory.getCurrentSession().get(Presupuesto.class, categoria.GetId());
+        return this.sessionFactory.getCurrentSession().get(Presupuesto.class, categoria.getId());
     }
 
     @Override
     public List<Presupuesto> listarPresupuesto() {
+        final Session session = sessionFactory.getCurrentSession();
+        return (List<Presupuesto>) session.createCriteria(Presupuesto.class).list();
+    }
+
+    @Override
+    public Presupuesto buscarPresupuestoPorIdParaEliminar(Long id) {
+        return this.sessionFactory.getCurrentSession().get(Presupuesto.class, id);
+    }
+
+    @Override
+    public void eliminarTransaccion(Presupuesto presupuestoAEliminar) {
+        sessionFactory.getCurrentSession().delete(presupuestoAEliminar);
+    }
+
+    @Override
+    public List<Presupuesto> listarTransaccion() {
         final Session session = sessionFactory.getCurrentSession();
         return (List<Presupuesto>) session.createCriteria(Presupuesto.class).list();
     }

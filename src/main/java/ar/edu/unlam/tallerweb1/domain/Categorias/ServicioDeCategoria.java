@@ -13,5 +13,9 @@ public interface ServicioDeCategoria {
 
     public List<Categoria> listarCategoriaParaPresupuestos();
 
+    public Boolean regsitrarCategoria(String nombre);
+
+    public Categoria buscarCategoriaPorNombre(String nombre);
+
    // List<Categoria> listarCategoriasPorID(Long id);
 }

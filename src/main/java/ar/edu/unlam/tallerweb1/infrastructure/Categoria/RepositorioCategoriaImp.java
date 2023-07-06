@@ -9,6 +9,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,7 +25,7 @@ import java.util.Set;
 @Repository("repositorioCategoria")
 @Transactional
 public class RepositorioCategoriaImp implements RepositorioCategoria {
-    private final SessionFactory sessionFactory;
+    private  SessionFactory sessionFactory;
     private RepositorioPresupuesto repositorioPresupuesto;
     private RepositorioTransaccion repositorioTransaccion;
 
@@ -34,6 +35,11 @@ public class RepositorioCategoriaImp implements RepositorioCategoria {
         this.repositorioPresupuesto=repositorioPresupuesto;
         this.repositorioTransaccion=repositorioTransaccion;
     }
+
+    public RepositorioCategoriaImp() {
+
+    }
+
 
     @Override
     public List<Categoria> listarCategorias() {
@@ -49,4 +55,20 @@ public class RepositorioCategoriaImp implements RepositorioCategoria {
         return session.get(Categoria.class, id);
 
     }
+
+    @Override
+    public void crearCategoria(Categoria categoria) {
+        sessionFactory.getCurrentSession().save(categoria);
+    }
+
+    @Override
+    public Categoria traerCategoriaPorNombre(String nombre) {
+        final Session session = sessionFactory.getCurrentSession();
+        Query<Categoria> query = session.createQuery("FROM Categoria WHERE nombre = :nombre", Categoria.class);
+        query.setParameter("nombre", nombre);
+        return query.uniqueResult();
+
+    }
+
+
 }

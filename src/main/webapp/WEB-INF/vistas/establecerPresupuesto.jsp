@@ -1,12 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Ain Ponce
-  Date: 25/5/2023
-  Time: 7:52 p. m.
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -71,11 +64,23 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle icon-home" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                        <a class="nav-link" href="crearCategoria">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 class="bi bi-plus-circle icon-home" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                             </svg>
-                            Ingrese gasto
+                            Crear categoria
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="calculadoraDeAhorro">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 class="bi bi-plus-circle icon-home" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                            </svg>
+                            Calcular Ahorros
                         </a>
                     </li>
                     <li class="nav-item">
@@ -94,18 +99,18 @@
     <div class="col-lg-5">
         <h3>Cree su presupuesto</h3>
 
-            <form:form action="agregarPresupuesto" method="post" modelAttribute="establecerPresupuesto">
+            <form:form action="establecerPresupuesto" method="post" modelAttribute="establecerPresupuesto">
                 <label>Monto</label>
                 <form:input type="text" id="monto" path="montoPresupuesto" name="montoPresupuesto" class="form-control" placeholder="Ingrese monto..."/>
                 <label>Fecha de inicio</label>
-                <form:input type="text" id="monto" path="fechaDesde" name="fechaDesde" class="form-control" placeholder="Ingrese fecha de inicio"/>
+                <form:input type="date" id="monto" path="fechaDesde" name="fechaDesde" class="form-control"/>
                 <label>Fecha de fin</label>
-                <form:input type="text" id="monto" path="fechaHasta" name="fechaHasta" class="form-control" placeholder="Ingrese fecha de fin"/>
+                <form:input type="date" id="monto" path="fechaHasta" name="fechaHasta" class="form-control"/>
                 <label>Categoria del presupuesto</label>
                 <form:select path="categoria" id="categoria" name="categoria" class="form-control">
                     <option disabled selected>Selecciona una opcion</option>
                     <c:forEach var="categoria" items="${categorias}">
-                        <form:option  value="${categoria.GetId()}">${categoria.GetNombre()}</form:option>
+                        <form:option  value="${categoria.getId()}">${categoria.getNombre()}</form:option>
                     </c:forEach>
                 </form:select>
                 <button  id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Subir</button>
@@ -131,7 +136,7 @@
                 <c:forEach var="presupuesto" items="${presupuestos}">
                     <tr>
                         <td>${presupuesto.montoPresupuesto}</td>
-                        <td>${presupuesto.categoria.GetNombre()}</td>
+                        <td>${presupuesto.categoria.getNombre()}</td>
                         <td>${presupuesto.fechaDesde}</td>
                         <td>${presupuesto.fechaHasta}</td>
                         <td><form action="editarPresupuesto" method="get">
