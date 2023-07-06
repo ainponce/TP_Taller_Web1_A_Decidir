@@ -51,9 +51,7 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
             presupuesto.getFechaHasta().isEqual(fechaHasta) || presupuesto.getFechaHasta().isEqual(fechaDesde)){
                 return true;
             }
-
         }
-
         return false;
     }
 
