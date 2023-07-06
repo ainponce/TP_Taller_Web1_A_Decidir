@@ -50,8 +50,21 @@ public class ServicioDePresupuestoTest {
     @Test (expected = MontoMenorACero.class)
     public void queLanceUnaExcepcionSiElMontoDelPresupuestoEsMenorACero(){
         Presupuesto presupuesto = dadoQueExisteUnPresupuesto();
-        queLanceUnaExcepcionPorMontoMenorACero(presupuesto);
+        giqueLanceUnaExcepcionPorMontoMenorACero(presupuesto);
     }
+<<<<<<< HEAD
+=======
+
+
+    @Test
+    public void queLanceUnaExcepcionSiSequiereCrearUnPresupuestoDeunaCategoriaEnUnRangoDeFechasExistente(){
+        Presupuesto presupuesto = dadoQueExisteUnPresupuestoCorrecto();
+        Presupuesto presupuesto1 = dadoQueExisteUnPresupuestoRepetido();
+        queAgregueUnPresupuesto(presupuesto);
+        queLanceUnaExcpecionPorPresupuestoExistenteEnEseRango(presupuesto1);
+
+    }
+>>>>>>> 89889376768752150dde3032e6dfc1755150c33a
 
     @Test //(expected = ElPresupuestoEsNulo.class)
     public void queLanceUnaExcepcionSiElPresupuestoEsNulo(){
@@ -73,20 +86,24 @@ public class ServicioDePresupuestoTest {
         return presupuesto;
     }
 
-    private void queLanceUnaExcepcionPorMontoMenorACero(Presupuesto presupuesto) {
+    private void giqueLanceUnaExcepcionPorMontoMenorACero(Presupuesto presupuesto) {
         when(servicePresupuesto.establecerPresupuesto(presupuesto.getMontoPresupuesto(), presupuesto.getFechaDesde(), presupuesto.getFechaHasta(), presupuesto.getCategoria())).thenThrow(MontoMenorACero.class);
     }
 
-    private Presupuesto dadoQueExisteUnPresupuesto() {Presupuesto presupuesto = new Presupuesto(-12.0, LocalDate.of(2023, 04, 01), LocalDate.of(2023, 04, 30), new Categoria("servicios"));
+    private Presupuesto dadoQueExisteUnPresupuesto() {
+        Presupuesto presupuesto = new Presupuesto(-12.0, LocalDate.of(2023, 04, 01), LocalDate.of(2023, 04, 30), new Categoria("servicios"));
+        presupuesto.setId(1L);
     return presupuesto;
     }
 
 
-    @Test (expected = CategoriaEnUso.class)
+    @Test
     public void queLanceUnaExcpecionSiLaCategoriaEstaEnUso(){
         Categoria cat = repositorioCategoria.traerCategoriaPorId(2);
-        servicePresupuesto.establecerPresupuesto(122.00, LocalDate.of(2023, 04, 01), LocalDate.of(2023, 04, 30), cat);
+        queLanceUnaExcepcionPorMontoMenorACero(cat);
     }
-
+    private void queLanceUnaExcepcionPorMontoMenorACero(Categoria cat) {
+    when(servicePresupuesto.establecerPresupuesto(122.00, LocalDate.of(2023, 04, 01), LocalDate.of(2023, 04, 30), cat)).thenThrow(CategoriaEnUso.class);
+    }
 
 }
