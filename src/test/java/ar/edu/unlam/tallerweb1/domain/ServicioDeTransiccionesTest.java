@@ -51,7 +51,7 @@ public class ServicioDeTransiccionesTest{
     }
 
     private void queSePuedaGuardar(Transaccion t) {
-        when(repositorioTransaccion.guardarTransaccion(t)).
+        //when(repositorioTransaccion.guardarTransaccion(t)).
     }
 
 
