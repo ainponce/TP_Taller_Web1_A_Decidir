@@ -107,7 +107,7 @@
       <form:select path="montoDePresupuesto" id="presupuesto" name="presupuesto" class="form-control">
         <option disabled selected>Selecciona una opcion</option>
         <c:forEach var="presupuesto" items="${listaDePresupuesto}">
-          <form:option  value="${presupuesto.getMontoPresupuesto()}">${presupuesto.categoria.getNombre()} - $${presupuesto.getMontoPresupuesto()}}</form:option>
+          <form:option  value="${presupuesto.getMontoPresupuesto()}">${presupuesto.categoria.getNombre()} - $${presupuesto.getMontoPresupuesto()}</form:option>
         </c:forEach>
       </form:select>
       <button  id="btnLogin" type="submit" class="btn btnLogin btn-lg btn-block">Calcular</button>
