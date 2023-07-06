@@ -1,6 +1,8 @@
 package ar.edu.unlam.tallerweb1.delivery.Categoria;
 
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
+import ar.edu.unlam.tallerweb1.domain.Categorias.CategoriaDuplicadaEx;
+import ar.edu.unlam.tallerweb1.domain.Categorias.NombreDeCategoriaNuloEx;
 import ar.edu.unlam.tallerweb1.domain.Categorias.ServicioDeCategoria;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.ServicioDePresupuesto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +36,14 @@ public class ControladorDeCategoria {
     @RequestMapping(path="crearCategoria", method= RequestMethod.POST)
     public ModelAndView registrarCategoria(@RequestParam("nombre") String nombreCategoria){
         ModelMap map = new ModelMap();
-        servicioDeCategoria.regsitrarCategoria(nombreCategoria);
+        try{
+            servicioDeCategoria.regsitrarCategoria(nombreCategoria);
+        } catch (NombreDeCategoriaNuloEx e){
+            map.put("Error", e.getMessage());
+        } catch (CategoriaDuplicadaEx e){
+            map.put("Error", e.getMessage());
+        }
+
         List<Categoria> categorias = servicioDeCategoria.listarCategorias();
         map.put("datosCategoria", new Categoria());
         map.put("categorias", categorias);
