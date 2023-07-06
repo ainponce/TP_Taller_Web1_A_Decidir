@@ -39,7 +39,7 @@ public class ServicioDeCategoriaImpl implements ServicioDeCategoria {
        Boolean seRegistro = false;
        Categoria categoriaEncontrada = buscarCategoriaPorNombre(nombre);
 
-       if(categoriaEncontrada.getNombre() == nombre){
+      /* if(categoriaEncontrada.getNombre() == nombre){
            throw new CategoriaDuplicadaEx();
        } else if (nombre != null){
            Categoria categoria = new Categoria(nombre);
@@ -47,8 +47,10 @@ public class ServicioDeCategoriaImpl implements ServicioDeCategoria {
            seRegistro = true;
        } else throw new NombreDeCategoriaNuloEx();
 
-
-
+    */
+        Categoria categoria = new Categoria(nombre);
+        repositorioCategoria.crearCategoria(categoria);
+        seRegistro = true;
         return seRegistro;
     }
 
