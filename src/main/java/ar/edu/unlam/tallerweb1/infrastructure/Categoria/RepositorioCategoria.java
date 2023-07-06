@@ -12,4 +12,7 @@ public interface RepositorioCategoria {
     public Categoria traerCategoriaPorId(long id);
 
     public void crearCategoria(Categoria categoria);
+
+
+    public Categoria traerCategoriaPorNombre(String nombre);
 }
