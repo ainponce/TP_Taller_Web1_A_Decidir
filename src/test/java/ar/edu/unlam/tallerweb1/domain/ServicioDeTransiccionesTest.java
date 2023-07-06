@@ -77,13 +77,13 @@ public class ServicioDeTransiccionesTest{
     private void queNoSePuedaRegistrarUnaTransaccionConMontoMenorACero() {
         Categoria cat = new Categoria("Servicios");
         cat.setId(1L);
-        when(service.registrarTransaccion(-12.0, 1200.0, "caja", "01/04/2023", Concepto.Fijo, cat)).thenThrow(MontoMenorACero.class);
+        when(service.registrarTransaccion(-12.0, 1200.0, "caja", LocalDate.of(2023,04,01), Concepto.Fijo, cat)).thenThrow(MontoMenorACero.class);
     }
 
     private Transaccion dadoQueExisteUnaTransaccion() {
         Categoria cat = new Categoria("Servicios");
         cat.setId(1L);
-        Transaccion transaccion = new Transaccion(1200.0, "chipa", "01/04/2023", Concepto.Fijo, cat);
+        Transaccion transaccion = new Transaccion(1200.0, "chipa", LocalDate.of(2023,04,01), Concepto.Fijo, cat);
         return transaccion;
     }
 
