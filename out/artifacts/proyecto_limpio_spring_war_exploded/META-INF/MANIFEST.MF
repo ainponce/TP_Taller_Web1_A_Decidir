@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
 Created-By: IntelliJ IDEA
+<<<<<<< HEAD
 Built-By: roesp
 Build-Jdk: Oracle OpenJDK version 11.0.14
+=======
+Built-By: Rolon
+Build-Jdk: Oracle OpenJDK version 11.0.16
+>>>>>>> e9f39c0988bba47d0ecb6eeab36361678c9fc56a
 
