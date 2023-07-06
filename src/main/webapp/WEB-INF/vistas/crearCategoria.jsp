@@ -15,6 +15,8 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" >
     <!-- Bootstrap theme -->
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
     <link href="css/style.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
@@ -123,11 +125,22 @@
                 <c:forEach var="categorias" items="${categorias}">
                     <tr>
                         <td>${categorias.getNombre()}</td>
+                        <td>
+                            <form action="deleteCategoria" method="post">
+                                <input type="hidden" name="id" value="${categorias.id}" />
+                                <button class="fa fa-trash" type="submit" style="background-color: transparent; border: none;"></button>
+                            </form>
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>
             </table>
+
         </div>
+        <c:if test="${not empty Error}">
+            <h4 class="mensajeErrorRegistro"><span>${Error}</span></h4>
+            <br>
+        </c:if>
     </div>
 </div>
 </body>

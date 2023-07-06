@@ -70,5 +70,11 @@ public class RepositorioCategoriaImp implements RepositorioCategoria {
 
     }
 
+    @Override
+    public void eliminarCategoria(Categoria categoriaAEliminar) {
+        sessionFactory.getCurrentSession().delete(categoriaAEliminar);
+    }
+
+
 
 }

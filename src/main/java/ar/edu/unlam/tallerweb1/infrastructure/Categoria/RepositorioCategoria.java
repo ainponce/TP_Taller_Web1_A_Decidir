@@ -15,4 +15,8 @@ public interface RepositorioCategoria {
 
 
     public Categoria traerCategoriaPorNombre(String nombre);
+
+
+    void eliminarCategoria(Categoria categoriaAEliminar);
+
 }

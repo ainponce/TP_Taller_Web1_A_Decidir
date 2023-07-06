@@ -5,13 +5,14 @@ import ar.edu.unlam.tallerweb1.domain.Concepto.Concepto;
 import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
 public interface ServicioDeTransaccion {
 
     //public Boolean registrarTransaccion(Double monto, String detalle, String fecha, Concepto concepto, Categoria categoria);
-    Boolean registrarTransaccion(double monto, Double presupuestoDeCategoria, String detalle, String fecha, Concepto concepto, Categoria cat);
+    Boolean registrarTransaccion(double monto, Double presupuestoDeCategoria, String detalle, LocalDate fecha, Concepto concepto, Categoria cat);
 
     //Boolean registrarTransaccion(Double monto, Double presupuestoDeCategoria, String detalle, String fecha, Concepto concepto, Categoria categoria);
 

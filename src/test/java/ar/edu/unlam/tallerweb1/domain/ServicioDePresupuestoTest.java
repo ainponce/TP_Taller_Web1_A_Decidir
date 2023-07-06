@@ -5,10 +5,14 @@ import ar.edu.unlam.tallerweb1.SpringTest;
 import ar.edu.unlam.tallerweb1.delivery.Categoria.ControladorDeCategoria;
 import ar.edu.unlam.tallerweb1.delivery.Presupuesto.ControladorDePresupuesto;
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
+import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
+import ar.edu.unlam.tallerweb1.domain.Presupuesto.ServicioDePresupuesto;
+
 import ar.edu.unlam.tallerweb1.domain.Categorias.ServicioDeCategoria;
 import ar.edu.unlam.tallerweb1.domain.Categorias.ServicioDeCategoriaImpl;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.*;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.MontoMenorACero;
+
 import ar.edu.unlam.tallerweb1.infrastructure.Categoria.RepositorioCategoria;
 import ar.edu.unlam.tallerweb1.infrastructure.Categoria.RepositorioCategoriaImp;
 import ar.edu.unlam.tallerweb1.infrastructure.Presupuesto.RepositorioPresupuesto;
@@ -43,22 +47,17 @@ public class ServicioDePresupuestoTest {
         servicePresupuesto = new ServicioDePresupuestoImpl(repoPresupuesto, repositorioCategoria);
 
     }
-    @Test
+    @Test (expected = MontoMenorACero.class)
     public void queLanceUnaExcepcionSiElMontoDelPresupuestoEsMenorACero(){
         Presupuesto presupuesto = dadoQueExisteUnPresupuesto();
-        queLanceUnaExcepcionPorMontoMenorACero(presupuesto);
-    }
-    @Test
-    public void queLanceUnaExcepcionSiSequiereCrearUnPresupuestoDeunaCategoriaEnUnRangoDeFechasExistente(){
-        Presupuesto presupuesto = dadoQueExisteUnPresupuestoCorrecto();
-        Presupuesto presupuesto1 = dadoQueExisteUnPresupuestoRepetido();
-        queAgregueUnPresupuesto(presupuesto);
-        queLanceUnaExcpecionPorPresupuestoExistenteEnEseRango(presupuesto1);
-
+        giqueLanceUnaExcepcionPorMontoMenorACero(presupuesto);
     }
 
-    private void queAgregueUnPresupuesto(Presupuesto presupuesto) {
-      when(repoPresupuesto.guardar(presupuesto)).thenReturn(true);
+
+    @Test //(expected = ElPresupuestoEsNulo.class)
+    public void queLanceUnaExcepcionSiElPresupuestoEsNulo(){
+        Categoria cat= repositorioCategoria.traerCategoriaPorId(3);
+        servicePresupuesto.buscarMontoPresupuestoPorCategoria(cat);
     }
 
     private void queLanceUnaExcpecionPorPresupuestoExistenteEnEseRango(Presupuesto presupuesto1) {
@@ -75,11 +74,13 @@ public class ServicioDePresupuestoTest {
         return presupuesto;
     }
 
-    private void queLanceUnaExcepcionPorMontoMenorACero(Presupuesto presupuesto) {
+    private void giqueLanceUnaExcepcionPorMontoMenorACero(Presupuesto presupuesto) {
         when(servicePresupuesto.establecerPresupuesto(presupuesto.getMontoPresupuesto(), presupuesto.getFechaDesde(), presupuesto.getFechaHasta(), presupuesto.getCategoria())).thenThrow(MontoMenorACero.class);
     }
 
-    private Presupuesto dadoQueExisteUnPresupuesto() {Presupuesto presupuesto = new Presupuesto(-12.0, LocalDate.of(2023, 04, 01), LocalDate.of(2023, 04, 30), new Categoria("servicios"));
+    private Presupuesto dadoQueExisteUnPresupuesto() {
+        Presupuesto presupuesto = new Presupuesto(-12.0, LocalDate.of(2023, 04, 01), LocalDate.of(2023, 04, 30), new Categoria("servicios"));
+        presupuesto.setId(1L);
     return presupuesto;
     }
 

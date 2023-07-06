@@ -58,6 +58,13 @@ public class ServicioDeCategoriaImpl implements ServicioDeCategoria {
     }
 
     @Override
+
+    public void eliminarCategoria(Categoria categoriaAEliminar) {
+        repositorioCategoria.eliminarCategoria(categoriaAEliminar);
+        repositorioCategoria.listarCategorias().remove(categoriaAEliminar);
+    }
+
+    @Override
     public Categoria buscarCategoriaPorId(long id){
         return repositorioCategoria.traerCategoriaPorId(id);
     }

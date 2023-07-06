@@ -2,8 +2,10 @@ package ar.edu.unlam.tallerweb1.domain.Transaccion;
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Concepto.Concepto;
 import ar.edu.unlam.tallerweb1.domain.Moneda.Moneda;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 public class Transaccion {
@@ -15,14 +17,14 @@ public class Transaccion {
     private Concepto concepto;
     private Double monto;
     private String detalle;
-    private String fecha;
+    private LocalDate fecha;
 
     @ManyToOne
     private Categoria categoria;
 
 
     public Transaccion(){};
-    public Transaccion (Double monto, String detalle, String fecha, Concepto concepto, Categoria categoria) {
+    public Transaccion (Double monto, String detalle, LocalDate fecha, Concepto concepto, Categoria categoria) {
         this.monto = monto;
         this.detalle = detalle;
         this.fecha = fecha;
@@ -60,11 +62,11 @@ public class Transaccion {
         this.detalle = detalle;
     }
 
-    public String getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
