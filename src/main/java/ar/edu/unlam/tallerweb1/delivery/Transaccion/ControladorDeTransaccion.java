@@ -112,9 +112,9 @@ public class ControladorDeTransaccion {
        ModelMap map= new ModelMap();
        Categoria cat =servicioDeCategoria.buscarCategoriaPorId(categoria);
        List<Transaccion> transacciones = null;
-       List<Categoria> categorias = servicioDeTransaccion.listarCategorias();
+       List<Categoria> categorias = servicioDeCategoria.listarCategorias();
        List<Moneda> moneda = servicioDeMoneda.listarMonedas();
-           if(cat.getId() != null) {
+           if(cat != null) {
                transacciones = servicioDeTransaccion.filtrarTransaccionesPorCategoria(cat);
            }else {
                transacciones = servicioDeTransaccion.listarTransacciones();
@@ -130,7 +130,7 @@ public class ControladorDeTransaccion {
        ModelMap map= new ModelMap();
        Moneda mon = servicioDeMoneda.buscarMonedaPorId(moneda);
        List<Transaccion> transacciones = servicioDeTransaccion.convertirMontoEnMonedaSeleccionada(mon);
-       List<Categoria> categorias = servicioDeTransaccion.listarCategorias();
+       List<Categoria> categorias = servicioDeCategoria.listarCategorias();
        List<Moneda> moneda1 = servicioDeMoneda.listarMonedas();
        map.put("categorias", categorias);
        map.put("moneda", moneda1);

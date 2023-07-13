@@ -54,4 +54,5 @@ public class Categoria {
     public int hashCode() {
         return Objects.hash(nombre);
     }
+
 }
