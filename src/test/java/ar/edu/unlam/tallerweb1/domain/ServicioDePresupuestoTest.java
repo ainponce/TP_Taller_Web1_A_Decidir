@@ -56,14 +56,10 @@ public class ServicioDePresupuestoTest {
     public void  queLanceUnaExcepcionSiElRangoDeFechasYaExiste(){
         Presupuesto presupuesto = dadoQueExisteUnPresupuestoCorrecto();
         Presupuesto presupuesto1 = dadoQueExisteUnPresupuestoRepetido();
-<<<<<<< HEAD
-       // queAgregueUnPresupuesto(presupuesto);
-        queLanceUnaExcpecionPorPresupuestoExistenteEnEseRango(presupuesto1, presupuesto);
-=======
         seGuardaUnPresupuesto(presupuesto);
         noSeGuardaUnPresupuesto(presupuesto1);
     }
->>>>>>> dev
+
 
     private void seGuardaUnPresupuesto(Presupuesto presupuesto) {
         when(servicePresupuesto.establecerPresupuesto(presupuesto.getMontoPresupuesto(), presupuesto.getFechaDesde(), presupuesto.getFechaHasta(), presupuesto.getCategoria())).thenReturn(true);
@@ -76,14 +72,10 @@ public class ServicioDePresupuestoTest {
         servicePresupuesto.buscarMontoPresupuestoPorCategoria(cat);
     }
 
-<<<<<<< HEAD
-    private void queLanceUnaExcpecionPorPresupuestoExistenteEnEseRango(Presupuesto presupuesto1, Presupuesto presupuesto) {
-        when(servicePresupuesto.establecerPresupuesto(presupuesto.getMontoPresupuesto(), presupuesto.getFechaDesde(), presupuesto.getFechaHasta(), presupuesto.getCategoria())).thenReturn(true);
-        when(servicePresupuesto.establecerPresupuesto(presupuesto1.getMontoPresupuesto(), presupuesto1.getFechaDesde(), presupuesto1.getFechaHasta(), presupuesto1.getCategoria())).thenThrow(PresupuestoExistenteEnEseRangoDeFechas.class);
-=======
+
     private void noSeGuardaUnPresupuesto(Presupuesto presupuesto1) {
       when(servicePresupuesto.establecerPresupuesto(presupuesto1.getMontoPresupuesto(), presupuesto1.getFechaDesde(), presupuesto1.getFechaHasta(), presupuesto1.getCategoria())).thenThrow(PresupuestoExistenteEnEseRangoDeFechas.class);
->>>>>>> dev
+
     }
 
     private Presupuesto dadoQueExisteUnPresupuestoCorrecto() {

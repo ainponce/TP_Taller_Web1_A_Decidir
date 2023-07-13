@@ -95,11 +95,8 @@ public class ControladorTransaccionTest extends SpringTest {
 
     private Transaccion cuandoIngresoUnaTransaccion() {
         Categoria cat = new Categoria("bebidas");
-<<<<<<< HEAD
-       Transaccion transaccionNueva = new Transaccion(120.0, "compras", "LocalDate.of(2023,04,01)", Concepto.Fijo,cat);
-=======
        Transaccion transaccionNueva = new Transaccion(120.0, "compras", LocalDate.of(2023,04,01), Concepto.Fijo,cat);
->>>>>>> dev
+
         transaccionNueva.setId(1L);
        transaccionNueva.getCategoria().setId(5L);
        return transaccionNueva;

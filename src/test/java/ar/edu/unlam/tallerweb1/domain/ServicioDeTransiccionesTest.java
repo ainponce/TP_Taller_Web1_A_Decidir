@@ -81,16 +81,11 @@ public class ServicioDeTransiccionesTest{
     }
 
     private Transaccion dadoQueExisteUnaTransaccion() {
-<<<<<<< HEAD
-
-        return new Transaccion(-12.0,"me compre papas", "LocalDate.of(2023,06,01)", Concepto.Fijo, new Categoria("compras"));
-
-=======
         Categoria cat = new Categoria("Servicios");
         cat.setId(1L);
         Transaccion transaccion = new Transaccion(1200.0, "chipa", LocalDate.of(2023,04,01), Concepto.Fijo, cat);
         return transaccion;
->>>>>>> dev
+
     }
 
 }
