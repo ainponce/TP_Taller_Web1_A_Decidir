@@ -153,17 +153,6 @@
 				</select>
 				<input type="submit" value="Filtrar" class="btn btnFiltro btn-lg btn-blockFiltro">
 			</form>
-			<form action="filtrarConcepto" method="get">
-				<label>Elija la categoria</label>
-				<select path="conceptoTransaccion" name="conceptoTransaccion" id="conceptoTransaccion"
-						class="form-control">
-					<%--<option value="" disabled selected>Filtrar por categoria</option>--%>
-					<c:forEach items="${Concepto.values()}" var="conceptos">
-						<option value="${conceptos}">${conceptos.name()}</option>
-					</c:forEach>
-				</select>
-				<input type="submit" value="Filtrar" class="btn btnFiltro btn-lg btn-blockFiltro">
-			</form>
 			<form action="convertir" method="get">
 				<label path="">Elija el tipo de moneda</label>
 				<select path="moneda" id="moneda" name="moneda" class="form-control">
