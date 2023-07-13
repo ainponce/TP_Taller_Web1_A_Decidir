@@ -12,11 +12,8 @@
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/hurr?useSSL=true&amp;serverTimezone=UTC" />
 		<property name="username" value="root" />
-<<<<<<< HEAD
-		<property name="password" value="admin" />
-=======
 		<property name="password" value="" />
->>>>>>> e9f39c0988bba47d0ecb6eeab36361678c9fc56a
+
 
 
 
