@@ -37,14 +37,26 @@ public class ServicioDeCategoriaImpl implements ServicioDeCategoria {
     @Override
     public Boolean regsitrarCategoria(String nombre) {
        Boolean seRegistro = false;
-
-       if (nombre != null){
+       Categoria categoriaEncontrada = buscarCategoriaPorNombre(nombre);
+       /*if(categoriaEncontrada.getNombre() == nombre){
+           throw new CategoriaDuplicadaEx();
+       }else */ if (nombre != null){
            Categoria categoria = new Categoria(nombre);
-            repositorioCategoria.crearCategoria(categoria);
-            seRegistro = true;
-       }
-
+           repositorioCategoria.crearCategoria(categoria);
+           seRegistro = true;
+       } else throw new NombreDeCategoriaNuloEx();
         return seRegistro;
+    }
+
+    @Override
+    public Categoria buscarCategoriaPorNombre(String nombre) {
+        return repositorioCategoria.traerCategoriaPorNombre(nombre);
+    }
+
+    @Override
+    public void eliminarCategoria(Categoria categoriaAEliminar) {
+        repositorioCategoria.eliminarCategoria(categoriaAEliminar);
+        repositorioCategoria.listarCategorias().remove(categoriaAEliminar);
     }
 
     @Override

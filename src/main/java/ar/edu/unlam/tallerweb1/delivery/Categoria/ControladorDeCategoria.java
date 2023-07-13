@@ -1,8 +1,12 @@
 package ar.edu.unlam.tallerweb1.delivery.Categoria;
 
 import ar.edu.unlam.tallerweb1.domain.Categorias.Categoria;
+import ar.edu.unlam.tallerweb1.domain.Categorias.CategoriaDuplicadaEx;
+import ar.edu.unlam.tallerweb1.domain.Categorias.NombreDeCategoriaNuloEx;
 import ar.edu.unlam.tallerweb1.domain.Categorias.ServicioDeCategoria;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.ServicioDePresupuesto;
+import ar.edu.unlam.tallerweb1.domain.Transaccion.NoExisteTransaccion;
+import ar.edu.unlam.tallerweb1.domain.Transaccion.Transaccion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -34,12 +38,35 @@ public class ControladorDeCategoria {
     @RequestMapping(path="crearCategoria", method= RequestMethod.POST)
     public ModelAndView registrarCategoria(@RequestParam("nombre") String nombreCategoria){
         ModelMap map = new ModelMap();
-        servicioDeCategoria.regsitrarCategoria(nombreCategoria);
+        try{
+            servicioDeCategoria.regsitrarCategoria(nombreCategoria);
+        } catch (NombreDeCategoriaNuloEx e){
+            map.put("Error", e.getMessage());
+        } catch (CategoriaDuplicadaEx e){
+            map.put("Error", e.getMessage());
+        }
+
         List<Categoria> categorias = servicioDeCategoria.listarCategorias();
         map.put("datosCategoria", new Categoria());
         map.put("categorias", categorias);
         return new ModelAndView("crearCategoria", map);
     }
 
+    @RequestMapping(path="/deleteCategoria", method = RequestMethod.POST)
+    public ModelAndView eliminarUnaTransaccion(@RequestParam("id") Long id){
+        ModelMap map= new ModelMap();
+        Categoria categoriaAEliminar = null;
+        categoriaAEliminar = servicioDeCategoria.buscarCategoriaPorId(id);
+        if(categoriaAEliminar!=null){
+            try{
+                servicioDeCategoria.eliminarCategoria(categoriaAEliminar);
+            }catch(NombreDeCategoriaNuloEx nc){
+                map.put("msg", "No existe la categoria");
+                map.put("Error", nc.getMessage());
+            }
 
+        }
+
+        return new ModelAndView("redirect:/crearCategoria", map);
+    }
 }

@@ -47,8 +47,12 @@ public class ControladorDeTransaccion {
 
     @RequestMapping(path="/establecerTransaccion", method = RequestMethod.POST)
     public ModelAndView registrarUnaTransaccion(@RequestParam("monto") double monto, @RequestParam("detalle") String detalle,
+<<<<<<< HEAD
                                                 @RequestParam("fecha")  String fecha, @RequestParam("concepto") Concepto concepto,
                                                 @RequestParam(value = "categoria", required=false) Long categoria) {
+=======
+                                                @RequestParam("fecha") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha, @RequestParam("concepto") Concepto concepto, @RequestParam(value = "categoria", required=false) Long categoria) {
+>>>>>>> dev
         Categoria cat =servicioDeCategoria.buscarCategoriaPorId(categoria);
         ModelMap map= new ModelMap();
         List<Transaccion> transacciones = servicioDeTransaccion.filtrarTransaccionesPorCategoria(cat);
@@ -145,9 +149,13 @@ public class ControladorDeTransaccion {
         Transaccion transaccionAEliminar = null;
         transaccionAEliminar =  servicioDeTransaccion.buscarTransaccionPorIdParaEliminar(id);
         if(transaccionAEliminar!=null){
+            try{
             servicioDeTransaccion.eliminarTransaccion(transaccionAEliminar);
-        }else{
-            map.put("msg", "No existe la transaccion");
+        }catch(NoExisteTransaccion nt){
+                map.put("msg", "No existe la transaccion");
+                map.put("Error", nt.getMessage());
+            }
+
         }
 
         return new ModelAndView("redirect:/home", map);

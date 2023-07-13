@@ -112,7 +112,7 @@
         <h3>Cargue un gasto o ingreso...</h3>
         <form:form action="establecerTransaccion" method="post" modelAttribute="datosTransaccion"><!--method:que le pedimos al formulario, action: donde te envia ma:id de info dentro del form -->
 
-        <form:input type="text" id="fecha" path="fecha" name="fecha" class="form-control"
+        <form:input type="date" id="fecha" path="fecha" name="fecha" class="form-control"
                     placeholder="Ingrese fecha..."/>
         <form:input type="text" id="monto" path="monto" name="monto" class="form-control"
                     placeholder="Ingrese monto..."/>

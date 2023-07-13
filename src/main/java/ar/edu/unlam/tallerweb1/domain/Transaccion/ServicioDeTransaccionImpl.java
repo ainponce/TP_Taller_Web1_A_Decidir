@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +43,7 @@ public class ServicioDeTransaccionImpl implements ServicioDeTransaccion {
     }
 
     @Override
-    public Boolean registrarTransaccion(double monto, Double presupuestoDeCategoria, String detalle, String fecha, Concepto concepto, Categoria categoria) {
+    public Boolean registrarTransaccion(double monto, Double presupuestoDeCategoria, String detalle, LocalDate fecha, Concepto concepto, Categoria categoria) {
         Boolean seRegistro = false;
         List<Transaccion> validacionDeCategoria = RepoTransaccionDao.listarTransaccion();
         List<Transaccion> transacciones = filtrarTransaccionesPorCategoria(categoria);

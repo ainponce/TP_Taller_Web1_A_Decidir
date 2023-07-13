@@ -9,7 +9,7 @@ import java.util.List;
 public interface RepositorioTransaccion {
 
     public List<Transaccion> buscarTransaccionPorDetalle(String detalle) ;
-    public void guardarTransaccion(Transaccion transaccion);
+    public boolean guardarTransaccion(Transaccion transaccion);
     public void modificar(Transaccion transaccion);
 
     public List<Transaccion> listarTransaccion();

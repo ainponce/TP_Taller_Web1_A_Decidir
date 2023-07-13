@@ -15,6 +15,9 @@ public interface ServicioDeCategoria {
 
     public Boolean regsitrarCategoria(String nombre);
 
+    public Categoria buscarCategoriaPorNombre(String nombre);
 
-   // List<Categoria> listarCategoriasPorID(Long id);
+    void eliminarCategoria(Categoria categoriaAEliminar);
+
+    // List<Categoria> listarCategoriasPorID(Long id);
 }

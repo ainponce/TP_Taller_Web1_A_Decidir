@@ -46,9 +46,8 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
     }
 
     private Boolean rangoDeFechaPresupuestoNoDisponible(Presupuesto presupuesto, Categoria categoria, LocalDate fechaDesde, LocalDate fechaHasta) {
-        if(presupuesto != null && presupuesto.getCategoria().equals(categoria)){
-            if(presupuesto.getFechaDesde().isEqual(fechaDesde) || presupuesto.getFechaDesde().isEqual(fechaHasta) &&
-            presupuesto.getFechaHasta().isEqual(fechaHasta) || presupuesto.getFechaHasta().isEqual(fechaDesde)){
+        if(presupuesto!=null && presupuesto.getCategoria().equals(categoria)){
+            if((fechaDesde.isAfter(presupuesto.getFechaDesde()) || fechaHasta.isBefore(presupuesto.getFechaHasta()))){
                 return true;
             }
         }
@@ -71,7 +70,7 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
         if(presupuesto!=null){
             montoPresupuesto=presupuesto.getMontoPresupuesto();
         }else{
-            throw new ElPresupuestoEsNulo();
+           // throw new ElPresupuestoEsNulo();
         }
         return montoPresupuesto;
     }
