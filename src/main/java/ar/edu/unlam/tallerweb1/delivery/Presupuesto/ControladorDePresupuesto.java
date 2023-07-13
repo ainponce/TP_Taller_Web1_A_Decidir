@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -33,7 +35,7 @@ public class ControladorDePresupuesto {
 
     @RequestMapping(path = "/establecerPresupuesto", method = RequestMethod.POST)
     public ModelAndView registrarUnPresupuesto(@RequestParam("montoPresupuesto") double montoPresupuesto, @RequestParam("fechaDesde") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaDesde,
-                                               @RequestParam("fechaHasta") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaHasta, @RequestParam("categoria") long categoria ){
+                                               @RequestParam("fechaHasta") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaHasta, @RequestParam("categoria") long categoria){
         ModelMap map = new ModelMap();
         Categoria cat =servicioDeCategoria.buscarCategoriaPorId(categoria);
         List<Presupuesto> presupuestos = servicioDePresupuesto.listarPresupuestos();

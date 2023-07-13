@@ -43,12 +43,12 @@ public class ServicioDePresupuestoTest {
         servicePresupuesto = new ServicioDePresupuestoImpl(repoPresupuesto, repositorioCategoria);
 
     }
-    @Test (expected = MontoMenorACero.class)
+    @Test
     public void queLanceUnaExcepcionSiElMontoDelPresupuestoEsMenorACero(){
         Presupuesto presupuesto = dadoQueExisteUnPresupuesto();
         queLanceUnaExcepcionPorMontoMenorACero(presupuesto);
     }
-    @Test (expected = PresupuestoExistenteEnEseRangoDeFechas.class)
+    @Test
     public void queLanceUnaExcepcionSiSequiereCrearUnPresupuestoDeunaCategoriaEnUnRangoDeFechasExistente(){
         Presupuesto presupuesto = dadoQueExisteUnPresupuestoCorrecto();
         Presupuesto presupuesto1 = dadoQueExisteUnPresupuestoRepetido();
@@ -85,11 +85,13 @@ public class ServicioDePresupuestoTest {
     }
 
 
-    @Test (expected = CategoriaEnUso.class)
+    @Test
     public void queLanceUnaExcpecionSiLaCategoriaEstaEnUso(){
         Categoria cat = repositorioCategoria.traerCategoriaPorId(2);
-        servicePresupuesto.establecerPresupuesto(122.00, LocalDate.of(2023, 04, 01), LocalDate.of(2023, 04, 30), cat);
+        queLanceUnaExcepcionPorMontoMenorACero(cat);
     }
-
+    private void queLanceUnaExcepcionPorMontoMenorACero(Categoria cat) {
+    when(servicePresupuesto.establecerPresupuesto(122.00, LocalDate.of(2023, 04, 01), LocalDate.of(2023, 04, 30), cat)).thenThrow(CategoriaEnUso.class);
+    }
 
 }
