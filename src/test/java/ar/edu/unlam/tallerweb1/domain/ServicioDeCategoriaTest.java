@@ -40,15 +40,20 @@ public class ServicioDeCategoriaTest {
 
     }
 
-    @Test
+    @Test (expected = CategoriaDuplicadaEx.class)
     public void queLanceUnaExcepcionSiSeQuiereCrearUnaCategoriaDuplicada(){
+        Categoria c = queCreeUnaCategoria();
         Categoria creada = new Categoria("Compras");
         queLanceUnaExcpecionPorCategoriaDuplicada(creada);
+        queLanceUnaExcpecionPorCategoriaDuplicada(c);
+    }
 
+    private Categoria queCreeUnaCategoria() {
+        return new Categoria("Compras");
     }
 
     private void queLanceUnaExcpecionPorCategoriaDuplicada(Categoria categoria) {
-        //when(repositorioCategoria.crearCategoria(categoria)).thenThrow(CategoriaDuplicadaEx.class);
+        when(servicioDeCategoria.regsitrarCategoria(categoria.getNombre())).thenThrow(CategoriaDuplicadaEx.class);
     }
 
 }

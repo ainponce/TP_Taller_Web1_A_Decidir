@@ -38,17 +38,13 @@ public class ServicioDeCategoriaImpl implements ServicioDeCategoria {
     public Boolean regsitrarCategoria(String nombre) {
        Boolean seRegistro = false;
        Categoria categoriaEncontrada = buscarCategoriaPorNombre(nombre);
-
-       if(categoriaEncontrada.getNombre() == nombre){
+       /*if(categoriaEncontrada.getNombre() == nombre){
            throw new CategoriaDuplicadaEx();
-       } else if (nombre != null){
+       }else */ if (nombre != null){
            Categoria categoria = new Categoria(nombre);
            repositorioCategoria.crearCategoria(categoria);
            seRegistro = true;
        } else throw new NombreDeCategoriaNuloEx();
-
-
-
         return seRegistro;
     }
 

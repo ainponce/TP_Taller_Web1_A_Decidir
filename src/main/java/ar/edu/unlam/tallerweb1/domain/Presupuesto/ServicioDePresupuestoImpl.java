@@ -46,7 +46,7 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
     }
 
     private Boolean rangoDeFechaPresupuestoNoDisponible(Presupuesto presupuesto, Categoria categoria, LocalDate fechaDesde, LocalDate fechaHasta) {
-        if(presupuesto != null && presupuesto.getCategoria().equals(categoria)){
+        if(presupuesto!=null && presupuesto.getCategoria().equals(categoria)){
             if((fechaDesde.isAfter(presupuesto.getFechaDesde()) || fechaHasta.isBefore(presupuesto.getFechaHasta()))){
                 return true;
             }

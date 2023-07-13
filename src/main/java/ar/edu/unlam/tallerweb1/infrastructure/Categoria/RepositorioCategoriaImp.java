@@ -67,7 +67,6 @@ public class RepositorioCategoriaImp implements RepositorioCategoria {
         Query<Categoria> query = session.createQuery("FROM Categoria WHERE nombre = :nombre", Categoria.class);
         query.setParameter("nombre", nombre);
         return query.uniqueResult();
-
     }
 
     @Override

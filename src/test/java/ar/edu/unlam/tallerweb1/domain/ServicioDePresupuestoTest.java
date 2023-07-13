@@ -52,6 +52,17 @@ public class ServicioDePresupuestoTest {
         Presupuesto presupuesto = dadoQueExisteUnPresupuesto();
         giqueLanceUnaExcepcionPorMontoMenorACero(presupuesto);
     }
+    @Test (expected = PresupuestoExistenteEnEseRangoDeFechas.class)
+    public void  queLanceUnaExcepcionSiElRangoDeFechasYaExiste(){
+        Presupuesto presupuesto = dadoQueExisteUnPresupuestoCorrecto();
+        Presupuesto presupuesto1 = dadoQueExisteUnPresupuestoRepetido();
+        seGuardaUnPresupuesto(presupuesto);
+        noSeGuardaUnPresupuesto(presupuesto1);
+    }
+
+    private void seGuardaUnPresupuesto(Presupuesto presupuesto) {
+        when(servicePresupuesto.establecerPresupuesto(presupuesto.getMontoPresupuesto(), presupuesto.getFechaDesde(), presupuesto.getFechaHasta(), presupuesto.getCategoria())).thenReturn(true);
+    }
 
 
     @Test //(expected = ElPresupuestoEsNulo.class)
@@ -60,17 +71,21 @@ public class ServicioDePresupuestoTest {
         servicePresupuesto.buscarMontoPresupuestoPorCategoria(cat);
     }
 
-    private void queLanceUnaExcpecionPorPresupuestoExistenteEnEseRango(Presupuesto presupuesto1) {
-      when(repoPresupuesto.guardar(presupuesto1)).thenThrow(PresupuestoExistenteEnEseRangoDeFechas.class);
+    private void noSeGuardaUnPresupuesto(Presupuesto presupuesto1) {
+      when(servicePresupuesto.establecerPresupuesto(presupuesto1.getMontoPresupuesto(), presupuesto1.getFechaDesde(), presupuesto1.getFechaHasta(), presupuesto1.getCategoria())).thenThrow(PresupuestoExistenteEnEseRangoDeFechas.class);
     }
 
     private Presupuesto dadoQueExisteUnPresupuestoCorrecto() {
         Presupuesto presupuesto = new Presupuesto(12.0, LocalDate.of(2023, 04, 01), LocalDate.of(2023, 04, 30), new Categoria("servicios"));
+        presupuesto.setId(1L);
+        presupuesto.getCategoria().setId(1L);
         return presupuesto;
     }
 
     private Presupuesto dadoQueExisteUnPresupuestoRepetido() {
-        Presupuesto presupuesto = new Presupuesto(12.0, LocalDate.of(2023, 04, 01), LocalDate.of(2023, 04, 30), new Categoria("servicios"));
+        Presupuesto presupuesto = new Presupuesto(4000.0, LocalDate.of(2023, 04, 01), LocalDate.of(2023, 04, 30), new Categoria("servicios"));
+        presupuesto.setId(2L);
+        presupuesto.getCategoria().setId(1L);
         return presupuesto;
     }
 
