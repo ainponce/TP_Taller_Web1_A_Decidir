@@ -10,6 +10,7 @@ import ar.edu.unlam.tallerweb1.domain.Presupuesto.Presupuesto;
 import ar.edu.unlam.tallerweb1.domain.Presupuesto.ServicioDePresupuesto;
 import ar.edu.unlam.tallerweb1.domain.Transaccion.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -45,7 +47,7 @@ public class ControladorDeTransaccion {
 
     @RequestMapping(path="/establecerTransaccion", method = RequestMethod.POST)
     public ModelAndView registrarUnaTransaccion(@RequestParam("monto") double monto, @RequestParam("detalle") String detalle,
-                                                @RequestParam("fecha") String fecha, @RequestParam("concepto") Concepto concepto,
+                                                @RequestParam("fecha")  String fecha, @RequestParam("concepto") Concepto concepto,
                                                 @RequestParam(value = "categoria", required=false) Long categoria) {
         Categoria cat =servicioDeCategoria.buscarCategoriaPorId(categoria);
         ModelMap map= new ModelMap();

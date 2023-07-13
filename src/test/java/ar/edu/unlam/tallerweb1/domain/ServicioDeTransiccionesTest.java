@@ -81,7 +81,7 @@ public class ServicioDeTransiccionesTest{
 
     private Transaccion dadoQueExisteUnaTransaccion() {
 
-        return new Transaccion(-12.0,"me compre papas", "01/06/2023", Concepto.Fijo, new Categoria("compras"));
+        return new Transaccion(-12.0,"me compre papas", "LocalDate.of(2023,06,01)", Concepto.Fijo, new Categoria("compras"));
 
     }
 
