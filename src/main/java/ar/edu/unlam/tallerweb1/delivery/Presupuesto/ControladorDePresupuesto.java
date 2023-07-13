@@ -83,8 +83,8 @@ public class ControladorDePresupuesto {
     }
 
     @RequestMapping(path = "/editarPresupuesto", method = RequestMethod.POST)
-    public ModelAndView editarUnPresupuesto(@RequestParam("id") long idPresupuesto, @RequestParam("montoPresupuesto") double montoPresupuesto, @RequestParam("fechaDesde") LocalDate fechaDesde,
-                                               @RequestParam("fechaHasta") LocalDate fechaHasta, @RequestParam("categoria") long categoria ){
+    public ModelAndView editarUnPresupuesto(@RequestParam("id") long idPresupuesto, @RequestParam("montoPresupuesto") double montoPresupuesto, @RequestParam("fechaDesde") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaDesde,
+                                               @RequestParam("fechaHasta") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaHasta, @RequestParam("categoria") long categoria ){
         ModelMap map = new ModelMap();
         Categoria cat =servicioDeCategoria.buscarCategoriaPorId(categoria);
         List<Categoria> categorias = servicioDeCategoria.listarCategoriaParaPresupuestos();
@@ -92,7 +92,7 @@ public class ControladorDePresupuesto {
         try {
             servicioDePresupuesto.editarPresupuesto(idPresupuesto,montoPresupuesto, fechaDesde, fechaHasta, cat);
             map.put("msg", "Prespuesto creado");
-        } catch (CategoriaEnUso e){
+        } catch (PresupuestoExistenteEnEseRangoDeFechas e){
             map.put("Error", e.getMessage());
         } catch (MontoMenorACero e) {
             map.put("Error", e.getMessage());

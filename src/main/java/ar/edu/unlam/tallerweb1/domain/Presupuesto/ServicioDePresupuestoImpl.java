@@ -83,23 +83,27 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
     @Override
     public void editarPresupuesto(long id, double montoPresupuesto, LocalDate fechaDesde, LocalDate fechaHasta, Categoria categoria) {
         List <Presupuesto> listaPresupuestos= repositorioPresupuesto.listarPresupuesto();
+        Presupuesto p = repositorioPresupuesto.buscarPresupuestoPorId(id);
         boolean categoriaDelPresupuesto = false;
 
             for (Presupuesto presupuesto : listaPresupuestos) {
-                if (presupuesto.getCategoria().getId() == categoria.getId()) {
+                if (presupuesto.getCategoria().getId().equals(categoria.getId())) {
                     categoriaDelPresupuesto = true;
                     break;  // Si encuentras una categoría igual, sales del bucle
                 }
             }
-
-            if (categoriaDelPresupuesto && montoPresupuesto >= 0) {
-                Presupuesto presupuestoExistente = repositorioPresupuesto.buscarPresupuestoPorId(id);
-                presupuestoExistente.setMontoPresupuesto(montoPresupuesto);
-                presupuestoExistente.setFechaDesde(fechaDesde);
-                presupuestoExistente.setFechaHasta(fechaHasta);
-                repositorioPresupuesto.modificar(presupuestoExistente);
-            }else {
-                throw new MontoMenorACero();  // Lanzas la excepción si el monto es menor a cero
+            if(rangoDeFechaPresupuestoNoDisponible(p, categoria, fechaDesde, fechaHasta)){
+            throw new PresupuestoExistenteEnEseRangoDeFechas();}
+            else {
+                if (categoriaDelPresupuesto && montoPresupuesto >= 0) {
+                    Presupuesto presupuestoExistente = repositorioPresupuesto.buscarPresupuestoPorId(id);
+                    presupuestoExistente.setMontoPresupuesto(montoPresupuesto);
+                    presupuestoExistente.setFechaDesde(fechaDesde);
+                    presupuestoExistente.setFechaHasta(fechaHasta);
+                    repositorioPresupuesto.modificar(presupuestoExistente);
+                }else {
+                    throw new MontoMenorACero();  // Lanzas la excepción si el monto es menor a cero
+                }
             }
     }
 
