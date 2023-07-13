@@ -68,7 +68,10 @@ public class RepositorioPresupuestoImpl implements RepositorioPresupuesto {
     }
     @Override
     public Presupuesto buscarPresupuestoPorCategoria(Categoria categoria) {
-        return this.sessionFactory.getCurrentSession().get(Presupuesto.class, categoria.getId());
+        final Session session = sessionFactory.getCurrentSession();
+        return (Presupuesto) session.createCriteria(Presupuesto.class)
+                .add(Restrictions.eq("categoria", categoria))
+                .uniqueResult();
     }
 
     @Override

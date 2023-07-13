@@ -94,6 +94,7 @@ public class ControladorDePresupuesto {
             map.put("msg", "Prespuesto creado");
         } catch (PresupuestoExistenteEnEseRangoDeFechas e){
             map.put("Error", e.getMessage());
+            map.put("msg", "Prespuesto entro en rango");
         } catch (MontoMenorACero e) {
             map.put("Error", e.getMessage());
         }
@@ -101,7 +102,7 @@ public class ControladorDePresupuesto {
         map.put("establecerPresupuesto", new Presupuesto());
         map.put("categorias", categorias);
         map.put("presupuestos", presupuestos);
-        map.put("msg", "Prespuesto creado");
+
         return new ModelAndView("redirect:/establecerPresupuesto");
     }
 

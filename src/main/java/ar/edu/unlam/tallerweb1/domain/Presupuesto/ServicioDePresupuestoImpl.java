@@ -30,25 +30,29 @@ public class ServicioDePresupuestoImpl implements ServicioDePresupuesto {
     public Boolean establecerPresupuesto(Double monto, LocalDate fechaDesde, LocalDate fechaHasta, Categoria categoria) {
         Boolean seRegistro = false;
         Presupuesto presupuesto = repositorioPresupuesto.buscarPresupuestoPorCategoria(categoria);
-        if(rangoDeFechaPresupuestoNoDisponible(presupuesto, categoria, fechaDesde, fechaHasta)){
-            throw new PresupuestoExistenteEnEseRangoDeFechas();
-        }
-            else {
-            if (monto > 0) {
-                Presupuesto presupuestoNuevo = new Presupuesto(monto, fechaDesde, fechaHasta, categoria);
-                repositorioPresupuesto.guardar(presupuestoNuevo);
-                seRegistro = true;
-            } else {
-                throw new MontoMenorACero();  // Lanzas la excepción si el monto es menor a cero
+
+        if (presupuesto != null) {
+            boolean validacionDeFechas = rangoDeFechaPresupuestoNoDisponible(presupuesto, categoria, fechaDesde, fechaHasta);
+            if (validacionDeFechas) {
+                throw new PresupuestoExistenteEnEseRangoDeFechas();
             }
         }
+
+        if (monto > 0.0) {
+            Presupuesto presupuestoNuevo = new Presupuesto(monto, fechaDesde, fechaHasta, categoria);
+            repositorioPresupuesto.guardar(presupuestoNuevo);
+            seRegistro = true;
+        } else {
+            throw new MontoMenorACero();  // Lanzas la excepción si el monto es menor a cero
+        }
+
         return seRegistro;
     }
 
     private Boolean rangoDeFechaPresupuestoNoDisponible(Presupuesto presupuesto, Categoria categoria, LocalDate fechaDesde, LocalDate fechaHasta) {
        boolean variable= false;
-        if(presupuesto!=null && presupuesto.getCategoria().getId().equals(categoria.getId())){
-            if((fechaDesde.isBefore(presupuesto.getFechaDesde()) || fechaHasta.isAfter(presupuesto.getFechaHasta()))){
+        if(presupuesto.getCategoria().getId().equals(categoria.getId())){
+            if((fechaDesde.isEqual(presupuesto.getFechaDesde()) || fechaHasta.isEqual(presupuesto.getFechaHasta()))){
                 variable= true;
             }
         }

@@ -133,7 +133,7 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">
+						<a class="nav-link" href="login">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 								 class="bi bi-box-arrow-left icon-home" viewBox="0 0 16 16">
 								<path fill-rule="evenodd"
@@ -149,33 +149,35 @@
 		</div>
 	</div>
 	<div class="col-lg-5">
-		<div>
-			<h3>Transacciones</h3>
+		<h3>Transacciones</h3>
+		<div class="row" style="display: flex; flex-direction: row; justify-content: space-between; margin: 0px">
+
 			<%--Form para filtrar por Categoria las Transacciones--%>
-			<form action="filtrar" method="get">
+			<form action="filtrar" method="get" style="width: 50%">
 				<label>Elija la categoria</label>
 				<select path="categoriaTransaccion" name="categoriaTransaccion" id="categoriaTransaccion"
-						class="form-control">
+						class="form-control" style="display: flex; margin: 0">
 					<%--<option value="" disabled selected>Filtrar por categoria</option>--%>
 					<c:forEach items="${categorias}" var="option">
 						<option value="${option.getId()}">${option.getNombre()}</option>
 					</c:forEach>
 				</select>
-				<div style="display: flex; flex-direction: row; justify-content: space-between;" >
-					<input type="submit" value="Filtrar" class="btn btnFiltro btn-lg btn-blockFiltro">
-					<input type="button" onclick="window.location.href='home'" value="Limpiar"  class="btn btnFiltro btn-lg btn-blockFiltro">
-				</div>
+				<input type="submit" value="Filtrar" class="btn btnFiltro btn-lg btn-blockFiltro">
 			</form>
-
-			<form action="convertir" method="get">
+			<form action="convertir" method="get" style="width: 50%">
 				<label path="">Elija el tipo de moneda</label>
-				<select path="moneda" id="moneda" name="moneda" class="form-control">
+				<select path="moneda" id="moneda" name="moneda" class="form-control" style=" display: flex;
+				 		margin: 0">
 					<c:forEach items="${moneda}" var="option">
 						<option value="${option.getId()}">${option.getNombre()}</option>
 					</c:forEach>
 				</select>
-				<button id="btnLogin" type="submit" value="convertir" class="btn btnLogin btn-lg btn-block">Convertir</button>
+				<button style="float: right;" id="btnLogin" type="submit" value="convertir" class="btn btnLogin btn-lg btn-blockFiltro">Convertir</button>
 			</form>
+		</div>
+
+
+		<div>
 			<table class="table">
 				<thead>
 				<tr>
@@ -227,9 +229,12 @@
                 </tr>
                 </thead>
             </table>
+			<div style="display: flex; flex-direction: row; justify-content: end;" >
+				<input type="button" onclick="window.location.href='home'" value="Limpiar"  class="btn btnFiltro btn-lg btn-blockFiltro">
+			</div>
         </div>
     </div>
-	<div id="myPieChart"/>
+	<div class="col-lg-5" id="myPieChart"/>
     <c:if test="${not empty error}">
         <h4 class="mensajeErrorRegistro"><span>${error}</span></h4>
         <br>
