@@ -110,9 +110,9 @@
                 <label>Monto</label>
                 <form:input value="${presupuesto.montoPresupuesto}" type="text" id="montoPresupuesto" path="montoPresupuesto" name="montoPresupuesto" class="form-control" placeholder="Ingrese monto..."/>
                 <label>Fecha de inicio</label>
-                <form:input value="${presupuesto.fechaDesde}" type="text" id="monto" path="fechaDesde" name="fechaDesde" class="form-control" placeholder="Ingrese fecha de inicio"/>
+                <form:input value="${presupuesto.fechaDesde}" type="date" id="monto" path="fechaDesde" name="fechaDesde" class="form-control" placeholder="Ingrese fecha de inicio"/>
                 <label>Fecha de fin</label>
-                <form:input value="${presupuesto.fechaHasta}" type="text" id="monto" path="fechaHasta" name="fechaHasta" class="form-control" placeholder="Ingrese fecha de fin"/>
+                <form:input value="${presupuesto.fechaHasta}" type="date" id="monto" path="fechaHasta" name="fechaHasta" class="form-control" placeholder="Ingrese fecha de fin"/>
                 <label>Categoria del presupuesto</label>
                 <span class="form-control" disabled>${presupuesto.categoria.getNombre()}</span>
                 <input type="hidden" value="${presupuesto.categoria.getId()}" name="categoria" path="categoria" >
